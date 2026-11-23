@@ -72,7 +72,11 @@ def main(argv=None):
 
     if a.cmd == "simulate":
         rid = a.run_id or f"{a.scenario}-{datetime.now().strftime('%Y%m%d-%H%M%S')}"
-        run = nuovo_run(_dir(rid, a.runs_dir), a.scenario, a.modalita, a.registro)
+        try:
+            run = nuovo_run(_dir(rid, a.runs_dir), a.scenario, a.modalita, a.registro)
+        except FileExistsError as e:
+            print(f"RIFIUTATO ({type(e).__name__}): {e}", file=sys.stderr)
+            return 2
         return _avanza(run)
     if a.cmd == "resume":
         run = Run(_dir(a.run_id, a.runs_dir))

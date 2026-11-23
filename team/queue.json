@@ -214,16 +214,65 @@
         "docs/qa-checklist.md",
         "qa/"
       ],
-      "stato": "in_corso",
+      "stato": "fatto",
       "run_id": null,
       "creato": "2026-11-23T18:48:15+00:00",
-      "aggiornato": "2026-11-23T19:01:04+00:00",
+      "aggiornato": "2026-11-23T19:27:12+00:00",
       "note": [
         {
           "quando": "2026-11-23T19:01:04+00:00",
           "nota": "avviato dal Team Lead"
+        },
+        {
+          "quando": "2026-11-23T19:27:12+00:00",
+          "nota": "verdetto APPROVATO dopo 3 giri: 13 difetti (D-013), 4 di concorrenza (D-014), F-1 (D-015)"
         }
       ]
+    },
+    {
+      "id": "T-010",
+      "titolo": "Fase commerciale: domanda di ricerca reale e prima scheda opportunità osservata",
+      "agente": "ricerca-mercato",
+      "fase": "",
+      "dipende_da": [
+        "T-009"
+      ],
+      "output": [],
+      "stato": "da_fare",
+      "run_id": null,
+      "creato": "2026-11-23T19:27:12+00:00",
+      "aggiornato": "2026-11-23T19:27:12+00:00",
+      "note": []
+    },
+    {
+      "id": "T-011",
+      "titolo": "Pacchetto azioni titolare (AZIONI_TITOLARE.md) da eseguire in un passaggio unico",
+      "agente": "team-lead",
+      "fase": "",
+      "dipende_da": [
+        "T-009"
+      ],
+      "output": [],
+      "stato": "da_fare",
+      "run_id": null,
+      "creato": "2026-11-23T19:27:12+00:00",
+      "aggiornato": "2026-11-23T19:27:12+00:00",
+      "note": []
+    },
+    {
+      "id": "T-012",
+      "titolo": "Adattatori live Shopify/pagamenti/consegna + prove dal vivo (INTEGRAZIONI_LIVE.md)",
+      "agente": "shopify-operazioni",
+      "fase": "",
+      "dipende_da": [
+        "T-011"
+      ],
+      "output": [],
+      "stato": "da_fare",
+      "run_id": null,
+      "creato": "2026-11-23T19:27:12+00:00",
+      "aggiornato": "2026-11-23T19:27:12+00:00",
+      "note": []
     }
   ]
 }

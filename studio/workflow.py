@@ -21,7 +21,7 @@ from . import adapters as adapters_mod
 from .adapters.base import ExternalActionBlocked
 from .ledger import Ledger, SpendBlocked
 from .orders import OrderBook
-from .phases import FASI, NOMI_FASI, SEGRETI, NeedOwner, PhaseStop, SimulatedCrash
+from .phases import FASI, NOMI_FASI, SEGRETI, DatoMancante, NeedOwner, PhaseStop, SimulatedCrash
 from .queue import TaskQueue
 from .storage import append_jsonl, atomic_write_json, read_json, read_jsonl
 
@@ -73,6 +73,19 @@ class Run:
                   "stato": "nuovo", "fase_corrente": NOMI_FASI[0], "fasi_completate": [], "tentativi": {},
                   "in_esecuzione": None, "concessioni": [], "azioni_titolare": [], "blocco": None,
                   "esito_finale": None, "riprese": 0, "creato": _now(), "aggiornato": _now()}
+            # QA F-1: il prefisso delle buste è il run_id. Un nuovo run si registra nel registro in modo atomico
+            # e viene rifiutato se quel run_id ha già usato lo stesso registro (altrimenti riuserebbe le sue buste
+            # e le nuove spese non verrebbero contate).
+            pol = carica_json("config/policy.json")
+            led = Ledger(st["registro"], pol["tetto_primo_test_cents"], pol["allocazione_budget_cents"],
+                         pol["categorie_spesa"])
+            prefisso = st["run_id"] + "/"
+            with led._tx():
+                registrati = led.data.setdefault("run_registrati", [])
+                if st["run_id"] in registrati or any(b.startswith(prefisso) for b in led.data["buste"]):
+                    raise FileExistsError(f"il run_id '{st['run_id']}' ha già usato il registro {st['registro']}: "
+                                          "scegli un altro --run-id oppure riprendi il run originale con 'resume'")
+                registrati.append(st["run_id"])
             self.state = st
             self._save()
         self.state = st
@@ -126,6 +139,11 @@ class Run:
         with open(os.path.join(self.dir, "AZIONI_TITOLARE.md"), "w", encoding="utf-8") as f:
             f.write("\n".join(righe) + "\n")
 
+    def chiudi_buste_aperte(self) -> int:
+        """Chiude tutte le buste ancora aperte di questo run (fine test o test fermato)."""
+        return sum(self.ledger.close(b["id"]) for b in list(self.ledger.data["buste"].values())
+                   if b["id"].startswith(self.bid("")) and b["stato"] == "aperta")
+
     def crash_once(self, fase: str):
         marker = os.path.join(self.dir, f".interruzione-{fase}")
         if not os.path.exists(marker):
@@ -133,14 +151,14 @@ class Run:
             raise SimulatedCrash(f"interruzione simulata durante '{fase}'")
 
     def scan_segreti(self) -> list:
-        trovati = []
-        for nome in os.listdir(self.dir):
-            p = os.path.join(self.dir, nome)
-            if os.path.isfile(p):
+        trovati = []  # QA I-1: scansione ricorsiva (artifacts/ compresa)
+        for radice, _, files in os.walk(self.dir):
+            for nome in files:
+                p = os.path.join(radice, nome)
                 with open(p, encoding="utf-8", errors="ignore") as f:
                     if SEGRETI.search(f.read()):
-                        trovati.append(nome)
-        return trovati
+                        trovati.append(os.path.relpath(p, self.dir))
+        return sorted(trovati)
 
     def azioni_esterne_reali(self) -> int:
         return sum(1 for c in read_jsonl(self.calls_path) if c["esito"] not in ("simulato", "bloccato"))
@@ -202,6 +220,8 @@ class Run:
             return self._blocca(nome, task_id, "bloccato_titolare", e.descrizione, concessione=e.concessione)
         except PhaseStop as e:
             return self._ferma(nome, task_id, str(e))
+        except DatoMancante as e:
+            return self._blocca(nome, task_id, "bloccato", f"dato mancante: {e}", escalation="strategia-finanza")
         except SpendBlocked as e:
             return self._blocca(nome, task_id, "bloccato", f"spesa bloccata: {e.motivo}", dettagli=e.dettagli,
                                 escalation="strategia-finanza → team-lead")
@@ -259,6 +279,7 @@ class Run:
         self.state["stato"] = "fermato"
         self.state["esito_finale"] = "stop"
         self.state["in_esecuzione"] = None
+        self.chiudi_buste_aperte()  # un test fermato non trattiene budget
         self.state["costo_test_fallito_cents"] = self.ledger.consumato(prefisso=self.bid(""))
         self._save()
         if not gia_bloccato:
@@ -284,4 +305,12 @@ class Run:
 def nuovo_run(run_dir: str, scenario_nome: str, modalita="simulato", registro=None) -> Run:
     if os.path.exists(os.path.join(run_dir, "state.json")):
         raise FileExistsError(f"esiste già un run in {run_dir}: usa 'resume'")
-    return Run(run_dir, carica_scenario(scenario_nome), modalita, registro)
+    esisteva = os.path.exists(run_dir)
+    try:
+        return Run(run_dir, carica_scenario(scenario_nome), modalita, registro)
+    except FileExistsError:
+        if not esisteva:  # QA O-4: un run rifiutato non lascia cartelle vuote
+            for d in (os.path.join(run_dir, "artifacts"), run_dir):
+                if os.path.isdir(d) and not os.listdir(d):
+                    os.rmdir(d)
+        raise

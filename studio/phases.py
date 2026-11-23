@@ -31,6 +31,10 @@ class PhaseStop(Exception):
     """La fase decide di fermare il test (es. nessuna opportunità valida)."""
 
 
+class DatoMancante(Exception):
+    """Manca un dato di riferimento (es. aliquota IVA di un paese): blocco motivato, non crash."""
+
+
 class SimulatedCrash(Exception):
     """Interruzione simulata della sessione."""
 
@@ -41,8 +45,10 @@ CAMPI_OPPORTUNITA = ["id", "titolo", "sintetico", "lingua", "mercato", "acquiren
 PESI = {"problema": 25, "accesso": 20, "margine": 20, "concorrenza": 15, "costo_sviluppo": 10, "assistenza": 10}
 CAMPI_PIANO = ["domanda", "offerta", "canale_primario", "soglia_stop_cents", "criterio_successo"]
 IVA_BP = {"IT": 2200, "DE": 1900, "FR": 2000, "ES": 2100, "NL": 2100, "AT": 2000}
-SEGRETI = re.compile(r"(shpat_[0-9a-f]{8,}|sk_live_\w+|\b(?:\d[ -]?){15,16}\b|otp\s*[:=]\s*\d{4,8}|password\s*[:=])",
-                     re.IGNORECASE)
+SEGRETI = re.compile(
+    r"(shp(?:at|ss|ca)_[0-9a-f]{8,}|[sr]k_(?:live|test)_\w+|ghp_[A-Za-z0-9]{20,}|github_p[a]t_\w+|AKIA[0-9A-Z]{16}"
+    r"|xox[bpas]-[\w-]+|-----BEGIN [A-Z ]*PRIVATE KEY|bearer\s+[A-Za-z0-9._~+/-]{16,}"
+    r"|\b(?:\d[ -]?){15,16}\b|otp\s*[:=]\s*\d{4,8}|password\s*[:=])", re.IGNORECASE)
 
 
 # ----------------------------------------------------------------------------- helper
@@ -133,6 +139,13 @@ def h_selezione(run):
                 per_cat[cat] = per_cat.get(cat, 0) + c[campo]
     for pc in run.scenario.get("costi_piattaforma", []):
         per_cat["piattaforma"] = per_cat.get("piattaforma", 0) + (pc["max_cents"] or 0)
+    # QA I-2: il costo AI delle fasi restanti (più gli eventuali ritorni QA → Prodotto) va previsto ora.
+    ai_max = run.scenario.get("costi_ai_per_fase_cents", {"max": 300})["max"]
+    fasi_restanti = len(NOMI_FASI) - NOMI_FASI.index("selezione") - 1
+    ritorni_qa = 2 * (run.policy["qa"]["max_tentativi_prodotto"] - 1)
+    ripetizioni = run.policy["qa"].get("ripetizioni_fase_previste", 2)  # QA N-4: riprese dopo un blocco
+    per_cat["ai"] = ai_max * (fasi_restanti + ritorni_qa + ripetizioni)
+    piano["budget_massimo_cents"] = budget + per_cat["ai"]
     piano["budget_per_categoria_cents"] = per_cat
     return {"classifica": classifica, "selezionata": scelta, "piano_test": piano,
             "approvazione": "team-lead (automatica in simulazione, registrata)"}
@@ -143,6 +156,15 @@ def g_selezione(run, out):
     m = [f"piano di test senza '{c}'" for c in CAMPI_PIANO if not p.get(c)]
     if p["canale_primario"] not in [c["canale"] for c in p["canali"]]:
         m.append("canale primario non presente tra i canali del piano")
+    cc = run.commissioni  # QA I-4: limiti contrattuali di config/commissioni.json
+    for c in p["canali"]:
+        if c["canale"] == "creator":
+            if c.get("compenso_fisso_cents", 0) > cc["compenso_fisso_max_per_creator_cents"]:
+                m.append(f"compenso fisso di {c['id']} oltre il massimo per creator "
+                         f"({cc['compenso_fisso_max_per_creator_cents']})")
+            if c.get("tetto_commissioni_cents", 0) > cc["tetto_commissioni_per_test_cents"]:
+                m.append(f"tetto commissioni di {c['id']} oltre il massimo per test "
+                         f"({cc['tetto_commissioni_per_test_cents']})")
     if any(pc["max_cents"] is None for pc in run.scenario.get("costi_piattaforma", [])):
         m.append("costo massimo di piattaforma sconosciuto")
     alloc = run.ledger.data["allocazione_cents"]
@@ -152,6 +174,11 @@ def g_selezione(run, out):
                      f"({alloc[cat] - run.ledger.usato_categoria(cat)})")
     if p["budget_massimo_cents"] > run.ledger.residuo():
         m.append(f"budget massimo del piano {p['budget_massimo_cents']} oltre il residuo {run.ledger.residuo()}")
+    if not m:  # QA N-1: il budget del piano si PRENOTA, atomicamente, prima di uscire dalla Selezione
+        try:
+            run.ledger.prenota(run.bid(""), p["budget_per_categoria_cents"])
+        except SpendBlocked as e:
+            m.append(f"prenotazione del budget non riuscita: {e.motivo} ({e.dettagli.get('categoria', '')})")
     return not m, m
 
 
@@ -287,7 +314,8 @@ def h_distribuzione(run):
         except SpendBlocked as e:
             # Attivazione atomica: libera le riserve già fatte per questo canale (nessun consumo avvenuto).
             for bid in set(led.data["buste"]) - n_buste:
-                led.close(bid)
+                if bid.startswith(run.bid("")) and led.data["buste"][bid]["stato"] == "aperta":  # QA N-2
+                    led.close(bid)
             bloccate.append({"canale": c["canale"], "motivo": e.motivo, **e.dettagli})
             run.decidi("distribuzione", "spesa_bloccata", e.motivo, canale=c["canale"])
             if c["canale"] == piano["canale_primario"]:
@@ -326,6 +354,9 @@ def h_distribuzione(run):
         tocchi = [{"canale": c.split(":")[0], "id": c.split(":")[1] if ":" in c else c} for c in ev.get("canali", [])]
         ha_creator = any(t["canale"] == "creator" for t in tocchi)
         sconto = pct_bp(prezzo, comm_cfg["sconto_codice_creator_bp"]) if ha_creator else 0
+        if ev.get("paese", "IT") not in IVA_BP:  # QA I-5
+            raise DatoMancante(f"aliquota IVA sconosciuta per il paese {ev['paese']} (ordine {ev['order_id']}): "
+                               "strategia-finanza deve aggiungerla con fonte e data")
         ordine = {"order_id": ev["order_id"], "lordo_cents": prezzo, "sconto_cents": sconto,
                   "iva_bp": IVA_BP[ev.get("paese", "IT")], "paese": ev.get("paese", "IT"),
                   "giorno": ev.get("giorno", 0), "tocchi": tocchi, "sintetico": True}
@@ -348,14 +379,23 @@ def h_distribuzione(run):
 
     rimborsi = 0
     for r in v.get("rimborsi", []):
+        if run.orders.get(r["order_id"]) is None:  # QA I-3: evento anomalo registrato, non crash
+            run.decidi("distribuzione", "rimborso_ordine_sconosciuto",
+                       f"rimborso per ordine inesistente {r['order_id']}: passato a customer-care per verifica")
+            continue
         if run.orders.rimborsa(r["order_id"], r["giorno"]):
             rimborsi += 1
         o = run.orders.get(r["order_id"])
         if "creator" in attivi and attribution.partner_creator(o) and \
                 attribution.entro_clawback(o, comm_cfg["finestra_clawback_giorni"]):
             led.undraw(attivi["creator"]["busta"], r["order_id"], "rimborso entro la finestra di clawback")
-    if "ads" in attivi:
-        led.close(attivi["ads"]["busta"])  # libera il budget Ads non speso
+    # Fine della finestra di vendita: chiude le buste di canale e sospende i codici creator (QA N-4).
+    # Le commissioni maturate restano consumate (pagabili dopo la finestra di clawback).
+    for b in list(led.data["buste"].values()):
+        if b["id"].startswith(run.bid("")) and b["stato"] == "aperta" and any(t.startswith("canale:") for t in b["tag"]):
+            led.close(b["id"])
+    if "creator" in attivi:
+        run.adapters["creator"].sospendi_codice(attivi["creator"]["codice"], "fine finestra di vendita")
     return {"canali_attivati": sorted(attivi), "spese_bloccate": bloccate, "ordini_nuovi": len(run.orders.ordini()),
             "duplicati_scartati": run.orders.data["duplicati_scartati"], "rimborsi": rimborsi,
             "canale_primario": piano["canale_primario"]}
@@ -392,16 +432,9 @@ def h_decisione(run):
     d = economics.decidi(met, run.artifact("selezione")["piano_test"], run.policy)
     if d.get("richiede_titolare"):
         run.azione_titolare("budget-scala", "Approvare un nuovo tetto di spesa per scalare il test", "budget")
-    # Chiusura del test: sospende i codici creator e libera gli impegni non consumati.
-    # Le commissioni già maturate restano consumate (pagabili dopo la finestra di clawback).
-    liberato = 0
-    for b in list(run.ledger.data["buste"].values()):
-        if b["id"].startswith(run.bid("")) and b["stato"] == "aperta" and any(t.startswith("canale:") for t in b["tag"]):
-            liberato += run.ledger.close(b["id"])
-    for c in run.artifact("selezione")["piano_test"]["canali"]:
-        if c["canale"] == "creator":
-            run.adapters["creator"].sospendi_codice(c["codice"], "fine test")
-    run.decidi("decisione", "chiusura_test", f"buste di canale chiuse, liberati {liberato} cent", attore="team-lead")
+    liberato = run.chiudi_buste_aperte()  # chiusura del test: prenotazioni residue liberate
+    run.decidi("decisione", "chiusura_test", f"prenotazioni e impegni residui chiusi, liberati {liberato} cent",
+               attore="team-lead")
     return {"esito": d["esito"], "motivi": d["motivi"], "margine_contribuzione_cents": met["margine_contribuzione_cents"],
             "roas_su_margine_x100": met["roas_su_margine_x100"]}
 

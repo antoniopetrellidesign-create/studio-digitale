@@ -101,9 +101,10 @@ def decidi(m: dict, piano: dict, policy: dict) -> dict:
             and m["tasso_rimborso_bp"] <= s["tasso_rimborso_max_bp"]):
         return {"esito": "scala", "motivi": ["margine positivo, ROAS sul margine e rimborsi entro soglia"],
                 "richiede_titolare": "budget oltre il tetto del primo test"}
+    roas_txt = "indefinito (nessun costo di acquisizione)" if m["roas_su_margine_x100"] is None else f"{roas/100:.2f}"
     if roas >= r["ripeti_se"]["roas_su_margine_min_x100"]:
-        motivi.append(f"ROAS sul margine {roas/100:.2f} tra soglia di ripetizione e di scala")
+        motivi.append(f"ROAS sul margine {roas_txt}: sotto la soglia di scala o altre condizioni di scala non soddisfatte")
         if m["margine_contribuzione_cents"] < s["margine_contribuzione_cents_min"]:
             motivi.append("margine di contribuzione non positivo")
         return {"esito": "ripeti", "motivi": motivi}
-    return {"esito": "stop", "motivi": [f"ROAS sul margine {roas/100:.2f} sotto la soglia di ripetizione"]}
+    return {"esito": "stop", "motivi": [f"ROAS sul margine {roas_txt} sotto la soglia di ripetizione"]}

@@ -21,6 +21,11 @@ class OrderBook:
         oid = ordine["order_id"]
         if oid in self.data["ordini"]:
             self.data["duplicati_scartati"] += 1
+            prec = self.data["ordini"][oid]
+            diversi = [k for k in ("lordo_cents", "sconto_cents", "iva_bp", "paese", "tocchi")
+                       if k in ordine and ordine[k] != prec.get(k)]
+            if diversi:  # QA M-7: stesso ID, contenuto diverso ⇒ conflitto da riconciliare
+                self.data.setdefault("conflitti", []).append({"order_id": oid, "campi": diversi})
             self._save()
             return False
         rec = dict(ordine)
@@ -58,5 +63,7 @@ def valori_ordine(o: dict, ipotesi: dict) -> dict:
     netto = scorporo_iva(pagato, o.get("iva_bp", 0))
     fee = (pct_bp(pagato, ipotesi["commissione_pagamento_pct_bp"]) + ipotesi["commissione_pagamento_fissa_cents"]
            if pagato > 0 else 0)
+    if o.get("rimborsato") and ipotesi.get("commissione_pagamento_rimborsata_su_refund"):
+        fee = 0  # QA M-6: il flag di policy è letto dal codice
     return {"pagato_cents": pagato, "iva_cents": pagato - netto, "netto_cents": netto,
             "fee_pagamento_cents": fee, "sconto_cents": o.get("sconto_cents", 0)}

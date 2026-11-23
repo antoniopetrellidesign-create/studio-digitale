@@ -144,7 +144,9 @@ def esegui(runs_dir=None) -> int:
     # 5. Shopify senza accesso → titolare → ripresa
     _sim("shopify_senza_accesso", runs_dir, "shopify")
     st1 = _stato(runs_dir, "shopify")
-    st1_buste = list(_ledger(runs_dir, "shopify")["buste"])
+    led1 = _ledger(runs_dir, "shopify")
+    speso_piattaforma_1 = sum(sum(d["importo_cents"] for d in x["consumi"].values() if not d.get("stornato"))
+                              for x in led1["buste"].values() if x["categoria"] == "piattaforma")
     p2 = _cli(["resume", "--run-id", "shopify"], runs_dir)  # senza concessione: deve restare fermo
     st2 = _stato(runs_dir, "shopify")
     p3 = _cli(["resume", "--run-id", "shopify", "--concedi", "shopify"], runs_dir)
@@ -153,8 +155,8 @@ def esegui(runs_dir=None) -> int:
     caso("shopify_senza_accesso", "accesso al negozio mancante", [
         ("blocco in attesa del titolare alla fase Shopify", st1["stato"] == "bloccato_titolare" and st1["fase_corrente"] == "shopify"),
         ("azione nel pacchetto unico del titolare", "shopify-accesso" in pacchetto),
-        ("nessuna spesa di piattaforma prima dell'accesso",
-         not any("piattaforma" in k for k in st1_buste)),
+        ("nessun consumo di piattaforma prima dell'accesso (solo prenotazione)",
+         speso_piattaforma_1 == 0),
         ("ripresa senza concessione resta ferma", st2["stato"] == "bloccato_titolare"),
         ("dopo la concessione riprende da Shopify e completa", st3["stato"] == "completato" and p3.returncode == 0),
         ("fasi precedenti non rieseguite", st3["tentativi"]["strategia"] == 1 and st3["tentativi"]["qa"] == 1),

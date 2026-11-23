@@ -89,3 +89,29 @@ class TestLedger(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def _riserva_in_processo(args):
+    path, i = args
+    from studio.ledger import Ledger as L, SpendBlocked as SB
+    led = L(path, 50000, ALLOC, list(ALLOC))
+    try:
+        led.reserve(f"p{i}/ads", "ads", 3000, f"processo {i}")
+        return True
+    except SB:
+        return False
+
+
+class TestLedgerConcorrenza(unittest.TestCase):
+    """Processi reali in parallelo su un registro NUOVO: nessuna riserva persa, allocazione rispettata (QA N-3, B-1)."""
+
+    def test_creazione_e_riserve_concorrenti(self):
+        import multiprocessing as mp
+        path = os.path.join(tempfile.mkdtemp(), "nuovo.json")
+        with mp.get_context("fork").Pool(12) as pool:
+            esiti = pool.map(_riserva_in_processo, [(path, i) for i in range(12)])
+        led = Ledger(path, 50000, ALLOC, list(ALLOC))
+        riuscite = [i for i, ok in enumerate(esiti) if ok]
+        self.assertEqual(len(riuscite), ALLOC["ads"] // 3000)  # 6 da 30 € entro i 200 € di Ads
+        self.assertEqual(sorted(k for k in led.data["buste"]), sorted(f"p{i}/ads" for i in riuscite))
+        self.assertLessEqual(led.usato_categoria("ads"), ALLOC["ads"])

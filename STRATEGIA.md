@@ -138,14 +138,16 @@ La soglia di stop deve essere ≤ residuo ads del test e deve coprire un numero 
 
 ## 5. Regole stop / ripeti / scala **[P]**
 
-Valutate in quest'ordine; la prima che scatta decide:
+Valutate in quest'ordine (come in `studio/economics.py`, `decidi`); la prima che scatta decide:
 
-1. **Rimborsi > 20%** (`tasso_rimborso_max_bp` 2000) → **STOP**.
-2. **Ordini < 10** (`ordini_minimi_per_giudicare`): **STOP** se la spesa di acquisizione ha raggiunto la soglia di stop del test, altrimenti **RIPETI** (continua/ripeti il test nei limiti del budget riservato).
-3. Con ≥ 10 ordini:
+1. **Ordini < 10** (`ordini_minimi_per_giudicare`): **STOP** se la spesa di acquisizione ha raggiunto la soglia di stop del test, altrimenti **RIPETI** (continua/ripeti nei limiti del budget riservato).
+2. Solo dopo (≥ 10 ordini): **rimborsi > 20%** (`tasso_rimborso_max_bp` 2000) → **STOP**.
+3. Poi:
    - **SCALA** se margine di contribuzione > 0 **e** ROAS sul margine ≥ 1,5 **e** rimborsi ≤ 10%.
    - **RIPETI** se ROAS sul margine ≥ 0,8 **e** rimborsi ≤ 20%.
    - **STOP** altrimenti.
+
+Con acquisizione zero (solo organico) il ROAS è **indefinito** e non limita la decisione (D-008); decidono margine e rimborsi.
 
 Note operative:
 - **Scalare oltre il tetto di 500 € richiede approvazione del titolare** (tramite Team Lead). "Scala" entro il tetto residuo non cambia questa regola per importi superiori.
@@ -200,13 +202,13 @@ Stato dei dati: **nessun dato osservato**; la tabella dice cosa misurare e quali
 
 ## 8. Proposte di modifica alla policy (non applicate; per il Team Lead)
 
-Nessuna modifica è stata fatta a `config/policy.json`. Proposte, da approvare via DECISIONI.md:
+Nessuna modifica fatta da me a `config/policy.json`. Esito delle proposte secondo il Team Lead:
 
-1. **Soglia di stop**: `regole_decisione` cita la "spesa di acquisizione" ma la policy non contiene la soglia. Proposta: aggiungere `soglia_stop_max_cents_per_test` (valore da decidere; per far entrare ≥2 test nel budget ads di 200 € servirebbe ≤ 10.000 cent, **[I]**) e imporre che ogni test dichiari la propria soglia ≤ questo massimo.
-2. **Busta commissioni creator**: aggiungere `busta_commissioni_creator_cents` (proposta = 6000, coerente con l'allocazione) e un comportamento esplicito `sospendi_codice_al_tetto: true`.
-3. **Definizione del tasso rimborso**: aggiungere `tasso_rimborso_base` = ordini rimborsati / ordini totali, e un `ordini_minimi_per_regola_rimborso` (proposta: applicare lo stop del 20% solo da un minimo di ordini, per evitare che 1 rimborso su 2 ordini fermi un test per rumore statistico; oppure confermare l'applicazione immediata se si preferisce prudenza).
-4. **IVA/OSS**: aggiungere una tabella versionata `iva_per_paese_bp` con data e fonte, e `iva_stato: da_verificare`; nessun calcolo di scorporo in produzione senza fonte.
-5. **ROAS sul margine**: precisare che il numeratore usa ricavi netti dopo sconti e **dopo rimborsi**, e come trattare il denominatore zero (organico puro senza costi: ROAS non definito, non infinito; valutarlo solo sul margine).
-6. **Quota test falliti `Q`**: fissare il metodo di ripartizione (proposta: costo cumulato dei test in stop del periodo / ordini netti totali dei prodotti non in stop) e la finestra temporale.
-7. **Arrotondamento**: stabilire per le divisioni in centesimi la regola (proposta: arrotondamento al centesimo più vicino, residui assegnati alla riserva).
-8. **Finestra di clawback per rimborsi tardivi**: valutare di portarla a 45–60 giorni a contratto; richiede decisione del titolare tramite Team Lead.
+1. (rinviata, D-010) **Soglia di stop**: `regole_decisione` cita la "spesa di acquisizione" ma la policy non contiene la soglia. Proposta: aggiungere `soglia_stop_max_cents_per_test` (valore da decidere; per far entrare ≥2 test nel budget ads di 200 € servirebbe ≤ 10.000 cent, **[I]**) e imporre che ogni test dichiari la propria soglia ≤ questo massimo.
+2. (rinviata, D-010) **Busta commissioni creator**: aggiungere `busta_commissioni_creator_cents` (proposta = 6000, coerente con l'allocazione) e un comportamento esplicito `sospendi_codice_al_tetto: true`.
+3. (ACCETTATA, D-007) **Definizione del tasso rimborso**: aggiungere `tasso_rimborso_base` = ordini rimborsati / ordini totali, e un `ordini_minimi_per_regola_rimborso` (proposta: applicare lo stop del 20% solo da un minimo di ordini, per evitare che 1 rimborso su 2 ordini fermi un test per rumore statistico; oppure confermare l'applicazione immediata se si preferisce prudenza).
+4. (rinviata, D-010) **IVA/OSS**: aggiungere una tabella versionata `iva_per_paese_bp` con data e fonte, e `iva_stato: da_verificare`; nessun calcolo di scorporo in produzione senza fonte.
+5. (ACCETTATA, D-008) **ROAS sul margine**: precisare che il numeratore usa ricavi netti dopo sconti e **dopo rimborsi**, e come trattare il denominatore zero (organico puro senza costi: ROAS non definito, non infinito; valutarlo solo sul margine).
+6. (rinviata, D-010) **Quota test falliti `Q`**: fissare il metodo di ripartizione (proposta: costo cumulato dei test in stop del periodo / ordini netti totali dei prodotti non in stop) e la finestra temporale.
+7. (ACCETTATA, D-003) **Arrotondamento**: stabilire per le divisioni in centesimi la regola (proposta: arrotondamento al centesimo più vicino, residui assegnati alla riserva).
+8. (rinviata, D-010) **Finestra di clawback per rimborsi tardivi**: valutare di portarla a 45–60 giorni a contratto; richiede decisione del titolare tramite Team Lead.

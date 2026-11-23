@@ -15,7 +15,14 @@
     "commissione": 6000,
     "riserva": 4000
   },
-  "categorie_spesa": ["ai", "piattaforma", "ads", "compenso_fisso", "commissione", "riserva"],
+  "categorie_spesa": [
+    "ai",
+    "piattaforma",
+    "ads",
+    "compenso_fisso",
+    "commissione",
+    "riserva"
+  ],
   "ipotesi_costi_variabili": {
     "commissione_pagamento_pct_bp": 290,
     "commissione_pagamento_fissa_cents": 30,
@@ -30,7 +37,8 @@
     "fonti_osservate_minime": 2
   },
   "qa": {
-    "max_tentativi_prodotto": 2
+    "max_tentativi_prodotto": 2,
+    "ripetizioni_fase_previste": 2
   },
   "regole_decisione": {
     "ordini_minimi_per_giudicare": 10,
