@@ -1,0 +1,13 @@
+{
+  "descrizione": "La sessione si interrompe a metà Distribuzione (dopo 6 ordini); la ripresa riparte dalla fase corretta senza doppie spese né ordini doppi.",
+  "guasti": {
+    "interrompi_in": "distribuzione",
+    "interrompi_dopo_ordini": 6
+  },
+  "atteso": {
+    "stato": "completato",
+    "uguale_a": "completo"
+  },
+  "estende": "completo",
+  "nome": "interruzione"
+}

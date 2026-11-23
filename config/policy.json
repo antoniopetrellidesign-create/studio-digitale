@@ -1,0 +1,48 @@
+{
+  "_owner": "strategia-finanza",
+  "_nota": "Tutti gli importi sono in centesimi di euro (interi). Le modifiche richiedono una voce in DECISIONI.md approvata dal Team Lead. Valori marcati 'da_verificare' sono ipotesi, non dati osservati.",
+  "valuta": "EUR",
+  "obiettivo_lungo_periodo": {
+    "utile_operativo_settimanale_cents": 3000000,
+    "natura": "traguardo strategico, non previsione"
+  },
+  "tetto_primo_test_cents": 50000,
+  "allocazione_budget_cents": {
+    "ai": 6000,
+    "piattaforma": 8000,
+    "ads": 20000,
+    "compenso_fisso": 6000,
+    "commissione": 6000,
+    "riserva": 4000
+  },
+  "categorie_spesa": ["ai", "piattaforma", "ads", "compenso_fisso", "commissione", "riserva"],
+  "ipotesi_costi_variabili": {
+    "commissione_pagamento_pct_bp": 290,
+    "commissione_pagamento_fissa_cents": 30,
+    "commissione_pagamento_rimborsata_su_refund": false,
+    "commissione_creator_pct_bp_su_netto": 3000,
+    "finestra_clawback_creator_giorni": 30,
+    "stato": "da_verificare"
+  },
+  "selezione": {
+    "punteggio_minimo": 60,
+    "max_opportunita_per_test": 1,
+    "fonti_osservate_minime": 2
+  },
+  "qa": {
+    "max_tentativi_prodotto": 2
+  },
+  "regole_decisione": {
+    "ordini_minimi_per_giudicare": 10,
+    "scala_se": {
+      "margine_contribuzione_cents_min": 1,
+      "roas_su_margine_min_x100": 150,
+      "tasso_rimborso_max_bp": 1000
+    },
+    "ripeti_se": {
+      "roas_su_margine_min_x100": 80,
+      "tasso_rimborso_max_bp": 2000
+    },
+    "altrimenti": "stop"
+  }
+}

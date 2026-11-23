@@ -1,0 +1,13 @@
+{
+  "descrizione": "Manca l'accesso al negozio: il run si ferma in attesa del titolare e riprende dopo la concessione.",
+  "guasti": {
+    "shopify_accesso": false
+  },
+  "atteso": {
+    "stato": "bloccato_titolare",
+    "fase_blocco": "shopify",
+    "dopo_concessione": "completato"
+  },
+  "estende": "completo",
+  "nome": "shopify_senza_accesso"
+}

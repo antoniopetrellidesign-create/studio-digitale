@@ -1,0 +1,12 @@
+{
+  "descrizione": "Il QA respinge il primo prodotto (promessa scoperta, licenza mancante); il prodotto torna in sviluppo e passa al secondo tentativo.",
+  "guasti": {
+    "qa_respinge_tentativi": 1
+  },
+  "atteso": {
+    "stato": "completato",
+    "tentativi_qa": 2
+  },
+  "estende": "completo",
+  "nome": "qa_respinge"
+}

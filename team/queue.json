@@ -1,0 +1,229 @@
+{
+  "compiti": [
+    {
+      "id": "T-001",
+      "titolo": "Bootstrap motore workflow, registro, adattatori simulati, test",
+      "agente": "team-lead",
+      "fase": "",
+      "dipende_da": [],
+      "output": [
+        "studio/",
+        "tests/"
+      ],
+      "stato": "fatto",
+      "run_id": null,
+      "creato": "2026-11-23T18:48:15+00:00",
+      "aggiornato": "2026-11-23T19:01:04+00:00",
+      "note": [
+        {
+          "quando": "2026-11-23T18:48:15+00:00",
+          "nota": "assegnato dal Team Lead"
+        },
+        {
+          "quando": "2026-11-23T19:01:04+00:00",
+          "nota": "motore, registro, adattatori, collaudo e 28+ test consegnati"
+        }
+      ]
+    },
+    {
+      "id": "T-002",
+      "titolo": "STRATEGIA.md: obiettivi, unit economics, allocazione 500 €, regole stop/ripeti/scala, confronto canali",
+      "agente": "strategia-finanza",
+      "fase": "",
+      "dipende_da": [],
+      "output": [
+        "STRATEGIA.md"
+      ],
+      "stato": "fatto",
+      "run_id": null,
+      "creato": "2026-11-23T18:48:15+00:00",
+      "aggiornato": "2026-11-23T19:01:04+00:00",
+      "note": [
+        {
+          "quando": "2026-11-23T18:48:15+00:00",
+          "nota": "assegnato dal Team Lead"
+        },
+        {
+          "quando": "2026-11-23T19:01:04+00:00",
+          "nota": "STRATEGIA.md consegnato; proposte policy registrate in D-007, D-008, D-010"
+        }
+      ]
+    },
+    {
+      "id": "T-003",
+      "titolo": "Metodo riutilizzabile di ricerca opportunità + schema scheda",
+      "agente": "ricerca-mercato",
+      "fase": "",
+      "dipende_da": [],
+      "output": [
+        "docs/metodo-ricerca.md",
+        "templates/opportunita.schema.json"
+      ],
+      "stato": "fatto",
+      "run_id": null,
+      "creato": "2026-11-23T18:48:15+00:00",
+      "aggiornato": "2026-11-23T18:51:36+00:00",
+      "note": [
+        {
+          "quando": "2026-11-23T18:48:15+00:00",
+          "nota": "assegnato dal Team Lead"
+        },
+        {
+          "quando": "2026-11-23T18:51:36+00:00",
+          "nota": "consegnato: docs/metodo-ricerca.md, templates/opportunita.schema.json (verifica QA in T-009)"
+        }
+      ]
+    },
+    {
+      "id": "T-004",
+      "titolo": "Template specifica prodotto e criteri di accettazione",
+      "agente": "sviluppo-prodotto",
+      "fase": "",
+      "dipende_da": [],
+      "output": [
+        "templates/specifica-prodotto.md"
+      ],
+      "stato": "fatto",
+      "run_id": null,
+      "creato": "2026-11-23T18:48:15+00:00",
+      "aggiornato": "2026-11-23T18:51:36+00:00",
+      "note": [
+        {
+          "quando": "2026-11-23T18:48:15+00:00",
+          "nota": "assegnato dal Team Lead"
+        },
+        {
+          "quando": "2026-11-23T18:51:36+00:00",
+          "nota": "consegnato: templates/specifica-prodotto.md (verifica QA in T-009)"
+        }
+      ]
+    },
+    {
+      "id": "T-005",
+      "titolo": "Procedura Shopify: scheda, checkout, consegna digitale, tracciamento, riconciliazione",
+      "agente": "shopify-operazioni",
+      "fase": "",
+      "dipende_da": [],
+      "output": [
+        "docs/operazioni-shopify.md"
+      ],
+      "stato": "fatto",
+      "run_id": null,
+      "creato": "2026-11-23T18:48:15+00:00",
+      "aggiornato": "2026-11-23T18:51:36+00:00",
+      "note": [
+        {
+          "quando": "2026-11-23T18:48:15+00:00",
+          "nota": "assegnato dal Team Lead"
+        },
+        {
+          "quando": "2026-11-23T18:51:36+00:00",
+          "nota": "consegnato: docs/operazioni-shopify.md (verifica QA in T-009)"
+        }
+      ]
+    },
+    {
+      "id": "T-006",
+      "titolo": "Politica creator: selezione, affiliazione, attribuzione, commissioni, diritti",
+      "agente": "creator-partnership",
+      "fase": "",
+      "dipende_da": [],
+      "output": [
+        "docs/creator-partnership.md",
+        "config/commissioni.json"
+      ],
+      "stato": "fatto",
+      "run_id": null,
+      "creato": "2026-11-23T18:48:15+00:00",
+      "aggiornato": "2026-11-23T18:51:36+00:00",
+      "note": [
+        {
+          "quando": "2026-11-23T18:48:15+00:00",
+          "nota": "assegnato dal Team Lead"
+        },
+        {
+          "quando": "2026-11-23T18:51:36+00:00",
+          "nota": "consegnato: docs/creator-partnership.md, config/commissioni.json (verifica QA in T-009)"
+        }
+      ]
+    },
+    {
+      "id": "T-007",
+      "titolo": "Metodo esperimenti di acquisizione e confronto canali sul margine",
+      "agente": "acquisizione",
+      "fase": "",
+      "dipende_da": [],
+      "output": [
+        "docs/acquisizione.md"
+      ],
+      "stato": "fatto",
+      "run_id": null,
+      "creato": "2026-11-23T18:48:15+00:00",
+      "aggiornato": "2026-11-23T18:51:36+00:00",
+      "note": [
+        {
+          "quando": "2026-11-23T18:48:15+00:00",
+          "nota": "assegnato dal Team Lead"
+        },
+        {
+          "quando": "2026-11-23T18:51:36+00:00",
+          "nota": "consegnato: docs/acquisizione.md (verifica QA in T-009)"
+        }
+      ]
+    },
+    {
+      "id": "T-008",
+      "titolo": "Knowledge base, download, rimborsi, escalation",
+      "agente": "customer-care",
+      "fase": "",
+      "dipende_da": [],
+      "output": [
+        "docs/customer-care.md"
+      ],
+      "stato": "fatto",
+      "run_id": null,
+      "creato": "2026-11-23T18:48:15+00:00",
+      "aggiornato": "2026-11-23T18:51:36+00:00",
+      "note": [
+        {
+          "quando": "2026-11-23T18:48:15+00:00",
+          "nota": "assegnato dal Team Lead"
+        },
+        {
+          "quando": "2026-11-23T18:51:36+00:00",
+          "nota": "consegnato: docs/customer-care.md (verifica QA in T-009)"
+        }
+      ]
+    },
+    {
+      "id": "T-009",
+      "titolo": "Checklist QA e collaudo indipendente del sistema",
+      "agente": "qa-indipendente",
+      "fase": "",
+      "dipende_da": [
+        "T-001",
+        "T-002",
+        "T-003",
+        "T-004",
+        "T-005",
+        "T-006",
+        "T-007",
+        "T-008"
+      ],
+      "output": [
+        "docs/qa-checklist.md",
+        "qa/"
+      ],
+      "stato": "in_corso",
+      "run_id": null,
+      "creato": "2026-11-23T18:48:15+00:00",
+      "aggiornato": "2026-11-23T19:01:04+00:00",
+      "note": [
+        {
+          "quando": "2026-11-23T19:01:04+00:00",
+          "nota": "avviato dal Team Lead"
+        }
+      ]
+    }
+  ]
+}

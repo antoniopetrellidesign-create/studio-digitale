@@ -1,0 +1,20 @@
+{
+  "_owner": "creator-partnership",
+  "_nota": "Importi in centesimi di euro. Coerente con config/policy.json (commissione_creator_pct_bp_su_netto=3000, finestra_clawback_creator_giorni=30, allocazione commissione=6000, compenso_fisso=6000). Valori da verificare finche' policy.json li marca da_verificare.",
+  "commissione_pct_bp_su_netto": 3000,
+  "finestra_clawback_giorni": 30,
+  "sconto_codice_creator_bp": 1000,
+  "tetto_commissioni_per_test_cents": 6000,
+  "compenso_fisso_max_per_creator_cents": 3000,
+  "pagamento": "dopo finestra di clawback",
+  "diritti_riuso_default": {
+    "forma": "per iscritto, prima della pubblicazione",
+    "durata_giorni": 90,
+    "canali": ["organico del creator", "sito e negozio dello studio"],
+    "territori": ["Italia"],
+    "uso_in_ads": false,
+    "uso_in_ads_richiede": "clausola separata scritta con compenso e importo massimo riservato nel registro",
+    "compenso_riuso_cents": 0,
+    "revoca": "alla scadenza; nessun rinnovo tacito"
+  }
+}

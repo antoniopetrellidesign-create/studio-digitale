@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "opportunita.schema.json",
+  "title": "Scheda opportunita",
+  "description": "Scheda di opportunita di prodotto digitale. Importi in centesimi di euro (interi). Ogni cifra e un'ipotesi salvo sia sostenuta da una fonte osservata.",
+  "type": "object",
+  "required": [
+    "id", "titolo", "sintetico", "lingua", "mercato", "acquirente", "problema",
+    "fonti", "concorrenti", "prezzo_da_verificare_cents", "accesso_pubblico",
+    "costo_sviluppo_cents", "complessita_assistenza", "ipotesi_margine_bp", "punteggi"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "titolo": { "type": "string", "minLength": 1 },
+    "sintetico": { "type": "boolean", "description": "true per dati sintetici/illustrativi." },
+    "lingua": { "type": "string", "minLength": 2, "description": "Codice lingua, es. it, en, de." },
+    "mercato": { "type": "string", "minLength": 1, "description": "Mercato locale di riferimento, es. IT, DE, US." },
+    "acquirente": { "type": "string", "minLength": 1 },
+    "problema": { "type": "string", "minLength": 1 },
+    "fonti": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["tipo", "descrizione"],
+        "properties": {
+          "tipo": { "enum": ["osservata", "ipotesi"] },
+          "descrizione": { "type": "string", "minLength": 1 },
+          "url": { "type": "string", "minLength": 1 },
+          "data": { "type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" }
+        },
+        "if": { "properties": { "tipo": { "const": "osservata" } }, "required": ["tipo"] },
+        "then": { "required": ["url", "data"] },
+        "additionalProperties": true
+      }
+    },
+    "concorrenti": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          { "type": "string" },
+          { "type": "object" }
+        ]
+      }
+    },
+    "prezzo_da_verificare_cents": { "type": "integer", "minimum": 0 },
+    "accesso_pubblico": {
+      "type": "object",
+      "required": ["canale", "costo_stimato_cents"],
+      "properties": {
+        "canale": { "type": "string", "minLength": 1 },
+        "costo_stimato_cents": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": true
+    },
+    "costo_sviluppo_cents": { "type": "integer", "minimum": 0 },
+    "complessita_assistenza": { "enum": ["bassa", "media", "alta"] },
+    "ipotesi_margine_bp": { "type": "integer", "description": "Margine ipotizzato in punti base (10000 = 100%)." },
+    "punteggi": {
+      "type": "object",
+      "required": ["problema", "accesso", "margine", "concorrenza", "costo_sviluppo", "assistenza"],
+      "properties": {
+        "problema": { "type": "number", "minimum": 0, "maximum": 10 },
+        "accesso": { "type": "number", "minimum": 0, "maximum": 10 },
+        "margine": { "type": "number", "minimum": 0, "maximum": 10 },
+        "concorrenza": { "type": "number", "minimum": 0, "maximum": 10 },
+        "costo_sviluppo": { "type": "number", "minimum": 0, "maximum": 10 },
+        "assistenza": { "type": "number", "minimum": 0, "maximum": 10 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}

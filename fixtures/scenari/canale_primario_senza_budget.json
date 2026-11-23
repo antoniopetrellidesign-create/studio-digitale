@@ -1,0 +1,31 @@
+{
+  "descrizione": "Il piano chiede un budget Ads del canale primario superiore al residuo: blocco alla Selezione, nessuna spesa di acquisizione.",
+  "piano_test": {
+    "canale_primario": "ads",
+    "canali": [
+      {
+        "canale": "creator",
+        "id": "CR-SIM-1",
+        "codice": "SIM10",
+        "compenso_fisso_cents": 3000,
+        "tetto_commissioni_cents": 6000
+      },
+      {
+        "canale": "ads",
+        "id": "ADS-SIM-1",
+        "budget_max_cents": 60000,
+        "giornaliero_max_cents": 2500
+      },
+      {
+        "canale": "organico",
+        "id": "ORG-SIM-1"
+      }
+    ]
+  },
+  "atteso": {
+    "stato": "bloccato",
+    "fase_blocco": "selezione"
+  },
+  "estende": "completo",
+  "nome": "canale_primario_senza_budget"
+}

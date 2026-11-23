@@ -1,0 +1,29 @@
+{
+  "descrizione": "Tre richieste di spesa extra: oltre il tetto, costo massimo sconosciuto, oltre l'allocazione Ads. Tutte bloccate; il test prosegue nei limiti.",
+  "richieste_spesa_extra": [
+    {
+      "id": "ads-aumento",
+      "categoria": "ads",
+      "max_cents": 60000,
+      "descrizione": "aumento budget Ads oltre il tetto"
+    },
+    {
+      "id": "app-recensioni",
+      "categoria": "piattaforma",
+      "max_cents": null,
+      "descrizione": "app con costo massimo sconosciuto"
+    },
+    {
+      "id": "ads-seconda-campagna",
+      "categoria": "ads",
+      "max_cents": 15000,
+      "descrizione": "seconda campagna oltre allocazione Ads"
+    }
+  ],
+  "atteso": {
+    "stato": "completato",
+    "spese_bloccate": 3
+  },
+  "estende": "completo",
+  "nome": "spesa_oltre_tetto"
+}

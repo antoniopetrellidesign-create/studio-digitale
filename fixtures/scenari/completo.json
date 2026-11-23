@@ -1,0 +1,314 @@
+{
+  "nome": "completo",
+  "sintetico": true,
+  "descrizione": "Flusso completo su 3 opportunità fittizie: una incompleta, una sotto soglia, una idonea. Include doppia attribuzione creator+Ads, un webhook duplicato e un rimborso entro clawback.",
+  "domanda_portafoglio": "[SINTETICO] Un modello scaricabile a 19 € venduto via creator e Ads genera margine di contribuzione positivo entro 500 €?",
+  "opportunita": [
+    {
+      "id": "OPP-SIM-A",
+      "titolo": "[SINTETICO] Modelli di pianificazione mensile per freelance",
+      "sintetico": true,
+      "lingua": "it",
+      "mercato": "IT",
+      "acquirente": "[SINTETICO] professionista indipendente",
+      "problema": "[SINTETICO] perde tempo a ricostruire ogni mese lo stesso documento",
+      "fonti": [
+        {
+          "tipo": "osservata",
+          "descrizione": "[SINTETICO] segnale di domanda 1",
+          "url": "https://esempio.invalid/fonte-OPP-SIM-A-1",
+          "data": "2026-11-01"
+        },
+        {
+          "tipo": "osservata",
+          "descrizione": "[SINTETICO] segnale di domanda 2",
+          "url": "https://esempio.invalid/fonte-OPP-SIM-A-2",
+          "data": "2026-11-01"
+        },
+        {
+          "tipo": "ipotesi",
+          "descrizione": "[SINTETICO] disponibilità a pagare da verificare"
+        }
+      ],
+      "concorrenti": [
+        "[SINTETICO] modello gratuito generico",
+        "[SINTETICO] software in abbonamento"
+      ],
+      "prezzo_da_verificare_cents": 1900,
+      "accesso_pubblico": {
+        "canale": "creator di settore + ricerca",
+        "costo_stimato_cents": 10000
+      },
+      "costo_sviluppo_cents": 3000,
+      "complessita_assistenza": "bassa",
+      "ipotesi_margine_bp": 6000,
+      "punteggi": {
+        "problema": 8,
+        "accesso": 7,
+        "margine": 6,
+        "concorrenza": 6,
+        "costo_sviluppo": 8,
+        "assistenza": 8
+      }
+    },
+    {
+      "id": "OPP-SIM-B",
+      "titolo": "[SINTETICO] Corso video avanzato con assistenza individuale",
+      "sintetico": true,
+      "lingua": "it",
+      "mercato": "IT",
+      "acquirente": "[SINTETICO] professionista indipendente",
+      "problema": "[SINTETICO] perde tempo a ricostruire ogni mese lo stesso documento",
+      "fonti": [
+        {
+          "tipo": "osservata",
+          "descrizione": "[SINTETICO] segnale di domanda 1",
+          "url": "https://esempio.invalid/fonte-OPP-SIM-B-1",
+          "data": "2026-11-01"
+        },
+        {
+          "tipo": "osservata",
+          "descrizione": "[SINTETICO] segnale di domanda 2",
+          "url": "https://esempio.invalid/fonte-OPP-SIM-B-2",
+          "data": "2026-11-01"
+        },
+        {
+          "tipo": "ipotesi",
+          "descrizione": "[SINTETICO] disponibilità a pagare da verificare"
+        }
+      ],
+      "concorrenti": [
+        "[SINTETICO] modello gratuito generico",
+        "[SINTETICO] software in abbonamento"
+      ],
+      "prezzo_da_verificare_cents": 1900,
+      "accesso_pubblico": {
+        "canale": "creator di settore + ricerca",
+        "costo_stimato_cents": 10000
+      },
+      "costo_sviluppo_cents": 3000,
+      "complessita_assistenza": "bassa",
+      "ipotesi_margine_bp": 6000,
+      "punteggi": {
+        "problema": 6,
+        "accesso": 4,
+        "margine": 5,
+        "concorrenza": 3,
+        "costo_sviluppo": 2,
+        "assistenza": 2
+      }
+    },
+    {
+      "id": "OPP-SIM-C",
+      "titolo": "[SINTETICO] scheda incompleta",
+      "sintetico": true,
+      "lingua": "de",
+      "mercato": "DE"
+    }
+  ],
+  "piano_test": {
+    "domanda": "[SINTETICO] Con 19 € IVA inclusa, creator e Ads portano almeno 10 ordini con ROAS sul margine ≥ 1,5?",
+    "offerta": "[SINTETICO] Pacchetto di modelli di pianificazione mensile (PDF + foglio di calcolo), 19 € IVA incl.",
+    "canale_primario": "creator",
+    "soglia_stop_cents": 12000,
+    "criterio_successo": "≥10 ordini, margine di contribuzione > 0, ROAS sul margine ≥ 1,5, rimborsi ≤ 10%",
+    "canali": [
+      {
+        "canale": "creator",
+        "id": "CR-SIM-1",
+        "codice": "SIM10",
+        "compenso_fisso_cents": 3000,
+        "tetto_commissioni_cents": 6000
+      },
+      {
+        "canale": "ads",
+        "id": "ADS-SIM-1",
+        "budget_max_cents": 10000,
+        "giornaliero_max_cents": 2500
+      },
+      {
+        "canale": "organico",
+        "id": "ORG-SIM-1"
+      }
+    ]
+  },
+  "prodotto": {
+    "prezzo_cents": 1900,
+    "lingua": "it",
+    "licenza": "contenuto originale dello studio, licenza d'uso personale e professionale",
+    "promesse": [
+      "P1",
+      "P2",
+      "P3"
+    ],
+    "files": [
+      {
+        "nome": "pianificatore.pdf",
+        "formato": "pdf",
+        "copre_promesse": [
+          "P1"
+        ]
+      },
+      {
+        "nome": "pianificatore.xlsx",
+        "formato": "xlsx",
+        "copre_promesse": [
+          "P2"
+        ]
+      },
+      {
+        "nome": "guida-rapida.pdf",
+        "formato": "pdf",
+        "copre_promesse": [
+          "P3"
+        ]
+      }
+    ]
+  },
+  "costi_piattaforma": [
+    {
+      "id": "piano-negozio",
+      "descrizione": "[SINTETICO] piano negozio 1 mese (costo da verificare)",
+      "max_cents": 3600,
+      "effettivo_cents": 3600
+    }
+  ],
+  "costi_ai_per_fase_cents": {
+    "max": 300,
+    "effettivo": 120
+  },
+  "vendite": {
+    "spesa_ads_giornaliera_cents": [
+      1500,
+      1500,
+      1500,
+      1500,
+      1500
+    ],
+    "ordini": [
+      {
+        "order_id": "SIM-1001",
+        "canali": [
+          "creator:CR-SIM-1"
+        ],
+        "paese": "IT",
+        "giorno": 1
+      },
+      {
+        "order_id": "SIM-1002",
+        "canali": [
+          "creator:CR-SIM-1"
+        ],
+        "paese": "IT",
+        "giorno": 2
+      },
+      {
+        "order_id": "SIM-1003",
+        "canali": [
+          "creator:CR-SIM-1"
+        ],
+        "paese": "DE",
+        "giorno": 3
+      },
+      {
+        "order_id": "SIM-1004",
+        "canali": [
+          "creator:CR-SIM-1"
+        ],
+        "paese": "IT",
+        "giorno": 4
+      },
+      {
+        "order_id": "SIM-1005",
+        "canali": [
+          "creator:CR-SIM-1"
+        ],
+        "paese": "FR",
+        "giorno": 5
+      },
+      {
+        "order_id": "SIM-1006",
+        "canali": [
+          "ads:ADS-SIM-1"
+        ],
+        "paese": "IT",
+        "giorno": 1
+      },
+      {
+        "order_id": "SIM-1007",
+        "canali": [
+          "ads:ADS-SIM-1"
+        ],
+        "paese": "DE",
+        "giorno": 2
+      },
+      {
+        "order_id": "SIM-1008",
+        "canali": [
+          "ads:ADS-SIM-1"
+        ],
+        "paese": "IT",
+        "giorno": 3
+      },
+      {
+        "order_id": "SIM-1009",
+        "canali": [
+          "ads:ADS-SIM-1"
+        ],
+        "paese": "ES",
+        "giorno": 4
+      },
+      {
+        "order_id": "SIM-1010",
+        "canali": [
+          "ads:ADS-SIM-1"
+        ],
+        "paese": "IT",
+        "giorno": 5
+      },
+      {
+        "order_id": "SIM-1011",
+        "canali": [
+          "creator:CR-SIM-1",
+          "ads:ADS-SIM-1"
+        ],
+        "paese": "IT",
+        "giorno": 3
+      },
+      {
+        "order_id": "SIM-1012",
+        "canali": [],
+        "paese": "IT",
+        "giorno": 2
+      },
+      {
+        "order_id": "SIM-1013",
+        "canali": [],
+        "paese": "IT",
+        "giorno": 3
+      },
+      {
+        "order_id": "SIM-1014",
+        "canali": [],
+        "paese": "AT",
+        "giorno": 4
+      }
+    ],
+    "duplicati": [
+      "SIM-1003"
+    ],
+    "rimborsi": [
+      {
+        "order_id": "SIM-1002",
+        "giorno": 6
+      }
+    ]
+  },
+  "richieste_spesa_extra": [],
+  "guasti": {},
+  "costi_test_falliti_cents": 0,
+  "atteso": {
+    "stato": "completato",
+    "fasi": 10
+  }
+}
