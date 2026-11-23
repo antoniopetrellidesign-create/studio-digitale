@@ -381,6 +381,60 @@
           "nota": "Riverifica D-023: APPROVATO (qa/2026-11-23-mandato-account.md), 1 minore latente"
         }
       ]
+    },
+    {
+      "id": "T-018",
+      "titolo": "Primo ciclo di ricerca reale: 12 opportunità, graduatoria",
+      "agente": "ricerca-mercato",
+      "fase": "",
+      "dipende_da": [],
+      "output": [],
+      "stato": "fatto",
+      "run_id": null,
+      "creato": "2026-11-23T20:52:08+00:00",
+      "aggiornato": "2026-11-23T20:52:08+00:00",
+      "note": [
+        {
+          "quando": "2026-11-23T20:52:08+00:00",
+          "nota": "graduatoria: nessuna sopra 60 (D-027)"
+        }
+      ]
+    },
+    {
+      "id": "T-019",
+      "titolo": "Segreti di rete, registro account, verifica di continuità",
+      "agente": "account-integrazioni",
+      "fase": "",
+      "dipende_da": [],
+      "output": [],
+      "stato": "fatto",
+      "run_id": null,
+      "creato": "2026-11-23T20:52:08+00:00",
+      "aggiornato": "2026-11-23T20:52:08+00:00",
+      "note": [
+        {
+          "quando": "2026-11-23T20:52:08+00:00",
+          "nota": "prova di continuità OK, impronta salvata"
+        }
+      ]
+    },
+    {
+      "id": "T-020",
+      "titolo": "Verifica delle prime 3 opportunità con lettura delle pagine",
+      "agente": "ricerca-mercato",
+      "fase": "",
+      "dipende_da": [],
+      "output": [],
+      "stato": "bloccato",
+      "run_id": null,
+      "creato": "2026-11-23T20:52:08+00:00",
+      "aggiornato": "2026-11-23T20:52:08+00:00",
+      "note": [
+        {
+          "quando": "2026-11-23T20:52:08+00:00",
+          "nota": "strumento di lettura pagine senza i nuovi host: serve R2 (nuova sessione su studio-digitale)"
+        }
+      ]
     }
   ]
 }
