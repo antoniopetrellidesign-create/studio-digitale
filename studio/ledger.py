@@ -101,6 +101,24 @@ class Ledger:
         self.data["bloccati"].append({"quando": _now(), "motivo": motivo, **dettagli})
         raise SpendBlocked(motivo, dettagli)  # salvato dalla transazione
 
+    def sospensione_attiva(self) -> dict | None:
+        """Legge a ogni chiamata il file di sospensione; ritorna il suo contenuto se `spese` è true.
+        File assente o malformato: nessuna sospensione (il malformato è annotato in `bloccati`)."""
+        path = os.environ.get("STUDIO_SOSPENSIONE") or os.path.join(
+            os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "team", "sospensione.json")
+        try:
+            with open(path, encoding="utf-8") as f:
+                dati = json.load(f)
+        except FileNotFoundError:
+            return None
+        except (OSError, ValueError) as e:
+            self.data["bloccati"].append({"quando": _now(), "motivo": "avviso: file di sospensione illeggibile, ignorato",
+                                          "percorso": path, "errore": type(e).__name__})
+            return None
+        if isinstance(dati, dict) and dati.get("spese") is True:
+            return dati
+        return None
+
     def reserve(self, busta_id: str, categoria: str, max_cents, descrizione: str,
                 fase: str = "", simulato: bool = True, tag: list | None = None) -> dict:
         with self._tx():
@@ -113,6 +131,11 @@ class Ledger:
             if esistente["categoria"] != categoria or esistente["max_cents"] != max_cents:
                 self._block("busta già esistente con parametri diversi", busta=busta_id)
             return esistente
+        # Sospensione del titolare: nessuna busta nuova (anche trasferimenti da prenotazioni).
+        sosp = self.sospensione_attiva()
+        if sosp is not None:
+            self._block("nuove spese sospese dal titolare", busta=busta_id, categoria=categoria,
+                        sospensione=sosp)
         if max_cents is None or isinstance(max_cents, bool) or not isinstance(max_cents, int) or max_cents < 0:
             self._block("costo massimo sconosciuto o non valido", busta=busta_id,
                         categoria=categoria, max_cents=max_cents, descrizione=descrizione)

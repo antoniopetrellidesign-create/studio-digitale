@@ -440,6 +440,11 @@ def h_distribuzione(run):
         for i, importo in enumerate(v.get("spesa_ads_giornaliera_cents", []), 1):
             if not a["attivo"]:
                 break
+            if led.sospensione_attiva():
+                a["attivo"] = False
+                run.adapters["ads"].pausa(a["id"], "spese sospese dal titolare")
+                run.decidi("distribuzione", "campagna_in_pausa", "spese sospese dal titolare", canale="ads")
+                break
             if importo > a["giornaliero_max_cents"]:
                 run.decidi("distribuzione", "spesa_giornaliera_ridotta",
                            f"giorno {i}: {importo} oltre il massimo giornaliero", canale="ads")

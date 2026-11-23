@@ -102,6 +102,66 @@ def _riserva_in_processo(args):
         return False
 
 
+class TestSospensione(unittest.TestCase):
+    def setUp(self):
+        self.d = tempfile.mkdtemp()
+        self.sosp = os.path.join(self.d, "sospensione.json")
+        self._old = os.environ.get("STUDIO_SOSPENSIONE")
+        os.environ["STUDIO_SOSPENSIONE"] = self.sosp
+        self.l = Ledger(os.path.join(self.d, "l.json"), 50000, ALLOC, list(ALLOC))
+
+    def tearDown(self):
+        if self._old is None:
+            os.environ.pop("STUDIO_SOSPENSIONE", None)
+        else:
+            os.environ["STUDIO_SOSPENSIONE"] = self._old
+
+    def _sospendi(self):
+        with open(self.sosp, "w") as f:
+            f.write('{"spese": true, "motivo": "test"}')
+
+    def test_nuova_riserva_bloccata_e_ripresa(self):
+        self._sospendi()
+        with self.assertRaises(SpendBlocked) as c:
+            self.l.reserve("r/ads", "ads", 1000, "x")
+        self.assertIn("sospese dal titolare", c.exception.motivo)
+        with self.assertRaises(SpendBlocked):
+            self.l.spend_once("r/ai", "ai", 100, 100, "x")
+        with self.assertRaises(SpendBlocked):
+            self.l.prenota("r/", {"ads": 1000})
+        self.assertEqual(self.l.data["buste"], {})
+        os.remove(self.sosp)
+        self.assertEqual(self.l.reserve("r/ads", "ads", 1000, "x")["stato"], "aperta")
+
+    def test_busta_esistente_e_consumo_consentiti(self):
+        self.l.reserve("r/ads", "ads", 1000, "x")
+        self._sospendi()
+        self.assertEqual(self.l.reserve("r/ads", "ads", 1000, "x")["id"], "r/ads")
+        self.assertTrue(self.l.draw("r/ads", "d1", 400))
+        self.assertEqual(self.l.consumato("ads"), 400)
+
+    def test_trasferimento_da_prenotazione_bloccato(self):
+        self.l.prenota("r/", {"ads": 2000})
+        self._sospendi()
+        with self.assertRaises(SpendBlocked):
+            self.l.reserve("r/ads", "ads", 1000, "x")
+
+    def test_sospensione_attiva(self):
+        self.assertIsNone(self.l.sospensione_attiva())
+        self._sospendi()
+        self.assertEqual(self.l.sospensione_attiva()["motivo"], "test")
+        with open(self.sosp, "w") as f:
+            f.write('{"spese": false}')
+        self.assertIsNone(self.l.sospensione_attiva())
+
+    def test_malformato_non_blocca_ma_avvisa(self):
+        with open(self.sosp, "w") as f:
+            f.write("{non json")
+        self.assertIsNone(self.l.sospensione_attiva())
+        self.assertEqual(len(self.l.data["bloccati"]), 1)
+        self.assertEqual(self.l.reserve("r/ads", "ads", 1000, "x")["stato"], "aperta")
+
+
 class TestLedgerConcorrenza(unittest.TestCase):
     """Processi reali in parallelo su un registro NUOVO: nessuna riserva persa, allocazione rispettata (QA N-3, B-1)."""
 

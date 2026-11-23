@@ -99,3 +99,12 @@ Responsabile: qa-indipendente. Si usa a ogni passaggio di fase critico (in parti
 | A5 | Catalogo: esclusi i canali con regole prodotto/AI a 0; ordini marketplace con sola commissione del marketplace; somma per canale di vendita = totale | [TEST] classe `TestQACatalogo` | sì |
 | A6 | Social: nessun avvio con prodotto non validato; tutto in bozza; nessuna chiamata esterna | [TEST] classe `TestQASocial` | sì |
 | A7 | Adattatori reali: azione solo con `STUDIO_LIVE=1` E integrazione collaudata (qualunque sia la modalità del gate; `esito_forzato` può solo inasprire); host solo `*.myshopify.com` via HTTPS (anche se derivato da `negozio`); prodotti solo DRAFT; HMAC a tempo costante e segreto non vuoto | [TEST] classe `TestQALiveShopify`; [FILE] `config/integrazioni_collaudate.json` → `[]` | sì |
+
+## 10. Regia mobile (D-030, T-027) — test in `tests/test_qa_regia.py`
+| # | Criterio | Prova richiesta | Bloccante |
+|---|---|---|---|
+| G1 | Stati onesti: definizione ≠ processo; esecuzione senza fine e senza eventi recenti o con ponte scaduto → `sconosciuto`; passaggi solo da dipendenze registrate e concluse; simulazioni fuori dai numeri | [TEST] classe `TestQAStati` | sì |
+| G2 | Hook: uscita sempre 0 e nessun output; nessun comando Bash, contenuto di file, URL completo, token, email, carta, password nel registro eventi | [TEST] classe `TestQAHook` (input via stdin) | sì |
+| G3 | Comandi: un effetto per id; id/tipo/parametri non validi → `fallito` senza effetti; `completato` solo se l'effetto esiste nel motore; `riprendi` rifiutato con dipendenze aperte, attività sospese o compito non bloccato | [TEST] classe `TestQAComandi` | sì |
+| G4 | Sospensione: nuove riserve, trasferimenti da prenotazioni, nuove fasi, compiti `in_corso`, spesa Ads discrezionale bloccati; impegni già assunti invariati; ripresa della fase in corso senza eccezioni | [TEST] classe `TestQASospensione` | sì |
+| G5 | App: niente HTML da dati; pagina scrive solo `inviato`; id riusato ai tentativi; accesso negato ai non titolari prima del database; demo mai scritta; a soglia di battito superata stati e animazioni ridisegnati come non aggiornati | [TEST] classe `TestQAApp` (analisi statica) | sì |

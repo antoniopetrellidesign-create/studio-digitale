@@ -1,0 +1,478 @@
+<title>Regia Studio Digitale</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="theme-color" content="#0f1720">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Regia">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: app a schermo intero, barra di stato in alto, contenuto scorrevole, navigazione fissa in basso. */
+:root{
+  --bg:#eef1f4; --surface:#ffffff; --surface-2:#e3e8ee; --ink:#14202b; --muted:#5a6a78; --line:#cfd8e1;
+  --accent:#1d6f8c; --accent-ink:#ffffff;
+  --ok:#1f7a4d; --warn:#9a6400; --bad:#b42f2f; --idle:#7a8794; --unknown:#6c5a8a;
+  --font-ui:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif; --font-data:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --r:10px; --nav-h:64px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1720; --surface:#17222d; --surface-2:#1f2c39; --ink:#e6edf3; --muted:#93a4b3; --line:#2b3a48;
+  --accent:#4fb3d1; --accent-ink:#06202a; --ok:#4cc38a; --warn:#e0a63a; --bad:#ef6b6b; --idle:#8795a3; --unknown:#a891d1; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1720; --surface:#17222d; --surface-2:#1f2c39; --ink:#e6edf3; --muted:#93a4b3; --line:#2b3a48;
+  --accent:#4fb3d1; --accent-ink:#06202a; --ok:#4cc38a; --warn:#e0a63a; --bad:#ef6b6b; --idle:#8795a3; --unknown:#a891d1; color-scheme:dark}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-ui);font-size:15px;line-height:1.45;display:flex;flex-direction:column}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+*{box-sizing:border-box}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.num{font-family:var(--font-data);font-variant-numeric:tabular-nums}
+header.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line);
+  padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:flex;align-items:center;gap:10px}
+header.bar h1{font-size:17px;margin:0;font-weight:700;letter-spacing:.01em;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.link-state{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--idle);flex:none}
+.dot.ok{background:var(--ok)} .dot.bad{background:var(--bad)} .dot.warn{background:var(--warn)}
+.banner{margin:10px 0 0;padding:10px 12px;border-radius:var(--r);font-size:13px;border:1px solid var(--line);background:var(--surface-2)}
+.banner.stale{border-color:var(--warn);background:color-mix(in srgb,var(--warn) 14%,var(--surface))}
+.banner.demo{border-color:var(--unknown);background:color-mix(in srgb,var(--unknown) 16%,var(--surface));font-weight:700}
+.banner.sosp{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 12%,var(--surface))}
+main{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:6px calc(var(--nav-h) + 24px + env(safe-area-inset-bottom,0px))}
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--surface);border-top:1px solid var(--line);
+  display:grid;grid-template-columns:repeat(5,1fr);padding-bottom:env(safe-area-inset-bottom,0px);
+  padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+nav.tabs button{background:none;border:0;height:var(--nav-h);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11.5px;color:var(--muted);font-weight:600}
+nav.tabs button svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7}
+nav.tabs button[aria-selected="true"]{color:var(--accent)}
+h2{font-size:15px;margin:18px 0 8px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700}
+h3{margin:0;font-size:16px;text-wrap:balance}
+.grid{display:grid;gap:10px}
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@media (min-width:640px){.kpis{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;min-width:0}
+.kpi b{display:block;font-family:var(--font-data);font-size:20px;font-variant-numeric:tabular-nums}
+.kpi span{font-size:12px;color:var(--muted)}
+.row{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;display:flex;gap:10px;align-items:flex-start;min-width:0}
+.row .main{flex:1;min-width:0}
+.row .meta{font-size:12.5px;color:var(--muted);overflow-wrap:anywhere}
+button.row{width:100%;text-align:left}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.s-in_esecuzione{color:var(--ok)} .s-concluso,.s-fatto,.s-completato{color:var(--accent)} .s-bloccato,.s-fallito{color:var(--bad)}
+.s-in_attesa,.s-da_fare,.s-inviato,.s-ricevuto{color:var(--warn)} .s-in_corso{color:var(--ok)}
+.s-sconosciuto{color:var(--unknown)} .s-mai_avviato_registrato,.s-inattivo{color:var(--idle)}
+.seg{display:flex;background:var(--surface-2);border-radius:999px;padding:3px;gap:3px}
+.seg button{flex:1;border:0;background:none;border-radius:999px;padding:7px 10px;font-size:13px;font-weight:700;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgb(0 0 0 / .12)}
+#scene-wrap{position:relative;height:min(56vh,480px);border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:var(--surface);max-width:100%}
+#scene-wrap canvas{display:block;width:100%;height:100%;touch-action:none}
+.scene-note{position:absolute;left:10px;bottom:10px;right:10px;font-size:12px;color:var(--muted);pointer-events:none}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:20;max-height:86%;overflow-y:auto;background:var(--surface);border-top-left-radius:16px;border-top-right-radius:16px;
+  box-shadow:0 -8px 30px rgb(0 0 0 / .25);padding-block:14px calc(18px + env(safe-area-inset-bottom,0px));
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.scrim{position:fixed;inset:0;z-index:19;background:rgb(0 0 0 / .35)}
+.sheet dl{display:grid;grid-template-columns:minmax(0,9.5em) minmax(0,1fr);gap:6px 10px;margin:10px 0;font-size:13.5px}
+.sheet dt{color:var(--muted)} .sheet dd{margin:0;overflow-wrap:anywhere}
+.sheet ul{margin:4px 0 10px;padding-left:18px;font-size:13.5px}
+.sheet .close{float:right;background:var(--surface-2);border:0;border-radius:999px;padding:6px 12px;font-weight:700}
+form.cmd{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px;display:grid;gap:8px}
+form.cmd label{font-size:13px;font-weight:600}
+form.cmd input,form.cmd select,form.cmd textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 10px;min-width:0}
+.btn{background:var(--accent);color:var(--accent-ink);border:0;border-radius:9px;padding:10px 14px;font-weight:700}
+.btn.ghost{background:var(--surface-2);color:var(--ink)}
+.btn.danger{background:var(--bad);color:#fff}
+.btn[disabled]{opacity:.55}
+.timeline{font-size:12px;color:var(--muted);margin-top:4px}
+.bar-h{height:8px;border-radius:999px;background:var(--surface-2);overflow:hidden;margin-top:6px}
+.bar-h i{display:block;height:100%;background:var(--accent)}
+pre.doc{white-space:pre-wrap;overflow-wrap:anywhere;font-family:var(--font-data);font-size:12.5px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px;max-height:50vh;overflow:auto}
+.muted{color:var(--muted)} .small{font-size:12.5px}
+.empty{padding:18px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:var(--r)}
+.locked{max-width:30em;margin:12vh auto;text-align:center}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<header class="bar">
+  <h1>Regia <span class="muted small" style="font-weight:600">Studio Digitale</span></h1>
+  <div class="link-state" id="link-state" role="status"><span class="dot" id="link-dot"></span><span id="link-text">collegamento…</span></div>
+</header>
+<main id="main" tabindex="-1">
+  <div id="banners"></div>
+  <section id="view-regia" aria-label="Regia"></section>
+  <section id="view-lavori" aria-label="Lavori" hidden></section>
+  <section id="view-prodotti" aria-label="Prodotti" hidden></section>
+  <section id="view-numeri" aria-label="Numeri" hidden></section>
+  <section id="view-comandi" aria-label="Comandi" hidden></section>
+</main>
+<nav class="tabs" role="tablist" aria-label="Sezioni">
+  <button role="tab" data-v="regia" aria-selected="true"><svg viewBox="0 0 24 24"><path d="M3 10l9-6 9 6v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Regia</button>
+  <button role="tab" data-v="lavori" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg>Lavori</button>
+  <button role="tab" data-v="prodotti" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5 9 5 9-5zM3 8v8l9 5 9-5V8"/></svg>Prodotti</button>
+  <button role="tab" data-v="numeri" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Numeri</button>
+  <button role="tab" data-v="comandi" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/></svg>Comandi</button>
+</nav>
+<div id="sheet-root"></div>
+
+<script>
+"use strict";
+/* ---------- stato dell'app ---------- */
+const S = { sistema:null, agenti:null, lavori:null, prodotti:null, consegne:null, comandi:[], loaded:false,
+  dbOk:null, owner:null, demo:false, view:"regia", modo3d:null, cacheOnly:true, errori:[] };
+const STATI = {
+  in_esecuzione:"In esecuzione", concluso:"Concluso", in_attesa:"In attesa", bloccato:"Bloccato",
+  sconosciuto:"Stato sconosciuto", mai_avviato_registrato:"Mai avviato (registrato)", inattivo:"Inattivo",
+  da_fare:"Da fare", in_corso:"In corso", fatto:"Fatto", inviato:"Inviato", ricevuto:"Ricevuto",
+  in_esecuzione_cmd:"In esecuzione", completato:"Completato", fallito:"Fallito", in_attesa_invio:"In attesa di invio"};
+const REPARTI = ["Direzione","Ricerca","Sviluppo","Qualità","Vendite multicanale","Acquisizione","Social","Assistenza","Finanza","Integrazioni"];
+const $ = (s,r=document)=>r.querySelector(s);
+function el(tag, attrs={}, ...kids){ const e=document.createElement(tag);
+  for(const [k,v] of Object.entries(attrs||{})){ if(v==null) continue;
+    if(k==="class") e.className=v; else if(k==="text") e.textContent=v; else if(k.startsWith("on")) e.addEventListener(k.slice(2),v); else e.setAttribute(k,v);}
+  for(const k of kids){ if(k==null||k===false) continue; e.append(k instanceof Node?k:document.createTextNode(String(k))); } return e; }
+const eur = c => (c==null?"—":(c/100).toLocaleString("it-IT",{style:"currency",currency:"EUR"}));
+const quando = iso => { if(!iso) return "—"; const d=new Date(iso); if(isNaN(d)) return "—";
+  const m=Math.round((Date.now()-d)/60000); const rel = m<1?"ora":m<60?`${m} min fa`:m<1440?`${Math.round(m/60)} h fa`:`${Math.round(m/1440)} g fa`;
+  return `${d.toLocaleString("it-IT",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"})} (${rel})`; };
+const chip = (stato, testo) => el("span",{class:`chip s-${stato}`,text:testo||STATI[stato]||stato});
+const sicuro = u => (typeof u==="string" && u.startsWith("https://")) ? u : null;
+function store(k,v){ try{ if(v===undefined) return JSON.parse(localStorage.getItem(k)||"null"); localStorage.setItem(k,JSON.stringify(v)); }catch(e){ return null; } }
+
+/* ---------- collegamento: il dato è "fresco" solo se il ponte batte da meno della soglia ---------- */
+function collegamento(){
+  if(S.demo) return {stato:"demo", testo:"demo — dati non reali"};
+  if(S.dbOk===false) return {stato:"bad", testo:"database non raggiungibile"};
+  const c = S.sistema && S.sistema.collegamento;
+  if(!c || !c.battito) return {stato:"bad", testo:"nessun dato dal motore"};
+  const eta = (Date.now()-new Date(c.battito.quando))/60000;
+  if(eta > (c.soglia_minuti||10)) return {stato:"bad", testo:"stato non aggiornato", stale:true};
+  return {stato:"ok", testo:`collegato · ${quando(c.battito.quando).split("(")[1].replace(")","")}`};
+}
+function stale(){ const c=collegamento(); return c.stale || c.stato==="bad"; }
+
+/* ---------- dati demo: separati, mai scritti nel database ---------- */
+function datiDemo(){
+  const stati=["in_esecuzione","concluso","in_attesa","bloccato","sconosciuto","mai_avviato_registrato"];
+  const ids=["team-lead","ricerca-mercato","sviluppo-prodotto","qa-indipendente","shopify-operazioni","acquisizione","creator-partnership","social-contenuti","customer-care","strategia-finanza","account-integrazioni"];
+  const rep={"team-lead":"Direzione","ricerca-mercato":"Ricerca","sviluppo-prodotto":"Sviluppo","qa-indipendente":"Qualità","shopify-operazioni":"Vendite multicanale","acquisizione":"Acquisizione","creator-partnership":"Acquisizione","social-contenuti":"Social","customer-care":"Assistenza","strategia-finanza":"Finanza","account-integrazioni":"Integrazioni"};
+  return {agenti: ids.map((id,i)=>({id, reparto:rep[id], ruolo:"[DEMO] "+id, stato:stati[i%stati.length], motivo_stato:"dato dimostrativo", attivita_recente:[], strumenti:{}, file_prodotti:[], decisioni:[], blocchi:[], dipendenze:[], costi:{nota:"demo"}, esecuzioni:{}})),
+    passaggi:[{da:"ricerca-mercato",a:"qa-indipendente",compito_origine:"DEMO-1",compito_destinazione:"DEMO-2"}]};
+}
+function agenti(){ return S.demo ? datiDemo().agenti : ((S.agenti&&S.agenti.agenti)||[]); }
+function passaggiCorrenti(){ return S.demo ? datiDemo().passaggi : ((S.sistema&&S.sistema.passaggi)||[]); }
+
+/* ---------- intestazione e avvisi ---------- */
+function renderHeader(){
+  const c=collegamento(); $("#link-dot").className="dot "+(c.stato==="ok"?"ok":c.stato==="demo"?"warn":"bad"); $("#link-text").textContent=c.testo;
+  const b=$("#banners"); b.replaceChildren();
+  if(S.demo) b.append(el("div",{class:"banner demo",role:"note",text:"DEMO GRAFICA — dati inventati per mostrare le animazioni. Nessun dato operativo, nessun comando."}));
+  if(!S.demo && c.stale) b.append(el("div",{class:"banner stale",role:"alert"},el("b",{text:"Stato non aggiornato. "}),
+    "Il ponte con il motore non batte da oltre "+((S.sistema&&S.sistema.collegamento.soglia_minuti)||10)+" minuti: animazioni ferme, gli stati mostrati sono gli ultimi noti. I comandi restano in coda finché il motore non si ricollega."));
+  const so = S.sistema && S.sistema.sospensione;
+  if(!S.demo && so && (so.spese||so.attivita)) b.append(el("div",{class:"banner sosp",role:"status"},el("b",{text:"Sospensione attiva: "}),
+    [so.spese&&"nuove spese", so.attivita&&"nuove attività"].filter(Boolean).join(" e ")+" bloccate nel motore dal "+quando(so.dal)+"."));
+  if(S.dbOk===null && !S.loaded) b.append(el("div",{class:"banner",text:"Caricamento dei dati del motore…"}));
+}
+
+/* ---------- vista REGIA ---------- */
+function renderRegia(){
+  const v=$("#view-regia"); v.replaceChildren();
+  const ag=agenti(); const per={}; ag.forEach(a=>{ const st=(stale()&&!S.demo&&a.stato==="in_esecuzione")?"sconosciuto":a.stato; per[st]=(per[st]||0)+1; });
+  const ri=(S.sistema&&S.sistema.riepilogo)||{};
+  v.append(el("h2",{text:"Riepilogo"}), el("div",{class:"kpis"},
+    kpi(per.in_esecuzione||0,"agenti in esecuzione"), kpi((per.bloccato||0)+(per.sconosciuto||0),"bloccati o sconosciuti"),
+    kpi(S.demo?"—":(ri.lavori_aperti??"—"),"lavori aperti"), kpi(S.demo?"—":eur(S.sistema&&S.sistema.numeri&&S.sistema.numeri.residuo_cents),"budget residuo")));
+  const pref = S.modo3d ?? (store("regia.modo")||((navigator.connection&&navigator.connection.saveData)?"elenco":"3d"));
+  S.modo3d = pref;
+  const seg = el("div",{class:"seg",role:"group","aria-label":"Tipo di vista"},
+    el("button",{type:"button","aria-pressed":String(pref==="3d"),onclick:()=>{S.modo3d="3d";store("regia.modo","3d");renderAll(true);},text:"Ufficio 3D"}),
+    el("button",{type:"button","aria-pressed":String(pref==="elenco"),onclick:()=>{S.modo3d="elenco";store("regia.modo","elenco");renderAll(true);},text:"Elenco"}),
+    el("button",{type:"button","aria-pressed":String(S.demo),onclick:()=>{S.demo=!S.demo;renderAll(true);},text:S.demo?"Esci dalla demo":"Demo grafica"}));
+  v.append(el("h2",{text:"Squadra"}), seg);
+  if(!ag.length){ v.append(el("div",{class:"empty",style:"margin-top:10px",text:"Nessun dato dalla squadra. I ruoli appariranno al primo aggiornamento del motore."})); return; }
+  if(pref==="3d"){ const wrap=el("div",{id:"scene-wrap",style:"margin-top:10px"}); v.append(wrap,
+      el("div",{class:"legend"},...["in_esecuzione","in_attesa","bloccato","sconosciuto","concluso","mai_avviato_registrato"].map(s=>chip(s))),
+      el("p",{class:"small muted",text:"Trascina per ruotare, pizzica per avvicinare, tocca una persona per aprire la scheda. Gli archi mostrano solo i passaggi registrati nella coda."}));
+    avvia3D(wrap); }
+  else { fermo3D(); v.append(elencoAgenti()); }
+  const ev=(S.sistema&&S.sistema.eventi_recenti)||[];
+  if(!S.demo){ v.append(el("h2",{text:"Ultimi eventi registrati"}));
+    v.append(ev.length? el("div",{class:"grid"},...ev.slice(-8).reverse().map(e=>el("div",{class:"row"},el("div",{class:"main"},
+      el("div",{},el("b",{text:(e.agente_tipo||"sessione principale")+" · "}), e.evento==="SubagentStart"?"avviato":e.evento==="SubagentStop"?"concluso":"fine turno"),
+      el("div",{class:"meta num",text:quando(e.quando)})))))
+      : el("div",{class:"empty",text:"Nessun avvio o conclusione di agenti registrato dagli hook."})); }
+}
+function kpi(v,l){ return el("div",{class:"kpi"},el("b",{text:String(v)}),el("span",{text:l})); }
+function elencoAgenti(){
+  const box=el("div",{class:"grid",style:"margin-top:10px"});
+  for(const rep of REPARTI){ const xs=agenti().filter(a=>a.reparto===rep); if(!xs.length) continue;
+    box.append(el("div",{class:"small muted",style:"margin-top:6px;font-weight:700",text:rep}));
+    for(const a of xs) box.append(el("button",{class:"row",type:"button",onclick:()=>schedaAgente(a.id),"aria-label":`${a.id}: ${STATI[a.stato]||a.stato}`},
+      el("div",{class:"main"},el("div",{},el("b",{text:a.id})),el("div",{class:"meta",text:a.attivita_corrente||a.incarico||a.motivo_stato||""})),
+      chip(stale()&&a.stato==="in_esecuzione"?"sconosciuto":a.stato, stale()&&a.stato==="in_esecuzione"?"Non aggiornato":null))); }
+  return box;
+}
+
+/* ---------- scheda agente (bottom sheet) ---------- */
+function schedaAgente(id){
+  const a=agenti().find(x=>x.id===id); if(!a) return;
+  const root=$("#sheet-root"); root.replaceChildren();
+  const chiudi=()=>{root.replaceChildren(); document.removeEventListener("keydown",esc);};
+  const esc=e=>{ if(e.key==="Escape") chiudi(); }; document.addEventListener("keydown",esc);
+  const li=(arr,fn,vuoto)=> arr&&arr.length ? el("ul",{},...arr.map(x=>el("li",{},fn(x)))) : el("p",{class:"small muted",text:vuoto});
+  const st = stale()&&a.stato==="in_esecuzione" ? "sconosciuto" : a.stato;
+  const sh=el("div",{class:"sheet",role:"dialog","aria-modal":"true","aria-label":"Scheda "+a.id},
+    el("button",{class:"close",type:"button",onclick:chiudi,text:"Chiudi"}),
+    el("h3",{text:a.id}), el("div",{class:"small muted",text:a.reparto+(S.demo?" · DEMO":"")}),
+    el("div",{style:"margin-top:8px"},chip(st, st!==a.stato?"Stato non aggiornato":null)),
+    el("dl",{},
+      el("dt",{text:"Ruolo"}),el("dd",{text:a.ruolo||"—"}),
+      el("dt",{text:"Incarico"}),el("dd",{text:a.incarico||"nessun compito in coda"}),
+      el("dt",{text:"Progetto"}),el("dd",{text:a.progetto||"—"}),
+      el("dt",{text:"Stato"}),el("dd",{text:(a.motivo_stato||"")}),
+      el("dt",{text:"Ultimo aggiornamento"}),el("dd",{class:"num",text:quando(a.ultimo_aggiornamento)}),
+      el("dt",{text:"Attività corrente"}),el("dd",{text:a.attivita_corrente||"nessuna attività osservata ora"}),
+      el("dt",{text:"Esecuzioni"}),el("dd",{text:a.esecuzioni&&a.esecuzioni.avviate!=null?`${a.esecuzioni.avviate} avviate, ${a.esecuzioni.concluse} concluse (registrate)`:(a.esecuzioni&&a.esecuzioni.nota)||"—"}),
+      el("dt",{text:"Costi"}),el("dd",{text:a.costi&&a.costi.verificati_eur!=null?`verificati: ${eur(Math.round(a.costi.verificati_eur*100))} — ${a.costi.nota}`:(a.costi&&a.costi.nota)||"—"})),
+    el("h2",{text:"Strumenti usati (dati sensibili oscurati)"}), li(Object.entries(a.strumenti||{}),([k,v])=>`${k}: ${v}`,"nessuno strumento registrato"),
+    el("h2",{text:"Attività recente"}), li(a.attivita_recente||[],x=>`${quando(x.quando)} — ${x.strumento||""}: ${x.sintesi||""}`,"nessuna attività registrata"),
+    el("h2",{text:"Risultati e file"}), li(a.file_prodotti||[],x=>x,"nessun file registrato"),
+    a.ultimo_esito? el("p",{class:"small",text:"Ultimo messaggio di consegna: "+a.ultimo_esito}):null,
+    el("h2",{text:"Decisioni registrate"}), li(a.decisioni||[],x=>`${x.id} — ${x.decisione} Motivo: ${x.motivazione}`,"nessuna decisione attribuita"),
+    el("h2",{text:"Blocchi e dipendenze"}), li([...(a.blocchi||[]).map(b=>`${b.compito}: ${b.nota||b.titolo}`), ...(a.dipendenze||[]).map(d=>"dipende da "+d)],x=>x,"nessun blocco registrato"),
+    a.file? el("p",{class:"small muted",text:"Definizione del ruolo: "+a.file}):null);
+  root.append(el("div",{class:"scrim",onclick:chiudi}), sh); sh.querySelector(".close").focus();
+}
+
+/* ---------- vista 3D (three.js r128) collegata agli stessi dati ---------- */
+let T=null, GEN=0;
+function caricaThree(){ return new Promise((ok,ko)=>{ if(window.THREE) return ok();
+  const s=document.createElement("script"); s.src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"; s.onload=ok; s.onerror=()=>ko(new Error("libreria 3D non caricata")); document.head.append(s); }); }
+function colore(st){ const cs=getComputedStyle(document.documentElement);
+  const m={in_esecuzione:"--ok",concluso:"--accent",in_attesa:"--warn",bloccato:"--bad",sconosciuto:"--unknown",mai_avviato_registrato:"--idle",inattivo:"--idle"};
+  return new THREE.Color(cs.getPropertyValue(m[st]||"--idle").trim()||"#888"); }
+function fermo3D(){ GEN++; if(T){ cancelAnimationFrame(T.raf); T.ro&&T.ro.disconnect(); T.renderer.dispose(); T=null; } }
+async function avvia3D(wrap){
+  fermo3D(); const gen=++GEN;
+  const nota=el("div",{class:"scene-note",text:"Caricamento dell'ufficio 3D…"}); wrap.append(nota);
+  try{ await caricaThree(); }catch(e){ nota.textContent="Vista 3D non disponibile su questa connessione: uso l'elenco."; wrap.after(elencoAgenti()); return; }
+  if(gen!==GEN || !wrap.isConnected) return;   // nel frattempo la vista è stata ridisegnata
+  let renderer; try{ renderer=new THREE.WebGLRenderer({antialias:true,alpha:true}); }catch(e){ nota.textContent="Il dispositivo non supporta WebGL: uso l'elenco."; wrap.after(elencoAgenti()); return; }
+  nota.textContent=""; renderer.setPixelRatio(Math.min(devicePixelRatio,2)); wrap.prepend(renderer.domElement);
+  const scene=new THREE.Scene(); const cam=new THREE.PerspectiveCamera(45,1,0.1,200);
+  scene.add(new THREE.HemisphereLight(0xffffff,0x445566,0.9)); const sun=new THREE.DirectionalLight(0xffffff,0.6); sun.position.set(8,14,6); scene.add(sun);
+  const cs=getComputedStyle(document.documentElement);
+  const floor=new THREE.Mesh(new THREE.PlaneGeometry(22,44),new THREE.MeshLambertMaterial({color:new THREE.Color(cs.getPropertyValue("--bg").trim())}));
+  floor.rotation.x=-Math.PI/2; scene.add(floor);
+  // postazioni: un'isola per reparto, pianta verticale 2x5
+  const pos={}, desks=[], persone=[];
+  REPARTI.forEach((rep,i)=>{ const cx=(i%2-0.5)*7.4, cz=(Math.floor(i/2)-2)*7.6;  /* pianta verticale: 2 colonne × 5 file */
+    const zona=new THREE.Mesh(new THREE.BoxGeometry(6.2,0.05,6.8),new THREE.MeshLambertMaterial({color:new THREE.Color(cs.getPropertyValue("--surface-2").trim())}));
+    zona.position.set(cx,0.03,cz); scene.add(zona);
+    scene.add(etichetta(rep,cx,0.1,cz-3.55,1.0));  /* titolo sul bordo lontano: si legge sopra le proprie postazioni */
+    const membri=agenti().filter(a=>a.reparto===rep);
+    membri.forEach((a,j)=>{ const x=cx+(membri.length===1?0:(j-0.5)*2.6), z=cz-0.4; pos[a.id]=new THREE.Vector3(x,0,z);
+      const desk=new THREE.Mesh(new THREE.BoxGeometry(2,0.12,1.1),new THREE.MeshLambertMaterial({color:0x8a7a66})); desk.position.set(x,0.8,z+0.9); scene.add(desk);
+      const monitor=new THREE.Mesh(new THREE.BoxGeometry(0.9,0.6,0.06),new THREE.MeshBasicMaterial({color:0x222c36})); monitor.position.set(x,1.25,z+1.25); scene.add(monitor);
+      const st = stale()&&a.stato==="in_esecuzione" ? "sconosciuto" : a.stato;
+      const mat=new THREE.MeshLambertMaterial({color:colore(st),transparent:st==="mai_avviato_registrato",opacity:st==="mai_avviato_registrato"?0.45:1});
+      const g=new THREE.Group(); const corpo=new THREE.Mesh(new THREE.CylinderGeometry(0.32,0.42,1.1,16),mat); corpo.position.y=0.75;
+      const testa=new THREE.Mesh(new THREE.SphereGeometry(0.3,16,12),mat); testa.position.y=1.55; g.add(corpo,testa); g.position.set(x,0,z);
+      g.userData={id:a.id,stato:st,monitor}; scene.add(g); persone.push(g);
+      if(st==="bloccato"){ const ring=new THREE.Mesh(new THREE.TorusGeometry(0.62,0.05,8,32),new THREE.MeshBasicMaterial({color:colore("bloccato")})); ring.rotation.x=Math.PI/2; ring.position.set(x,0.05,z); scene.add(ring); }
+      scene.add(etichetta(a.id,x,2.2,z,0.55)); }); });
+  // passaggi registrati: archi fra postazioni
+  for(const p of passaggiCorrenti().slice(-6)){  /* solo i passaggi registrati più recenti */ const a=pos[p.da], b=pos[p.a]; if(!a||!b) continue;
+    const mid=a.clone().lerp(b,0.5); mid.y=3.5; const curve=new THREE.QuadraticBezierCurve3(a.clone().setY(2),mid,b.clone().setY(2));
+    scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(curve.getPoints(30)),new THREE.LineBasicMaterial({color:colore("concluso")}))); }
+  // orbita semplice (trascina / pizzica / rotella)
+  let theta=0.0, phi=0.40, dist=50; const target=new THREE.Vector3(0,0,3);
+  const place=()=>{ cam.position.set(target.x+dist*Math.sin(phi)*Math.sin(theta), dist*Math.cos(phi), target.z+dist*Math.sin(phi)*Math.cos(theta)); cam.lookAt(target); };
+  const pts=new Map(); let moved=0, pinch0=0, dist0=dist;
+  const cv=renderer.domElement;
+  cv.addEventListener("pointerdown",e=>{ pts.set(e.pointerId,{x:e.clientX,y:e.clientY}); moved=0; cv.setPointerCapture(e.pointerId);
+    if(pts.size===2){ const [p1,p2]=[...pts.values()]; pinch0=Math.hypot(p1.x-p2.x,p1.y-p2.y); dist0=dist; } });
+  cv.addEventListener("pointermove",e=>{ const p=pts.get(e.pointerId); if(!p) return;
+    if(pts.size===1){ theta-=(e.clientX-p.x)*0.008; phi=Math.min(1.35,Math.max(0.35,phi-(e.clientY-p.y)*0.006)); moved+=Math.abs(e.clientX-p.x)+Math.abs(e.clientY-p.y); }
+    p.x=e.clientX; p.y=e.clientY;
+    if(pts.size===2){ const [p1,p2]=[...pts.values()]; const d=Math.hypot(p1.x-p2.x,p1.y-p2.y); dist=Math.min(60,Math.max(10,dist0*pinch0/Math.max(d,1))); moved+=99; }
+    place(); });
+  const up=e=>{ const fu=pts.size===1 && moved<8; pts.delete(e.pointerId); if(!fu) return;
+    const r=cv.getBoundingClientRect(); const ray=new THREE.Raycaster(); ray.setFromCamera({x:((e.clientX-r.left)/r.width)*2-1,y:-((e.clientY-r.top)/r.height)*2+1},cam);
+    const hit=ray.intersectObjects(persone,true)[0]; if(hit){ let o=hit.object; while(o&&!o.userData.id) o=o.parent; if(o) schedaAgente(o.userData.id); } };
+  cv.addEventListener("pointerup",up); cv.addEventListener("pointercancel",e=>pts.delete(e.pointerId));
+  cv.addEventListener("wheel",e=>{ e.preventDefault(); dist=Math.min(60,Math.max(10,dist+e.deltaY*0.02)); place(); },{passive:false});
+  const resize=()=>{ const w=wrap.clientWidth,h=wrap.clientHeight; renderer.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix(); };
+  const ro=new ResizeObserver(resize); ro.observe(wrap); resize(); place();
+  const riduci=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  T={renderer,ro,raf:0}; window.__regia3d={persone,cam,cv};  /* usato dal banco di prova per toccare una persona */
+  const tick=t=>{ T.raf=requestAnimationFrame(tick);
+    // animazioni = stato osservato: lavora chi è in esecuzione (e solo con il ponte collegato), il resto è fermo
+    for(const g of persone){ const st=g.userData.stato;
+      if(!riduci && st==="in_esecuzione"){ g.position.y=Math.abs(Math.sin(t/300))*0.12; g.userData.monitor.material.color.setHSL(0.5,0.6,0.35+0.15*Math.sin(t/200)); }
+      else if(!riduci && st==="in_attesa"){ g.rotation.y=Math.sin(t/1500)*0.25; } }
+    renderer.render(scene,cam); };
+  T.raf=requestAnimationFrame(tick);
+}
+function etichetta(testo,x,y,z,scala){ const c=document.createElement("canvas"); const ctx=c.getContext("2d"); c.width=512; c.height=96;
+  const cs=getComputedStyle(document.documentElement); ctx.fillStyle=cs.getPropertyValue("--ink").trim()||"#111"; ctx.font="600 44px Manrope, system-ui, sans-serif"; ctx.textAlign="center"; ctx.textBaseline="middle"; ctx.fillText(testo,256,48);
+  const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(c),transparent:true,depthWrite:false})); sp.scale.set(4.2*scala,0.8*scala,1); sp.position.set(x,y,z); return sp; }
+
+/* ---------- LAVORI ---------- */
+function renderLavori(){
+  const v=$("#view-lavori"); v.replaceChildren(); const xs=(S.lavori&&S.lavori.lavori)||[];
+  if(!xs.length){ v.append(el("div",{class:"empty",style:"margin-top:12px",text:"Nessun lavoro ricevuto dal motore."})); return; }
+  const ord={bloccato:0,in_corso:1,da_fare:2,fatto:3}, pr={alta:0,normale:1,bassa:2};
+  const grup=[["Bloccati",x=>x.stato==="bloccato"],["In corso",x=>x.stato==="in_corso"],["Da fare",x=>x.stato==="da_fare"],["Fatti",x=>x.stato==="fatto"]];
+  for(const [t,f] of grup){ const ys=xs.filter(f).sort((a,b)=>(pr[a.priorita]??1)-(pr[b.priorita]??1)); if(!ys.length) continue;
+    v.append(el("h2",{text:`${t} (${ys.length})`}), el("div",{class:"grid"},...ys.map(x=>el("div",{class:"row"},el("div",{class:"main"},
+      el("div",{},el("b",{class:"num",text:x.id+" "}),x.titolo),
+      el("div",{class:"meta",text:`${x.agente} · ${x.reparto} · priorità ${x.priorita} · scadenza ${x.scadenza||"non fissata"}${x.dipende_da&&x.dipende_da.length?" · dipende da "+x.dipende_da.join(", "):""}`}),
+      x.nota? el("div",{class:"meta",text:"Nota: "+x.nota}):null), chip(x.stato))))); }
+}
+
+/* ---------- PRODOTTI ---------- */
+function renderProdotti(){
+  const v=$("#view-prodotti"); v.replaceChildren(); const xs=(S.prodotti&&S.prodotti.prodotti)||[];
+  v.append(el("h2",{text:"Opportunità in ricerca"}));
+  v.append(xs.length? el("div",{class:"grid"},...xs.map(p=>el("div",{class:"row"},el("div",{class:"main"},
+      el("div",{},el("b",{text:p.titolo||p.id})), el("div",{class:"meta",text:`${p.mercato} · punteggio ${p.punteggio}/100 · ${p.fonti_osservate} fonti osservate · ${p.esito}`}),
+      el("div",{class:"meta",text:"Ricerca: "+p.pipeline.ricerca+" · Sviluppo: "+p.pipeline.sviluppo+" · QA: "+p.pipeline.qa+" · Pubblicazione: "+p.pipeline.pubblicazione+" · Risultati: "+p.pipeline.risultati})),
+      el("b",{class:"num",text:String(p.punteggio)}))))
+    : el("div",{class:"empty",text:"Nessuna opportunità registrata."}));
+  v.append(el("p",{class:"small muted",text:"Soglia di selezione: 60 punti e almeno 2 fonti osservate indipendenti. Nessun prodotto selezionato finora."}));
+  v.append(el("h2",{text:"Canali e servizi"}));
+  const ints=(S.sistema&&S.sistema.integrazioni)||[];
+  v.append(el("div",{class:"grid"},...ints.map(i=>el("div",{class:"row"},el("div",{class:"main"},el("b",{text:i.nome}),el("div",{class:"meta",text:i.funzione+(i.dati_disponibili?"":" · nessun dato disponibile finché non è collegato")})),
+    chip(i.collegato?"completato":"inattivo", i.collegato?"Collegato":"Da collegare")))));
+}
+
+/* ---------- NUMERI ---------- */
+function renderNumeri(){
+  const v=$("#view-numeri"); v.replaceChildren(); const n=S.sistema&&S.sistema.numeri;
+  if(!n){ v.append(el("div",{class:"empty",style:"margin-top:12px",text:"Nessun dato contabile ricevuto."})); return; }
+  v.append(el("h2",{text:"Budget del primo test"}), el("div",{class:"kpis"}, kpi(eur(n.consumato_cents),"spesa effettiva"), kpi(eur(n.impegnato_cents),"impegni aperti"),
+    kpi(eur(n.residuo_cents),"residuo su "+eur(n.tetto_cents)), kpi(eur(n.incassi_cents),"incassi (non aumentano il budget)")));
+  v.append(el("p",{class:"small muted",text:(n.nota||"")+" Fonte: "+n.fonte+". Le simulazioni sono escluse."}));
+  v.append(el("h2",{text:"Per categoria"}));
+  v.append(el("div",{class:"grid"},...Object.entries(n.per_categoria||{}).map(([k,c])=>{ const usato=(c.consumato_cents||0)+(c.impegnato_aperto_cents||0), al=c.allocazione_cents||0;
+    return el("div",{class:"row"},el("div",{class:"main"},el("div",{},el("b",{text:k}),el("span",{class:"num muted",text:`  ${eur(usato)} / ${eur(al)}`})),
+      el("div",{class:"bar-h",role:"img","aria-label":`${k}: ${eur(usato)} su ${eur(al)}`},el("i",{style:`width:${al?Math.min(100,usato/al*100):0}%`})))); })));
+  v.append(el("h2",{text:"Margini per canale"}), el("div",{class:"empty",text:n.margini_per_canale?"":"Nessuna vendita reale: i margini per canale appariranno con i primi ordini riconciliati."}));
+}
+
+/* ---------- COMANDI ---------- */
+function nuovoId(){ const r=new Uint8Array(8); crypto.getRandomValues(r); return "cmd-"+Date.now().toString(36)+"-"+[...r].map(b=>b.toString(16).padStart(2,"0")).join("").slice(0,10); }
+async function invia(tipo, parametri, form){
+  if(S.demo) return messaggio(form,"In demo i comandi sono disattivati.");
+  const pend=store("regia.pendente");
+  // stesso tocco ripetuto o rete caduta: si riusa lo STESSO id finché il comando non è nel database
+  const id = (pend && pend.tipo===tipo && JSON.stringify(pend.parametri)===JSON.stringify(parametri)) ? pend.id : nuovoId();
+  const doc={id,tipo,parametri,stato:"inviato",origine:"telefono",creato_il:new Date().toISOString(),storia:[{stato:"inviato",quando:new Date().toISOString()}]};
+  store("regia.pendente",doc);
+  const btn=form.querySelector("button[type=submit]"); btn.disabled=true;
+  try{ const db=await claude.use("db"); if(!db) throw new Error("database non disponibile");
+    const ref=db.doc("comandi/"+id); const g=await ref.get();
+    if(!g.exists) await ref.set(doc);   // se esiste già (tocco ripetuto) non si riscrive
+    store("regia.pendente",null); form.reset(); messaggio(form,"Inviato. Lo stato cambierà solo quando il motore lo conferma.");
+  }catch(e){ messaggio(form,"Non inviato (rete o database). Riprova: verrà riusato lo stesso comando, senza duplicati."); }
+  finally{ btn.disabled=false; renderStatoComandi(); }
+}
+function messaggio(form,t){ let m=form.querySelector(".esito"); if(!m){ m=el("p",{class:"esito small",role:"status"}); form.append(m);} m.textContent=t; }
+function formCmd(titolo, campi, tipo, raccogli, extra){
+  const f=el("form",{class:"cmd"},el("b",{text:titolo}),...campi, el("button",{class:"btn"+(tipo==="sospendi"?" danger":""),type:"submit",text:"Invia al responsabile"}), extra||null);
+  f.addEventListener("submit",e=>{ e.preventDefault(); const p=raccogli(f); if(p) invia(tipo,p,f); }); return f; }
+function renderComandi(){
+  const v=$("#view-comandi"); v.replaceChildren();
+  const lav=(S.lavori&&S.lavori.lavori)||[], ric=(S.sistema&&S.sistema.richieste)||[], so=(S.sistema&&S.sistema.sospensione)||{};
+  const pend=store("regia.pendente");
+  if(pend) v.append(el("div",{class:"banner stale"},el("b",{text:"Comando in attesa di invio: "}),`${pend.tipo} (${pend.id}). `,
+    el("button",{class:"btn ghost",type:"button",onclick:async()=>{ try{ const db=await claude.use("db"); const r=db.doc("comandi/"+pend.id); const g=await r.get(); if(!g.exists) await r.set(pend); store("regia.pendente",null);}catch(e){} renderAll(true); },text:"Riprova l'invio"})));
+  v.append(el("h2",{text:"Comandi al responsabile"}));
+  v.append(formCmd("Assegna un obiettivo",[el("label",{for:"ob-t",text:"Obiettivo"}),el("textarea",{id:"ob-t",rows:"2",required:"",maxlength:"500"}),
+      el("label",{for:"ob-p",text:"Priorità"}),sel("ob-p",["normale","alta","bassa"])],"obiettivo",f=>({testo:f.querySelector("#ob-t").value.trim(),priorita:f.querySelector("#ob-p").value})));
+  v.append(formCmd("Cambia priorità",[el("label",{for:"pr-c",text:"Lavoro"}),sel("pr-c",lav.filter(x=>x.stato!=="fatto").map(x=>[x.id,`${x.id} — ${x.titolo.slice(0,50)}`])),
+      el("label",{for:"pr-p",text:"Nuova priorità"}),sel("pr-p",["alta","normale","bassa"])],"priorita",f=>({compito:f.querySelector("#pr-c").value,priorita:f.querySelector("#pr-p").value})));
+  v.append(formCmd("Chiedi una revisione al QA",[el("label",{for:"rv-o",text:"Cosa rivedere"}),el("input",{id:"rv-o",required:"",maxlength:"300"})],"revisione",f=>({oggetto:f.querySelector("#rv-o").value.trim()})));
+  v.append(el("h2",{text:"Sospensione"}), el("div",{class:"row"},el("div",{class:"main small"},
+      el("div",{},"Nel motore: nuove spese ",el("b",{text:so.spese?"sospese":"consentite"}),", nuove attività ",el("b",{text:so.attivita?"sospese":"consentite"}),"."),
+      el("div",{class:"meta",text:`Campagne esterne ancora attive: ${so.campagne_esterne_attive??"—"} · Impegni già assunti: ${eur(so.impegni_gia_assunti_cents)} · Arresti non confermati: ${so.arresti_non_confermati??"—"}`}),
+      so.nota? el("div",{class:"meta",text:so.nota}):null)));
+  v.append(formCmd("Sospendi nuove attività e nuove spese",[el("label",{},el("input",{type:"checkbox",id:"so-s",checked:""})," nuove spese"),el("label",{},el("input",{type:"checkbox",id:"so-a",checked:""})," nuove attività")],
+    "sospendi",f=>({spese:f.querySelector("#so-s").checked,attivita:f.querySelector("#so-a").checked})));
+  v.append(formCmd("Riprendi",[el("label",{for:"ri-c",text:"Cosa riprendere"}),sel("ri-c",[["","spese e attività sospese"],...lav.filter(x=>x.stato==="bloccato").map(x=>[x.id,"lavoro "+x.id])])],
+    "riprendi",f=>{ const c=f.querySelector("#ri-c").value; return c?{compito:c}:{spese:true,attivita:true}; },
+    el("p",{class:"small muted",text:"La ripresa passa dalle regole del motore: un lavoro con dipendenze aperte o con attività sospese viene rifiutato."})));
+  v.append(el("h2",{text:"Richieste indispensabili del titolare"}));
+  v.append(ric.length? el("div",{class:"grid"},...ric.map(r=>formCmd(`${r.id} — ${r.titolo}`,[r.risposta?el("p",{class:"small",text:"Risposta registrata: "+r.risposta}):null,
+      el("label",{for:"rs-"+r.id,text:"Risposta"}),el("textarea",{id:"rs-"+r.id,rows:"2",required:""})].filter(Boolean),"risposta",f=>({richiesta:r.id,testo:f.querySelector("#rs-"+r.id).value.trim()}))))
+    : el("div",{class:"empty",text:"Nessuna richiesta aperta."}));
+  v.append(el("h2",{text:"Consegne"}), consegne());
+  v.append(el("h2",{text:"Stato dei comandi"}), el("div",{id:"cmd-stato"}));
+  v.append(el("h2",{text:"Notifiche e installazione"}), el("div",{class:"row"},el("div",{class:"main small"},
+    el("p",{},"Le notifiche (blocchi importanti, consegne, richieste indispensabili) arrivano come notifiche dell'app Claude sul telefono, inviate dal responsabile mentre il motore è collegato. Per riceverle serve il consenso del dispositivo alle notifiche dell'app Claude."),
+    el("p",{},"Aggiungi alla Home: su iPhone apri questa pagina in Safari → Condividi → Aggiungi alla schermata Home. Su Android in Chrome → menu ⋮ → Aggiungi a schermata Home. Si apre come scorciatoia alla pagina privata: il funzionamento offline non è disponibile su questa piattaforma."))));
+}
+function renderStatoComandi(){
+  const v=$("#cmd-stato"); if(!v) return; v.replaceChildren();
+  const cs=S.comandi.slice().sort((a,b)=>String(b.creato_il).localeCompare(String(a.creato_il)));
+  v.append(cs.length? el("div",{class:"grid"},...cs.slice(0,25).map(c=>el("div",{class:"row"},el("div",{class:"main"},
+      el("div",{},el("b",{text:c.tipo+" "}),el("span",{class:"meta num",text:c.id})),
+      el("div",{class:"meta",text:c.esito|| (c.stato==="inviato"?"in attesa che il motore lo riceva":"")}),
+      el("div",{class:"timeline num",text:(c.storia||[]).map(s=>`${STATI[s.stato==="in_esecuzione"?"in_esecuzione_cmd":s.stato]||s.stato} ${new Date(s.quando).toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit",second:"2-digit"})}`).join(" → ")})),
+      chip(c.stato, c.stato==="in_esecuzione"?"In esecuzione":c.stato==="completato"&&!c.confermato_dal_motore?"Da confermare":null))))
+    : el("div",{class:"empty",text:"Nessun comando inviato."}));
+}
+function sel(id,opts){ return el("select",{id},...opts.map(o=>Array.isArray(o)?el("option",{value:o[0],text:o[1]}):el("option",{value:o,text:o}))); }
+function consegne(){
+  const xs=(S.consegne&&S.consegne.voci)||[]; if(!xs.length) return el("div",{class:"empty",text:"Nessuna consegna pubblicata dal motore."});
+  return el("div",{class:"grid"},...xs.map(c=>{ const box=el("div",{class:"row",style:"flex-direction:column"});
+    const testa=el("div",{style:"display:flex;gap:8px;align-items:center;width:100%"},el("div",{class:"main"},el("b",{text:c.file}),el("div",{class:"meta num",text:`${quando(c.aggiornato)} · ${Math.round(c.byte/1024)} kB · impronta ${c.impronta}`})),
+      el("button",{class:"btn ghost",type:"button",onclick:async()=>{ const t=await testo(c.id); if(t==null) return; const pre=box.querySelector("pre"); if(pre){pre.remove();return;} box.append(el("pre",{class:"doc",text:t})); },text:"Leggi"}),
+      el("button",{class:"btn ghost",type:"button",onclick:async()=>{ const t=await testo(c.id); if(t==null) return; try{ const d=await claude.use("downloads"); if(!d) throw 0; await d.save({filename:c.file.split("/").pop(),data:new Blob([t],{type:"text/markdown"})}); }catch(e){} },text:"Scarica"}));
+    box.append(testa); return box; }));
+}
+async function testo(id){ try{ const db=await claude.use("db"); const g=await db.doc("testi/"+id).get(); return g.exists?g.data().contenuto:null; }catch(e){ return null; } }
+
+/* ---------- navigazione ---------- */
+function mostra(vista){ S.view=vista; for(const b of document.querySelectorAll("nav.tabs button")) b.setAttribute("aria-selected",String(b.dataset.v===vista));
+  for(const s of document.querySelectorAll("main > section")) s.hidden = s.id!=="view-"+vista; if(vista!=="regia"){ fermo3D(); $("#view-regia").replaceChildren(); } renderAll(true); $("#main").scrollTop=0; }
+document.querySelectorAll("nav.tabs button").forEach(b=>b.addEventListener("click",()=>mostra(b.dataset.v)));
+function firma(v){ // si ridisegna una vista solo se i SUOI dati cambiano (la 3D non riparte, i moduli non si svuotano)
+  if(v==="regia") return JSON.stringify([agenti().map(a=>[a.id,a.stato,a.attivita_corrente,a.ultimo_aggiornamento]),passaggiCorrenti(),stale(),S.demo,S.modo3d,S.sistema&&S.sistema.riepilogo,S.sistema&&S.sistema.eventi_recenti]);
+  if(v==="lavori") return JSON.stringify(S.lavori); if(v==="prodotti") return JSON.stringify([S.prodotti,S.sistema&&S.sistema.integrazioni]);
+  if(v==="numeri") return JSON.stringify(S.sistema&&S.sistema.numeri);
+  if(v==="comandi") return JSON.stringify([S.lavori&&S.lavori.lavori.map(x=>[x.id,x.stato]),S.sistema&&S.sistema.richieste,S.sistema&&S.sistema.sospensione,S.consegne,S.demo]); }
+const FIRME={};
+function renderAll(forza){ renderHeader();
+  const f=firma(S.view); const vuota=!$("#view-"+S.view).children.length;
+  if(S.view==="comandi"){ renderStatoComandi(); const sporco=[...document.querySelectorAll("#view-comandi textarea,#view-comandi input:not([type=checkbox])")].some(x=>x.value) || (document.activeElement&&document.activeElement.closest&&document.activeElement.closest("#view-comandi form"));
+    if(!forza && !vuota && (f===FIRME.comandi || sporco)) return; }
+  else if(!forza && !vuota && f===FIRME[S.view]) return;
+  FIRME[S.view]=f;
+  if(S.view==="regia") renderRegia(); if(S.view==="lavori") renderLavori(); if(S.view==="prodotti") renderProdotti(); if(S.view==="numeri") renderNumeri(); if(S.view==="comandi"){ renderComandi(); renderStatoComandi(); } }
+
+/* ---------- battito: allo scadere della soglia si ridisegna TUTTO (agenti e 3D compresi), non solo l'intestazione ---------- */
+let eraScaduto=false;
+function controllaBattito(){ const ora=stale(); if(ora!==eraScaduto){ eraScaduto=ora; renderAll(true); } else renderHeader(); }
+
+/* ---------- avvio: accesso riservato al titolare, dati persistenti dal database ---------- */
+async function avvio(){
+  renderAll();
+  const user = await claude.use("user");
+  const owner = user ? await user.isOwner() : false;
+  if(!owner){ document.querySelector("nav.tabs").hidden=true; $("#main").replaceChildren(el("div",{class:"locked"},el("h3",{text:"Accesso riservato al titolare"}),el("p",{class:"muted",text:"Questa regia mostra e comanda il sistema dello studio. Solo il titolare può aprirla."}))); return; }
+  const db = await claude.use("db");
+  if(!db){ S.dbOk=false; renderAll(); return; }
+  const timer=setTimeout(()=>{ if(!S.loaded){ S.dbOk=false; renderAll(); } },10000);
+  const segui=(path,key)=> db.doc(path).onSnapshot(s=>{ S[key]=s.exists?s.data():null; if(!s.metadata.fromCache){ S.loaded=true; S.dbOk=true; clearTimeout(timer);} renderAll(); },()=>{ S.dbOk=false; renderAll(); });
+  segui("sistema/stato","sistema"); segui("squadra/agenti","agenti"); segui("squadra/lavori","lavori"); segui("squadra/prodotti","prodotti"); segui("consegne/indice","consegne");
+  db.collection("comandi").orderBy("creato_il","desc").limit(50).onSnapshot(s=>{ S.comandi=s.docs.map(d=>d.data()); renderAll(); },()=>{});
+  eraScaduto=stale();
+  setInterval(controllaBattito,30000);   // l'età del battito cresce anche senza nuovi dati
+}
+(window.claude && window.claude.use) ? avvio() : (renderAll(), $("#main").append(el("div",{class:"empty",text:"Questa pagina funziona dentro claude.ai."})));
+</script>

@@ -49,6 +49,10 @@ class TaskQueue:
         t = self.get(task_id)
         if t is None:
             raise KeyError(task_id)
+        if stato == "in_corso" and t["stato"] != "in_corso":  # QA S-1: la ripresa non è una nuova attività
+            from .regia import sospensione
+            if sospensione().get("attivita"):
+                raise RuntimeError(f"{task_id}: nuove attività sospese dal titolare")
         if stato in ("in_corso", "fatto") and not self.pronto(task_id):
             raise RuntimeError(f"{task_id}: dipendenze non completate {t['dipende_da']}")
         t["stato"] = stato

@@ -461,6 +461,78 @@
           "nota": "APPROVATO dopo correzioni D-1..D-7: qa/2026-11-23-credenziali-ricerca.md"
         }
       ]
+    },
+    {
+      "id": "OB-cmd-collau",
+      "titolo": "Obiettivo di collaudo: Prepara per la regia un riepilogo del budget del primo test (tetto, allocazioni, spesa, impegni, residuo) in team/consegne/riepilogo-budget.md",
+      "agente": "team-lead",
+      "fase": "",
+      "dipende_da": [],
+      "output": [],
+      "stato": "fatto",
+      "run_id": null,
+      "creato": "2026-11-23T21:40:52+00:00",
+      "aggiornato": "2026-11-23T21:41:06+00:00",
+      "note": [
+        {
+          "quando": "2026-11-23T21:41:06+00:00",
+          "nota": "preso in carico dal team-lead"
+        },
+        {
+          "quando": "2026-11-23T21:41:06+00:00",
+          "nota": "delegato a strategia-finanza come T-026"
+        }
+      ],
+      "priorita": "alta"
+    },
+    {
+      "id": "T-026",
+      "titolo": "Riepilogo del budget per la regia (team/consegne/riepilogo-budget.md)",
+      "agente": "strategia-finanza",
+      "fase": "",
+      "dipende_da": [
+        "OB-cmd-collau"
+      ],
+      "output": [
+        "team/consegne/riepilogo-budget.md"
+      ],
+      "stato": "fatto",
+      "run_id": null,
+      "creato": "2026-11-23T21:41:06+00:00",
+      "aggiornato": "2026-11-23T21:41:55+00:00",
+      "note": [
+        {
+          "quando": "2026-11-23T21:41:21+00:00",
+          "nota": "avviato agente strategia-finanza"
+        },
+        {
+          "quando": "2026-11-23T21:41:55+00:00",
+          "nota": "consegnato team/consegne/riepilogo-budget.md"
+        }
+      ],
+      "priorita": "alta"
+    },
+    {
+      "id": "T-027",
+      "titolo": "QA regia mobile: APPROVATO dopo correzioni (qa/2026-11-23-regia-mobile.md)",
+      "agente": "qa-indipendente",
+      "fase": "",
+      "dipende_da": [],
+      "output": [],
+      "stato": "fatto",
+      "run_id": null,
+      "creato": "2026-11-23T21:49:40+00:00",
+      "aggiornato": "2026-11-23T21:55:01+00:00",
+      "note": [
+        {
+          "quando": "2026-11-23T21:49:40+00:00",
+          "nota": "verdetto BLOCCATO: H-1,H-2,C-1,C-2,A-1 bloccanti; escalation al team-lead"
+        },
+        {
+          "quando": "2026-11-23T21:55:01+00:00",
+          "nota": "riverifica: APPROVATO; residuo H-4 non bloccante (expectedFailure)"
+        }
+      ]
     }
   ]
 }

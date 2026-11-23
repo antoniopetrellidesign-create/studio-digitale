@@ -6,3 +6,4 @@ secrets/
 runs/*
 !runs/.gitkeep
 .claude/settings.local.json
+team/sospensione.json

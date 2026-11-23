@@ -74,6 +74,12 @@ def main(argv=None):
     acc = sub.add_parser("account", help="registro account: stato e passaggi del titolare")
     acc.add_argument("azione", choices=["stato", "passaggi"])
     acc.add_argument("--fase", default="strategia")
+    rg = sub.add_parser("regia", help="ponte dell'app di regia")
+    rg.add_argument("azione", choices=["istantanea", "esporta", "comando", "battito"])
+    rg.add_argument("--cartella", default=os.path.join(ROOT, "runs", "regia", "db"))
+    rg.add_argument("--consegne", action="store_true")
+    rg.add_argument("--file", help="JSON di un comando (azione comando)")
+    rg.add_argument("--nota", default="")
     q = sub.add_parser("queue", help="coda condivisa del team (team/queue.json)")
     q.add_argument("azione", choices=["list", "set", "add"])
     q.add_argument("args", nargs="*")
@@ -158,6 +164,20 @@ def main(argv=None):
         else:
             for p in reg.passaggi_titolare(a.fase):
                 print(f"[{p['servizio']}] {p['passo']}. {p['azione']}")
+        return 0
+    if a.cmd == "regia":
+        from . import regia
+        if a.azione == "battito":
+            print(json.dumps(regia.battito(a.nota), ensure_ascii=False))
+        elif a.azione == "istantanea":
+            s = regia.istantanea()
+            print(json.dumps({k: s[k] for k in ("generato_il", "collegamento", "sospensione", "riepilogo")},
+                             ensure_ascii=False, indent=2))
+        elif a.azione == "esporta":
+            print(json.dumps(regia.esporta(a.cartella, a.consegne), ensure_ascii=False))
+        else:
+            with open(a.file, encoding="utf-8") as f:
+                print(json.dumps(regia.esegui_comando(json.load(f)), ensure_ascii=False))
         return 0
     if a.cmd == "queue":
         from .queue import TaskQueue

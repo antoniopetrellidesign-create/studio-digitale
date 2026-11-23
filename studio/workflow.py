@@ -199,6 +199,14 @@ class Run:
             raise RuntimeError(f"fase '{nome}' fuori ordine: mancano {mancanti}, fase corrente "
                                f"'{self.state['fase_corrente']}'")
         _, owner, richiesti, handler, gate = FASI[idx]
+        from .regia import sospensione
+        if sospensione().get("attivita") and not (self.state["in_esecuzione"] and
+                                                  self.state["in_esecuzione"]["fase"] == nome):
+            self.state["stato"] = "bloccato"
+            self.state["blocco"] = {"fase": nome, "motivo": "nuove attività sospese dal titolare"}
+            self._save()
+            self.decidi(nome, "bloccato", "nuove attività sospese dal titolare", attore="titolare")
+            return False
 
         ripresa = self.state["in_esecuzione"] and self.state["in_esecuzione"]["fase"] == nome
         if ripresa:

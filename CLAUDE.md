@@ -32,6 +32,7 @@ python3 -m studio account stato --fase <fase>      # quali account sono attivabi
 python3 -m studio account passaggi --fase <fase>   # elenco unico dei passaggi del titolare
 python3 -m studio accessi indice                   # indice senza segreti di ACCESSI_SISTEMA
 python3 -m studio accessi nuovo --servizio X --dati '{...}' --genera-password   # voce cifrata
+python3 -m studio regia battito|istantanea|esporta|comando   # ponte della regia mobile (docs/regia.md)
 python3 -m unittest discover -s tests -v           # test
 ```
 
@@ -56,6 +57,7 @@ Gli Agent Teams nativi sono abilitati a livello di progetto in `.claude/settings
 | File / componente | Responsabile |
 |---|---|
 | CLAUDE.md, WORKFLOW.md, DECISIONI.md, RUNBOOK.md, AZIONI_TITOLARE.md, INTEGRAZIONI_LIVE.md | team-lead |
+| app/regia.html, docs/regia.md, studio/regia.py, studio/hooks/, tests/test_regia.py | team-lead |
 | team/ (coda), studio/workflow.py, studio/phases.py, studio/state.py, studio/queue.py, studio/__main__.py, studio/storage.py, studio/collaudo.py | team-lead |
 | fixtures/scenari/, tests/test_workflow.py, tests/test_scenari.py | team-lead |
 | STRATEGIA.md, config/policy.json, studio/ledger.py, studio/economics.py, studio/money.py, tests/test_ledger.py, tests/test_economics.py | strategia-finanza |

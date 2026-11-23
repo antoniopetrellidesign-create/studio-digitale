@@ -16,6 +16,8 @@ Fino ad allora la copia di sicurezza è quella scaricabile già consegnata in co
 - Dove: claude.ai/code → nuova sessione → menu ambiente nella barra del titolo → `studio-digitale`.
 - Dopo la prova: eliminare la credenziale di prova di `httpbin.org` dai Segreti di rete dell'ambiente.
 
+**R3 — Sul telefono (2 minuti).** Apri https://claude.ai/artifact/33E6YNe5t3vRNhVTsnBJ6g con il tuo account claude.ai → aggiungi alla schermata Home (iPhone: Safari → Condividi → Aggiungi alla schermata Home; Android: Chrome → ⋮ → Aggiungi a schermata Home). Nelle impostazioni del telefono consenti le notifiche dell'app Claude. Per l'operatività continua della regia servono R1 e poi un'attività pianificata, già pronta in docs/regia.md.
+
 ## 1. Limiti tecnici verificati
 
 | Limite | Operazione impedita | Verifica | Soluzione supportata |
