@@ -18,9 +18,13 @@ import string
 import subprocess
 from datetime import datetime, timezone
 
-CAMPI_SEGRETI = ("email", "utente", "password", "token", "codici_recupero", "domande_recupero", "chiave_api")
+CAMPI_SEGRETI = ("password", "token", "codici_recupero", "domande_recupero", "chiave_api")
 CAMPI_INDICE = ("funzione", "url_accesso", "autenticazione", "titolare", "recupero", "stato_verifica",
                 "piano", "costo", "scadenza", "rinnovo", "integrazioni", "permessi", "posizione_codici_recupero")
+
+CAMPI_REGISTRO = ("servizio", "funzione", "url", "email", "username", "titolare", "stato", "costo", "rinnovo",
+                  "riferimento_credenziale")
+SEGRETI_VIETATI = ("password", "token", "codici_recupero", "domande_recupero", "chiave_api", "secret", "segreto")
 
 
 class VaultNonConfigurato(Exception):
@@ -87,6 +91,31 @@ class Vault:
                          f"| {v.get('rinnovo', '')} | {v['ultima_azione']} {v['aggiornato']} | {', '.join(v['segreti'])} |")
         with open(os.path.join(self.cartella, "INDICE.md"), "w", encoding="utf-8") as f:
             f.write("\n".join(righe) + "\n")
+
+    def aggiorna_registro(self, voce: dict) -> dict:
+        """Registro account NON segreto (accessi/registro.json + REGISTRO.md). Email e username sono dati di registro.
+        riferimento_credenziale: `rete://<host>/<intestazione>` (segreto di rete) o `segreto://<servizio>/<campo>`."""
+        if not voce.get("servizio"):
+            raise ValueError("servizio obbligatorio")
+        ign = [k for k in voce if k not in CAMPI_REGISTRO]
+        if ign:
+            raise ValueError(f"campi non ammessi nel registro: {ign}")
+        rif = voce.get("riferimento_credenziale", "")
+        if rif and not rif.startswith(("rete://", "segreto://")):
+            raise ValueError("riferimento_credenziale deve essere rete://host/intestazione o segreto://servizio/campo")
+        p = os.path.join(self.cartella, "registro.json")
+        reg = json.load(open(p, encoding="utf-8")) if os.path.exists(p) else {}
+        reg.setdefault(voce["servizio"], {}).update(voce)
+        with open(p, "w", encoding="utf-8") as f:
+            json.dump(reg, f, ensure_ascii=False, indent=2)
+        righe = ["# Registro account (dati non segreti)", "",
+                 "Credenziali operative: segreti di rete dell'ambiente (`rete://`). Copia di recupero: ACCESSI_SISTEMA cifrato (`segreto://`).", "",
+                 "| " + " | ".join(CAMPI_REGISTRO) + " |", "|" + "---|" * len(CAMPI_REGISTRO)]
+        for s in sorted(reg):
+            righe.append("| " + " | ".join(str(reg[s].get(c, "")).replace("|", "/") for c in CAMPI_REGISTRO) + " |")
+        with open(os.path.join(self.cartella, "REGISTRO.md"), "w", encoding="utf-8") as f:
+            f.write("\n".join(righe) + "\n")
+        return reg[voce["servizio"]]
 
     def esporta(self, identita: str) -> dict:
         """Solo per il titolare: decifra tutte le voci con la sua chiave privata e ricostruisce lo stato corrente."""

@@ -1,0 +1,37 @@
+{
+  "id": "A-content-calendar-en",
+  "titolo": "Calendario editoriale social per piccole imprese (Sheets/Notion) - EN/US",
+  "sintetico": false,
+  "lingua": "en",
+  "mercato": "US",
+  "acquirente": "Titolari di piccole imprese e freelance che gestiscono i social da soli.",
+  "problema": "Pianificare post e mantenere continuita. Categoria molto affollata e con molte alternative gratuite.",
+  "fonti": [
+    {"tipo": "osservata", "descrizione": "WebSearch 'content calendar template small business social media Etsy digital download': decine di inserzioni Etsy; riepilogo del motore: la maggior parte tra circa 2 e 15 USD, molte sotto 3 USD, outlier a 40-50 USD (con licenza commerciale o nicchia fotografi di matrimoni). Alcune inserzioni mostrano 'In 8 carts'.", "url": "https://www.etsy.com/listing/4305005643", "data": "2026-11-23"},
+    {"tipo": "osservata", "descrizione": "Venduto anche su Stan Store (Content Marketing Planner): conferma altri canali.", "url": "https://stan.store/EllynPerry/p/content-marketing-planner", "data": "2026-11-23"},
+    {"tipo": "ipotesi", "descrizione": "Concorrenti gratuiti noti dai risultati ma in altri mercati: Buffer (13+ template, IT/EN, pubblicato 4 agosto 2025, secondo il motore) e HubSpot DE (Excel gratuito); non contano per la soglia in EN. Prezzo 8 USD-equivalente, sviluppo 10 EUR: ipotesi."}
+  ],
+  "concorrenti": [
+    {"nome": "Inserzioni Etsy calendari editoriali", "prezzo_osservato": "circa 2-15 USD, outlier 40-50 USD (snippet)", "lacune": "licenza commerciale come differenziatore (dal riepilogo)"},
+    {"nome": "Stan Store content planner", "prezzo_osservato": "non verificato", "lacune": "non verificate"},
+    {"nome": "Buffer / HubSpot", "prezzo_osservato": "gratuito", "lacune": "non verificate"}
+  ],
+  "prezzo_da_verificare_cents": 800,
+  "accesso_pubblico": {"canale": "Etsy + sito Shopify; Pinterest/Instagram organico", "costo_stimato_cents": 150, "stato": "ipotesi"},
+  "costo_sviluppo_cents": 1000,
+  "complessita_assistenza": "bassa",
+  "ipotesi_margine_bp": 6612,
+  "punteggi": {"problema": 5, "accesso": 5, "margine": 6, "concorrenza": 2, "costo_sviluppo": 8, "assistenza": 7},
+  "note_punteggi": {
+    "problema": "5: bisogno comune ma nessun lamento osservato; evidenza solo di offerta.",
+    "accesso": "5: Etsy mostra domanda (carrelli); canale unico, affollato.",
+    "margine": "6: 66% ipotizzato su 8 USD con commissione fissa che pesa; prezzi di mercato bassi.",
+    "concorrenza": "2: mercato saturo, prezzi spesso sotto 3 USD, gratuiti forti.",
+    "costo_sviluppo": "8: foglio/Notion semplice.",
+    "assistenza": "7: autoesplicativo."
+  },
+  "esclusioni": "Nessuna categoria regolamentata. Rischio dipendenza Etsy.",
+  "punteggio_indicativo": 52.5,
+  "selezionata": false,
+  "motivo": "Punteggio indicativo 52,5 < 60 e solo 2 fonti osservate: non candidata."
+}

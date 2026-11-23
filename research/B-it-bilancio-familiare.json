@@ -1,0 +1,47 @@
+{
+  "id": "B-it-bilancio-familiare",
+  "titolo": "Foglio Excel/Google Sheets per il bilancio familiare mensile (IT)",
+  "sintetico": false,
+  "lingua": "it",
+  "mercato": "IT",
+  "acquirente": "Coppie e famiglie italiane che vogliono tenere traccia di entrate e uscite domestiche mensili senza app a pagamento. Solo tracciamento, nessuna consulenza.",
+  "problema": "Non sapere dove vanno i soldi a fine mese; i modelli gratuiti sono generici o pensati per piccole imprese e vanno adattati a mano.",
+  "fonti": [
+    {"tipo": "osservata", "descrizione": "Risultati WebSearch 'bilancio familiare excel modello download prezzo Etsy': negozio Etsy IT di fogli Excel presente. Il riepilogo riporta inserzioni di budget a circa 1,39-7,85 EUR (budget di coppia 7,85 EUR scontato da 31,40 EUR) e segnala che alcuni modelli sono per piccole imprese. Pagina non aperta (WebFetch bloccato).", "url": "https://www.etsy.com/it/shop/EasyExcelPro", "data": "2026-11-23", "metodo": "WebSearch, pagina non aperta"},
+    {"tipo": "osservata", "descrizione": "Money.it e citato come guida al bilancio familiare con Excel/app; il riepilogo WebSearch riporta che indica un modello gratuito della Banca d'Italia e modelli gratuiti Microsoft. Pagina non aperta (WebFetch bloccato).", "url": "https://www.money.it/bilancio-familiare-cos-e-come-fare-excel-app", "data": "2026-11-23", "metodo": "WebSearch, pagina non aperta"},
+    {"tipo": "osservata", "descrizione": "Affari Miei offre 'Bilancio Familiare Smart' in .xlsx (entrate/uscite), descritto dal riepilogo come gratuito o a basso costo. Prezzo non verificato.", "url": "https://www.affarimiei.biz/bilancio-familiare-smart", "data": "2026-11-23", "metodo": "WebSearch, pagina non aperta"},
+    {"tipo": "ipotesi", "descrizione": "Stima: la domanda esiste (piu risultati IT dedicati e inserzioni a pagamento) ma il numero di ricerche e di vendite non e osservato."},
+    {"tipo": "ipotesi", "descrizione": "Prezzo 9,90 EUR, costo di sviluppo 15 EUR, costo di accesso 2 EUR per vendita: ipotesi del ricercatore."}
+  ],
+  "concorrenti": [
+    {"nome": "Modelli gratuiti (Banca d'Italia, Microsoft)", "prezzo": "gratis", "tipo_dato": "osservata", "fonte": "riepilogo WebSearch su money.it"},
+    {"nome": "Etsy IT, fogli budget", "prezzo": "da circa 1,39 a 7,85 EUR scontato (31,40 EUR prezzo di listino dichiarato)", "tipo_dato": "osservata", "fonte": "riepilogo WebSearch, shop EasyExcelPro e altri"},
+    {"nome": "Affari Miei - Bilancio Familiare Smart", "prezzo": "non verificato", "tipo_dato": "ipotesi"}
+  ],
+  "prezzo_da_verificare_cents": 990,
+  "accesso_pubblico": {
+    "canale": "marketplace (Etsy IT) + organico (guide SEO in italiano); creator di finanza domestica come secondo canale",
+    "costo_stimato_cents": 200,
+    "natura": "ipotesi"
+  },
+  "costo_sviluppo_cents": 1500,
+  "complessita_assistenza": "bassa",
+  "ipotesi_margine_bp": 6576,
+  "punteggi": {"problema": 6, "accesso": 5, "margine": 6, "concorrenza": 3, "costo_sviluppo": 8, "assistenza": 7},
+  "note_punteggi": {
+    "problema": "6: problema frequente e ricorrente (osservato: molte guide e modelli IT, inserzioni a pagamento). Non ci sono dati su urgenza o volumi: niente voto alto.",
+    "accesso": "5: Etsy IT ospita il segmento (osservato) ma costo di acquisizione e traffico non verificati; un solo canale principale.",
+    "margine": "6: su Etsy (config: 950 bp + 45 cent) a 990 cent il costo canale e 139; con 200 di accesso e margine 651 cent = 6576 bp, prima di sviluppo. Prezzo ipotesi.",
+    "concorrenza": "3: alternative gratuite autorevoli (Banca d'Italia, Microsoft, Money.it) e prezzi Etsy bassi (osservati via riepilogo). Lacuna: modelli generici o da impresa.",
+    "costo_sviluppo": "8: foglio calcolato con AI, costo vivo basso (ipotesi 1500 cent).",
+    "assistenza": "7: prodotto autoesplicativo; supporto su formule/compatibilita Excel vs Sheets."
+  },
+  "costi_canale_config": {
+    "etsy": "950 bp + 45 cent (config/canali_vendita.json, ipotesi)",
+    "shopify": "290 bp + 30 cent + canone 3900 cent/mese (ipotesi); a 20 ordini/mese il canone pesa 195 cent per ordine",
+    "creator": "30% sul netto (config/policy.json, ipotesi)"
+  },
+  "canali": {"sito_shopify": "senza traffico proprio non copre il canone; ipotesi", "marketplace": "Etsy IT, osservata presenza di venditori", "creator": "ipotesi", "organico": "ipotesi: ricerche IT lunga coda"},
+  "esclusioni": "Finanza domestica non e consulenza: nessun consiglio su investimenti, tasse, prestiti. Va ribadito nella specifica; segnalato al Team Lead come caso di confine (categoria 'finanza').",
+  "esito": "sotto soglia (punteggio 56,5 < 60): archivio"
+}

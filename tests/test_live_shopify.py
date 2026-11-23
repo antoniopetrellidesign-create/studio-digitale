@@ -11,7 +11,8 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from unittest import mock
 
 from studio.adapters.base import ExternalActionBlocked, ExternalGate
-from studio.adapters.live_shopify import SCOPE_MINIMI, LiveShopify, verifica_webhook
+from studio.adapters.live_shopify import (SCOPE_MINIMI, SEGNAPOSTO_RETE, LiveShopify, verifica_continuita,
+                                          verifica_webhook)
 
 RICHIESTE = []
 
@@ -37,16 +38,33 @@ class FintoShopify(BaseHTTPRequestHandler):
         pass
 
 
+class Eco(BaseHTTPRequestHandler):
+    valore = None  # None = il proxy non ha sostituito: l'eco restituisce il segnaposto ricevuto
+
+    def do_GET(self):
+        h = {"X-Shopify-Access-Token": Eco.valore or self.headers.get("X-Shopify-Access-Token")}
+        out = json.dumps({"headers": h}).encode()
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(out)
+
+    def log_message(self, *a):
+        pass
+
+
 class TestLiveShopify(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.srv = HTTPServer(("127.0.0.1", 0), FintoShopify)
         threading.Thread(target=cls.srv.serve_forever, daemon=True).start()
+        cls.eco = HTTPServer(("127.0.0.1", 0), Eco)
+        threading.Thread(target=cls.eco.serve_forever, daemon=True).start()
         cls.url = f"http://127.0.0.1:{cls.srv.server_port}/admin/api/graphql.json"
 
     @classmethod
     def tearDownClass(cls):
         cls.srv.shutdown()
+        cls.eco.shutdown()
 
     def _ad(self, collaudate=("shopify",)):
         log = os.path.join(tempfile.mkdtemp(), "calls.jsonl")
@@ -72,6 +90,42 @@ class TestLiveShopify(unittest.TestCase):
         self.assertEqual(p["stato"], "bozza")
         self.assertEqual(RICHIESTE[-1]["corpo"]["variables"]["p"]["status"], "DRAFT")
         self.assertEqual(RICHIESTE[-1]["token"], "valore-fittizio")
+
+    def _rete(self, collaudate=("shopify",)):
+        log = os.path.join(tempfile.mkdtemp(), "calls.jsonl")
+        return LiveShopify(ExternalGate("live", log, collaudate), "finto.myshopify.com", endpoint=self.url,
+                           credenziale="rete")
+
+    def test_rete_invia_segnaposto_senza_variabile_env(self):
+        env = {k: v for k, v in os.environ.items() if k != "SHOPIFY_ADMIN_TOKEN"}
+        env["STUDIO_LIVE"] = "1"
+        with mock.patch.dict(os.environ, env, clear=True):
+            self._rete().verifica_accesso()
+        self.assertEqual(RICHIESTE[-1]["token"], SEGNAPOSTO_RETE)
+
+    def test_rete_mantiene_il_cancello(self):
+        with mock.patch.dict(os.environ, {"STUDIO_LIVE": "0"}):
+            with self.assertRaises(ExternalActionBlocked):
+                self._rete().verifica_accesso()
+        with mock.patch.dict(os.environ, {"STUDIO_LIVE": "1"}):
+            with self.assertRaises(ExternalActionBlocked):
+                self._rete(collaudate=()).verifica_accesso()
+        with self.assertRaises(ValueError):
+            LiveShopify(ExternalGate("live", "/dev/null"), "x", endpoint="http://x.myshopify.com/g", credenziale="rete")
+        with self.assertRaises(ValueError):
+            LiveShopify(ExternalGate("live", "/dev/null"), "x", endpoint="https://evil.example/g", credenziale="rete")
+        with self.assertRaises(ValueError):
+            LiveShopify(ExternalGate("live", "/dev/null"), "x.myshopify.com", credenziale="boh")
+
+    def test_continuita_solo_impronta(self):
+        for sostituito, atteso in ((True, True), (False, False)):
+            Eco.valore = "VALORE-SEGRETO-DI-PROVA" if sostituito else None
+            r = verifica_continuita("finto.myshopify.com", f"http://127.0.0.1:{self.eco.server_port}/eco")
+            self.assertEqual(r["presente"], atteso)
+            self.assertNotIn("VALORE-SEGRETO-DI-PROVA", json.dumps(r))
+        Eco.valore = "VALORE-SEGRETO-DI-PROVA"
+        r = verifica_continuita("h", lambda h: f"http://127.0.0.1:{self.eco.server_port}/eco")
+        self.assertEqual(r["impronta"], hashlib.sha256(b"VALORE-SEGRETO-DI-PROVA").hexdigest()[:12])
 
     def test_endpoint_esterni_non_ammessi(self):
         with self.assertRaises(ValueError):

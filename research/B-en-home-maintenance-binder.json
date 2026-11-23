@@ -1,0 +1,42 @@
+{
+  "id": "B-en-home-maintenance-binder",
+  "titolo": "Printable home maintenance and home management binder (EN, US)",
+  "sintetico": false,
+  "lingua": "en",
+  "mercato": "US",
+  "acquirente": "Proprietari di casa e nuovi acquirenti negli Stati Uniti che vogliono un calendario di manutenzione e un raccoglitore stampabile per la casa.",
+  "problema": "Dimenticare i lavori stagionali e perdere traccia di garanzie, contatti e interventi; evitare riparazioni costose.",
+  "fonti": [
+    {"tipo": "osservata", "descrizione": "Risultati WebSearch 'home maintenance binder printable PDF Etsy price': molti listing Etsy; il riepilogo riporta checklist a 3,50 USD scontati da 5,00, binder a 9,99 USD, kit a 14,97 USD scontati da 24,95 e un life binder a 32,94 USD scontati da 54,90. Pagine non aperte.", "url": "https://www.etsy.com/listing/4402120754/home-maintenance-checklist-bundle", "data": "2026-11-23", "metodo": "WebSearch, pagina non aperta"},
+    {"tipo": "osservata", "descrizione": "Un altro listing Etsy dello stesso risultato: 'Printable Life Binder - Home Management System (Digital Download)'. Stessa piattaforma, listing distinto.", "url": "https://www.etsy.com/listing/789471732", "data": "2026-11-23", "metodo": "WebSearch, pagina non aperta"},
+    {"tipo": "ipotesi", "descrizione": "Stima: la presenza di molti listing con sconti ricorrenti (prezzi barrati) indica una categoria affollata e con prezzi sotto pressione. Non e un dato di vendita."},
+    {"tipo": "ipotesi", "descrizione": "Prezzo 9,90 EUR (conversione da USD non verificata), sviluppo 25 EUR, accesso 2 EUR: ipotesi."}
+  ],
+  "concorrenti": [
+    {"nome": "Etsy: home maintenance checklist", "prezzo": "3,50 USD scontato da 5,00", "tipo_dato": "osservata"},
+    {"nome": "Etsy: home maintenance planner/binder PDF", "prezzo": "4,95 USD scontato da 9,91; 9,99 USD", "tipo_dato": "osservata"},
+    {"nome": "Etsy: home management system kit", "prezzo": "14,97 USD scontato da 24,95; life binder 32,94 USD scontato da 54,90", "tipo_dato": "osservata"}
+  ],
+  "prezzo_da_verificare_cents": 990,
+  "accesso_pubblico": {
+    "canale": "marketplace (Etsy) + organico (Pinterest/SEO); creator di home organizing come secondo canale",
+    "costo_stimato_cents": 200,
+    "natura": "ipotesi"
+  },
+  "costo_sviluppo_cents": 2500,
+  "complessita_assistenza": "bassa",
+  "ipotesi_margine_bp": 6576,
+  "punteggi": {"problema": 5, "accesso": 6, "margine": 6, "concorrenza": 3, "costo_sviluppo": 7, "assistenza": 8},
+  "note_punteggi": {
+    "problema": "5: problema periodico ma poco urgente; nessun dato sul dolore, solo molti listing.",
+    "accesso": "6: Etsy ha molti listing (osservato) quindi pubblico presente, ma saturazione rende la visibilita incerta.",
+    "margine": "6: 990 cent, Etsy 139 cent, accesso 200: 651 cent = 6576 bp (ipotesi; conversione USD non verificata).",
+    "concorrenza": "3: categoria affollata con sconti ricorrenti (osservato) e prezzi bassi.",
+    "costo_sviluppo": "7: PDF stampabile, grafica con AI; 2500 cent ipotesi.",
+    "assistenza": "8: PDF statico."
+  },
+  "costi_canale_config": {"etsy": "950 bp + 45 cent (ipotesi)", "gumroad": "1000 bp + 50 cent (ipotesi)", "shopify": "290 bp + 30 cent + 3900 cent/mese (ipotesi)", "creator": "30% sul netto (ipotesi)"},
+  "canali": {"sito_shopify": "ipotesi", "marketplace": "Etsy osservata", "creator": "ipotesi", "organico": "ipotesi"},
+  "esclusioni": "Nessuna categoria regolamentata. Evitare consigli tecnici su sicurezza (gas, elettrico) come prescrizioni.",
+  "esito": "sotto soglia (punteggio 56 < 60): archivio. Fonti: 2 URL ma stesso sito (Etsy), contano come una sola fonte indipendente secondo il metodo sez. 3"
+}

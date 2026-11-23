@@ -23,6 +23,22 @@ class TestVault(unittest.TestCase):
         self.assertEqual(len(ps), 200)
         self.assertTrue(all(len(p) == 28 for p in ps))
 
+    def test_registro_non_segreto_senza_password_e_token(self):
+        self.v.aggiorna_registro({"servizio": "shopify", "funzione": "negozio", "url": "https://x.myshopify.com",
+                                  "email": "operativo@esempio.example", "username": "operativo", "titolare": "titolare",
+                                  "stato": "attivo", "costo": "0", "rinnovo": "n/d",
+                                  "riferimento_credenziale": "rete://x.myshopify.com/X-Shopify-Access-Token"})
+        self.v.aggiorna_registro({"servizio": "console", "riferimento_credenziale": "segreto://console/password"})
+        for nome in ("registro.json", "REGISTRO.md"):
+            t = open(os.path.join(self.d, "accessi", nome), encoding="utf-8").read().lower()
+            self.assertIn("operativo@esempio.example", t)
+            self.assertNotRegex(t, r"tok_prefisso|password\"\s*:|token\"\s*:")
+        for vietato in ({"password": "x"}, {"token": "x"}):
+            with self.assertRaises(ValueError):
+                self.v.aggiorna_registro({"servizio": "s", **vietato})
+        with self.assertRaises(ValueError):
+            self.v.aggiorna_registro({"servizio": "s", "riferimento_credenziale": "valore-nudo"})
+
     def test_senza_destinatari_rifiuta(self):
         v = Vault(os.path.join(self.d, "x"), os.path.join(self.d, "vuoto.txt"))
         with self.assertRaises(VaultNonConfigurato):
@@ -31,14 +47,14 @@ class TestVault(unittest.TestCase):
     def test_nessun_segreto_in_chiaro_e_recupero_del_titolare(self):
         pw = genera_password()
         r = self.v.registra("shopify", "creazione", {"funzione": "negozio", "url_accesso": "https://admin.shopify.com",
-                                                     "email": "operativo@esempio.invalid", "password": pw,
+                                                     "email": "operativo@esempio.example", "password": pw,
                                                      "piano": "base", "stato_verifica": "in attesa"})
         self.assertIn("segreto://shopify/password", r["riferimenti"])
         for radice, _, files in os.walk(os.path.join(self.d, "accessi")):
             for f in files:
                 testo = open(os.path.join(radice, f), encoding="utf-8", errors="ignore").read()
                 self.assertNotIn(pw, testo)
-                self.assertNotIn("operativo@esempio.invalid", testo)
+                self.assertNotIn("operativo@esempio.example", testo)
         indice = open(os.path.join(self.d, "accessi", "INDICE.md")).read()
         self.assertIn("segreto://shopify/password", indice)
         self.v.registra("shopify", "verifica", {"stato_verifica": "verificato"})

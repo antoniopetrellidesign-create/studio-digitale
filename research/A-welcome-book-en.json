@@ -1,0 +1,41 @@
+{
+  "id": "A-welcome-book-en",
+  "titolo": "Welcome book / guida ospiti editabile per host di affitti brevi - EN/US",
+  "sintetico": false,
+  "lingua": "en",
+  "mercato": "US",
+  "acquirente": "Host Airbnb/VRBO di lingua inglese con 1-5 immobili (piccola impresa) che vogliono una guida ospiti pronta da personalizzare.",
+  "problema": "Ridurre le domande ripetute degli ospiti e fare buona impressione con una guida chiara. Esistono molti template, anche gratuiti.",
+  "fonti": [
+    {"tipo": "osservata", "descrizione": "WebSearch 'Airbnb host welcome book template digital download Etsy price': molte inserzioni Etsy; riepilogo del motore: singoli tra circa 4 e 20 USD, bundle 20-26 USD, alcuni a 30 USD. Pagine non aperte.", "url": "https://www.etsy.com/listing/1453313943/airbnb-welcome-book-template-house-host", "data": "2026-11-23"},
+    {"tipo": "osservata", "descrizione": "Il prodotto e venduto anche su Selar (12,99 USD) e Payhip (15 USD) secondo il riepilogo del motore: canali alternativi esistenti.", "url": "https://selar.com/63h071", "data": "2026-11-23"},
+    {"tipo": "osservata", "descrizione": "Template gratuito di welcome book da Lodgify (checklist scaricabile) e da Touch Stay (versione Canva): concorrenti gratuiti.", "url": "https://touchstay.com/blog/welcome-visitors-to-vacation-rental-with-guest-welcome-book-template", "data": "2026-11-23"},
+    {"tipo": "osservata", "descrizione": "Anche la piattaforma VRBO offre uno strumento nativo di welcome guide (menzionato da Hospitable): sostituto gratuito.", "url": "https://hospitable.com/vrbo-welcome-guide", "data": "2026-11-23"},
+    {"tipo": "ipotesi", "descrizione": "Prezzo 12 USD-equivalente, sviluppo 10 EUR, accesso 1,50 EUR. Nessun lamento di host osservato: la ricerca con site:reddit.com non ha restituito thread."}
+  ],
+  "concorrenti": [
+    {"nome": "Inserzioni Etsy welcome book (Canva)", "prezzo_osservato": "circa 4-30 USD (snippet)", "lacune": "non verificate"},
+    {"nome": "Selar", "prezzo_osservato": "12,99 USD", "lacune": "non verificate"},
+    {"nome": "Payhip", "prezzo_osservato": "15 USD", "lacune": "non verificate"},
+    {"nome": "Touch Stay / Lodgify (gratuiti)", "prezzo_osservato": "gratuito", "lacune": "esca per software"},
+    {"nome": "VRBO welcome guide nativa", "prezzo_osservato": "incluso", "lacune": "solo VRBO"}
+  ],
+  "prezzo_da_verificare_cents": 1200,
+  "accesso_pubblico": {"canale": "Etsy + sito Shopify; Pinterest organico", "costo_stimato_cents": 150, "stato": "ipotesi"},
+  "costo_sviluppo_cents": 1000,
+  "complessita_assistenza": "media",
+  "ipotesi_margine_bp": 7425,
+  "punteggi": {"problema": 5, "accesso": 5, "margine": 6, "concorrenza": 4, "costo_sviluppo": 7, "assistenza": 6},
+  "note_punteggi": {
+    "problema": "5: bisogno plausibile ma nessun lamento diretto osservato.",
+    "accesso": "5: Etsy mostra domanda per la categoria; i compratori sono raggiungibili anche su Pinterest (ipotesi).",
+    "margine": "6: 74% ipotizzato; prezzo con ampia variabilita osservata (4-30 USD).",
+    "concorrenza": "4: molti concorrenti e gratuiti, ma prezzi dispersi: possibile segmentazione per tipo di immobile (ipotesi).",
+    "costo_sviluppo": "7: richiede design di qualita e licenze di font/immagini; Canva Pro non verificato.",
+    "assistenza": "6: clienti chiedono aiuto con Canva e link di condivisione (ipotesi)."
+  },
+  "esclusioni": "Nessuna categoria regolamentata. Rischio IP: Canva, loghi Airbnb/VRBO non utilizzabili. Rischio dipendenza Etsy.",
+  "punteggio_indicativo": 53.5,
+  "selezionata": false,
+  "motivo": "Punteggio indicativo 53,5 < 60: non candidata."
+}

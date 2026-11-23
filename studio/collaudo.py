@@ -74,6 +74,9 @@ def _ordine_fasi_ok(runs_dir, rid):
 
 def esegui(runs_dir=None) -> int:
     runs_dir = runs_dir or os.path.join(ROOT, "runs", "collaudo-" + datetime.now().strftime("%Y%m%d-%H%M%S"))
+    if os.path.isdir(runs_dir) and os.listdir(runs_dir):
+        # i run omonimi sono rifiutati (D-015): una cartella già usata riceve una sottocartella nuova
+        runs_dir = os.path.join(runs_dir, "collaudo-" + datetime.now().strftime("%Y%m%d-%H%M%S-%f"))
     os.makedirs(runs_dir, exist_ok=True)
     risultati = []
 

@@ -19,6 +19,7 @@ from urllib.parse import urlparse
 
 from .base import ExternalActionBlocked
 
+SEGNAPOSTO_RETE = "segnaposto-segreto-di-rete"  # NON segreto: il proxy lo sostituisce con il token per l'host legato
 API_VERSION = "2025-10"
 SCOPE_MINIMI = ["read_products", "write_products", "read_orders", "read_discounts", "write_discounts",
                 "read_files", "write_files"]
@@ -34,7 +35,11 @@ def verifica_webhook(corpo: bytes, firma_b64: str, segreto: str) -> bool:
 class LiveShopify:
     servizio = "shopify"
 
-    def __init__(self, gate, negozio: str, token_env: str = "SHOPIFY_ADMIN_TOKEN", endpoint: str | None = None):
+    def __init__(self, gate, negozio: str, token_env: str = "SHOPIFY_ADMIN_TOKEN", endpoint: str | None = None,
+                 credenziale: str = "env"):
+        if credenziale not in ("env", "rete"):
+            raise ValueError("credenziale: 'env' oppure 'rete'")
+        self.credenziale = credenziale
         self.gate = gate
         self.negozio = negozio
         self.token_env = token_env
@@ -52,9 +57,12 @@ class LiveShopify:
             self.gate.record(self.servizio, azione, esito_forzato="bloccato")
             raise ExternalActionBlocked(f"shopify.{azione}: live non consentito (serve STUDIO_LIVE=1 e integrazione collaudata)")
         self.gate.record(self.servizio, azione)
-        token = os.environ.get(self.token_env)
-        if not token:
-            raise ExternalActionBlocked(f"segreto://shopify/token_admin non disponibile (variabile {self.token_env})")
+        if self.credenziale == "rete":  # il proxy inserisce il valore reale solo per l'host legato; qui solo segnaposto
+            token = SEGNAPOSTO_RETE
+        else:
+            token = os.environ.get(self.token_env)
+            if not token:
+                raise ExternalActionBlocked(f"segreto://shopify/token_admin non disponibile (variabile {self.token_env})")
         req = urllib.request.Request(self.endpoint, method="POST",
                                      data=json.dumps({"query": query, "variables": variabili or {}}).encode(),
                                      headers={"Content-Type": "application/json", "X-Shopify-Access-Token": token})
@@ -84,3 +92,19 @@ class LiveShopify:
         if p["status"] != "DRAFT":
             raise RuntimeError("il prodotto non è in bozza")
         return {"product_id": p["id"], "stato": "bozza", "prezzo_cents": prezzo_cents, "lingue": lingue}
+
+
+def verifica_continuita(host: str, url_eco, intestazione: str = "X-Shopify-Access-Token",
+                        segnaposto: str = SEGNAPOSTO_RETE, timeout: int = 15) -> dict:
+    """Prova di continuità dopo un riavvio: chiede a un servizio di eco le intestazioni ricevute e confronta SOLO
+    un'impronta SHA-256 troncata (mai il valore). `url_eco` è un URL oppure un callable(host) -> URL.
+    presente=True se l'intestazione è arrivata con valore diverso dal segnaposto (sostituito dal proxy)."""
+    url = url_eco(host) if callable(url_eco) else url_eco
+    req = urllib.request.Request(url, headers={intestazione: segnaposto})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        ricevute = {k.lower(): v for k, v in json.loads(r.read()).get("headers", {}).items()}
+    valore = ricevute.get(intestazione.lower())
+    if not valore:
+        return {"presente": False, "impronta": None}
+    impronta = hashlib.sha256(valore.encode()).hexdigest()[:12]
+    return {"presente": valore != segnaposto, "impronta": impronta}

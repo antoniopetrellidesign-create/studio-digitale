@@ -1,0 +1,40 @@
+{
+  "id": "A-angebot-kleinunternehmer-de",
+  "titolo": "Kit Angebot + Rechnung + Auftragsliste per Kleinunternehmer/Freelancer - DE",
+  "sintetico": false,
+  "lingua": "de",
+  "mercato": "DE",
+  "acquirente": "Kleinunternehmer e freelance in Germania che emettono offerte e fatture a mano in Word/Excel.",
+  "problema": "Avere modelli di offerta/fattura con i campi obbligatori e la dicitura Kleinunternehmerregelung (par. 19 UStG), piu un elenco ordini. I modelli base sono pero gratuiti presso molti fornitori di software.",
+  "fonti": [
+    {"tipo": "osservata", "descrizione": "sevdesk offre gratis un modello di offerta per Kleinunternehmer in Word ed Excel con istruzioni (risultato WebSearch, snippet).", "url": "https://sevdesk.de/angebotsvorlage-kleinunternehmer/", "data": "2026-11-23"},
+    {"tipo": "osservata", "descrizione": "Qonto offre gratis un modello di fattura per Kleinunternehmer in Excel con la dicitura par. 19 UStG (risultato WebSearch, snippet).", "url": "https://qonto.com/de/invoicing/templates/small-business", "data": "2026-11-23"},
+    {"tipo": "osservata", "descrizione": "Inserzione Etsy tedesca per un tracker clienti/ordini per piccole imprese con prezzo mostrato 'Jetzt Preis: 18,89 EUR' (titolo del risultato). Il riepilogo del motore indica Etsy in generale tra circa 5 e 19 EUR; il foglio puo essere in inglese.", "url": "https://www.etsy.com/listing/4582593212", "data": "2026-11-23"},
+    {"tipo": "ipotesi", "descrizione": "Prezzo 10 EUR, sviluppo 15 EUR, accesso 1,50 EUR/acquisto: ipotesi senza fonte. Commissioni Etsy da config (ipotesi)."},
+    {"tipo": "ipotesi", "descrizione": "Nessuna recensione ne volume di vendita osservati; nessun forum tedesco consultato (la ricerca non ha restituito thread)."}
+  ],
+  "concorrenti": [
+    {"nome": "sevdesk (modelli gratuiti)", "prezzo_osservato": "gratuito", "lacune": "usa i modelli come esca per il software"},
+    {"nome": "Qonto (modello Excel gratuito)", "prezzo_osservato": "gratuito", "lacune": "idem"},
+    {"nome": "selbststaendig.de (generatore online PDF)", "prezzo_osservato": "gratuito, senza registrazione", "lacune": "non e Excel/Word"},
+    {"nome": "Etsy tracker per piccole imprese", "prezzo_osservato": "18,89 EUR (listino mostrato)", "lacune": "foglio eventualmente in inglese (dal riepilogo del motore)"}
+  ],
+  "prezzo_da_verificare_cents": 1000,
+  "accesso_pubblico": {"canale": "Etsy.de + sito Shopify; SEO su termini 'Vorlage Kleinunternehmer'", "costo_stimato_cents": 150, "stato": "ipotesi"},
+  "costo_sviluppo_cents": 1500,
+  "complessita_assistenza": "media",
+  "ipotesi_margine_bp": 7100,
+  "punteggi": {"problema": 5, "accesso": 4, "margine": 5, "concorrenza": 2, "costo_sviluppo": 8, "assistenza": 6},
+  "note_punteggi": {
+    "problema": "5: bisogno reale (campi obbligatori) ma coperto da gratuiti; nessun lamento osservato.",
+    "accesso": "4: dipende da Etsy/SEO contro siti molto forti (sevdesk, Qonto); costo non misurato.",
+    "margine": "5: 71% ipotizzato ma il prezzo e difficile da giustificare con gratuiti; prezzo non verificato.",
+    "concorrenza": "2: le alternative gratuite coprono il nucleo del prodotto.",
+    "costo_sviluppo": "8: foglio e documenti semplici.",
+    "assistenza": "6: domande sul contenuto fiscale/legale delle diciture sono probabili (ipotesi)."
+  },
+  "esclusioni": "Tocca fiscale/legale (diciture UStG, Pflichtangaben): categoria potenzialmente regolamentata (finanza/legale). ESCALATION al Team Lead prima di qualunque sviluppo.",
+  "punteggio_indicativo": 47.5,
+  "selezionata": false,
+  "motivo": "Punteggio indicativo 47,5 < 60 e categoria sensibile: scartata."
+}

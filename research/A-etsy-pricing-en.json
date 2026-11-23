@@ -1,0 +1,40 @@
+{
+  "id": "A-etsy-pricing-en",
+  "titolo": "Calcolatore prezzi, costi e profitto per venditori handmade/digitali (Sheets/Excel) - EN/US",
+  "sintetico": false,
+  "lingua": "en",
+  "mercato": "US",
+  "acquirente": "Piccoli venditori Etsy/handmade che non sanno se i prezzi coprono materiali, tempo, imballaggio e commissioni.",
+  "problema": "Calcolare un prezzo che copra costi e commissioni di piattaforma, che cambiano nel tempo. Un thread della community Etsy mostra la domanda ricorrente su come prezzare includendo tempo e imballaggio.",
+  "fonti": [
+    {"tipo": "osservata", "descrizione": "Thread della community ufficiale Etsy: venditori chiedono quale formula o strumento usare per prezzare gli articoli (materiali economici, tempo e imballaggio costosi). Letto dal riepilogo del motore, non aperto.", "url": "https://community.etsy.com/t5/Etsy-Success/What-equation-and-or-tool-do-you-use-to-price-your-items/m-p/82672773", "data": "2026-11-23"},
+    {"tipo": "osservata", "descrizione": "WebSearch: decine di inserzioni Etsy di calcolatori prezzi/profitto, tipicamente da pochi dollari a circa 12; un modello Flevy a 45 USD. Riepilogo del motore avverte che molti usano strutture di commissioni Etsy datate.", "url": "https://www.etsy.com/listing/4592265503", "data": "2026-11-23"},
+    {"tipo": "osservata", "descrizione": "Concorrente gratuito: Craftybase offre un foglio gratuito per Excel, Numbers e Google Sheets (materiali, lavoro, overhead, imballaggio, commissioni Etsy).", "url": "https://craftybase.com/etsy-pricing-calculator-spreadsheet", "data": "2026-11-23"},
+    {"tipo": "osservata", "descrizione": "Flevy vende un 'Handmade Product Pricing Calculator for Etsy Sellers' in XLSX; prezzo di 45 USD secondo il riepilogo del motore.", "url": "https://flevy.com/browse/marketplace/handmade-product-pricing-calculator-for-etsy-sellers-12511", "data": "2026-11-23"},
+    {"tipo": "ipotesi", "descrizione": "Prezzo 10 USD-equivalente, sviluppo 15 EUR, accesso 1,50 EUR: ipotesi. Aggiornare le commissioni di piattaforma e un possibile vantaggio ma richiede manutenzione: ipotesi."}
+  ],
+  "concorrenti": [
+    {"nome": "Craftybase (foglio gratuito)", "prezzo_osservato": "gratuito", "lacune": "non verificate"},
+    {"nome": "Template Etsy di venditori", "prezzo_osservato": "pochi USD fino a circa 12 USD (snippet)", "lacune": "commissioni spesso datate (avviso del motore, non verificato sulle pagine)"},
+    {"nome": "Flevy XLSX", "prezzo_osservato": "45 USD (riepilogo motore)", "lacune": "non verificate"},
+    {"nome": "Etsy Seller Handbook / template ufficiale Google Sheets", "prezzo_osservato": "gratuito", "lacune": "non verificate"}
+  ],
+  "prezzo_da_verificare_cents": 1000,
+  "accesso_pubblico": {"canale": "Etsy + sito Shopify; community venditori (solo osservazione)", "costo_stimato_cents": 150, "stato": "ipotesi"},
+  "costo_sviluppo_cents": 1500,
+  "complessita_assistenza": "media",
+  "ipotesi_margine_bp": 7100,
+  "punteggi": {"problema": 6, "accesso": 5, "margine": 6, "concorrenza": 3, "costo_sviluppo": 8, "assistenza": 5},
+  "note_punteggi": {
+    "problema": "6: unica nicchia con una domanda posta da compratori osservata (thread Etsy) e inserzioni numerose; ma niente dolore urgente osservato.",
+    "accesso": "5: Etsy e il luogo naturale, e anche il concorrente delle commissioni; compratori raggiungibili ma canale unico.",
+    "margine": "6: 71% ipotizzato su 10 EUR; prezzi osservati dei concorrenti bassi.",
+    "concorrenza": "3: gratuiti (Craftybase, Etsy) e molti a prezzo basso; lacuna possibile: commissioni aggiornate, ma non verificata.",
+    "costo_sviluppo": "8: foglio di formule.",
+    "assistenza": "5: le commissioni cambiano e richiedono aggiornamenti e domande di supporto (ipotesi)."
+  },
+  "esclusioni": "Nessuna categoria regolamentata. Rischio dipendenza Etsy come unico canale e come fonte delle regole di commissione.",
+  "punteggio_indicativo": 54.5,
+  "selezionata": false,
+  "motivo": "Punteggio indicativo 54,5 < 60: non candidata; la migliore del lotto."
+}

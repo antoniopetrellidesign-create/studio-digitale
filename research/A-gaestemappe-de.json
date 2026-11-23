@@ -1,0 +1,41 @@
+{
+  "id": "A-gaestemappe-de",
+  "titolo": "Gaestemappe-Vorlage fuer Ferienwohnungen (Canva/Word) - DE",
+  "sintetico": false,
+  "lingua": "de",
+  "mercato": "DE",
+  "acquirente": "Vermieter di Ferienwohnungen e Airbnb in Germania con poche unita.",
+  "problema": "Creare una Gaestemappe completa (Hausregeln, Check-in, Umgebungstipps) senza partire da zero. Molti modelli sono gratuiti presso portali e software.",
+  "fonti": [
+    {"tipo": "osservata", "descrizione": "Inserzione Etsy tedesca (Canva, scaricabile): 'Vacation Rental House Rules Sign / Check-In Instructions' a 11,53 EUR invece di 15,37 EUR (-25%); e solo un elemento della Gaestemappe, in inglese.", "url": "https://www.etsy.com/listing/1477887686", "data": "2026-11-23"},
+    {"tipo": "osservata", "descrizione": "Digistore24: sistema digitale 'Ferienwohnung Business Pro' a 249 EUR, senza abbonamento: prodotto piu ampio, non solo template.", "url": "https://www.digistore24.com/product/725188", "data": "2026-11-23"},
+    {"tipo": "osservata", "descrizione": "atraveo (guide) offre gratis un modello di Gaestemappe in tedesco e inglese; Traum-Ferienwohnungen e Lodgify offrono modelli o checklist gratuiti.", "url": "https://guide.atraveo.com/de/article/gaestemappe-ferienwohnung", "data": "2026-11-23"},
+    {"tipo": "osservata", "descrizione": "Smoobu propone Gaestemappe digitale come funzione di software con collegamento ai portali di prenotazione: sostituto.", "url": "https://www.smoobu.com/de/ferienwohnung-digitale-gaestemappe/", "data": "2026-11-23"},
+    {"tipo": "ipotesi", "descrizione": "Prezzo 12 EUR, sviluppo 10 EUR, accesso 1,50 EUR: ipotesi. Una lacuna possibile e 'Gaestemappe completa in tedesco con testi pronti' ma non e verificata: nessun elenco di concorrenti tedeschi completo, solo pochi risultati."}
+  ],
+  "concorrenti": [
+    {"nome": "Etsy house rules sign (Canva)", "prezzo_osservato": "11,53 EUR (da 15,37 EUR)", "lacune": "singolo elemento, in inglese"},
+    {"nome": "Digistore24 Ferienwohnung Business Pro", "prezzo_osservato": "249 EUR", "lacune": "non confrontabile: sistema completo"},
+    {"nome": "Templacity Airbnb welcome book", "prezzo_osservato": "14,99 GBP (snippet)", "lacune": "inglese"},
+    {"nome": "atraveo / Traum-Ferienwohnungen / Lodgify", "prezzo_osservato": "gratuito", "lacune": "non verificate"},
+    {"nome": "Smoobu digitale Gaestemappe", "prezzo_osservato": "non verificato (software)", "lacune": "non verificate"}
+  ],
+  "prezzo_da_verificare_cents": 1200,
+  "accesso_pubblico": {"canale": "Etsy.de + sito Shopify; SEO 'Gaestemappe Vorlage'", "costo_stimato_cents": 150, "stato": "ipotesi"},
+  "costo_sviluppo_cents": 1000,
+  "complessita_assistenza": "media",
+  "ipotesi_margine_bp": 7425,
+  "punteggi": {"problema": 5, "accesso": 4, "margine": 6, "concorrenza": 5, "costo_sviluppo": 7, "assistenza": 6},
+  "note_punteggi": {
+    "problema": "5: bisogno plausibile; nessun lamento osservato.",
+    "accesso": "4: SEO contro portali forti; costo non misurato.",
+    "margine": "6: 74% ipotizzato; prezzo di riferimento 11,53-15,37 EUR (un solo osservato).",
+    "concorrenza": "5: pochi concorrenti a pagamento in tedesco osservati (un solo template Etsy parziale), ma gratuiti forti; il campione e piccolo e il 5 non e sostenuto da molte evidenze.",
+    "costo_sviluppo": "7: testi in tedesco e grafica; costo strumenti non verificato.",
+    "assistenza": "6: personalizzazioni e aiuto con Canva (ipotesi)."
+  },
+  "esclusioni": "Nessuna categoria regolamentata (evitare consigli legali su Meldepflicht/Haftung). Rischio dipendenza Etsy.",
+  "punteggio_indicativo": 53,
+  "selezionata": false,
+  "motivo": "Punteggio indicativo 53 < 60: non candidata."
+}
