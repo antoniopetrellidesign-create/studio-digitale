@@ -1,0 +1,4 @@
+# Chiavi PUBBLICHE del titolare per cifrare ACCESSI_SISTEMA (una per riga).
+# Formati ammessi: chiave age ("age1...") oppure chiave SSH pubblica ("ssh-ed25519 ..." / "ssh-rsa ...").
+# Finché questo file non contiene almeno una chiave, il sistema RIFIUTA di conservare qualsiasi credenziale.
+# Come generarla (sul computer del titolare):  age-keygen -o ~/.config/studio/accessi.key  → copiare qui la riga "public key: age1..."

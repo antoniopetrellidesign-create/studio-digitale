@@ -57,3 +57,12 @@ Il team-lead raggruppa le richieste in un solo messaggio settimanale, salvo i ca
 ## 9. Ripristino
 - Un run corrotto non si modifica a mano: si archivia la cartella e si riparte con un nuovo `--run-id`, riusando lo stesso registro (le buste del vecchio run restano contabilizzate).
 - Il registro non si modifica mai a mano. Una correzione è una nuova voce motivata in DECISIONI.md, applicata dal codice.
+
+## 10. Account e credenziali (mandato D-017)
+1. `python3 -m studio account stato --fase <fase corrente>`: un account si attiva solo se risulta "attivabile".
+2. Prima dell'attivazione: verificare prezzo, imposte, commissioni e rinnovo sulla pagina ufficiale (fonte + data in `config/account_catalogo.json`); per le prove gratuite registrare scadenza e condizioni e pianificare la disdetta o la conferma; impostare nel servizio i limiti di spesa disponibili.
+3. La riserva del canone nel registro la fa `AccountRegistry.richiedi`. Se è bloccata (residuo o allocazione), l'account non si attiva.
+4. Credenziali: `python3 -m studio accessi nuovo --servizio <id> --dati '{"funzione":…,"url_accesso":…,"piano":…}' --genera-password`. La password generata finisce solo nella voce cifrata e non viene mai stampata. Per i token API si usa il modulo sicuro dei segreti dell'ambiente, e in ACCESSI_SISTEMA si registra solo il riferimento.
+5. Dopo ogni creazione, modifica, revoca o verifica: nuova voce cifrata (azione `modifica`/`revoca`/`verifica`) con `ultima_verifica`.
+6. Recupero (solo il titolare): `python3 -m studio accessi esporta --identita ~/.config/studio/accessi.key`.
+7. Passaggi personali: `python3 -m studio account passaggi --fase <fase>`, poi riportati in AZIONI_TITOLARE.md in un'unica richiesta.

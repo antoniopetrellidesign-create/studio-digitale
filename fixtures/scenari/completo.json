@@ -1,7 +1,7 @@
 {
   "nome": "completo",
   "sintetico": true,
-  "descrizione": "Flusso completo su 3 opportunità fittizie: una incompleta, una sotto soglia, una idonea. Include doppia attribuzione creator+Ads, un webhook duplicato e un rimborso entro clawback.",
+  "descrizione": "Flusso completo su 3 opportunità fittizie: una incompleta, una sotto soglia, una idonea. Include doppia attribuzione creator+Ads, un webhook duplicato e un rimborso entro clawback. Include catalogo multicanale (sito + marketplace), fase Social e due ordini da marketplace.",
   "domanda_portafoglio": "[SINTETICO] Un modello scaricabile a 19 € venduto via creator e Ads genera margine di contribuzione positivo entro 500 €?",
   "opportunita": [
     {
@@ -292,6 +292,20 @@
         "canali": [],
         "paese": "AT",
         "giorno": 4
+      },
+      {
+        "order_id": "SIM-1015",
+        "canali": [],
+        "paese": "DE",
+        "giorno": 4,
+        "canale_vendita": "etsy"
+      },
+      {
+        "order_id": "SIM-1016",
+        "canali": [],
+        "paese": "IT",
+        "giorno": 5,
+        "canale_vendita": "etsy"
       }
     ],
     "duplicati": [
@@ -310,5 +324,35 @@
   "atteso": {
     "stato": "completato",
     "fasi": 10
+  },
+  "account_override": {
+    "email-dedicata": {
+      "stato_iniziale": "attivo"
+    },
+    "shopify": {
+      "prezzo": {
+        "stato": "verificato",
+        "max_mensile_cents": 3600,
+        "fonte": {
+          "tipo": "ipotesi",
+          "nota": "[SINTETICO] prezzo di collaudo"
+        }
+      },
+      "prova_gratuita": null
+    }
+  },
+  "social": {
+    "base_url": "https://negozio-simulato.example/products/opp-sim-a",
+    "tono": "pratico e diretto",
+    "piattaforme": [
+      {
+        "id": "pinterest",
+        "motivazione": "[SINTETICO] l'acquirente cerca modelli di pianificazione per immagini"
+      },
+      {
+        "id": "instagram",
+        "motivazione": "[SINTETICO] community di freelance raggiungibile dai creator del piano"
+      }
+    ]
   }
 }

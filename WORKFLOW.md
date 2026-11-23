@@ -3,8 +3,8 @@
 Responsabile: team-lead. Motore: `studio/workflow.py` (motore), `studio/phases.py` (fasi e controlli).
 
 ```
-Strategia → Ricerca → Selezione → Prodotto → QA → Shopify → Ordine di prova e download
-          → Distribuzione → Misurazione → Decisione
+Strategia → Ricerca → Selezione → Prodotto → QA → Catalogo multicanale → Shopify
+          → Ordine di prova e download → Social → Distribuzione → Misurazione → Decisione
 ```
 
 ## Principi
@@ -24,13 +24,20 @@ Strategia → Ricerca → Selezione → Prodotto → QA → Shopify → Ordine d
 | 3 | Selezione | team-lead | classifica, `selezionata`, `piano_test` | piano con domanda, offerta, canale primario, soglia di stop, criterio di successo; canale primario tra i canali; budget del piano ≤ residuo e ≤ disponibilità di **ogni** categoria; costo di piattaforma noto. Nessuna opportunità idonea (punteggio ≥ 60 e ≥ 2 fonti osservate) ⇒ **test fermato** |
 | 4 | Prodotto | sviluppo-prodotto | `manifest` (id, versione, lingua, licenza, files con sha256 e promesse coperte), spec, prezzo | manifest strutturalmente completo |
 | 5 | QA | qa-indipendente | `verdetto`, `controlli` con la prova di ogni controllo | Q1–Q8 tutti superati (promesse coperte, checksum, licenza, ≥2 fonti osservate, registro entro il tetto, nessun segreto nei file, nessuna azione esterna reale, piano completo). **BLOCCATO** ⇒ ritorno a Prodotto; oltre `qa.max_tentativi_prodotto` ⇒ test fermato |
+| 5b | Catalogo multicanale | acquisizione | valutazioni dei canali di vendita, `canali_selezionati`, `esclusi` | sito proprietario/Shopify presente; commissioni note per ogni canale; esclusi i canali con regole su prodotto o AI incompatibili o punteggio < 60 (`docs/marketplace.md`). Canali con fonti "ipotesi" = ammissione provvisoria; la registrazione sul marketplace entra nell'elenco del titolare e si attiva solo al lancio con verifica osservata |
 | 6 | Shopify | shopify-operazioni | scheda (in **bozza**), stato, eventi di tracciamento | scheda non pubblicata; link di download con scadenza. Senza accesso ⇒ **bloccato_titolare** con voce nel pacchetto unico |
 | 7 | Ordine di prova e download | shopify-operazioni | order_id, download_ok, duplicato_scartato, riconciliato | download verificato contro i checksum; webhook duplicato scartato; ordine di prova riconciliato una volta, escluso dai KPI |
+| 7b | Social | social-contenuti | identità, piattaforme motivate, calendario (≥4 voci), contenuti legati alle promesse del manifest, link UTM | solo prodotti **validati** (QA APPROVATO + ordine di prova con download riuscito); ogni contenuto copre una promessa; ogni link tracciato; nulla pubblicato prima del lancio; gli account social entrano nell'elenco del titolare |
 | 8 | Distribuzione | acquisizione (con creator-partnership) | canali attivati, spese bloccate, ordini | canale primario attivato **per primo** e **in modo atomico** (se fallisce, nessun altro canale parte e le riserve si liberano); ogni azione a pagamento ha una busta; nessuna azione esterna reale |
 | 9 | Misurazione | strategia-finanza | metriche (totali e per canale), registro | ricavi per canale = ricavi totali (nessun doppio conteggio); consumato + impegnato ≤ tetto; ordini riconciliati |
 | 10 | Decisione | team-lead | esito `stop`/`ripeti`/`scala`, motivi | esito valido; chiusura del test: buste di canale chiuse, codici creator sospesi. `scala` ⇒ azione del titolare (nuovo tetto) |
 
 Nota sulla Misurazione: è una fotografia presa all'inizio della fase. Il costo AI delle fasi Misurazione e Decisione (2 × costo per fase) compare nel registro ma non nel margine. Lo scarto è noto e piccolo.
+
+## Account e integrazioni
+- La fase Shopify chiede l'attivazione dell'account `shopify` al registro account: se prezzo, rinnovo o prova gratuita non sono verificati, o se le dipendenze (email dedicata) non sono attive, il run si blocca con escalation ad account-integrazioni, **prima** di qualsiasi spesa.
+- Gli ordini dei marketplace pagano la commissione del marketplace al posto di quella di pagamento del sito; la Misurazione riporta il margine per canale di vendita (`per_canale_vendita`).
+- Adattatori reali: `studio/adapters/live_shopify.py` (Admin GraphQL, prodotti solo in DRAFT, verifica HMAC dei webhook). Eseguono azioni solo se l'integrazione è in `config/integrazioni_collaudate.json` e con `STUDIO_LIVE=1`.
 
 ## Stati di un run
 `nuovo` → `in_corso` → `completato` | `fermato` (stop motivato) | `bloccato` (serve un intervento del team) | `bloccato_titolare` (serve un'azione del titolare).

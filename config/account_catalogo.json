@@ -1,0 +1,99 @@
+{
+  "_owner": "account-integrazioni",
+  "_nota": "Catalogo dei servizi che il sistema può richiedere. Un account si attiva solo quando la fase indicata è raggiunta, con prezzo verificato (fonte + data) e impegno massimo riservato nel registro spese. Prezzi 'da_verificare' bloccano l'attivazione. Nessun segreto in questo file.",
+  "servizi": [
+    {
+      "id": "repo-privato",
+      "nome": "GitHub — repository privato dedicato",
+      "funzione": "salvataggio persistente del sistema, cronologia, collaborazione",
+      "fase_richiesta": "strategia",
+      "dipende_da": [],
+      "url_accesso": "https://github.com",
+      "autenticazione": "account GitHub del titolare (2FA del titolare) + GitHub App di Claude",
+      "automazione": "parziale",
+      "limite_automazione": "la sessione non può creare repository: il token gh non è valido e collegare un repository esistente di un altro progetto è stato negato dal controllo di sicurezza",
+      "passaggi_titolare": [
+        "github.com → New repository → nome 'studio-digitale', Private, senza README → Create",
+        "claude.ai/connect-github → abilitare la Claude GitHub App sul repository 'studio-digitale'",
+        "avviare una nuova sessione Claude Code con il repository 'studio-digitale' selezionato (oppure dire al team il nome: verrà collegato e il lavoro spinto)"
+      ],
+      "prezzo": {"stato": "da_verificare", "max_mensile_cents": 0, "fonte": null, "nota": "piano gratuito con repository privati: da confermare al momento della creazione"},
+      "prova_gratuita": null,
+      "alternative": ["GitLab privato", "Bitbucket privato"]
+    },
+    {
+      "id": "email-dedicata",
+      "nome": "Casella email dedicata al progetto",
+      "funzione": "identità di registrazione per negozio, marketplace, strumenti; ricezione conferme; assistenza clienti",
+      "fase_richiesta": "catalogo",
+      "dipende_da": [],
+      "url_accesso": "da definire alla creazione",
+      "autenticazione": "password in ACCESSI_SISTEMA + 2FA app del titolare",
+      "automazione": "manuale",
+      "limite_automazione": "i provider richiedono CAPTCHA e/o numero di telefono alla registrazione; la sessione non ha accesso a nessuna casella (nessun connettore email collegato) per confermare messaggi",
+      "passaggi_titolare": [
+        "creare la casella (proposta: provider con 2FA e accesso IMAP o connettore Claude disponibile) completando CAPTCHA e verifica telefono",
+        "collegare la casella a claude.ai come connettore (se disponibile) così il team può leggere le email di conferma"
+      ],
+      "prezzo": {"stato": "da_verificare", "max_mensile_cents": null, "fonte": null},
+      "prova_gratuita": null,
+      "alternative": ["alias '+studio' della casella esistente del titolare: costo 0, ma conferme leggibili solo dal titolare"]
+    },
+    {
+      "id": "shopify",
+      "nome": "Shopify — negozio",
+      "funzione": "sito proprietario, checkout, consegna digitale, ordini",
+      "fase_richiesta": "shopify",
+      "dipende_da": ["email-dedicata"],
+      "url_accesso": "https://admin.shopify.com",
+      "autenticazione": "account titolare + token app personalizzata (segreto://shopify/token_admin) nel gestore segreti dell'ambiente",
+      "automazione": "parziale",
+      "limite_automazione": "registrazione, verifica identità/payout e piano a pagamento richiedono il titolare",
+      "passaggi_titolare": [
+        "admin.shopify.com → registrazione con l'email dedicata → completare verifica identità e payout",
+        "Impostazioni → App → Sviluppa app → creare app personalizzata con gli scope di INTEGRAZIONI_LIVE.md → installare",
+        "salvare il token Admin API nel gestore segreti dell'ambiente Claude per l'host <negozio>.myshopify.com (richiesta che il team aprirà con il modulo sicuro)"
+      ],
+      "prezzo": {"stato": "da_verificare", "max_mensile_cents": null, "fonte": null},
+      "prova_gratuita": {"stato": "da_verificare", "scadenza": null, "condizioni": null},
+      "alternative": ["checkout di una piattaforma di prodotti digitali con link di pagamento"]
+    },
+    {
+      "id": "ads",
+      "nome": "Account pubblicitario",
+      "funzione": "acquisizione a pagamento",
+      "fase_richiesta": "distribuzione",
+      "dipende_da": ["email-dedicata"],
+      "url_accesso": "da definire in base al canale scelto",
+      "autenticazione": "account titolare",
+      "automazione": "parziale",
+      "limite_automazione": "metodo di pagamento e verifica inserzionista del titolare",
+      "passaggi_titolare": ["creare l'account, inserire il metodo di pagamento sulla schermata ufficiale, impostare il limite di spesa ≤ busta Ads"],
+      "prezzo": {"stato": "a_consumo", "max_mensile_cents": 0, "fonte": null, "nota": "la spesa passa dalle buste Ads del registro"},
+      "prova_gratuita": null,
+      "alternative": []
+    },
+    {
+      "id": "social",
+      "nome": "Account social del prodotto validato (uno per piattaforma scelta)",
+      "funzione": "presenza organica, contenuti dimostrativi, link tracciati",
+      "fase_richiesta": "social",
+      "dipende_da": ["email-dedicata"],
+      "url_accesso": "per piattaforma",
+      "autenticazione": "password in ACCESSI_SISTEMA + 2FA",
+      "automazione": "manuale",
+      "limite_automazione": "registrazione con verifica telefono/CAPTCHA; le piattaforme vietano la creazione automatizzata",
+      "passaggi_titolare": ["creare gli account sulle piattaforme indicate dalla fase Social con i nomi utente proposti"],
+      "prezzo": {"stato": "verificato", "max_mensile_cents": 0, "fonte": {"tipo": "ipotesi", "nota": "account base gratuiti"}},
+      "prova_gratuita": null,
+      "alternative": []
+    }
+  ],
+  "non_necessari_ora": {
+    "hosting": "il sito proprietario è servito da Shopify; il sistema gira in Claude Code",
+    "automazione": "pianificazione tramite attività pianificate di Claude Code; nessun servizio esterno",
+    "analisi": "statistiche del negozio + link UTM; nessuno strumento a pagamento",
+    "assistenza": "casella dedicata + knowledge base; nessun helpdesk a pagamento",
+    "affiliazione": "codici sconto e UTM del negozio; nessuna piattaforma di affiliazione finché i creator non superano 3"
+  }
+}

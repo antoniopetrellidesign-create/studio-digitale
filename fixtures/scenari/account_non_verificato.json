@@ -1,0 +1,18 @@
+{
+  "estende": "completo",
+  "nome": "account_non_verificato",
+  "descrizione": "Il prezzo del piano Shopify non è verificato: l'account non si attiva, il run si blocca alla fase Shopify senza spese di piattaforma.",
+  "account_override": {
+    "shopify": {
+      "prezzo": {
+        "stato": "da_verificare",
+        "max_mensile_cents": null,
+        "fonte": null
+      }
+    }
+  },
+  "atteso": {
+    "stato": "bloccato",
+    "fase_blocco": "shopify"
+  }
+}

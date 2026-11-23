@@ -12,6 +12,7 @@ import sys
 from datetime import datetime
 
 from .storage import read_json, read_jsonl
+from .phases import NOMI_FASI
 from .workflow import ROOT
 
 EXIT_INTERROTTO = 75
@@ -88,7 +89,19 @@ def esegui(runs_dir=None) -> int:
     caso("completo", "flusso completo su 3 opportunità fittizie", [
         ("processo terminato con codice 0", p.returncode == 0),
         ("stato completato", st["stato"] == "completato"),
-        ("10 fasi approvate nell'ordine previsto", len(st["fasi_completate"]) == 10 and _ordine_fasi_ok(runs_dir, "completo")),
+        (f"{len(NOMI_FASI)} fasi approvate nell'ordine previsto",
+         len(st["fasi_completate"]) == len(NOMI_FASI) and _ordine_fasi_ok(runs_dir, "completo")),
+        ("catalogo con sito proprietario e marketplace idonei",
+         any(x["tipo"] == "sito" for x in _art(runs_dir, "completo", "catalogo")["canali_selezionati"])
+         and any(x["tipo"] == "marketplace" for x in _art(runs_dir, "completo", "catalogo")["canali_selezionati"])),
+        ("fase Social: calendario, contenuti legati alle promesse, link tracciati, niente pubblicato",
+         len(_art(runs_dir, "completo", "social")["calendario"]) >= 4
+         and not _art(runs_dir, "completo", "social")["pubblicato"]
+         and all("utm_campaign=" in u for u in _art(runs_dir, "completo", "social")["link_tracciati"])),
+        ("ordini marketplace con commissione del marketplace",
+         met["per_canale_vendita"].get("etsy", {}).get("ordini") == 2),
+        ("account shopify attivato dal registro solo alla sua fase",
+         read_json(os.path.join(runs_dir, "completo", "account.json"))["account"]["shopify"]["stato"] == "attivo"),
         ("scheda incompleta scartata in Ricerca", len(_art(runs_dir, "completo", "ricerca")["scartate"]) == 1),
         ("selezionata l'unica opportunità idonea", _art(runs_dir, "completo", "selezione")["selezionata"] == "OPP-SIM-A"),
         ("esito di decisione registrato", st["esito_finale"] in ("stop", "ripeti", "scala")),
@@ -104,7 +117,7 @@ def esegui(runs_dir=None) -> int:
     o = read_json(os.path.join(runs_dir, "completo", "orders.json"))
     env_comm = led["buste"]["completo/creator-CR-SIM-1-commissioni"]["consumi"]
     caso("doppia_attribuzione", "ordine SIM-1011 con codice creator e click Ads", [
-        ("ordine contato una sola volta", list(o["ordini"]).count("SIM-1011") == 1 and met["ordini"] == 14),
+        ("ordine contato una sola volta", list(o["ordini"]).count("SIM-1011") == 1 and met["ordini"] == 16),
         ("ricavi per canale = ricavi totali (nessun doppio conteggio)", met["controllo_doppio_conteggio_ok"]),
         ("commissione creator dovuta sull'ordine", "SIM-1011" in env_comm and not env_comm["SIM-1011"].get("stornato")),
         ("spesa Ads conservata", met["costi_cents"]["ads"] > 0),
@@ -200,7 +213,20 @@ def esegui(runs_dir=None) -> int:
         ("run completato", st2["stato"] == "completato" and p2.returncode == 0),
         ("stessa spesa del run senza interruzione", _speso(li) == _speso(lc)),
         ("stesse metriche del run senza interruzione", mi == mc),
-        ("nessun ordine doppio", mi["ordini"] == 14),
+        ("nessun ordine doppio", mi["ordini"] == 16),
+    ])
+
+    # 7b. Account con prezzo non verificato
+    _sim("account_non_verificato", runs_dir, "account")
+    st = _stato(runs_dir, "account")
+    led = _ledger(runs_dir, "account")
+    caso("account_non_verificato", "attivazione di un account senza prezzo verificato", [
+        ("blocco alla fase Shopify", st["stato"] == "bloccato" and st["fase_corrente"] == "shopify"),
+        ("motivo: prezzo non verificato", "prezzo" in st["blocco"]["motivo"]),
+        ("nessun consumo di piattaforma", sum(sum(d["importo_cents"] for d in b["consumi"].values())
+                                              for b in led["buste"].values() if b["categoria"] == "piattaforma") == 0),
+        ("nessuna chiamata di creazione negozio", not any(x["azione"] == "crea_prodotto_bozza" for x in
+              read_jsonl(os.path.join(runs_dir, "account", "external_calls.jsonl")))),
     ])
 
     # 8. Modalità live: ogni azione esterna bloccata

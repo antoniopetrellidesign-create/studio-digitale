@@ -253,11 +253,16 @@
         "T-009"
       ],
       "output": [],
-      "stato": "da_fare",
+      "stato": "in_corso",
       "run_id": null,
       "creato": "2026-11-23T19:27:12+00:00",
-      "aggiornato": "2026-11-23T19:27:12+00:00",
-      "note": []
+      "aggiornato": "2026-11-23T20:21:02+00:00",
+      "note": [
+        {
+          "quando": "2026-11-23T20:21:02+00:00",
+          "nota": "elenco unico aggiornato in AZIONI_TITOLARE.md: in attesa del titolare"
+        }
+      ]
     },
     {
       "id": "T-012",
@@ -273,6 +278,101 @@
       "creato": "2026-11-23T19:27:12+00:00",
       "aggiornato": "2026-11-23T19:27:12+00:00",
       "note": []
+    },
+    {
+      "id": "T-013",
+      "titolo": "STRATEGIA: costi di account e strumenti, prove gratuite, commissioni marketplace",
+      "agente": "strategia-finanza",
+      "fase": "",
+      "dipende_da": [],
+      "output": [],
+      "stato": "fatto",
+      "run_id": null,
+      "creato": "2026-11-23T20:21:02+00:00",
+      "aggiornato": "2026-11-23T20:21:02+00:00",
+      "note": [
+        {
+          "quando": "2026-11-23T20:21:02+00:00",
+          "nota": "consegnato"
+        }
+      ]
+    },
+    {
+      "id": "T-014",
+      "titolo": "Metodo marketplace e config/canali_vendita.json",
+      "agente": "acquisizione",
+      "fase": "",
+      "dipende_da": [],
+      "output": [],
+      "stato": "fatto",
+      "run_id": null,
+      "creato": "2026-11-23T20:21:02+00:00",
+      "aggiornato": "2026-11-23T20:21:02+00:00",
+      "note": [
+        {
+          "quando": "2026-11-23T20:21:02+00:00",
+          "nota": "consegnato"
+        }
+      ]
+    },
+    {
+      "id": "T-015",
+      "titolo": "Metodo Social e template calendario editoriale",
+      "agente": "social-contenuti",
+      "fase": "",
+      "dipende_da": [],
+      "output": [],
+      "stato": "fatto",
+      "run_id": null,
+      "creato": "2026-11-23T20:21:02+00:00",
+      "aggiornato": "2026-11-23T20:21:02+00:00",
+      "note": [
+        {
+          "quando": "2026-11-23T20:21:02+00:00",
+          "nota": "consegnato"
+        }
+      ]
+    },
+    {
+      "id": "T-016",
+      "titolo": "Registro account, ACCESSI_SISTEMA cifrato, adattatore Shopify live (bootstrap team-lead)",
+      "agente": "account-integrazioni",
+      "fase": "",
+      "dipende_da": [],
+      "output": [],
+      "stato": "fatto",
+      "run_id": null,
+      "creato": "2026-11-23T20:21:02+00:00",
+      "aggiornato": "2026-11-23T20:21:02+00:00",
+      "note": [
+        {
+          "quando": "2026-11-23T20:21:02+00:00",
+          "nota": "consegnato"
+        }
+      ]
+    },
+    {
+      "id": "T-017",
+      "titolo": "Verifica indipendente del mandato account/credenziali e delle nuove fasi",
+      "agente": "qa-indipendente",
+      "fase": "",
+      "dipende_da": [
+        "T-013",
+        "T-014",
+        "T-015",
+        "T-016"
+      ],
+      "output": [],
+      "stato": "in_corso",
+      "run_id": null,
+      "creato": "2026-11-23T20:21:02+00:00",
+      "aggiornato": "2026-11-23T20:21:02+00:00",
+      "note": [
+        {
+          "quando": "2026-11-23T20:21:02+00:00",
+          "nota": "avviato"
+        }
+      ]
     }
   ]
 }

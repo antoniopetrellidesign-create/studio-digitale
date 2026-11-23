@@ -76,6 +76,20 @@ def misura(orderbook, ledger, policy: dict, costi_test_falliti_cents: int = 0, p
         m["tasso_rimborso_bp"] = (m["rimborsati"] * 10000 // m["ordini_primari"]) if m["ordini_primari"] else 0
         m["sconto_medio_cents"] = (m["sconti_cents"] // m["ordini_primari"]) if m["ordini_primari"] else 0
     tot["per_canale"] = canali
+    vendita = {}
+    for o in ordini:
+        v = valori_ordine(o, ip)
+        cv = vendita.setdefault(o.get("canale_vendita", "shopify"), {"ordini": 0, "ricavi_netti_cents": 0,
+                                                                     "fee_cents": 0, "rimborsati": 0})
+        cv["ordini"] += 1
+        cv["fee_cents"] += v["fee_pagamento_cents"]
+        if o["rimborsato"]:
+            cv["rimborsati"] += 1
+        else:
+            cv["ricavi_netti_cents"] += v["netto_cents"]
+    for cv in vendita.values():
+        cv["margine_prima_acquisizione_cents"] = cv["ricavi_netti_cents"] - cv["fee_cents"]
+    tot["per_canale_vendita"] = vendita
     # Controllo di coerenza: la somma dei ricavi per canale primario = ricavi totali (nessun doppio conteggio).
     tot["controllo_doppio_conteggio_ok"] = (
         sum(m["ricavi_netti_cents"] for m in canali.values()) == tot["ricavi_netti_cents"])

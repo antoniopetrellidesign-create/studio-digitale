@@ -1,0 +1,58 @@
+import json
+import os
+import subprocess
+import tempfile
+import unittest
+
+from studio.vault import Vault, VaultNonConfigurato, genera_password
+
+
+class TestVault(unittest.TestCase):
+    def setUp(self):
+        self.d = tempfile.mkdtemp()
+        # chiave di PROVA generata solo per il test (simula la chiave del titolare)
+        self.key = os.path.join(self.d, "titolare.key")
+        subprocess.run(["age-keygen", "-o", self.key], check=True, capture_output=True)
+        pub = [l.split(": ")[1] for l in open(self.key) if l.startswith("# public key")][0]
+        self.dest = os.path.join(self.d, "dest.txt")
+        open(self.dest, "w").write("# commento\n" + pub + "\n")
+        self.v = Vault(os.path.join(self.d, "accessi"), self.dest)
+
+    def test_password_crittografiche_uniche(self):
+        ps = {genera_password() for _ in range(200)}
+        self.assertEqual(len(ps), 200)
+        self.assertTrue(all(len(p) == 28 for p in ps))
+
+    def test_senza_destinatari_rifiuta(self):
+        v = Vault(os.path.join(self.d, "x"), os.path.join(self.d, "vuoto.txt"))
+        with self.assertRaises(VaultNonConfigurato):
+            v.registra("svc", "creazione", {"password": "x"})
+
+    def test_nessun_segreto_in_chiaro_e_recupero_del_titolare(self):
+        pw = genera_password()
+        r = self.v.registra("shopify", "creazione", {"funzione": "negozio", "url_accesso": "https://admin.shopify.com",
+                                                     "email": "operativo@esempio.invalid", "password": pw,
+                                                     "piano": "base", "stato_verifica": "in attesa"})
+        self.assertIn("segreto://shopify/password", r["riferimenti"])
+        for radice, _, files in os.walk(os.path.join(self.d, "accessi")):
+            for f in files:
+                testo = open(os.path.join(radice, f), encoding="utf-8", errors="ignore").read()
+                self.assertNotIn(pw, testo)
+                self.assertNotIn("operativo@esempio.invalid", testo)
+        indice = open(os.path.join(self.d, "accessi", "INDICE.md")).read()
+        self.assertIn("segreto://shopify/password", indice)
+        self.v.registra("shopify", "verifica", {"stato_verifica": "verificato"})
+        doc = self.v.esporta(self.key)  # solo con la chiave privata del titolare
+        self.assertEqual(doc["shopify"]["password"], pw)
+        self.assertEqual(doc["shopify"]["stato_verifica"], "verificato")
+
+    def test_senza_chiave_privata_non_si_decifra(self):
+        self.v.registra("svc", "creazione", {"password": genera_password()})
+        altra = os.path.join(self.d, "altra.key")
+        subprocess.run(["age-keygen", "-o", altra], check=True, capture_output=True)
+        with self.assertRaises(subprocess.CalledProcessError):
+            self.v.esporta(altra)
+
+
+if __name__ == "__main__":
+    unittest.main()

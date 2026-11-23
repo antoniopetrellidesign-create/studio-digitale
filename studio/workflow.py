@@ -21,7 +21,8 @@ from . import adapters as adapters_mod
 from .adapters.base import ExternalActionBlocked
 from .ledger import Ledger, SpendBlocked
 from .orders import OrderBook
-from .phases import FASI, NOMI_FASI, SEGRETI, DatoMancante, NeedOwner, PhaseStop, SimulatedCrash
+from .phases import (FASI, NOMI_FASI, SEGRETI, AccountNonAttivabile, DatoMancante, NeedOwner, PhaseStop,
+                     SimulatedCrash)
 from .queue import TaskQueue
 from .storage import append_jsonl, atomic_write_json, read_json, read_jsonl
 
@@ -98,12 +99,21 @@ class Run:
         self.orders = OrderBook(os.path.join(run_dir, "orders.json"))
         self.queue = TaskQueue(os.path.join(run_dir, "queue.json"))
         self.calls_path = os.path.join(run_dir, "external_calls.jsonl")
-        self.gate = adapters_mod.ExternalGate(self.modalita, self.calls_path)
+        self.gate = adapters_mod.ExternalGate(self.modalita, self.calls_path,
+                                              carica_json("config/integrazioni_collaudate.json")["collaudate"])
         guasti = dict(self.scenario.get("guasti", {}))
         if "shopify" in st["concessioni"]:
             guasti["shopify_accesso"] = True
         self.guasti = guasti
         self.adapters = adapters_mod.build(self.modalita, self.gate, guasti)
+        from .accounts import AccountRegistry
+        catalogo = carica_json("config/account_catalogo.json")
+        over = self.scenario.get("account_override", {})
+        catalogo = {"servizi": [deep_merge(s, over.get(s["id"], {})) for s in catalogo["servizi"]]}
+        self.accounts = AccountRegistry(catalogo, os.path.join(run_dir, "account.json"))
+        for sid, o in over.items():  # stato iniziale simulato (es. email già attiva)
+            if o.get("stato_iniziale") == "attivo" and self.accounts.stato_di(sid) != "attivo":
+                self.accounts.conferma_attivo(sid)
 
     # ------------------------------------------------------------------ utilità
     def _save(self):
@@ -220,6 +230,8 @@ class Run:
             return self._blocca(nome, task_id, "bloccato_titolare", e.descrizione, concessione=e.concessione)
         except PhaseStop as e:
             return self._ferma(nome, task_id, str(e))
+        except AccountNonAttivabile as e:
+            return self._blocca(nome, task_id, "bloccato", str(e), escalation="account-integrazioni → team-lead")
         except DatoMancante as e:
             return self._blocca(nome, task_id, "bloccato", f"dato mancante: {e}", escalation="strategia-finanza")
         except SpendBlocked as e:

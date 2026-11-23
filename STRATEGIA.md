@@ -89,7 +89,7 @@ Margine di contribuzione = ciò che resta di un ordine dopo tutti i costi variab
 | Categoria | € | % | Motivazione |
 |---|---|---|---|
 | ads | 200 | 40% | Unico costo che genera domanda misurabile; serve ≥10 ordini per giudicare. Con 200 € e 10 ordini, il costo medio di acquisizione deve restare ≲20 € per non esaurire il budget prima del giudizio **[aritmetica]** |
-| piattaforma | 80 | 16% | Negozio, dominio, strumenti di consegna: costo quasi fisso, da limitare al minimo funzionale |
+| piattaforma | 80 | 16% | Negozio, dominio, strumenti di consegna e **tutti gli account e strumenti** (email dedicata, repository, hosting/automazione, Shopify, marketplace, strumenti creator/assistenza/analisi, social, integrazioni API non-AI): costo quasi fisso, da limitare al minimo funzionale. Le regole sono al §3-bis |
 | ai | 60 | 12% | Generazione prodotto, traduzioni, assistenza clienti; limite per evitare spese elastiche e senza ritorno |
 | compenso_fisso | 60 | 12% | Compensi non legati alle vendite (es. revisione, creator a forfait): tenuto basso perché è rischio senza ricavo |
 | commissione | 60 | 12% | Busta per commissioni creator: al 30% sul netto copre ≈200 € di ricavi netti (60/0,30) **[aritmetica]** |
@@ -103,6 +103,43 @@ Margine di contribuzione = ciò che resta di un ordine dopo tutti i costi variab
 4. **Ads**: ogni test ha una soglia di stop in € (§4) ≤ residuo ads. La spesa Ads è prenotata con tetto giornaliero e totale prima dell'avvio della campagna.
 5. **Un solo test per volta** (`max_opportunita_per_test = 1` **[P]**) finché il residuo non consente due.
 6. Superare 500 € richiede approvazione del titolare. Nessun agente ha accesso a strumenti di pagamento.
+7. **Categorie invariate** (da `config/policy.json`): ai, piattaforma, ads, compenso_fisso, commissione, riserva. Account e strumenti rientrano in **piattaforma**; le API di modelli AI restano in **ai**; i compensi creator in commissione/compenso_fisso. Il tetto di 500 € è **unico e condiviso** tra prodotti, strumenti, API, marketplace, Ads e creator.
+
+---
+
+## 3-bis. Costi di account e strumenti
+
+Mandato del titolare aggiornato: il team può creare gli account strettamente necessari (email dedicata, repository privato, hosting/automazione, Shopify e marketplace selezionati, strumenti creator/assistenza/analisi, social per prodotti validati, integrazioni API), sempre rispettando le dipendenze delle fasi (nessun account prima della fase che lo richiede; social solo per prodotti validati). La creazione dell'account non autorizza alcuna spesa: vale quanto sotto. Carte, OTP e token restano al titolare (azioni raggruppate in `AZIONI_TITOLARE.md`).
+
+**A. Prima di assumere qualsiasi costo (tutte le condizioni, altrimenti blocco)**
+1. **Verifica del prezzo effettivo**: prezzo di listino, imposte (IVA/reverse charge), commissioni di transazione, costi per utente/uso e **rinnovi** (periodicità, rinnovo automatico, prezzo dopo l'offerta). Ogni cifra è registrata con **fonte (URL o documento) e data**; senza fonte e data resta **[I]** e il costo è considerato sconosciuto.
+2. **Impegno massimo riservato nel registro comune** (`studio/ledger.py`) in categoria `piattaforma` (o `ai`), con importo comprensivo di imposte e commissioni e coprendo l'intero periodo impegnato, rinnovi compresi.
+3. **Controllo del residuo**: residuo totale e residuo della categoria ≥ impegno. Altrimenti blocco ed escalation al Team Lead; nessuna compensazione tra categorie senza decisione registrata.
+4. **Limiti di spesa nel servizio** quando disponibili (tetto di spesa/uso, avvisi di soglia, nessun overage automatico); se il servizio non li offre lo si annota e si preferisce un piano a importo fisso.
+5. **Chiusura dei rinnovi pianificata**: per ogni abbonamento si registra data di rinnovo, data limite di disdetta e azione prevista (disdire/confermare); il rinnovo automatico va disattivato se possibile. Un abbonamento senza data di chiusura non è ammesso.
+
+**B. Prove gratuite**
+- Si registrano nel registro con **scadenza, condizioni** (carta richiesta, prezzo dopo la prova, rinnovo automatico, limiti) e fonte/data.
+- Prima della scadenza (promemoria ≥ 3 giorni prima) si decide **disdire o confermare**; la decisione è annotata.
+- Il **costo del rinnovo** va riservato **prima** della conferma (e prima dell'avvio se il rinnovo è automatico e non disattivabile: in tal caso la riserva è obbligatoria all'inizio della prova). Prova senza riserva possibile ⇒ non si avvia.
+
+**C. Gli incassi non aumentano il budget autorizzato**
+Ricavi, commissioni recuperate e rimborsi ricevuti non incrementano il tetto di 500 €, né il residuo di alcuna categoria. Il tetto si supera solo con approvazione del titolare (tramite Team Lead). Gli incassi entrano nel margine (§2), non nel budget.
+
+**D. Commissioni dei marketplace: costo variabile per ordine**
+- La commissione del marketplace (percentuale, quota fissa, eventuali costi di pagamento/pubblicazione/inserzione e imposte sulla commissione) è un **costo variabile per ordine**, **[I]** finché non verificata con fonte e data. Si tratta come la commissione di pagamento: va **nel margine di contribuzione** e **non** si rimborsa se non lo prevedono le condizioni del marketplace (da verificare per ogni marketplace).
+- Se il marketplace trattiene la commissione dal pagamento, il costo non passa dal registro come spesa autonoma ma **riduce l'incasso**: va comunque stimato prima dell'apertura e incluso nel confronto, e non crea alcun diritto a spendere di più.
+- **Confronto tra canali di vendita** (sito/Shopify vs marketplace), per lo stesso prodotto e prezzo, su base per ordine:
+  - Sito/Shopify: `M_sito = N − C_pag − C_cr − A − Pl_ord − AI − Q`, con costi di piattaforma ripartiti sugli ordini.
+  - Marketplace: `M_mkt = N − C_mkt − C_cr(se applicabile) − A − Pl_ord − AI − Q`, dove `C_mkt` è la commissione del marketplace (che di norma sostituisce o include il costo di pagamento: verificarlo, senza doppio conteggio né omissione).
+  - Si confrontano margine per ordine, tasso di rimborso, sconto medio, quota di doppia attribuzione e proprietà dei dati cliente (§6), non il solo ricavo. Un marketplace con più ordini ma margine unitario inferiore non è migliore finché il margine totale non lo dimostra.
+  - Il prezzo effettivo, le imposte (chi riscuote l'IVA: venditore o marketplace) e il costo del rinnovo/abbonamento del venditore vanno verificati con fonte e data prima del confronto.
+
+**E. Priorità ai piani gratuiti o a consumo finché un prodotto non è validato**
+Fino a quando un prodotto non ha superato la regola "scala" (§5) si usano, in ordine: (1) piano gratuito senza carta; (2) piano a consumo con tetto di spesa nel servizio; (3) abbonamento mensile disdicibile; (4) abbonamento annuale solo dopo validazione e con approvazione del Team Lead. Strumenti non indispensabili al test in corso non si attivano; i social si aprono solo per prodotti validati.
+
+**F. Nel margine e nei test**
+I costi di account e strumenti sono `Pl` (e `AI` per le API di modelli) del §2. I costi di strumenti attivati per un test concluso con stop entrano in `Q`. Ogni piano di test (§4) elenca gli strumenti previsti con costo massimo noto nella riga "piattaforma".
 
 ---
 
@@ -212,3 +249,5 @@ Nessuna modifica fatta da me a `config/policy.json`. Esito delle proposte second
 6. (rinviata, D-010) **Quota test falliti `Q`**: fissare il metodo di ripartizione (proposta: costo cumulato dei test in stop del periodo / ordini netti totali dei prodotti non in stop) e la finestra temporale.
 7. (ACCETTATA, D-003) **Arrotondamento**: stabilire per le divisioni in centesimi la regola (proposta: arrotondamento al centesimo più vicino, residui assegnati alla riserva).
 8. (rinviata, D-010) **Finestra di clawback per rimborsi tardivi**: valutare di portarla a 45–60 giorni a contratto; richiede decisione del titolare tramite Team Lead.
+9. (nuova, T-013; non applicata) **Costi di account e strumenti**: aggiungere in policy `ipotesi_costi_variabili.commissione_marketplace_pct_bp` e `commissione_marketplace_fissa_cents` (stato `da_verificare`, per marketplace); un campo `strumenti.prova_gratuita_preavviso_giorni` (proposta 3) e `strumenti.abbonamento_annuale_solo_dopo_validazione: true`; e per il registro il tipo di voce con campi `fonte`, `data_verifica`, `data_rinnovo`, `data_limite_disdetta`, `rinnovo_automatico` (modifica a `studio/ledger.py`, mia, da fare in un compito separato). Nessuna nuova categoria di spesa.
+10. (nuova, T-013; per il Team Lead) **Commissioni marketplace trattenute dall'incasso**: decidere se registrarle come categoria `commissione` (condividendo la busta creator da 60 €) o solo nel margine come minor incasso. Proposta: solo nel margine, senza riserva, ma con stima massima registrata prima dell'apertura del marketplace.

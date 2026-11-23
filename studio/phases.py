@@ -16,6 +16,7 @@ import re
 from . import attribution, economics
 from .adapters.mock import ShopifyAccessMissing
 from .ledger import SpendBlocked
+from .links import link_tracciato, tracciato
 from .money import pct_bp, scorporo_iva
 
 
@@ -33,6 +34,12 @@ class PhaseStop(Exception):
 
 class DatoMancante(Exception):
     """Manca un dato di riferimento (es. aliquota IVA di un paese): blocco motivato, non crash."""
+
+
+class AccountNonAttivabile(Exception):
+    def __init__(self, servizio, motivi):
+        super().__init__(f"account '{servizio}' non attivabile: " + "; ".join(motivi))
+        self.servizio, self.motivi = servizio, motivi
 
 
 class SimulatedCrash(Exception):
@@ -234,6 +241,85 @@ def g_qa(run, out):
     return out["verdetto"] == "APPROVATO", m
 
 
+def h_catalogo(run):
+    """Catalogo multicanale: sito proprietario/Shopify + marketplace compatibili (docs/marketplace.md)."""
+    from .workflow import carica_json
+    cfg = carica_json("config/canali_vendita.json")
+    over = run.scenario.get("canali_vendita_override", {})
+    valutazioni, selezionati, esclusi = [], [], []
+    for c in cfg["canali"]:
+        c = {**c, **over.get(c["id"], {})}
+        p = c["punteggi_default"]
+        punteggio = sum(cfg["pesi"][k] * p.get(k, 0) for k in cfg["pesi"]) // 10
+        motivo = None
+        if p.get("regole_prodotto", 0) == 0 or p.get("regole_ai", 0) == 0:
+            motivo = "regole sul prodotto o sull'AI incompatibili"
+        elif punteggio < cfg["soglia_minima"]:
+            motivo = f"punteggio {punteggio} sotto la soglia {cfg['soglia_minima']}"
+        v = {"id": c["id"], "tipo": c["tipo"], "punteggio": punteggio, "commissione_pct_bp": c["commissione_pct_bp"],
+             "commissione_fissa_cents": c["commissione_fissa_cents"], "automazione": c["automazione"],
+             "fonte": c["fonte"]["tipo"], "provvisorio": c["fonte"]["tipo"] != "osservata"}
+        valutazioni.append(v)
+        (esclusi if motivo else selezionati).append({**v, "motivo": motivo} if motivo else v)
+    for c in selezionati:
+        if c["tipo"] == "marketplace":
+            run.azione_titolare(f"account-marketplace-{c['id']}",
+                                f"Registrazione venditore su {c['id']} (verifica identità/pagamenti) — solo alla fase di "
+                                "lancio, dopo la verifica osservata di commissioni e regole su prodotti e AI", f"marketplace-{c['id']}")
+    return {"valutazioni": valutazioni, "canali_selezionati": selezionati, "esclusi": esclusi,
+            "regola": "fonti 'ipotesi' = ammissione provvisoria; l'attivazione richiede verifica osservata (registro account)"}
+
+
+def g_catalogo(run, out):
+    m = []
+    if not any(c["tipo"] == "sito" for c in out["canali_selezionati"]):
+        m.append("nessun sito proprietario nel catalogo")
+    for c in out["canali_selezionati"]:
+        if c["commissione_pct_bp"] is None or c["commissione_fissa_cents"] is None:
+            m.append(f"commissioni sconosciute per {c['id']}")
+    return not m, m
+
+
+def h_social(run):
+    """Fase Social (docs/social.md): solo per prodotti validati; tutto in bozza fino al lancio."""
+    man = run.artifact("prodotto")["manifest"]
+    cfg = run.scenario["social"]
+    pid = man["id"].lower()
+    piattaforme = cfg["piattaforme"]
+    contenuti, link = [], []
+    for i, p in enumerate(man["promesse"], 1):
+        for pl in piattaforme:
+            cid = f"{pid}-{pl['id']}-c{i}"
+            url = link_tracciato(cfg["base_url"], pl["id"], "social", pid, cid)
+            contenuti.append({"id": cid, "piattaforma": pl["id"], "promesse": [p], "stato": "bozza",
+                              "dichiarazioni": ["contenuto promozionale", "realizzato con supporto AI"], "link": url})
+            link.append(url)
+    calendario = [{"settimana": (k // len(piattaforme)) + 1, "contenuto": c["id"], "piattaforma": c["piattaforma"]}
+                  for k, c in enumerate(contenuti)]
+    for pl in piattaforme:
+        run.azione_titolare(f"account-social-{pl['id']}-{pid}",
+                            f"Creare l'account {pl['id']} del prodotto {pid} (nome utente proposto: {pid.replace('_', '')}) "
+                            "con l'email dedicata — solo alla fase di lancio", f"social-{pl['id']}")
+    return {"identita": {"nome": man["id"], "lingua": man["lingua"], "tono": cfg.get("tono", "pratico e diretto")},
+            "piattaforme": piattaforme, "calendario": calendario, "contenuti": contenuti, "link_tracciati": link,
+            "pubblicato": False}
+
+
+def g_social(run, out):
+    m = []
+    if run.artifact("qa")["verdetto"] != "APPROVATO" or not run.artifact("ordine_prova")["download_ok"]:
+        m.append("prodotto non validato (QA e ordine di prova)")
+    promesse = set(run.artifact("prodotto")["manifest"]["promesse"])
+    if len(out["calendario"]) < 4:
+        m.append("calendario con meno di 4 voci")
+    m += [f"contenuto {c['id']} senza promessa del manifest" for c in out["contenuti"] if not set(c["promesse"]) & promesse]
+    m += [f"link non tracciato: {u}" for u in out["link_tracciati"] if not tracciato(u)]
+    m += [f"piattaforma {p['id']} senza motivazione" for p in out["piattaforme"] if not p.get("motivazione")]
+    if out["pubblicato"]:
+        m.append("pubblicazione prima della fase di lancio")
+    return not m, m
+
+
 def h_shopify(run):
     shop = run.adapters["shopify"]
     try:
@@ -242,9 +328,14 @@ def h_shopify(run):
         raise NeedOwner("shopify-accesso",
                         "Autorizzare l'app del negozio Shopify con scope minimi (vedi docs/operazioni-shopify.md); "
                         "token nel gestore segreti dell'ambiente, mai in file o chat.", "shopify")
+    # Registro account (D-017): fase raggiunta, dipendenze attive, prezzo verificato, prova con scadenza.
+    motivi = run.accounts.verifica("shopify", "shopify")
+    if motivi:
+        raise AccountNonAttivabile("shopify", motivi)
     for c in run.scenario.get("costi_piattaforma", []):
         run.ledger.spend_once(run.bid(f"piattaforma-{c['id']}"), "piattaforma", c["max_cents"], c["effettivo_cents"],
                               c["descrizione"], fase="shopify", tag=["piattaforma"])
+    run.accounts.conferma_attivo("shopify")
     prod = run.artifact("prodotto")
     scheda = shop.crea_prodotto_bozza(prod["manifest"], prod["prezzo_cents"], [prod["manifest"]["lingua"]])
     return {"scheda": scheda, "stato_scheda": scheda["stato"],
@@ -359,7 +450,17 @@ def h_distribuzione(run):
                                "strategia-finanza deve aggiungerla con fonte e data")
         ordine = {"order_id": ev["order_id"], "lordo_cents": prezzo, "sconto_cents": sconto,
                   "iva_bp": IVA_BP[ev.get("paese", "IT")], "paese": ev.get("paese", "IT"),
-                  "giorno": ev.get("giorno", 0), "tocchi": tocchi, "sintetico": True}
+                  "giorno": ev.get("giorno", 0), "tocchi": tocchi, "sintetico": True,
+                  "canale_vendita": ev.get("canale_vendita", "shopify")}
+        if ordine["canale_vendita"] != "shopify":
+            sel = {c["id"]: c for c in run.artifact("catalogo")["canali_selezionati"]}
+            if ordine["canale_vendita"] not in sel:
+                run.decidi("distribuzione", "ordine_canale_non_in_catalogo",
+                           f"ordine {ev['order_id']} da '{ordine['canale_vendita']}', canale non selezionato: escluso e "
+                           "passato a shopify-operazioni per verifica")
+                continue
+            cv = sel[ordine["canale_vendita"]]
+            ordine["fee_canale"] = {"pct_bp": cv["commissione_pct_bp"], "fissa_cents": cv["commissione_fissa_cents"]}
         if not run.orders.ingest(ordine):
             continue
         nuovi += 1
@@ -449,8 +550,10 @@ FASI = [
     ("selezione", "team-lead", ["selezionata", "piano_test", "classifica"], h_selezione, g_selezione),
     ("prodotto", "sviluppo-prodotto", ["manifest", "spec", "prezzo_cents"], h_prodotto, g_prodotto),
     ("qa", "qa-indipendente", ["verdetto", "controlli"], h_qa, g_qa),
+    ("catalogo", "acquisizione", ["valutazioni", "canali_selezionati", "esclusi"], h_catalogo, g_catalogo),
     ("shopify", "shopify-operazioni", ["scheda", "stato_scheda", "eventi_tracciamento"], h_shopify, g_shopify),
     ("ordine_prova", "shopify-operazioni", ["order_id", "download_ok", "duplicato_scartato", "riconciliato"], h_ordine_prova, g_ordine_prova),
+    ("social", "social-contenuti", ["identita", "piattaforme", "calendario", "contenuti", "link_tracciati"], h_social, g_social),
     ("distribuzione", "acquisizione", ["canali_attivati", "spese_bloccate", "ordini_nuovi"], h_distribuzione, g_distribuzione),
     ("misurazione", "strategia-finanza", ["metriche", "registro"], h_misurazione, g_misurazione),
     ("decisione", "team-lead", ["esito", "motivi"], h_decisione, g_decisione),

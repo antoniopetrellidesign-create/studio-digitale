@@ -1,0 +1,5 @@
+{
+  "_owner": "account-integrazioni",
+  "_nota": "Integrazioni provate dal vivo con verdetto QA (vedi INTEGRAZIONI_LIVE.md). Solo queste possono eseguire azioni reali, e solo con STUDIO_LIVE=1.",
+  "collaudate": []
+}

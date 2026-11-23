@@ -65,6 +65,15 @@ def main(argv=None):
         x.add_argument("--runs-dir")
     c = sub.add_parser("collaudo", help="esegue tutti gli scenari di collaudo e scrive il report")
     c.add_argument("--runs-dir")
+    ac = sub.add_parser("accessi", help="documento cifrato ACCESSI_SISTEMA")
+    ac.add_argument("azione", choices=["indice", "nuovo", "esporta"])
+    ac.add_argument("--servizio")
+    ac.add_argument("--dati", default="{}", help="JSON dei campi NON segreti (funzione, url_accesso, piano, ...)")
+    ac.add_argument("--genera-password", action="store_true")
+    ac.add_argument("--identita", help="(solo titolare) chiave privata age/ssh per l'esportazione")
+    acc = sub.add_parser("account", help="registro account: stato e passaggi del titolare")
+    acc.add_argument("azione", choices=["stato", "passaggi"])
+    acc.add_argument("--fase", default="strategia")
     q = sub.add_parser("queue", help="coda condivisa del team (team/queue.json)")
     q.add_argument("azione", choices=["list", "set", "add"])
     q.add_argument("args", nargs="*")
@@ -109,6 +118,41 @@ def main(argv=None):
     if a.cmd == "collaudo":
         from .collaudo import esegui
         return esegui(a.runs_dir)
+    if a.cmd == "accessi":
+        from .vault import Vault, VaultNonConfigurato, genera_password
+        v = Vault(os.path.join(ROOT, "accessi"), os.path.join(ROOT, "config", "accessi_destinatari.txt"))
+        if a.azione == "indice":
+            p = os.path.join(ROOT, "accessi", "INDICE.md")
+            print(open(p, encoding="utf-8").read() if os.path.exists(p) else "(nessuna voce)")
+            print(f"destinatari configurati: {len(v.destinatari())}")
+            return 0
+        if a.azione == "nuovo":
+            dati = json.loads(a.dati)
+            if a.genera_password:
+                dati["password"] = genera_password()
+            try:
+                r = v.registra(a.servizio, "creazione", dati)
+            except VaultNonConfigurato as e:
+                print(f"RIFIUTATO: {e}", file=sys.stderr)
+                return 2
+            print(f"voce cifrata: accessi/{r['voce']}  riferimenti: {', '.join(r['riferimenti'])}")
+            return 0
+        doc = v.esporta(a.identita)
+        print(json.dumps(doc, ensure_ascii=False, indent=2))
+        return 0
+    if a.cmd == "account":
+        from .accounts import AccountRegistry
+        from .workflow import carica_json
+        reg = AccountRegistry(carica_json("config/account_catalogo.json"), os.path.join(ROOT, "accessi", "account.json"))
+        if a.azione == "stato":
+            for sid, s in reg.catalogo.items():
+                motivi = reg.verifica(sid, a.fase)
+                print(f"{sid:<16} {reg.stato_di(sid):<20} fase {s['fase_richiesta']:<13} "
+                      f"{'attivabile' if not motivi else 'NON attivabile: ' + '; '.join(motivi)}")
+        else:
+            for p in reg.passaggi_titolare(a.fase):
+                print(f"[{p['servizio']}] {p['passo']}. {p['azione']}")
+        return 0
     if a.cmd == "queue":
         from .queue import TaskQueue
         tq = TaskQueue(os.path.join(ROOT, "team", "queue.json"))

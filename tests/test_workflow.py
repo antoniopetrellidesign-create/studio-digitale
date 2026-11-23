@@ -3,7 +3,7 @@ import tempfile
 import unittest
 
 from studio.adapters import ExternalActionBlocked, ExternalGate
-from studio.phases import SimulatedCrash
+from studio.phases import NOMI_FASI, SimulatedCrash
 from studio.workflow import Run, nuovo_run
 
 
@@ -30,7 +30,7 @@ class TestWorkflow(unittest.TestCase):
     def test_completo_e_traccia_decisioni(self):
         r = self._run("completo").avanza()
         self.assertEqual(r["stato"], "completato")
-        self.assertEqual(len(r["fasi_completate"]), 10)
+        self.assertEqual(len(r["fasi_completate"]), len(NOMI_FASI))
         self.assertTrue(os.path.exists(os.path.join(self.d, "r", "decisions.jsonl")))
 
     def test_ripresa_in_processo_dopo_crash(self):
@@ -50,7 +50,8 @@ class TestWorkflow(unittest.TestCase):
         run.concedi("shopify")
         r = run.avanza()
         self.assertEqual(r["stato"], "completato")
-        self.assertEqual(r["azioni_titolare"][0]["stato"], "concessa")
+        shop = next(a for a in r["azioni_titolare"] if a["id"] == "shopify-accesso")
+        self.assertEqual(shop["stato"], "concessa")
 
     def test_gate_live_blocca_e_registra(self):
         g = ExternalGate("live", os.path.join(self.d, "calls.jsonl"))

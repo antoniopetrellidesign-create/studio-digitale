@@ -1,0 +1,42 @@
+{
+  "_owner": "acquisizione",
+  "pesi": {"pubblico": 20, "domanda": 20, "regole_prodotto": 15, "regole_ai": 15, "commissioni": 15, "consegna": 5, "integrazione": 10},
+  "soglia_minima": 60,
+  "canali": [
+    {
+      "id": "shopify", "tipo": "sito", "nome": "Shopify (sito proprio)",
+      "commissione_pct_bp": 290, "commissione_fissa_cents": 30, "canone_mensile_cents": 3900,
+      "automazione": "api",
+      "fonte": {"tipo": "ipotesi", "url": "https://www.shopify.com/pricing", "data": "2026-11-23"},
+      "punteggi_default": {"pubblico": 5, "domanda": 3, "regole_prodotto": 10, "regole_ai": 10, "commissioni": 8, "consegna": 6, "integrazione": 9}
+    },
+    {
+      "id": "etsy", "tipo": "marketplace", "nome": "Etsy",
+      "commissione_pct_bp": 950, "commissione_fissa_cents": 45, "canone_mensile_cents": null,
+      "automazione": "api",
+      "fonte": {"tipo": "ipotesi", "url": "https://help.etsy.com/hc/en-us/articles/360035902374-Etsy-Fee-Basics", "data": "2026-11-23"},
+      "punteggi_default": {"pubblico": 8, "domanda": 9, "regole_prodotto": 8, "regole_ai": 6, "commissioni": 6, "consegna": 9, "integrazione": 7}
+    },
+    {
+      "id": "gumroad", "tipo": "marketplace", "nome": "Gumroad",
+      "commissione_pct_bp": 1000, "commissione_fissa_cents": 50, "canone_mensile_cents": null,
+      "automazione": "api",
+      "fonte": {"tipo": "ipotesi", "url": "https://gumroad.com/pricing", "data": "2026-11-23"},
+      "punteggi_default": {"pubblico": 6, "domanda": 5, "regole_prodotto": 8, "regole_ai": 7, "commissioni": 5, "consegna": 10, "integrazione": 7}
+    },
+    {
+      "id": "creative_market", "tipo": "marketplace", "nome": "Creative Market",
+      "commissione_pct_bp": 4000, "commissione_fissa_cents": 0, "canone_mensile_cents": null,
+      "automazione": "manuale",
+      "fonte": {"tipo": "ipotesi", "url": "https://help.creativemarket.com/", "data": "2026-11-23"},
+      "punteggi_default": {"pubblico": 5, "domanda": 6, "regole_prodotto": 6, "regole_ai": 4, "commissioni": 3, "consegna": 9, "integrazione": 2}
+    },
+    {
+      "id": "teachers_pay_teachers", "tipo": "marketplace", "nome": "Teachers Pay Teachers",
+      "commissione_pct_bp": 2000, "commissione_fissa_cents": 30, "canone_mensile_cents": null,
+      "automazione": "manuale",
+      "fonte": {"tipo": "ipotesi", "url": "https://www.teacherspayteachers.com/Sell", "data": "2026-11-23"},
+      "punteggi_default": {"pubblico": 5, "domanda": 6, "regole_prodotto": 5, "regole_ai": 5, "commissioni": 4, "consegna": 8, "integrazione": 2}
+    }
+  ]
+}

@@ -63,6 +63,9 @@ def valori_ordine(o: dict, ipotesi: dict) -> dict:
     netto = scorporo_iva(pagato, o.get("iva_bp", 0))
     fee = (pct_bp(pagato, ipotesi["commissione_pagamento_pct_bp"]) + ipotesi["commissione_pagamento_fissa_cents"]
            if pagato > 0 else 0)
+    fc = o.get("fee_canale")
+    if fc and pagato > 0:  # ordine da marketplace: la commissione del marketplace sostituisce quella di pagamento
+        fee = pct_bp(pagato, fc["pct_bp"]) + fc["fissa_cents"]
     if o.get("rimborsato") and ipotesi.get("commissione_pagamento_rimborsata_su_refund"):
         fee = 0  # QA M-6: il flag di policy è letto dal codice
     return {"pagato_cents": pagato, "iva_cents": pagato - netto, "netto_cents": netto,
