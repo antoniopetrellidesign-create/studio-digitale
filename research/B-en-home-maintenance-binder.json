@@ -7,14 +7,15 @@
   "acquirente": "Proprietari di casa e nuovi acquirenti negli Stati Uniti che vogliono un calendario di manutenzione e un raccoglitore stampabile per la casa.",
   "problema": "Dimenticare i lavori stagionali e perdere traccia di garanzie, contatti e interventi; evitare riparazioni costose.",
   "fonti": [
-    {"tipo": "osservata", "descrizione": "Risultati WebSearch 'home maintenance binder printable PDF Etsy price': molti listing Etsy; il riepilogo riporta checklist a 3,50 USD scontati da 5,00, binder a 9,99 USD, kit a 14,97 USD scontati da 24,95 e un life binder a 32,94 USD scontati da 54,90. Pagine non aperte.", "url": "https://www.etsy.com/listing/4402120754/home-maintenance-checklist-bundle", "data": "2026-11-23", "metodo": "WebSearch, pagina non aperta"},
-    {"tipo": "osservata", "descrizione": "Un altro listing Etsy dello stesso risultato: 'Printable Life Binder - Home Management System (Digital Download)'. Stessa piattaforma, listing distinto.", "url": "https://www.etsy.com/listing/789471732", "data": "2026-11-23", "metodo": "WebSearch, pagina non aperta"},
+    {"tipo": "osservata", "descrizione": "Risultati WebSearch 'home maintenance binder printable PDF Etsy price': molti listing Etsy; il riepilogo riporta checklist a 3,50 USD scontati da 5,00, binder a 9,99 USD, kit a 14,97 USD scontati da 24,95 e un life binder a 32,94 USD scontati da 54,90. Pagine non aperte.", "url": "https://www.etsy.com/listing/4402120754/home-maintenance-checklist-bundle", "data": "2026-11-23", "metodo": "estratto_ricerca"},
+    {"tipo": "osservata", "descrizione": "Un altro listing Etsy dello stesso risultato: 'Printable Life Binder - Home Management System (Digital Download)'. Stessa piattaforma, listing distinto.", "url": "https://www.etsy.com/listing/789471732", "data": "2026-11-23", "metodo": "estratto_ricerca"},
     {"tipo": "ipotesi", "descrizione": "Stima: la presenza di molti listing con sconti ricorrenti (prezzi barrati) indica una categoria affollata e con prezzi sotto pressione. Non e un dato di vendita."},
     {"tipo": "ipotesi", "descrizione": "Prezzo 9,90 EUR (conversione da USD non verificata), sviluppo 25 EUR, accesso 2 EUR: ipotesi."}
   ],
   "concorrenti": [
     {"nome": "Etsy: home maintenance checklist", "prezzo": "3,50 USD scontato da 5,00", "tipo_dato": "osservata"},
-    {"nome": "Etsy: home maintenance planner/binder PDF", "prezzo": "4,95 USD scontato da 9,91; 9,99 USD", "tipo_dato": "osservata"},
+    {"nome": "Etsy: home maintenance binder PDF", "prezzo": "9,99 USD", "tipo_dato": "osservata"},
+    {"nome": "Etsy: home maintenance planner PDF (listing scontato)", "prezzo": "4,95 USD scontato da 9,91 (cifre non presenti nelle fonti della scheda)", "tipo_dato": "ipotesi"},
     {"nome": "Etsy: home management system kit", "prezzo": "14,97 USD scontato da 24,95; life binder 32,94 USD scontato da 54,90", "tipo_dato": "osservata"}
   ],
   "prezzo_da_verificare_cents": 990,

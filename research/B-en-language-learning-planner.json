@@ -7,11 +7,10 @@
   "acquirente": "Adulti che studiano una lingua straniera da autodidatti e vogliono organizzare vocabolario, ripassi e obiettivi.",
   "problema": "Non seguire l'avanzamento e non ripassare il vocabolario in modo regolare; le app non danno una vista personale del piano di studio.",
   "fonti": [
-    {"tipo": "osservata", "descrizione": "Risultati WebSearch 'language learning planner vocabulary tracker printable Etsy': molte inserzioni Etsy; il riepilogo riporta planner a 1,40 USD, pack a 11,99 USD, bundle 'Language Study System' a 15,90 USD, tracker Excel/Sheets, versione per GoodNotes. Pagine non aperte.", "url": "https://www.etsy.com/listing/4593309406/language-learning-tracker-interactive", "data": "2026-11-23", "metodo": "WebSearch, pagina non aperta"},
-    {"tipo": "osservata", "descrizione": "Creative Market: 'Language Learning Dashboard' con 53 vendite e 1 recensione da 1,0 stelle indicate nel riepilogo WebSearch. Unico dato di vendita nella sessione, non verificato su pagina.", "url": "https://creativemarket.com/bellarosework/292393082-Language-Learning-Dashboard", "data": "2026-11-23", "metodo": "WebSearch, pagina non aperta"},
+    {"tipo": "osservata", "descrizione": "Risultati WebSearch 'language learning planner vocabulary tracker printable Etsy': molte inserzioni Etsy; il riepilogo riporta planner a 1,40 USD, pack a 11,99 USD, bundle 'Language Study System' a 15,90 USD, tracker Excel/Sheets, versione per GoodNotes. Pagine non aperte.", "url": "https://www.etsy.com/listing/4593309406/language-learning-tracker-interactive", "data": "2026-11-23", "metodo": "estratto_ricerca"},
+    {"tipo": "osservata", "descrizione": "Creative Market: 'Language Learning Dashboard' con 53 vendite e 1 recensione da 1,0 stelle indicate nel riepilogo WebSearch. Unico dato di vendita nella sessione, non verificato su pagina.", "url": "https://creativemarket.com/bellarosework/292393082-Language-Learning-Dashboard", "data": "2026-11-23", "metodo": "estratto_ricerca"},
     {"tipo": "ipotesi", "descrizione": "Stima: planner specifici per lingue (coreano, giapponese, spagnolo, ecc.) segnalati nel riepilogo suggeriscono sotto-nicchie per lingua, ma la domanda per ogni lingua non e osservata."},
-    {"tipo": "ipotesi", "descrizione": "Prezzo 7,90 EUR, sviluppo 20 EUR, accesso 2 EUR: ipotesi."},
-    {"tipo": "ipotesi", "descrizione": "Verifica T-020-3 del 2026-11-23 NON eseguita: WebFetch su www.etsy.com, www.amazon.com, gumroad.com fallito con 'getaddrinfo ENOTFOUND' (host non nell'elenco di rete consentito della sessione). Nessuna nuova evidenza; lamentele nelle recensioni negative e vuoti per lingua/metodo non rilevati.", "data": "2026-11-23"}
+    {"tipo": "ipotesi", "descrizione": "Prezzo 7,90 EUR, sviluppo 20 EUR, accesso 2 EUR: ipotesi."}
   ],
   "concorrenti": [
     {"nome": "Etsy language planner singoli", "prezzo": "da 1,40 USD", "tipo_dato": "osservata"},
@@ -28,11 +27,12 @@
   "costo_sviluppo_cents": 2000,
   "complessita_assistenza": "bassa",
   "ipotesi_margine_bp": 5949,
-  "punteggi": {"problema": 5, "accesso": 5, "margine": 5, "concorrenza": 2, "costo_sviluppo": 7, "assistenza": 8},
+  "punteggi": {"problema": 6, "accesso": 6, "margine": 6, "concorrenza": 2, "costo_sviluppo": 7, "assistenza": 8},
   "note_punteggi": {
-    "problema": "5 (era 6): verifica 2026-11-23 non eseguita, domanda ancora solo dedotta dal numero di listing; nessuna recensione negativa letta.",
-    "accesso": "5 (era 6): Etsy e Creative Market noti solo da riepilogo WebSearch; pagine non aperte, canali dipendenti da terzi.",
-    "margine": "5 (era 6): prezzo, commissioni e costo accesso sono tutte ipotesi; i concorrenti da 1,40 USD indicano pressione sul prezzo, non verificata.",
+    "problema": "6: primo ciclo, nel limite D-028 (solo estratti: max 6). Domanda dedotta dal numero di listing; nessuna recensione negativa letta.",
+    "accesso": "6: primo ciclo. Etsy e Creative Market noti da estratti di ricerca; canali dipendenti da terzi.",
+    "margine": "6: primo ciclo. Prezzo, commissioni e costo accesso sono ipotesi; concorrenti da 1,40 USD indicano pressione sul prezzo.",
+    "storico": "Primo ciclo 57. Il ribasso a 50 del tentativo T-020-3 e annullato da D-028 (nessuna evidenza contraria). Verifica NON eseguita: WebFetch fallito con 'getaddrinfo ENOTFOUND' su www.etsy.com, www.amazon.com, gumroad.com (vedi verifica-3-language-planner.md); tentativo fallito, non una fonte.",
     "concorrenza": "2: offerta molto ampia e a prezzi bassi (da riepilogo); differenziazione per lingua/metodo non verificata.",
     "costo_sviluppo": "7: 2000 cent ipotesi.",
     "assistenza": "8: prodotto statico."
@@ -40,5 +40,5 @@
   "costi_canale_config": {"etsy": "950 bp + 45 cent (ipotesi)", "creative_market": "4000 bp (ipotesi)", "shopify": "290 bp + 30 cent + 3900 cent/mese (ipotesi)", "creator": "30% sul netto (ipotesi)"},
   "canali": {"sito_shopify": "ipotesi", "marketplace": "Etsy e Creative Market osservati", "creator": "ipotesi", "organico": "ipotesi"},
   "esclusioni": "Nessuna categoria regolamentata. Non usare marchi di corsi o app (IP di terzi).",
-  "esito": "sotto soglia (punteggio 57 < 60): archivio. Le due fonti sono di siti diversi ma entrambe note solo da riepilogo"
+  "esito": "sotto soglia (punteggio 57 < 60, 2 fonti osservate di tipo estratto, siti diversi): non selezionata; verifica T-020 da rieseguire con pagine leggibili"
 }

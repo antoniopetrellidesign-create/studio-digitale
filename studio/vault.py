@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import secrets
 import string
 import subprocess
@@ -25,6 +26,39 @@ CAMPI_INDICE = ("funzione", "url_accesso", "autenticazione", "titolare", "recupe
 CAMPI_REGISTRO = ("servizio", "funzione", "url", "email", "username", "titolare", "stato", "costo", "rinnovo",
                   "riferimento_credenziale")
 SEGRETI_VIETATI = ("password", "token", "codici_recupero", "domande_recupero", "chiave_api", "secret", "segreto")
+
+
+NOME_CAMPO = re.compile(r"^[a-z0-9_-]+$")
+INTESTAZIONE_HTTP = re.compile(r"^[A-Za-z0-9]+(-[A-Za-z0-9]+)*$")
+URL_CON_CREDENZIALI = re.compile(r"[a-z][a-z0-9+.-]*://[^/\s@:]+:[^/\s@]+@", re.IGNORECASE)
+
+
+def _controlla_valore(campo: str, valore) -> None:
+    """D-3: rifiuta in QUALSIASI campo valori che sembrano segreti (token noti, URL con utente:password@,
+    riferimenti segreto:// o rete:// con un valore al posto del nome di campo/intestazione)."""
+    from .phases import SEGRETI  # import locale: evita il ciclo phases -> adapters -> vault
+    if isinstance(valore, dict):  # D-7: discesa ricorsiva in chiavi e valori
+        for k, v in valore.items():
+            _controlla_valore(campo, k)
+            _controlla_valore(campo, v)
+        return
+    if isinstance(valore, (list, tuple, set, frozenset)):
+        for v in valore:
+            _controlla_valore(campo, v)
+        return
+    if not isinstance(valore, str):
+        return
+    if SEGRETI.search(valore) or URL_CON_CREDENZIALI.search(valore):
+        raise ValueError(f"campo '{campo}': il valore sembra un segreto; usa un riferimento segreto://servizio/campo")
+    for m in re.finditer(r"(segreto|rete)://([^\s]*)", valore):
+        schema, resto = m.group(1), m.group(2)
+        parti = resto.split("/")
+        if len(parti) != 2 or not parti[0] or not parti[1]:
+            raise ValueError(f"campo '{campo}': riferimento {schema}:// malformato (atteso {schema}://<servizio|host>/<nome>)")
+        ultimo = parti[1]
+        ok = NOME_CAMPO.match(ultimo) if schema == "segreto" else INTESTAZIONE_HTTP.match(ultimo)
+        if not ok or SEGRETI.search(ultimo):
+            raise ValueError(f"campo '{campo}': l'ultimo segmento di {schema}:// deve essere un nome, non un valore")
 
 
 class VaultNonConfigurato(Exception):
@@ -97,9 +131,14 @@ class Vault:
         riferimento_credenziale: `rete://<host>/<intestazione>` (segreto di rete) o `segreto://<servizio>/<campo>`."""
         if not voce.get("servizio"):
             raise ValueError("servizio obbligatorio")
+        vietati = [k for k in voce if k in SEGRETI_VIETATI]
+        if vietati:
+            raise ValueError(f"campi segreti non ammessi nel registro: {vietati}")
         ign = [k for k in voce if k not in CAMPI_REGISTRO]
         if ign:
             raise ValueError(f"campi non ammessi nel registro: {ign}")
+        for k, v in voce.items():
+            _controlla_valore(k, v)
         rif = voce.get("riferimento_credenziale", "")
         if rif and not rif.startswith(("rete://", "segreto://")):
             raise ValueError("riferimento_credenziale deve essere rete://host/intestazione o segreto://servizio/campo")

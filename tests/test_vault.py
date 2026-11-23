@@ -69,6 +69,28 @@ class TestVault(unittest.TestCase):
         with self.assertRaises(subprocess.CalledProcessError):
             self.v.esporta(altra)
 
+    def test_registro_rifiuta_valori_simili_a_segreti(self):
+        tok = "shp" + "at_" + "0123456789abcdef" * 2
+        for voce in ({"riferimento_credenziale": "segreto://shopify/" + tok},
+                     {"riferimento_credenziale": "rete://x.myshopify.com/" + tok},
+                     {"riferimento_credenziale": "segreto://shopify/Valore!Esposto1"},
+                     {"url": "https://u:Pw-123456@admin.example"},
+                     {"funzione": "token " + tok}):
+            with self.assertRaises(ValueError):
+                self.v.aggiorna_registro({"servizio": "s", **voce})
+        self.v.aggiorna_registro({"servizio": "s", "riferimento_credenziale": "segreto://shopify/token_admin"})
+
+    def test_registro_controlla_ricorsivamente_liste_e_dizionari(self):
+        tok = "shp" + "at_" + "0123456789abcdef" * 2
+        for voce in ({"funzione": ["ok", "token " + tok]},
+                     {"funzione": ("ok", ["x", {"a": "https://u:Pw-123456@h.example"}])},
+                     {"costo": {"interno": {"n": "segreto://shopify/Valore!Esposto1"}}},
+                     {"costo": {tok: "ok"}},
+                     {"rinnovo": [{"k": [tok]}]}):
+            with self.assertRaises(ValueError):
+                self.v.aggiorna_registro({"servizio": "s", **voce})
+        self.v.aggiorna_registro({"servizio": "s", "costo": {"mese": ["10", "EUR"]}})
+
 
 if __name__ == "__main__":
     unittest.main()

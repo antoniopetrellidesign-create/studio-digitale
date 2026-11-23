@@ -120,12 +120,39 @@ class TestLiveShopify(unittest.TestCase):
     def test_continuita_solo_impronta(self):
         for sostituito, atteso in ((True, True), (False, False)):
             Eco.valore = "VALORE-SEGRETO-DI-PROVA" if sostituito else None
-            r = verifica_continuita("finto.myshopify.com", f"http://127.0.0.1:{self.eco.server_port}/eco")
+            with mock.patch.dict(os.environ, {"STUDIO_LIVE": "1"}):
+                r = verifica_continuita("finto.myshopify.com", f"http://127.0.0.1:{self.eco.server_port}/eco",
+                                        gate=ExternalGate("live", self._log(), {"eco"}))
             self.assertEqual(r["presente"], atteso)
             self.assertNotIn("VALORE-SEGRETO-DI-PROVA", json.dumps(r))
         Eco.valore = "VALORE-SEGRETO-DI-PROVA"
-        r = verifica_continuita("h", lambda h: f"http://127.0.0.1:{self.eco.server_port}/eco")
+        with mock.patch.dict(os.environ, {"STUDIO_LIVE": "1"}):
+            r = verifica_continuita("h", lambda h: f"http://127.0.0.1:{self.eco.server_port}/eco",
+                                    gate=ExternalGate("live", self._log(), {"eco"}))
         self.assertEqual(r["impronta"], hashlib.sha256(b"VALORE-SEGRETO-DI-PROVA").hexdigest()[:12])
+
+    def _log(self):
+        import tempfile
+        return os.path.join(tempfile.mkdtemp(), "calls.jsonl")
+
+    def test_continuita_simulato_nessuna_connessione(self):
+        url = f"http://127.0.0.1:{self.eco.server_port}/eco"
+        with mock.patch("urllib.request.urlopen", side_effect=AssertionError("connessione")):
+            with mock.patch.dict(os.environ, {"STUDIO_LIVE": "1"}):
+                for g in (ExternalGate("simulato", self._log(), {"eco"}), ExternalGate("live", self._log(), set())):
+                    with self.assertRaises(ExternalActionBlocked):
+                        verifica_continuita("h", url, gate=g)
+
+    def test_continuita_cancello_https_e_host(self):
+        g = ExternalGate("simulato", self._log())
+        for url in ("http://httpbin.org/headers", "https://evil.example/headers", "https://httpbin.org.evil/h"):
+            with self.assertRaises(ValueError):
+                verifica_continuita("h", url, gate=g)
+        with self.assertRaises(ValueError):
+            verifica_continuita("h", "https://httpbin.org/headers")  # gate obbligatorio
+        with mock.patch.dict(os.environ, {"STUDIO_LIVE": "0"}):
+            with self.assertRaises(ExternalActionBlocked):
+                verifica_continuita("h", "https://httpbin.org/headers", gate=ExternalGate("live", self._log()))
 
     def test_endpoint_esterni_non_ammessi(self):
         with self.assertRaises(ValueError):

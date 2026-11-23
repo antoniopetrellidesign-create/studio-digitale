@@ -17,5 +17,8 @@ Prezzo 7,90 EUR, sviluppo 20 EUR, accesso 2 EUR, commissioni, margine 59,49% (59
 problema 5, accesso 5, margine 5, concorrenza 2, sviluppo 7, assistenza 8:
 125 + 100 + 100 + 30 + 70 + 80 = 505 -> **50,5** (prima 57). Calo di 1 punto su problema, accesso e margine perche la verifica non ha sostenuto le stime; gli altri invariati.
 
+## Esito dopo D-028 (Team Lead, 2026-11-23)
+Il ribasso a 50,5 e annullato: nessuna evidenza contraria. La scheda torna ai voti del primo ciclo 6/6/6/2/7/8 = **57**. Il tentativo fallito resta solo qui e in `note_punteggi`, non come fonte.
+
 ## Raccomandazione
 Archiviare (sotto soglia 60 anche con i punteggi precedenti). Riaprire solo se si abilitano gli host e si leggono: recensioni negative reali, prezzi top-10 Etsy/Amazon, vuoti per lingua o metodo. Servono almeno 2 fonti osservate aperte.

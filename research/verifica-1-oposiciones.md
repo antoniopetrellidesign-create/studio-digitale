@@ -23,5 +23,8 @@ Prezzo 690 cent, sviluppo 2000, accesso 200, margine 5493 bp, commissioni canale
 Voti: problema 5, accesso 4, margine 4, concorrenza 4, costo_sviluppo 6, assistenza 7.
 5x2,5 + 4x2,0 + 4x2,0 + 4x1,5 + 6x1,0 + 7x1,0 = 12,5 + 8 + 8 + 6 + 6 + 7 = **47,5** (prima 58). Il calo e solo di prudenza: senza fonti osservate il metodo limita a 5 i voti su problema, accesso e concorrenza.
 
+## Esito dopo D-028 (Team Lead, 2026-11-23)
+Il ribasso a 47,5 e le fonti declassate a `ipotesi` sono ANNULLATI: nessuna evidenza contraria. La scheda torna al primo ciclo, con le 4 fonti `osservata` (`metodo: estratto_ricerca`) e `problema` limitato a 6 (solo estratti): voti 6/5/5/5/6/7 = **55** (primo ciclo 58). I tentativi falliti restano solo qui e in `note_punteggi`.
+
 ## Raccomandazione
 **Non sviluppare** ora: sotto soglia 60 e 0 fonti osservate (servono almeno 2). Rifare la verifica appena i domini sono raggiungibili; il punteggio puo risalire solo con evidenze lette (convocatorias BOE, recensioni, commissioni).

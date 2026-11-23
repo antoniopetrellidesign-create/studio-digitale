@@ -7,9 +7,9 @@
   "acquirente": "Coppie e famiglie italiane che vogliono tenere traccia di entrate e uscite domestiche mensili senza app a pagamento. Solo tracciamento, nessuna consulenza.",
   "problema": "Non sapere dove vanno i soldi a fine mese; i modelli gratuiti sono generici o pensati per piccole imprese e vanno adattati a mano.",
   "fonti": [
-    {"tipo": "osservata", "descrizione": "Risultati WebSearch 'bilancio familiare excel modello download prezzo Etsy': negozio Etsy IT di fogli Excel presente. Il riepilogo riporta inserzioni di budget a circa 1,39-7,85 EUR (budget di coppia 7,85 EUR scontato da 31,40 EUR) e segnala che alcuni modelli sono per piccole imprese. Pagina non aperta (WebFetch bloccato).", "url": "https://www.etsy.com/it/shop/EasyExcelPro", "data": "2026-11-23", "metodo": "WebSearch, pagina non aperta"},
-    {"tipo": "osservata", "descrizione": "Money.it e citato come guida al bilancio familiare con Excel/app; il riepilogo WebSearch riporta che indica un modello gratuito della Banca d'Italia e modelli gratuiti Microsoft. Pagina non aperta (WebFetch bloccato).", "url": "https://www.money.it/bilancio-familiare-cos-e-come-fare-excel-app", "data": "2026-11-23", "metodo": "WebSearch, pagina non aperta"},
-    {"tipo": "osservata", "descrizione": "Affari Miei offre 'Bilancio Familiare Smart' in .xlsx (entrate/uscite), descritto dal riepilogo come gratuito o a basso costo. Prezzo non verificato.", "url": "https://www.affarimiei.biz/bilancio-familiare-smart", "data": "2026-11-23", "metodo": "WebSearch, pagina non aperta"},
+    {"tipo": "osservata", "descrizione": "Risultati WebSearch 'bilancio familiare excel modello download prezzo Etsy': negozio Etsy IT di fogli Excel presente. Il riepilogo riporta inserzioni di budget a circa 1,39-7,85 EUR (budget di coppia 7,85 EUR scontato da 31,40 EUR) e segnala che alcuni modelli sono per piccole imprese. Pagina non aperta (WebFetch bloccato).", "url": "https://www.etsy.com/it/shop/EasyExcelPro", "data": "2026-11-23", "metodo": "estratto_ricerca"},
+    {"tipo": "osservata", "descrizione": "Money.it e citato come guida al bilancio familiare con Excel/app; il riepilogo WebSearch riporta che indica un modello gratuito della Banca d'Italia e modelli gratuiti Microsoft. Pagina non aperta (WebFetch bloccato).", "url": "https://www.money.it/bilancio-familiare-cos-e-come-fare-excel-app", "data": "2026-11-23", "metodo": "estratto_ricerca"},
+    {"tipo": "osservata", "descrizione": "Affari Miei offre 'Bilancio Familiare Smart' in .xlsx (entrate/uscite), descritto dal riepilogo come gratuito o a basso costo. Prezzo non verificato.", "url": "https://www.affarimiei.biz/bilancio-familiare-smart", "data": "2026-11-23", "metodo": "estratto_ricerca"},
     {"tipo": "ipotesi", "descrizione": "Stima: la domanda esiste (piu risultati IT dedicati e inserzioni a pagamento) ma il numero di ricerche e di vendite non e osservato."},
     {"tipo": "ipotesi", "descrizione": "Prezzo 9,90 EUR, costo di sviluppo 15 EUR, costo di accesso 2 EUR per vendita: ipotesi del ricercatore."}
   ],
@@ -43,5 +43,5 @@
   },
   "canali": {"sito_shopify": "senza traffico proprio non copre il canone; ipotesi", "marketplace": "Etsy IT, osservata presenza di venditori", "creator": "ipotesi", "organico": "ipotesi: ricerche IT lunga coda"},
   "esclusioni": "Finanza domestica non e consulenza: nessun consiglio su investimenti, tasse, prestiti. Va ribadito nella specifica; segnalato al Team Lead come caso di confine (categoria 'finanza').",
-  "esito": "sotto soglia (punteggio 56,5 < 60): archivio"
+  "esito": "sotto soglia (punteggio 56 < 60): archivio"
 }

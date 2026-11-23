@@ -435,6 +435,32 @@
           "nota": "strumento di lettura pagine senza i nuovi host: serve R2 (nuova sessione su studio-digitale)"
         }
       ]
+    },
+    {
+      "id": "T-021",
+      "titolo": "Verifica credenziali di rete, registro account e ricerca reale (D-025…D-028)",
+      "agente": "qa-indipendente",
+      "fase": "",
+      "dipende_da": [],
+      "output": [],
+      "stato": "fatto",
+      "run_id": null,
+      "creato": "2026-11-23T20:56:18+00:00",
+      "aggiornato": "2026-11-23T21:02:37+00:00",
+      "note": [
+        {
+          "quando": "2026-11-23T20:56:18+00:00",
+          "nota": "BLOCCATO: qa/2026-11-23-credenziali-ricerca.md (D-1 graduatoria non corrisponde al motore)"
+        },
+        {
+          "quando": "2026-11-23T21:01:03+00:00",
+          "nota": "Riverifica: Ricerca approvata; BLOCCATO solo per D-6 (continuita in modalita simulato apre connessione reale). qa/2026-11-23-credenziali-ricerca.md"
+        },
+        {
+          "quando": "2026-11-23T21:02:37+00:00",
+          "nota": "APPROVATO dopo correzioni D-1..D-7: qa/2026-11-23-credenziali-ricerca.md"
+        }
+      ]
     }
   ]
 }

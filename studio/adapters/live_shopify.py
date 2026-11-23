@@ -94,12 +94,40 @@ class LiveShopify:
         return {"product_id": p["id"], "stato": "bozza", "prezzo_cents": prezzo_cents, "lingue": lingue}
 
 
-def verifica_continuita(host: str, url_eco, intestazione: str = "X-Shopify-Access-Token",
+ECO_AMMESSI = ("httpbin.org",)  # servizi di eco ammessi per la prova di continuità (elenco esplicito)
+
+
+def verifica_continuita(host: str, url_eco, gate=None, intestazione: str = "X-Shopify-Access-Token",
                         segnaposto: str = SEGNAPOSTO_RETE, timeout: int = 15) -> dict:
     """Prova di continuità dopo un riavvio: chiede a un servizio di eco le intestazioni ricevute e confronta SOLO
     un'impronta SHA-256 troncata (mai il valore). `url_eco` è un URL oppure un callable(host) -> URL.
-    presente=True se l'intestazione è arrivata con valore diverso dal segnaposto (sostituito dal proxy)."""
+    presente=True se l'intestazione è arrivata con valore diverso dal segnaposto (sostituito dal proxy).
+
+    Permesso (D-4, D-6): `gate` (ExternalGate) è OBBLIGATORIO. La connessione si apre SOLO se
+    gate.live_consentito("eco"): modalità 'live', STUDIO_LIVE=1 ed 'eco' collaudata; in ogni altro caso (anche
+    'simulato') si registra un esito bloccato e si solleva ExternalActionBlocked, senza connessione.
+
+    Prova dopo il riavvio (STUDIO_LIVE=1 impostato dall'operatore solo per questo comando):
+      STUDIO_LIVE=1 python3 -c "import hashlib,pathlib; from studio.adapters.base import ExternalGate; \
+from studio.adapters.live_shopify import verifica_continuita as v; \
+r=v('httpbin.org','https://httpbin.org/headers',gate=ExternalGate('live','runs/calls.jsonl',{'eco'}),\
+intestazione='Authorization',segnaposto='Bearer proxy-injected'); print(r, \
+r['impronta']==pathlib.Path('accessi/.continuita-httpbin').read_text().strip())"
+    Solo https e solo host in ECO_AMMESSI (localhost ammesso solo nei test); altrimenti ValueError."""
+    if gate is None:
+        raise ValueError("verifica_continuita: gate (ExternalGate) obbligatorio")
     url = url_eco(host) if callable(url_eco) else url_eco
+    u = urlparse(url)
+    h = u.hostname or ""
+    locale = h in ("127.0.0.1", "localhost")
+    if not locale and (u.scheme != "https" or h not in ECO_AMMESSI):
+        raise ValueError(f"verifica_continuita: ammessi solo https verso {ECO_AMMESSI} (localhost solo nei test)")
+    if locale and u.scheme not in ("http", "https"):
+        raise ValueError("verifica_continuita: schema non ammesso")
+    if not gate.live_consentito("eco"):  # D-6: nessuna connessione se non live + STUDIO_LIVE=1 + 'eco' collaudato
+        gate.record("eco", "verifica_continuita", esito_forzato="bloccato", host_eco=h)
+        raise ExternalActionBlocked("verifica_continuita: live non consentito (serve STUDIO_LIVE=1 e 'eco' collaudato)")
+    gate.record("eco", "verifica_continuita", host_eco=h)
     req = urllib.request.Request(url, headers={intestazione: segnaposto})
     with urllib.request.urlopen(req, timeout=timeout) as r:
         ricevute = {k.lower(): v for k, v in json.loads(r.read()).get("headers", {}).items()}

@@ -66,3 +66,11 @@ Il team-lead raggruppa le richieste in un solo messaggio settimanale, salvo i ca
 5. Dopo ogni creazione, modifica, revoca o verifica: nuova voce cifrata (azione `modifica`/`revoca`/`verifica`) con `ultima_verifica`.
 6. Recupero (solo il titolare): `python3 -m studio accessi esporta --identita ~/.config/studio/accessi.key`.
 7. Passaggi personali: `python3 -m studio account passaggi --fase <fase>`, poi riportati in AZIONI_TITOLARE.md in un'unica richiesta.
+
+## 11. Credenziali operative e prova di continuità (D-025)
+- Le credenziali delle integrazioni sono **segreti di rete** dell'ambiente `studio-digitale`: il titolare le salva nel modulo sicuro aperto dal team, e il proxy le inserisce solo verso l'host indicato. Il codice manda un segnaposto, per esempio `LiveShopify(..., credenziale="rete")`.
+- Prova di continuità dopo un riavvio (nuova sessione sull'ambiente `studio-digitale`). È l'unica connessione che il cancello consente a questo scopo: solo `httpbin.org`, solo con `STUDIO_LIVE=1` impostato per il comando e solo l'impronta del valore.
+```bash
+STUDIO_LIVE=1 python3 -c "import pathlib; from studio.adapters.base import ExternalGate; from studio.adapters.live_shopify import verifica_continuita as v; r=v('httpbin.org','https://httpbin.org/headers',gate=ExternalGate('live','runs/calls.jsonl',{'eco'}),intestazione='Authorization',segnaposto='Bearer proxy-injected'); print(r, r['impronta']==pathlib.Path('accessi/.continuita-httpbin').read_text().strip())"
+```
+  Atteso: `presente: True` e `True` sul confronto con l'impronta salvata (`0d6964cfcffd`). Dopo l'esito positivo il titolare elimina la credenziale di prova dai Segreti di rete.

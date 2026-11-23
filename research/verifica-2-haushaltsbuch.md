@@ -34,5 +34,8 @@ Non determinabile: senza recensioni negative lette, il bisogno scoperto resta ip
 
 Calcolo: 5*25 + 4*20 + 6*20 + 3*15 + 8*10 + 7*10 = 520 -> **52,0** (prima 58,5). Sotto la soglia 60.
 
+## Esito dopo D-028 (Team Lead, 2026-11-23)
+Il ribasso a 52 e annullato: nessuna evidenza contraria. La scheda torna ai voti del primo ciclo 6/5/7/3/8/7 = **58** (problema gia nel limite 6). Il tentativo fallito resta solo qui e in `note_punteggi`, non come fonte.
+
 ## Raccomandazione
 Non sviluppare. Il punteggio scende per mancanza di evidenze, non per prove contrarie. Se la rete verrà abilitata a etsy.com, amazon.de e finanztip.de, ripetere la verifica (recensioni negative, prezzi, volumi) prima di archiviare definitivamente. Restano esclusi consigli finanziari, fiscali e di investimento.

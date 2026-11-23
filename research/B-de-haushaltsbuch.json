@@ -7,10 +7,9 @@
   "acquirente": "Haushalte in Deutschland (Paare, Familien) che vogliono un Haushaltsbuch per entrate e uscite senza abbonamento app. Solo tracciamento, nessuna consulenza.",
   "problema": "Tenere traccia delle spese domestiche; i modelli gratuiti esistono ma l'utente cerca una versione pronta, con guida, compatibile con Excel e Sheets.",
   "fonti": [
-    {"tipo": "osservata", "descrizione": "Risultati WebSearch 'Haushaltsbuch Vorlage Excel PDF digital kaufen Etsy': molte inserzioni Etsy DE di Haushaltsbuch come download istantaneo; il riepilogo riporta PDF A4/A5 + Excel, un 'all-in-one Finanzplaner' a 38,16 EUR e un modello a CHF 4,73. Pagina non aperta.", "url": "https://www.etsy.com/de/listing/4535412450", "data": "2026-11-23", "metodo": "WebSearch, pagina non aperta"},
-    {"tipo": "osservata", "descrizione": "Digistore24 vende un Haushaltsbuch-Vorlage per Excel e Android a 5,88 EUR con guida PDF (riepilogo WebSearch; due prodotti Digistore24 nei risultati: 723179 e 660108, non e verificato quale).", "url": "https://www.digistore24.com/product/723179", "data": "2026-11-23", "metodo": "WebSearch, pagina non aperta"},
-    {"tipo": "osservata", "descrizione": "Finanztip offre una Haushaltsbuch Excel-Vorlage gratuita; C&A offre una Vorlage PDF gratuita (riepilogo WebSearch).", "url": "https://www.finanztip.de/haushaltsbuch/", "data": "2026-11-23", "metodo": "WebSearch, pagina non aperta (WebFetch: ENOTFOUND)"},
-    {"tipo": "ipotesi", "descrizione": "Verifica 2026-11-23 (T-020-2): WebFetch fallito su www.etsy.com/de/search?q=haushaltsbuch+vorlage+pdf, www.amazon.de/s?k=haushaltsbuch e www.finanztip.de/haushaltsbuch/ con errore esatto 'getaddrinfo ENOTFOUND <host>' (host fuori dal dominio di rete consentito della sessione). Nessun prezzo, numero di recensioni o lamentela letto direttamente: restano le fonti WebSearch sopra, non aperte.", "url": "https://www.etsy.com/de/search?q=haushaltsbuch+vorlage+pdf", "data": "2026-11-23"},
+    {"tipo": "osservata", "descrizione": "Risultati WebSearch 'Haushaltsbuch Vorlage Excel PDF digital kaufen Etsy': molte inserzioni Etsy DE di Haushaltsbuch come download istantaneo; il riepilogo riporta PDF A4/A5 + Excel, un 'all-in-one Finanzplaner' a 38,16 EUR e un modello a CHF 4,73. Pagina non aperta.", "url": "https://www.etsy.com/de/listing/4535412450", "data": "2026-11-23", "metodo": "estratto_ricerca"},
+    {"tipo": "osservata", "descrizione": "Digistore24 vende un Haushaltsbuch-Vorlage per Excel e Android a 5,88 EUR con guida PDF (riepilogo WebSearch; due prodotti Digistore24 nei risultati: 723179 e 660108, non e verificato quale).", "url": "https://www.digistore24.com/product/723179", "data": "2026-11-23", "metodo": "estratto_ricerca"},
+    {"tipo": "osservata", "descrizione": "Finanztip offre una Haushaltsbuch Excel-Vorlage gratuita; C&A offre una Vorlage PDF gratuita (riepilogo WebSearch).", "url": "https://www.finanztip.de/haushaltsbuch/", "data": "2026-11-23", "metodo": "estratto_ricerca"},
     {"tipo": "ipotesi", "descrizione": "Prezzo 12,90 EUR, sviluppo 15 EUR, accesso 2 EUR per vendita: ipotesi. Il prezzo osservato dei concorrenti va da 5,88 a 38,16 EUR (gamma ampia, mix di formati)."}
   ],
   "concorrenti": [
@@ -18,7 +17,8 @@
     {"nome": "C&A Haushaltsbuch PDF", "prezzo": "gratis", "tipo_dato": "osservata"},
     {"nome": "Digistore24 Haushaltsbuch Excel", "prezzo": "5,88 EUR", "tipo_dato": "osservata"},
     {"nome": "Etsy DE Finanzplaner all-in-one", "prezzo": "38,16 EUR", "tipo_dato": "osservata"},
-    {"nome": "Etsy DE PDF+Excel bundle", "prezzo": "CHF 4,73 / 7,03 CAD in listing diversi", "tipo_dato": "osservata"}
+    {"nome": "Etsy DE PDF+Excel bundle", "prezzo": "CHF 4,73", "tipo_dato": "osservata"},
+    {"nome": "Etsy DE PDF+Excel bundle (altro listing in CAD)", "prezzo": "7,03 CAD (cifra non presente nelle fonti della scheda)", "tipo_dato": "ipotesi"}
   ],
   "prezzo_da_verificare_cents": 1290,
   "accesso_pubblico": {
@@ -29,11 +29,12 @@
   "costo_sviluppo_cents": 1500,
   "complessita_assistenza": "bassa",
   "ipotesi_margine_bp": 7147,
-  "punteggi": {"problema": 5, "accesso": 4, "margine": 6, "concorrenza": 3, "costo_sviluppo": 8, "assistenza": 7},
+  "punteggi": {"problema": 6, "accesso": 5, "margine": 7, "concorrenza": 3, "costo_sviluppo": 8, "assistenza": 7},
   "note_punteggi": {
-    "problema": "5 (era 6, verifica 2026-11-23): pagine non apribili (ENOTFOUND), nessun dato su volumi o recensioni; solo riepiloghi di ricerca. Senza evidenza diretta il punteggio scende.",
-    "accesso": "4 (era 5): Etsy DE presente solo da riepilogo di ricerca; costo acquisizione e commissioni non verificati.",
-    "margine": "6 (era 7): calcolo 7147 bp resta ipotesi; prezzi osservati (5,88 EUR Digistore24) mettono in dubbio i 12,90 EUR; commissioni Etsy non verificate.",
+    "problema": "6: primo ciclo, nel limite D-028 (solo estratti: max 6). Nessun dato su volumi o recensioni.",
+    "accesso": "5: primo ciclo. Etsy DE presente da estratto di ricerca; costo acquisizione e commissioni ipotesi.",
+    "margine": "7: primo ciclo; calcolo 7147 bp resta ipotesi; prezzi osservati (5,88 EUR Digistore24) pongono un rischio sui 12,90 EUR.",
+    "storico": "Primo ciclo 58. Il ribasso a 52 del tentativo T-020-2 e annullato da D-028 (nessuna evidenza contraria). Verifica NON eseguita: WebFetch fallito con 'getaddrinfo ENOTFOUND' su www.etsy.com/de/search, www.amazon.de, www.finanztip.de (vedi verifica-2-haushaltsbuch.md); tentativo fallito, non una fonte.",
     "concorrenza": "3: Finanztip e C&A gratuiti e molto noti; offerta a pagamento affollata e a prezzi bassi.",
     "costo_sviluppo": "8: base riutilizzabile dalla scheda IT, localizzazione e formule; ipotesi 1500 cent.",
     "assistenza": "7: autoesplicativo con guida PDF; qualche richiesta di compatibilita."
@@ -41,5 +42,5 @@
   "costi_canale_config": {"etsy": "950 bp + 45 cent (ipotesi)", "shopify": "290 bp + 30 cent + 3900 cent/mese (ipotesi)", "creator": "30% sul netto (ipotesi)"},
   "canali": {"sito_shopify": "ipotesi: non copre canone senza traffico", "marketplace": "Etsy DE osservata presenza", "creator": "ipotesi", "organico": "ipotesi: ricerche 'Haushaltsbuch' competitive"},
   "esclusioni": "Finanza domestica solo tracciamento, nessuna consulenza; caso di confine segnalato al Team Lead.",
-  "esito": "sotto soglia (punteggio 52,0 < 60 dopo verifica 2026-11-23, evidenze dirette non ottenute): archivio"
+  "esito": "sotto soglia (punteggio 58 < 60, 3 fonti osservate di tipo estratto): non selezionata; verifica T-020 da rieseguire con pagine leggibili"
 }

@@ -7,19 +7,19 @@
   "acquirente": "Adulti in Spagna che preparano oposiciones (concorsi pubblici) studiando in autonomia, in parallelo a lavoro o altro. Non minori.",
   "problema": "Organizzare un temario lungo e mesi di studio: ripartire ore, ripassi e avanzamento. Molti blog dedicati trattano il calendario e il tracker.",
   "fonti": [
-    {"tipo": "ipotesi", "descrizione": "OpositaTest avrebbe articoli su calendario/planificador/opotracker e plantillas gratuite. Declassata da osservata: nota solo da riepilogo WebSearch, pagina mai aperta; verifica T-020-1 impossibile (host non risolvibile).", "url": "https://blog.opositatest.com/planificador-oposiciones-que-es", "data": "2026-11-23"},
-    {"tipo": "ipotesi", "descrizione": "Redopositor 'Planificador Pro' a 49 EUR (79 barrato), lista d'attesa: da riepilogo WebSearch. Verifica T-020-1: WebFetch redopositor.com = 'getaddrinfo ENOTFOUND redopositor.com'.", "url": "https://redopositor.com/productos/planificador-pro/", "data": "2026-11-23"},
-    {"tipo": "ipotesi", "descrizione": "Payhip plantilla Excel oposiciones a 3,99 EUR: da riepilogo WebSearch. Verifica T-020-1: 'getaddrinfo ENOTFOUND payhip.com'.", "url": "https://payhip.com/b/ihdmv", "data": "2026-11-23"},
-    {"tipo": "ipotesi", "descrizione": "Preparaoposiciones kit opositor gratuito: da riepilogo WebSearch, pagina non aperta.", "url": "https://www.preparaoposiciones.com/blog/herramientas/kit-opositor/", "data": "2026-11-23"},
-    {"tipo": "ipotesi", "descrizione": "Ricorrenza delle convocatorie BOE: NON verificata. WebFetch www.boe.es = 'getaddrinfo ENOTFOUND www.boe.es'. Etsy, Amazon.es, Gumroad, Shopify, help.etsy.com: stesso errore ENOTFOUND."},
+    {"tipo": "osservata", "descrizione": "Estratto di ricerca web: OpositaTest ha articoli su calendario/planificador/opotracker e plantillas gratuite. Pagina non aperta.", "url": "https://blog.opositatest.com/planificador-oposiciones-que-es", "data": "2026-11-23", "metodo": "estratto_ricerca"},
+    {"tipo": "osservata", "descrizione": "Estratto di ricerca web: Redopositor 'Planificador Pro' a 49 EUR (79 barrato), in lista d'attesa. Pagina non aperta.", "url": "https://redopositor.com/productos/planificador-pro/", "data": "2026-11-23", "metodo": "estratto_ricerca"},
+    {"tipo": "osservata", "descrizione": "Estratto di ricerca web: Payhip plantilla Excel oposiciones a 3,99 EUR. Pagina non aperta.", "url": "https://payhip.com/b/ihdmv", "data": "2026-11-23", "metodo": "estratto_ricerca"},
+    {"tipo": "osservata", "descrizione": "Estratto di ricerca web: Preparaoposiciones kit opositor gratuito. Pagina non aperta.", "url": "https://www.preparaoposiciones.com/blog/herramientas/kit-opositor/", "data": "2026-11-23", "metodo": "estratto_ricerca"},
+    {"tipo": "ipotesi", "descrizione": "Ricorrenza delle convocatorie BOE: NON verificata. Tentativo di lettura diretta T-020-1 fallito (WebFetch www.boe.es = 'getaddrinfo ENOTFOUND'; stesso errore per Etsy, Amazon.es, Gumroad, Shopify, help.etsy.com, redopositor.com, payhip.com). Tentativo fallito, non una fonte."},
     {"tipo": "ipotesi", "descrizione": "Prezzo 6,90 EUR, sviluppo 20 EUR, accesso 2 EUR: ipotesi. Disponibilita a pagare tra 3,99 e 49 EUR non verificata."}
   ],
   "concorrenti": [
-    {"nome": "OpositaTest plantillas/opotracker", "prezzo": "gratis", "tipo_dato": "ipotesi"},
-    {"nome": "Preparaoposiciones kit opositor", "prezzo": "gratis", "tipo_dato": "ipotesi"},
+    {"nome": "OpositaTest plantillas/opotracker", "prezzo": "gratis", "tipo_dato": "osservata"},
+    {"nome": "Preparaoposiciones kit opositor", "prezzo": "gratis", "tipo_dato": "osservata"},
     {"nome": "MAD planning PDF", "prezzo": "gratis", "tipo_dato": "ipotesi"},
-    {"nome": "Payhip plantilla Excel oposiciones 2026", "prezzo": "3,99 EUR", "tipo_dato": "ipotesi"},
-    {"nome": "Redopositor Planificador Pro", "prezzo": "49 EUR (79 EUR barrato), in lista d'attesa", "tipo_dato": "ipotesi"}
+    {"nome": "Payhip plantilla Excel oposiciones 2026", "prezzo": "3,99 EUR", "tipo_dato": "osservata"},
+    {"nome": "Redopositor Planificador Pro", "prezzo": "49 EUR (79 EUR barrato), in lista d'attesa", "tipo_dato": "osservata"}
   ],
   "prezzo_da_verificare_cents": 690,
   "accesso_pubblico": {
@@ -30,17 +30,18 @@
   "costo_sviluppo_cents": 2000,
   "complessita_assistenza": "bassa",
   "ipotesi_margine_bp": 5493,
-  "punteggi": {"problema": 5, "accesso": 4, "margine": 4, "concorrenza": 4, "costo_sviluppo": 6, "assistenza": 7},
+  "punteggi": {"problema": 6, "accesso": 5, "margine": 5, "concorrenza": 5, "costo_sviluppo": 6, "assistenza": 7},
   "note_punteggi": {
-    "problema": "5 (era 7): nessuna convocatoria BOE letta (host non raggiungibile); senza evidenza osservata il metodo impone massimo 5.",
-    "accesso": "4 (era 5): canale organico occupato da concorrenti (da snippet, non verificato); Etsy/Amazon non letti; costo ignoto.",
-    "margine": "4 (era 5): commissioni Etsy/Gumroad/Payhip/Shopify non verificate su pagine ufficiali; prezzo 690 cent ipotetico; 5493 bp resta ipotesi.",
-    "concorrenza": "4 (era 5): nessuna recensione, prezzo o lamentela letti; prodotti pagati noti solo da snippet; lacuna 3,99-49 EUR non dimostrata.",
-    "costo_sviluppo": "6: invariato, ipotesi 2000 cent; serve conoscere struttura temario e convocatorias.",
-    "assistenza": "7: invariato, prodotto autoesplicativo."
+    "problema": "6 (primo ciclo 7, ridotto per D-028): con soli estratti di ricerca il criterio non supera 6. Nessuna convocatoria BOE letta.",
+    "accesso": "5: primo ciclo, invariato. Canale organico occupato da concorrenti (da estratti); Etsy/Amazon non letti; costo ipotesi.",
+    "margine": "5: primo ciclo, invariato. Commissioni da config/canali_vendita.json, prezzo 690 cent e 5493 bp restano ipotesi.",
+    "concorrenza": "5: primo ciclo, invariato (limite D-028: max 6). Prezzi e lacuna 3,99-49 EUR da estratti, non dimostrata su pagine.",
+    "costo_sviluppo": "6: ipotesi 2000 cent; serve conoscere struttura temario e convocatorias.",
+    "assistenza": "7: prodotto autoesplicativo.",
+    "storico": "Primo ciclo 58 (4 fonti). Il ribasso a 47 del tentativo T-020-1 (fonti declassate a ipotesi) e annullato da D-028: nessuna evidenza contraria. Verifica T-020 NON eseguita (ENOTFOUND su tutti gli host); tentativi in verifica-1-oposiciones.md."
   },
   "costi_canale_config": {"etsy": "950 bp + 45 cent (ipotesi)", "gumroad": "1000 bp + 50 cent (ipotesi)", "shopify": "290 bp + 30 cent + 3900 cent/mese (ipotesi)", "creator": "30% sul netto (ipotesi)"},
   "canali": {"sito_shopify": "ipotesi", "marketplace": "non verificato per ES", "creator": "ipotesi: influencer opositores", "organico": "ipotesi: blog concorrenti da snippet"},
   "esclusioni": "Nessuna categoria regolamentata; non promettere esiti di superamento. Pubblico adulto.",
-  "esito": "sotto soglia e 0 fonti osservate verificate dopo T-020-1 (punteggio 47,5): archivio; riprovare quando i domini saranno raggiungibili"
+  "esito": "sotto soglia (punteggio 55 < 60, 4 fonti osservate di tipo estratto): non selezionata; verifica T-020 da rieseguire in una nuova sessione con pagine leggibili"
 }
