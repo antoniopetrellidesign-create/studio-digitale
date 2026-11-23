@@ -329,10 +329,23 @@ def h_shopify(run):
                         "Autorizzare l'app del negozio Shopify con scope minimi (vedi docs/operazioni-shopify.md); "
                         "token nel gestore segreti dell'ambiente, mai in file o chat.", "shopify")
     # Registro account (D-017): fase raggiunta, dipendenze attive, prezzo verificato, prova con scadenza.
+    # QA M-2: il canone si riserva tramite il registro account, poi si consuma l'addebito effettivo.
+    from .accounts import AttivazioneRifiutata
     motivi = run.accounts.verifica("shopify", "shopify")
     if motivi:
         raise AccountNonAttivabile("shopify", motivi)
+    voce = next((c for c in run.scenario.get("costi_piattaforma", []) if c.get("account") == "shopify"), None)
+    try:  # l'account si richiede SEMPRE al registro: riserva del canone (voce di costo o prezzo del catalogo)
+        rec = run.accounts.richiedi("shopify", "shopify", run.ledger, run.bid(""),
+                                    importo_cents=voce["max_cents"] if voce else None)
+    except AttivazioneRifiutata as e:
+        raise AccountNonAttivabile("shopify", e.motivi)
+    if voce and rec.get("busta"):
+        run.ledger.draw(rec["busta"], "periodo-1", voce["effettivo_cents"], voce["descrizione"])
+        run.ledger.close(rec["busta"])
     for c in run.scenario.get("costi_piattaforma", []):
+        if c.get("account"):
+            continue
         run.ledger.spend_once(run.bid(f"piattaforma-{c['id']}"), "piattaforma", c["max_cents"], c["effettivo_cents"],
                               c["descrizione"], fase="shopify", tag=["piattaforma"])
     run.accounts.conferma_attivo("shopify")

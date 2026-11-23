@@ -363,14 +363,22 @@
         "T-016"
       ],
       "output": [],
-      "stato": "in_corso",
+      "stato": "fatto",
       "run_id": null,
       "creato": "2026-11-23T20:21:02+00:00",
-      "aggiornato": "2026-11-23T20:21:02+00:00",
+      "aggiornato": "2026-11-23T20:30:15+00:00",
       "note": [
         {
           "quando": "2026-11-23T20:21:02+00:00",
           "nota": "avviato"
+        },
+        {
+          "quando": "2026-11-23T20:27:05+00:00",
+          "nota": "Verdetto BLOCCATO: qa/2026-11-23-mandato-account.md (H-1, M-1..M-3)"
+        },
+        {
+          "quando": "2026-11-23T20:30:15+00:00",
+          "nota": "Riverifica D-023: APPROVATO (qa/2026-11-23-mandato-account.md), 1 minore latente"
         }
       ]
     }

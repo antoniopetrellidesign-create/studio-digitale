@@ -33,8 +33,9 @@ class ExternalGate:
             raise ExternalActionBlocked(f"{servizio}.{azione}: azione a pagamento senza riserva nel registro")
         rec = {"quando": datetime.now(timezone.utc).isoformat(timespec="seconds"), "modalita": self.mode,
                "servizio": servizio, "azione": azione, "a_pagamento": a_pagamento, "busta": busta,
-               "esito": ("simulato" if self.mode == "simulato" else
-                         "reale" if self.live_consentito(servizio) else "bloccato"), **dati}
+               "esito": "bloccato" if dati.pop("esito_forzato", None) is not None else  # può solo irrigidire
+                         ("simulato" if self.mode == "simulato" else
+                          "reale" if self.live_consentito(servizio) else "bloccato"), **dati}
         append_jsonl(self.log_path, rec)
         if rec["esito"] == "bloccato":
             raise ExternalActionBlocked(

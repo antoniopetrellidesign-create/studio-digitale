@@ -170,7 +170,8 @@
       "id": "piano-negozio",
       "descrizione": "[SINTETICO] piano negozio 1 mese (costo da verificare)",
       "max_cents": 3600,
-      "effettivo_cents": 3600
+      "effettivo_cents": 3600,
+      "account": "shopify"
     }
   ],
   "costi_ai_per_fase_cents": {
@@ -334,11 +335,14 @@
         "stato": "verificato",
         "max_mensile_cents": 3600,
         "fonte": {
-          "tipo": "ipotesi",
-          "nota": "[SINTETICO] prezzo di collaudo"
+          "tipo": "osservata",
+          "url": "https://esempio.invalid/prezzi-sintetici",
+          "data": "2026-11-23",
+          "nota": "[SINTETICO] dato di collaudo, non osservato davvero"
         }
       },
-      "prova_gratuita": null
+      "prova_gratuita": null,
+      "passaggi_titolare": []
     }
   },
   "social": {

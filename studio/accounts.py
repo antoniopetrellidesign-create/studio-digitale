@@ -54,15 +54,18 @@ class AccountRegistry:
             if self.stato_di(d) != "attivo":
                 motivi.append(f"dipendenza '{d}' non attiva")
         p = s["prezzo"]
-        if p["stato"] == "da_verificare" or (p["stato"] == "verificato" and p.get("max_mensile_cents") is None):
-            motivi.append("prezzo, imposte e rinnovo non verificati (servono fonte e data)")
+        f = p.get("fonte") or {}
+        verificato = (p["stato"] == "verificato" and isinstance(p.get("max_mensile_cents"), int)
+                      and f.get("tipo") == "osservata" and f.get("url") and f.get("data"))  # QA M-1
+        if p["stato"] != "a_consumo" and not verificato:
+            motivi.append("prezzo, imposte e rinnovo non verificati (servono fonte osservata con url e data)")
         pg = s.get("prova_gratuita")
         if pg and (pg.get("stato") == "da_verificare" or not pg.get("scadenza")):
             motivi.append("prova gratuita senza scadenza e condizioni registrate")
         return motivi
 
     def richiedi(self, sid: str, fase_raggiunta: str, ledger, prefisso_busta: str,
-                 mesi: int = MESI_TEST_DEFAULT) -> dict:
+                 mesi: int = MESI_TEST_DEFAULT, importo_cents: int | None = None) -> dict:
         """Prepara l'attivazione: controlli + riserva. Ritorna lo stato dell'account (attivo o in attesa del titolare)."""
         if self.stato_di(sid) == "attivo":
             return self.stato["account"][sid]
@@ -70,7 +73,7 @@ class AccountRegistry:
         if motivi:
             raise AttivazioneRifiutata(sid, motivi)
         s = self.catalogo[sid]
-        importo = (s["prezzo"].get("max_mensile_cents") or 0) * mesi
+        importo = importo_cents if importo_cents is not None else (s["prezzo"].get("max_mensile_cents") or 0) * mesi
         busta = None
         if importo:
             busta = f"{prefisso_busta}account-{sid}"

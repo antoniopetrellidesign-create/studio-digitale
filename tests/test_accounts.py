@@ -31,7 +31,7 @@ class TestAccounts(unittest.TestCase):
                 self.assertTrue(reg.verifica(sid, "strategia"), sid)
 
     def test_account_prima_della_sua_fase_rifiutato(self):
-        verif = {"prezzo": {"stato": "verificato", "max_mensile_cents": 0, "fonte": {"tipo": "osservata"}}, "dipende_da": []}
+        verif = {"prezzo": {"stato": "verificato", "max_mensile_cents": 0, "fonte": {"tipo": "osservata", "url": "https://esempio.invalid/prezzi", "data": "2026-11-23"}}, "dipende_da": []}
         reg = AccountRegistry(_cat(social=verif), os.path.join(self.d, "a.json"))
         with self.assertRaises(AttivazioneRifiutata) as c:
             reg.richiedi("social", "ricerca", self.led, "r/")
@@ -45,7 +45,7 @@ class TestAccounts(unittest.TestCase):
         self.assertEqual(self.led.consumato() + self.led.impegnato_aperto(), 0)
 
     def test_canone_riservato_e_oltre_allocazione_bloccato(self):
-        ok = {"prezzo": {"stato": "verificato", "max_mensile_cents": 3900, "fonte": {"tipo": "osservata"}},
+        ok = {"prezzo": {"stato": "verificato", "max_mensile_cents": 3900, "fonte": {"tipo": "osservata", "url": "https://esempio.invalid/prezzi", "data": "2026-11-23"}},
               "prova_gratuita": {"stato": "verificato", "scadenza": "2026-12-31", "condizioni": "x"}, "dipende_da": []}
         reg = AccountRegistry(_cat(shopify=ok), os.path.join(self.d, "a.json"))
         rec = reg.richiedi("shopify", "shopify", self.led, "r/", mesi=2)

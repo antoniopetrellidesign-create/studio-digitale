@@ -128,6 +128,12 @@ def main(argv=None):
             return 0
         if a.azione == "nuovo":
             dati = json.loads(a.dati)
+            from .vault import CAMPI_SEGRETI
+            vietati = [k for k in dati if k in CAMPI_SEGRETI and k not in ("email", "utente")]
+            if vietati:  # QA minore: niente segreti sulla riga di comando (finirebbero nella cronologia della shell)
+                print(f"RIFIUTATO: campi segreti {vietati} non ammessi in --dati: usa --genera-password o il modulo "
+                      "sicuro dei segreti dell'ambiente", file=sys.stderr)
+                return 2
             if a.genera_password:
                 dati["password"] = genera_password()
             try:

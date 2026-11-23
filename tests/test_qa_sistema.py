@@ -224,7 +224,7 @@ class TestQAOrdini(_Tmp):
         run.avanza()
         o = run.orders.get("SIM-1001")
         self.assertEqual(o["paese"], "IT")
-        self.assertEqual(len(run.orders.ordini()), 14)
+        self.assertEqual(len(run.orders.ordini()), 16)  # T-017: 16 ordini (2 su Etsy), cambiamento voluto
         consumi = run.ledger.data["buste"]["r/creator-CR-SIM-1-commissioni"]["consumi"]
         self.assertEqual(len([k for k in consumi if k == "SIM-1001"]), 1)
 
@@ -461,9 +461,9 @@ class TestQACoerenza(_Tmp):
     def test_misurazione_non_conta_ordine_di_prova(self):
         run = nuovo_run(os.path.join(self.d, "r"), "completo")
         run.avanza()
-        self.assertEqual(len(run.orders.ordini(includi_test=True)), 15)
+        self.assertEqual(len(run.orders.ordini(includi_test=True)), 17)  # T-017: 16 reali + 1 di prova
         met = read_json(os.path.join(self.d, "r", "artifacts", "misurazione.json"))["metriche"]
-        self.assertEqual(met["ordini"], 14)
+        self.assertEqual(met["ordini"], 16)
 
     # CORRETTO in D-013, riverificato dal QA — era DIFETTO (minore) studio/orders.py:59 + config/policy.json — `commissione_pagamento_rimborsata_su_refund`
     # non è letto da nessun modulo: la fee è sempre trattenuta (corretto con il valore attuale `false`, ma un
@@ -504,8 +504,8 @@ class TestQAFileVersionati(unittest.TestCase):
     def test_nessuna_credenziale_o_dato_personale_versionato(self):
         trovati = []
         for rel in self._files():
-            if rel.startswith("tests/test_qa_"):
-                continue  # questo file contiene i pattern di ricerca, non segreti
+            if rel.startswith(("tests/test_qa_", "qa/")) or rel == "docs/qa-checklist.md":
+                continue  # file del QA: contengono i pattern di ricerca come documentazione, non segreti
             p = os.path.join(ROOT, rel)
             if not os.path.isfile(p):
                 continue
@@ -521,7 +521,9 @@ class TestQAFileVersionati(unittest.TestCase):
                         if "re.IGNORECASE)" in riga:
                             nel_pattern = False
                         continue
-                    if self.PATTERN.search(riga):
+                    m = self.PATTERN.search(riga)
+                    # Domini riservati RFC 2606/6761 (.invalid, .example, example.com): indirizzi fittizi dei test.
+                    if m and not re.search(r"@[\w.-]*(?:\.invalid|\.example|example\.(?:com|org|net))\b", m.group(0)):
                         trovati.append(f"{rel}:{i}")
         self.assertEqual(trovati, [])
 

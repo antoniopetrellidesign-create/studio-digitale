@@ -70,7 +70,8 @@ Responsabile: qa-indipendente. Si usa a ogni passaggio di fase critico (in parti
 |---|---|---|---|
 | E1 | In simulazione ogni chiamata è `simulato`; nessun `contatto_reale` | [FILE] `$RUN/external_calls.jsonl`; `qa.json` Q7 | sì |
 | E2 | Modalità live: blocco alla prima azione, nessun consumo, chiamata registrata come `bloccato` (anche con `STUDIO_LIVE=1`) | [TEST] `test_live_blocca_senza_consumi_anche_con_studio_live`, `test_live_ripreso_resta_bloccato_e_non_spende` | sì |
-| E3 | Nessuna pubblicazione, campagna reale, email, account o acquisto | [ISP] `grep -rn "requests\|urllib\|smtplib\|http.client\|socket" studio/` → nessun uso; scheda in bozza | sì |
+| E3 | Nessuna pubblicazione, campagna reale, email, account o acquisto | [ISP] `grep -rn "requests\|urllib.request\|smtplib\|http.client\|socket" studio/` → solo `studio/adapters/live_shopify.py` (non collegato a `adapters.build`); scheda in bozza | sì |
+| E5 | Nessuna connessione di rete non locale durante test e collaudo | [CMD] `PYTHONPATH=<dir con sitecustomize che vieta connect() non loopback>` + collaudo e unittest → 0 tentativi; [TEST] `test_tutti_gli_scenari_senza_rete_esterna` | sì |
 | E4 | Azioni del titolare raccolte nel pacchetto unico, senza credenziali | [FILE] `$RUN/AZIONI_TITOLARE.md`, `AZIONI_TITOLARE.md` | sì |
 
 ## 7. Segreti e dati personali
@@ -87,3 +88,14 @@ Responsabile: qa-indipendente. Si usa a ogni passaggio di fase critico (in parti
 | D1 | Formule e regole di STRATEGIA.md e WORKFLOW.md coincidono con `studio/economics.py`, `studio/phases.py` | [TEST] classe `TestQACoerenza` | sì |
 | D2 | Ogni parametro di `config/*.json` è letto dal codice o dichiarato informativo | [CMD] `grep -rn <chiave> studio/` per ogni chiave | no (importante) |
 | D3 | Riferimenti incrociati a DECISIONI.md corretti | [ISP] | no |
+
+## 9. Account, ACCESSI_SISTEMA, catalogo, Social, integrazioni live (D-017…D-022)
+| # | Criterio | Prova richiesta | Bloccante |
+|---|---|---|---|
+| A1 | Nessuna credenziale in chiaro da vault, CLI o indice, anche con `--genera-password`; la password non è stampata | [TEST] `test_cli_genera_password_non_stampata_ne_scritta_in_chiaro`, `test_indice_senza_campi_segreti_anche_con_nomi_imprevisti` | sì |
+| A2 | Senza chiave pubblica del titolare: rifiuto, nessuna voce; senza chiave privata: nessuna decifratura; destinatario malformato: nessun file | [TEST] `test_cli_senza_chiave_del_titolare_rifiuta_e_non_scrive`, `test_senza_chiave_privata_del_titolare_non_si_decifra`, `test_destinatario_malformato_non_produce_voci_in_chiaro` | sì |
+| A3 | Account attivabile solo a fase raggiunta, con dipendenze attive, prezzo verificato (fonte osservata + data), prova gratuita con scadenza | [TEST] classe `TestQAAccount` | sì |
+| A4 | Il canone (massimo mensile x mesi) è riservato nel registro prima dell'attivazione, entro allocazione e tetto, anche nella fase Shopify | [TEST] `test_canone_riservato_e_limitato_da_allocazione_e_tetto`, `test_fase_shopify_riserva_il_canone_tramite_registro`; [FILE] `$RUN/account.json` campo `busta` | sì |
+| A5 | Catalogo: esclusi i canali con regole prodotto/AI a 0; ordini marketplace con sola commissione del marketplace; somma per canale di vendita = totale | [TEST] classe `TestQACatalogo` | sì |
+| A6 | Social: nessun avvio con prodotto non validato; tutto in bozza; nessuna chiamata esterna | [TEST] classe `TestQASocial` | sì |
+| A7 | Adattatori reali: azione solo con `STUDIO_LIVE=1` E integrazione collaudata (qualunque sia la modalità del gate; `esito_forzato` può solo inasprire); host solo `*.myshopify.com` via HTTPS (anche se derivato da `negozio`); prodotti solo DRAFT; HMAC a tempo costante e segreto non vuoto | [TEST] classe `TestQALiveShopify`; [FILE] `config/integrazioni_collaudate.json` → `[]` | sì |

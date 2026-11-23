@@ -25,6 +25,8 @@ SCOPE_MINIMI = ["read_products", "write_products", "read_orders", "read_discount
 
 
 def verifica_webhook(corpo: bytes, firma_b64: str, segreto: str) -> bool:
+    if not segreto or not firma_b64:  # QA minore: segreto vuoto mai valido
+        return False
     atteso = base64.b64encode(hmac.new(segreto.encode(), corpo, hashlib.sha256).digest()).decode()
     return hmac.compare_digest(atteso, firma_b64 or "")
 
@@ -37,12 +39,19 @@ class LiveShopify:
         self.negozio = negozio
         self.token_env = token_env
         self.endpoint = endpoint or f"https://{negozio}/admin/api/{API_VERSION}/graphql.json"
-        host = urlparse(self.endpoint).hostname or ""
-        if endpoint and host not in ("127.0.0.1", "localhost") and not host.endswith(".myshopify.com"):
-            raise ValueError("endpoint ammessi: *.myshopify.com oppure localhost (solo test)")
+        u = urlparse(self.endpoint)
+        host = u.hostname or ""
+        locale = host in ("127.0.0.1", "localhost")
+        # QA M-3 e minore: controllo dell'host anche quando l'endpoint è costruito da `negozio`; https obbligatorio
+        if not locale and (not host.endswith(".myshopify.com") or u.scheme != "https"):
+            raise ValueError("endpoint ammessi: https://*.myshopify.com oppure localhost (solo test)")
 
     def _graphql(self, azione: str, query: str, variabili: dict | None = None) -> dict:
-        self.gate.record(self.servizio, azione)  # blocca se live non consentito
+        # QA H-1: nessuna richiesta HTTP se il live non è consentito, in QUALSIASI modalità del cancello
+        if not self.gate.live_consentito(self.servizio):
+            self.gate.record(self.servizio, azione, esito_forzato="bloccato")
+            raise ExternalActionBlocked(f"shopify.{azione}: live non consentito (serve STUDIO_LIVE=1 e integrazione collaudata)")
+        self.gate.record(self.servizio, azione)
         token = os.environ.get(self.token_env)
         if not token:
             raise ExternalActionBlocked(f"segreto://shopify/token_admin non disponibile (variabile {self.token_env})")
