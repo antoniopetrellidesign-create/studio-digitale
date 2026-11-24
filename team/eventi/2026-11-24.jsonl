@@ -185,3 +185,6 @@
 {"quando": "2026-11-24T11:31:36+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Show unstaged changes blocking rewrite"}
 {"quando": "2026-11-24T11:31:37+00:00", "evento": "PostToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Show unstaged changes blocking rewrite", "esito": "ok", "durata_ms": 30}
 {"quando": "2026-11-24T11:31:43+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Commit events then rewrite history"}
+{"quando": "2026-11-24T11:31:44+00:00", "evento": "PostToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Commit events then rewrite history", "esito": "ok", "durata_ms": 978}
+{"quando": "2026-11-24T11:31:49+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Run tests, then push rewritten history"}
+{"quando": "2026-11-24T11:31:55+00:00", "evento": "Notification", "sessione": "3bc9ed50", "sintesi": "Claude needs your permission to use Bash", "tipo": "permission_prompt"}
