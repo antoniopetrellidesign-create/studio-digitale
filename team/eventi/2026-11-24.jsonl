@@ -188,3 +188,5 @@
 {"quando": "2026-11-24T11:31:44+00:00", "evento": "PostToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Commit events then rewrite history", "esito": "ok", "durata_ms": 978}
 {"quando": "2026-11-24T11:31:49+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Run tests, then push rewritten history"}
 {"quando": "2026-11-24T11:31:55+00:00", "evento": "Notification", "sessione": "3bc9ed50", "sintesi": "Claude needs your permission to use Bash", "tipo": "permission_prompt"}
+{"quando": "2026-11-24T11:51:37+00:00", "evento": "SessionStart", "sessione": "3bc9ed50", "origine": "resume"}
+{"quando": "2026-11-24T11:51:40+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Record decision, update docs, push, realign clone"}

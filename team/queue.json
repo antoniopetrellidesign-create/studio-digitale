@@ -253,14 +253,18 @@
         "T-009"
       ],
       "output": [],
-      "stato": "in_corso",
+      "stato": "fatto",
       "run_id": null,
       "creato": "2026-11-23T19:27:12+00:00",
-      "aggiornato": "2026-11-23T20:21:02+00:00",
+      "aggiornato": "2026-11-24T11:51:41+00:00",
       "note": [
         {
           "quando": "2026-11-23T20:21:02+00:00",
           "nota": "elenco unico aggiornato in AZIONI_TITOLARE.md: in attesa del titolare"
+        },
+        {
+          "quando": "2026-11-24T11:51:41+00:00",
+          "nota": "R1 completato: repository dedicato attivo e verificato"
         }
       ]
     },
