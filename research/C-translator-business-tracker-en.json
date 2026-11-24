@@ -1,0 +1,42 @@
+{
+  "id": "C-translator-business-tracker-en",
+  "titolo": "Freelance translator business tracker (projects by language pair and word count, quotes, invoices), Sheets/Excel (EN)",
+  "sintetico": false,
+  "lingua": "en",
+  "mercato": "US",
+  "acquirente": "Traduttori e linguisti freelance che lavorano per agenzie e clienti diretti e fatturano a parola.",
+  "problema": "Tenere insieme progetti, coppia linguistica, conteggio parole, tariffa, scadenze, preventivi e fatture senza un foglio costruito a mano; i software generici non ragionano a parola.",
+  "fonti": [
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "metodo": "estratto_ricerca", "descrizione": "Estratto WebSearch: un traduttore pubblica sul forum ProZ uno strumento Excel/Sheets gratuito che registra progetti per coppia linguistica e numero di parole e genera la fattura. Indica che il bisogno esiste e che qualcuno lo risolve da solo. Pagina non aperta (WebFetch: ENOTFOUND).", "url": "https://kaz.proz.com/forum/software_applications/384175.html", "data": "2026-11-24"},
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "metodo": "estratto_ricerca", "descrizione": "Estratto WebSearch: 'Freelance Translator Business OS', workspace Notion per traduttori e agenzie (clienti, progetti, preventivi, fatture, terminologia). Prezzo non riportato nell'estratto. Pagina non aperta (WebFetch: ENOTFOUND).", "url": "https://www.getly.store/product/freelance-translator-business-os", "data": "2026-11-24"},
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "metodo": "estratto_ricerca", "descrizione": "Estratto WebSearch: Freelance Invoice Tracker per Excel e Sheets a 14 USD lancio (da 22 USD). Prodotto generico per freelance, non per traduttori. Pagina non aperta.", "url": "https://rjcreativeshop-6hb2dbds.manus.space/product/freelance-invoice-tracker", "data": "2026-11-24"},
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "metodo": "estratto_ricerca", "descrizione": "Estratto WebSearch: Everhour offre gratis un modello di fattura per traduttori e spiega che i traduttori fatturano a parola, ora, pagina o progetto. Concorrenza gratuita per la sola fattura. Pagina non aperta.", "url": "https://everhour.com/invoices/invoice-template-for-translators", "data": "2026-11-24"},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "Prezzi Etsy riportati nell'estratto (Notion time tracker 5,99 USD, timesheet Sheets 9,71 USD): l'URL di ogni cifra non e attribuibile con certezza dall'estratto, quindi non usati come osservati."},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "Dimensione del pubblico e disponibilita a pagare dei traduttori freelance: nessun dato osservato."},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "Prezzo 12,00 EUR, sviluppo 25 EUR, accesso 2 EUR, commissioni Etsy 950 bp + 45 cent: ipotesi del ricercatore (config/canali_vendita.json non riaperto)."}
+  ],
+  "concorrenti": [
+    {"nome": "Freelance Translator Business OS (Getly, Notion)", "prezzo": "non riportato", "tipo_dato": "osservata"},
+    {"nome": "Strumento gratuito Excel/Sheets su ProZ", "prezzo": "gratuito", "tipo_dato": "osservata"},
+    {"nome": "Modello fattura Everhour per traduttori", "prezzo": "gratuito", "tipo_dato": "osservata"},
+    {"nome": "Freelance Invoice Tracker generico (manus.space)", "prezzo": "14 USD (da 22)", "tipo_dato": "osservata"}
+  ],
+  "prezzo_da_verificare_cents": 1200,
+  "accesso_pubblico": {"canale": "marketplace (Etsy/Gumroad) + community di traduttori (ProZ, gruppi pubblici; non osservato il costo)", "costo_stimato_cents": 200, "natura": "ipotesi"},
+  "costo_sviluppo_cents": 2500,
+  "complessita_assistenza": "bassa",
+  "ipotesi_margine_bp": 7008,
+  "punteggi": {"problema": 5, "accesso": 5, "margine": 6, "concorrenza": 5, "costo_sviluppo": 7, "assistenza": 8},
+  "note_punteggi": {
+    "problema": "5: solo estratti (limite D-028 6). Un traduttore si costruisce lo strumento da solo e un prodotto Notion dedicato esiste, ma nessuna lamentela ne volume letti.",
+    "accesso": "5: marketplace e community plausibili ma costo di acquisizione non osservato; Notion-only e un rischio di piattaforma, qui si propone Sheets/Excel.",
+    "margine": "6: margine (1200 - 114 - 45 - 200)/1200 = 70,08% su ipotesi; prezzo non verificato e concorrenza gratuita sulla fattura.",
+    "concorrenza": "5: solo estratti (limite 6). Un solo prodotto specifico osservato, gli altri sono generici o gratuiti; lacuna (Sheets, non Notion, a parola) non dimostrata.",
+    "costo_sviluppo": "7: 2500 cent ipotesi, struttura semplice con formule.",
+    "assistenza": "8: prodotto statico, nessuna integrazione.",
+    "calcolo": "5*2,5 + 5*2 + 6*2 + 5*1,5 + 7*1 + 8*1 = 57,0"
+  },
+  "canali": {"sito_shopify": "ipotesi", "marketplace": "Etsy generico osservato per template freelance", "creator": "ipotesi", "organico": "ipotesi"},
+  "esclusioni": "Nessuna categoria regolamentata. Non includere marchi CAT tool (Trados, memoQ). Tariffe indicative per parola non vanno presentate come benchmark.",
+  "esito": "sotto soglia (57,0 < 60): non selezionata. WebFetch fallito sugli URL provati (ENOTFOUND)."
+}

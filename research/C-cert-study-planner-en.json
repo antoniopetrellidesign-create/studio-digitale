@@ -1,0 +1,41 @@
+{
+  "id": "C-cert-study-planner-en",
+  "titolo": "IT certification exam study planner (cloud/security/PM) with practice-score tracker, Sheets/PDF (EN)",
+  "sintetico": false,
+  "lingua": "en",
+  "mercato": "US",
+  "acquirente": "Professionisti IT e project manager adulti che preparano un esame di certificazione (cloud, sicurezza, gestione progetti) studiando da soli.",
+  "problema": "Pianificare settimane di studio per dominio dell'esame e seguire i punteggi dei test di prova mentre si lavora a tempo pieno.",
+  "fonti": [
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "metodo": "estratto_ricerca", "descrizione": "Estratto WebSearch: listing Etsy 'cloud computing certification study' (pianificatore digitale interattivo con blocchi di studio e punteggi dei test di prova); nei risultati i prezzi vanno da circa 2 a 12 USD, non legati a un URL preciso. Pagina non aperta.", "url": "https://www.etsy.com/au/listing/4504681543/cloud-computing-certification-study", "data": "2026-11-24"},
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "metodo": "estratto_ricerca", "descrizione": "Estratto WebSearch: Digital Cloud Training offre un piano di studio AWS gratuito per ogni certificazione. Concorrenza gratuita dal fornitore di corsi. Pagina non aperta.", "url": "https://digitalcloud.training/aws-certification-study-plan/", "data": "2026-11-24"},
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "metodo": "estratto_ricerca", "descrizione": "Estratto WebSearch: APMG International offre un template PDF gratuito di piano di studio, estendibile per settimane. Pagina non aperta.", "url": "https://apmg-international.com/pt-br/article/self-study-how-create-study-plan", "data": "2026-11-24"},
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "metodo": "estratto_ricerca", "descrizione": "Estratto WebSearch: MindMesh Academy pubblica un articolo con template Excel settimanale e piani di studio per AWS, CompTIA e PMP. Pagina non aperta.", "url": "https://www.mindmeshacademy.com/blog/articles/study-schedule-templates", "data": "2026-11-24"},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "Quanti candidati acquistano un planner separato dal corso: nessun dato osservato. L'estratto non ha trovato template Notion ne template specifici CompTIA."},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "Prezzo 9,90 EUR, sviluppo 25 EUR, accesso 2 EUR, commissioni Etsy 950 bp + 45 cent: ipotesi."}
+  ],
+  "concorrenti": [
+    {"nome": "Planner certificazioni cloud su Etsy", "prezzo": "circa 2-12 USD (intervallo dagli estratti)", "tipo_dato": "osservata"},
+    {"nome": "Digital Cloud Training, piano AWS", "prezzo": "gratuito", "tipo_dato": "osservata"},
+    {"nome": "APMG study plan PDF", "prezzo": "gratuito", "tipo_dato": "osservata"},
+    {"nome": "MindMesh Academy template Excel", "prezzo": "non riportato", "tipo_dato": "osservata"}
+  ],
+  "prezzo_da_verificare_cents": 990,
+  "accesso_pubblico": {"canale": "marketplace (Etsy) + community di studio (non osservate)", "costo_stimato_cents": 200, "natura": "ipotesi"},
+  "costo_sviluppo_cents": 2500,
+  "complessita_assistenza": "bassa",
+  "ipotesi_margine_bp": 6576,
+  "punteggi": {"problema": 5, "accesso": 5, "margine": 6, "concorrenza": 3, "costo_sviluppo": 7, "assistenza": 8},
+  "note_punteggi": {
+    "problema": "5: solo estratti; problema plausibile (esame costoso e ricorrente) ma nessuna evidenza di pagamento oltre ai pochi dollari dei listing.",
+    "accesso": "5: Etsy e canale unico; nicchia professionale raggiungibile via community non osservate.",
+    "margine": "6: (990 - 94 - 45 - 200)/990 = 65,76% su ipotesi; prezzi dei concorrenti bassi.",
+    "concorrenza": "3: piani gratuiti dei fornitori di formazione e planner economici; lacuna non dimostrata.",
+    "costo_sviluppo": "7: 2500 cent ipotesi.",
+    "assistenza": "8: prodotto statico, ma i syllabus d'esame cambiano.",
+    "calcolo": "5*2,5 + 5*2 + 6*2 + 3*1,5 + 7 + 8 = 54,0"
+  },
+  "canali": {"sito_shopify": "ipotesi", "marketplace": "Etsy osservato", "creator": "ipotesi", "organico": "ipotesi"},
+  "esclusioni": "Nessuna categoria regolamentata. I nomi AWS, CompTIA, PMP sono marchi di terzi: usare solo descrittivamente, mai loghi ne contenuti d'esame; nessuna promessa di superare l'esame.",
+  "esito": "sotto soglia (54,0 < 60): non selezionata."
+}

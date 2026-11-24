@@ -1,0 +1,38 @@
+{
+  "id": "D-de-handwerker-angebotskalkulation",
+  "titolo": "Angebots- und Stundensatz-Kalkulationsvorlage fuer Kleinbetriebe im Handwerk (DE)",
+  "sintetico": false,
+  "lingua": "de",
+  "mercato": "DE",
+  "acquirente": "Inhaber von Kleinstbetrieben im Handwerk in Deutschita (Elektro, SHK, Dachdecker, Maler) senza software gestionale, che preparano offerte a mano o in Excel.",
+  "problema": "Calcolare la tariffa oraria (costi di personale, spese generali, rischio, utile) e collegarla alle voci di un'offerta con materiali. Dagli estratti: le guide spiegano la calcolazione ma non si e trovato un modello pronto che colleghi tariffa oraria e offerta (non verificato aprendo le pagine).",
+  "fonti": [
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "metodo": "estratto_ricerca", "descrizione": "WebSearch: STREIT offre un'app Excel gratuita per la tariffa oraria (SHK, elettro, tetti) e un articolo 'Handwerker Angebot Muster' con modello; il riepilogo dice che la vera guida/modello non era visibile.", "url": "https://www.streit-software.de/vorlagen/stundensatz-ermittlung-excel", "data": "2026-11-24"},
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "metodo": "estratto_ricerca", "descrizione": "WebSearch: clean-invoice descrive una calcolazione a 4 fogli (stato marzo 2026) e segna il modello Excel come 'presto disponibile'; Lexware e iBau spiegano la calcolazione dell'offerta.", "url": "https://www.clean-invoice.com/wissen/allgemein/stundensatz-kalkulation-handwerk", "data": "2026-11-24"},
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "metodo": "estratto_ricerca", "descrizione": "WebSearch: Berliner Sparkasse e Lexware pubblicano guide per la calcolazione di prezzi di offerta (esempio: 50 EUR costo orario + 10% utile).", "url": "https://www.lexware.de/wissen/faktura-warenwirtschaft/angebotskalkulation-angebote-richtig-kalkulieren/", "data": "2026-11-24"},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "WebFetch di www.streit-software.de fallito: 'getaddrinfo ENOTFOUND www.streit-software.de' (dominio non consentito dalla rete della sessione). Nessuna pagina letta integralmente."},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "Dolore ricorrente e disponibilita a pagare: inferenza dall'esistenza di guide e software; nessun dato su acquisti o lamentele."},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "Prezzo 29 EUR, sviluppo 30 EUR, accesso 3 EUR, commissioni Etsy 950 bp + 45 cent: ipotesi."}
+  ],
+  "concorrenti": [
+    {"nome": "STREIT Excel-App Stundensatz (gratuita secondo estratto)", "prezzo": "gratuito (estratto di ricerca)", "tipo_dato": "osservata", "livello": "risultato_di_ricerca"},
+    {"nome": "Software di settore (Lexware, iBau, ecc.)", "prezzo": "non rilevato", "tipo_dato": "ipotesi"},
+    {"nome": "Modelli Excel gratuiti per offerte (clean-invoice, projectmanager.com)", "prezzo": "gratuito/non rilevato", "tipo_dato": "osservata", "livello": "risultato_di_ricerca"}
+  ],
+  "prezzo_da_verificare_cents": 2900,
+  "accesso_pubblico": {"canale": "SEO tedesca + Etsy.de/marketplace + forum e gruppi di settore (organico)", "costo_stimato_cents": 300, "natura": "ipotesi"},
+  "costo_sviluppo_cents": 3000,
+  "complessita_assistenza": "media",
+  "ipotesi_margine_bp": 7862,
+  "punteggi": {"problema": 6, "accesso": 5, "margine": 6, "concorrenza": 5, "costo_sviluppo": 6, "assistenza": 6},
+  "note_punteggi": {
+    "problema": "6 (tetto D-028 con soli risultati di ricerca): esistono molte guide sulla calcolazione, nessuna testimonianza diretta del dolore.",
+    "accesso": "5: canali plausibili ma nessun dato su volumi o costi; tutto ipotesi.",
+    "margine": "6: 2900 - 320 (Etsy) - 300 (accesso) = 2280 -> 7862 bp, tutte ipotesi; il concorrente gratuito frena il prezzo.",
+    "concorrenza": "5 (tetto 6): lacuna possibile (collegamento tariffa-offerta) ma strumenti gratuiti presenti.",
+    "costo_sviluppo": "6: Excel con formule e verifica fiscale delle voci; 3000 cent ipotesi.",
+    "assistenza": "6: domande su formule e personalizzazione per mestiere."
+  },
+  "esclusioni": "Nessuna categoria regolamentata; evitare consigli fiscali/IVA come consulenza.",
+  "esito": "sotto soglia: punteggio ~56,5 < 60; archivio. Fonti: 3 risultati di ricerca, nessuna pagina letta (rete non consente il fetch)."
+}

@@ -1,0 +1,37 @@
+{
+  "id": "D-en-yoga-class-planner",
+  "titolo": "Yoga teacher class planning and sequencing templates (EN, US)",
+  "sintetico": false,
+  "lingua": "en",
+  "mercato": "US",
+  "acquirente": "Insegnanti di yoga indipendenti e piccoli studi negli Stati Uniti che pianificano classi settimanali.",
+  "problema": "Pianificare ogni settimana sequenze e classi in modo coerente senza perdere ore. Dagli estratti: diversi blog di insegnanti trattano il tema della pianificazione, segno di interesse, non misura del dolore.",
+  "fonti": [
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "metodo": "estratto_ricerca", "descrizione": "WebSearch: risultati Etsy con yoga class planner PDF a 2,00 USD, planner stampabile a 3,99 USD e guida di sequencing a 2,99 USD (listing non aperti).", "url": "https://www.etsy.com/listing/802532792", "data": "2026-11-24"},
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "metodo": "estratto_ricerca", "descrizione": "WebSearch: Payhip 'Yoga Practice Planning Template Pack' a 19 EUR.", "url": "https://payhip.com/b/sy9M1", "data": "2026-11-24"},
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "metodo": "estratto_ricerca", "descrizione": "WebSearch: modelli gratuiti (Offering Tree, beYogi vinyasa sequence planner, Gymdesk Yoga Class Template).", "url": "https://beyogi.com/vinyasa-yoga-sequence-planner/", "data": "2026-11-24"},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "WebFetch di gymdesk.com fallito: 'getaddrinfo ENOTFOUND gymdesk.com'; anche www.etsy.com non risolve (ENOTFOUND). Nessuna pagina letta integralmente."},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "Prezzo 12 EUR, sviluppo 25 EUR, accesso 2 EUR, Etsy 950 bp + 45 cent: ipotesi."}
+  ],
+  "concorrenti": [
+    {"nome": "Etsy yoga class planner PDF", "prezzo": "2,00-3,99 USD (estratto)", "tipo_dato": "osservata", "livello": "risultato_di_ricerca"},
+    {"nome": "Payhip Yoga Practice Planning Template Pack", "prezzo": "19 EUR (estratto)", "tipo_dato": "osservata", "livello": "risultato_di_ricerca"},
+    {"nome": "Offering Tree, beYogi, Gymdesk", "prezzo": "gratuito (estratto)", "tipo_dato": "osservata", "livello": "risultato_di_ricerca"}
+  ],
+  "prezzo_da_verificare_cents": 1200,
+  "accesso_pubblico": {"canale": "Etsy + Pinterest/SEO + community di insegnanti (organico)", "costo_stimato_cents": 200, "natura": "ipotesi"},
+  "costo_sviluppo_cents": 2500,
+  "complessita_assistenza": "bassa",
+  "ipotesi_margine_bp": 7008,
+  "punteggi": {"problema": 5, "accesso": 5, "margine": 5, "concorrenza": 3, "costo_sviluppo": 7, "assistenza": 8},
+  "note_punteggi": {
+    "problema": "5: interesse osservato solo indirettamente.",
+    "accesso": "5: Etsy e SEO plausibili, saturi; nessun costo verificato.",
+    "margine": "5: prezzi osservati molto bassi (2-4 USD) e alternative gratuite; 1200-159-200 = 841 -> 7008 bp solo se si regge 12 EUR (ipotesi).",
+    "concorrenza": "3: prezzi bassi e offerte gratuite osservate.",
+    "costo_sviluppo": "7: PDF, 2500 cent ipotesi.",
+    "assistenza": "8: PDF statico."
+  },
+  "esclusioni": "Nessuna promessa di salute; evitare claim terapeutici (salute: da non toccare).",
+  "esito": "sotto soglia: punteggio 52 < 60; archivio."
+}

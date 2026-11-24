@@ -1,0 +1,40 @@
+{
+  "id": "C-etsy-seller-profit-tracker-en",
+  "titolo": "Etsy/handmade seller profit and inventory tracker with fee calculator, Sheets/Excel (EN)",
+  "sintetico": false,
+  "lingua": "en",
+  "mercato": "US",
+  "acquirente": "Piccoli venditori Etsy e handmade che oggi tengono ordini, scorte e costi in modo manuale.",
+  "problema": "Non sapere il profitto reale per ordine e per prodotto dopo commissioni, materiali e spedizione; le tariffe cambiano e il foglio va aggiornato.",
+  "fonti": [
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "metodo": "estratto_ricerca", "descrizione": "Estratto WebSearch: Craftybase offre gratis un foglio inventario Etsy (materiali, prodotti, ordini, COGS) per Excel e Numbers; il sito sta diventando Stocksmith. Concorrenza gratuita diretta. Pagina non aperta.", "url": "https://craftybase.com/etsy-inventory-spreadsheet", "data": "2026-11-24"},
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "metodo": "estratto_ricerca", "descrizione": "Estratto WebSearch: listing Etsy 'Etsy Seller Profit Tracker Spreadsheet, Fee Calculator for Excel & Google Sheets' con ricavi, commissioni, profitto netto, margine e dashboard. Prezzo non riportato per questo URL. Pagina non aperta.", "url": "https://www.etsy.com/listing/4597094291", "data": "2026-11-24"},
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "metodo": "estratto_ricerca", "descrizione": "Estratto WebSearch: FinancialAha vende un bundle di pianificazione finanziaria 'Best Value' con foglio per venditori Etsy e ne offre anche una versione gratuita a foglio singolo. Pagina non aperta.", "url": "https://www.financialaha.com/ultimate-spreadsheet-templates/business-finance/etsy-seller-spreadsheet/", "data": "2026-11-24"},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "L'estratto cita un workbook a 14 schede a circa 36 USD in saldo e fee calculator da pochi dollari, ma senza URL attribuibile: non usati come osservati."},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "Numero di venditori Etsy attivi e quota che pagherebbe per un tracker: nessun dato osservato."},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "Prezzo 9,90 EUR, sviluppo 25 EUR, accesso 2 EUR, commissioni Etsy 950 bp + 45 cent: ipotesi."}
+  ],
+  "concorrenti": [
+    {"nome": "Craftybase Etsy inventory spreadsheet", "prezzo": "gratuito", "tipo_dato": "osservata"},
+    {"nome": "Etsy Seller Profit Tracker / Fee Calculator (listing Etsy)", "prezzo": "non riportato", "tipo_dato": "osservata"},
+    {"nome": "FinancialAha Etsy seller spreadsheet", "prezzo": "gratuito (singolo foglio) e bundle a pagamento, prezzo non riportato", "tipo_dato": "osservata"}
+  ],
+  "prezzo_da_verificare_cents": 990,
+  "accesso_pubblico": {"canale": "marketplace (Etsy, dove si trova il compratore)", "costo_stimato_cents": 200, "natura": "ipotesi"},
+  "costo_sviluppo_cents": 2500,
+  "complessita_assistenza": "media",
+  "ipotesi_margine_bp": 6576,
+  "punteggi": {"problema": 6, "accesso": 6, "margine": 6, "concorrenza": 3, "costo_sviluppo": 7, "assistenza": 7},
+  "note_punteggi": {
+    "problema": "6: limite D-028. Molti listing dedicati indicano un bisogno, nessuna recensione letta.",
+    "accesso": "6: il compratore e gia su Etsy; dipendenza da un solo canale controllato da terzi.",
+    "margine": "6: (990 - 94 - 45 - 200)/990 = 65,76% su ipotesi.",
+    "concorrenza": "3: strumento gratuito di un'azienda specializzata e molte inserzioni; nessuna lacuna dimostrata.",
+    "costo_sviluppo": "7: 2500 cent ipotesi.",
+    "assistenza": "7: le tariffe Etsy cambiano, aggiornamenti annuali e domande sull'uso.",
+    "calcolo": "6*2,5 + 6*2 + 6*2 + 3*1,5 + 7 + 7 = 57,5"
+  },
+  "canali": {"sito_shopify": "ipotesi", "marketplace": "Etsy osservato", "creator": "ipotesi", "organico": "ipotesi"},
+  "esclusioni": "Nessuna categoria regolamentata. Niente consigli fiscali (la scheda fiscale Schedule C citata da un concorrente e fuori ambito). Non usare il marchio Etsy nel nome del prodotto senza verifica.",
+  "esito": "sotto soglia (57,5 < 60): non selezionata."
+}

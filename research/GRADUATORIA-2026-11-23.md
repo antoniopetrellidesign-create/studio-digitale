@@ -39,3 +39,21 @@ Nicchie scartate prima della scheda: piani di viaggio DE/EN/IT (offerta gratuita
 - **Decisione del Team Lead (D-028)**: un ribasso senza evidenze contrarie non è un risultato della verifica. La graduatoria di riferimento resta quella del primo ciclo; i nuovi valori sono annotati come ribassi prudenziali in attesa della verifica. Regola resa uniforme: gli estratti della ricerca web con URL e data valgono come fonte "osservata" di tipo *estratto*, ma con i soli estratti *problema* e *concorrenza* non superano 6. Quindi nessuna candidata può superare 60 senza leggere le pagine.
 - Applicata la regola (T-023): i ribassi annullati; ES scende a 55 per il limite di 6 su *problema*. La graduatoria sopra è quella aggiornata.
 - Prossimo passo: rieseguire T-020 in una nuova sessione sull'ambiente `studio-digitale`.
+
+## Ampliamento del 2026-11-24 (T-028C, T-028D) — punteggi del motore
+
+9 opportunità nuove in DE, IT ed EN/US (schede `C-*.json` e `D-*.json`, sintesi in `C-sintesi.md` e `D-sintesi.md`). Livello delle fonti: **lette integralmente 0** (WebFetch fallito 7 volte su 7 con `getaddrinfo ENOTFOUND`), **risultati di ricerca 29**, **non verificabili 12** (trattate come ipotesi).
+
+| Opportunità | Mercato | Punteggio | Fonti osservate |
+|---|---|---|---|
+| Fachwirt/IHK Lernplan | DE | **58** | 3 |
+| Translator business tracker | EN/US | 57 | 4 |
+| Etsy seller profit tracker | EN/US | 57 | 3 |
+| Handwerker Angebotskalkulation | DE | 56 | 3 |
+| Handmade Preiskalkulation | DE | 55 | 4 |
+| Certification study planner | EN/US | 54 | 4 |
+| Preventivo artigiano | IT | 52 | 3 |
+| Yoga class planner | EN/US | 52 | 3 |
+| Photographer welcome/pricing guide | EN/US | 52 | 2 |
+
+**Esito complessivo: 21 opportunità, nessuna ≥ 60. Soglia invariata, nessun prodotto selezionato (D-035).** Con i soli risultati di ricerca i punteggi si fermano fra 52 e 58, perché *problema* e *concorrenza* restano ≤ 6. Le piste da verificare per prime, appena si potranno leggere le pagine: Fachwirt/IHK Lernplan DE (prezzo alto osservato: 69 € per un pacchetto integrato, nessun planner standalone trovato) e Haushaltsbuch DE.

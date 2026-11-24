@@ -1,0 +1,35 @@
+{
+  "id": "D-en-photographer-welcome-pricing-guide",
+  "titolo": "Photographer client welcome guide and pricing guide Canva kit, senza contratto (EN, US)",
+  "sintetico": false,
+  "lingua": "en",
+  "mercato": "US",
+  "acquirente": "Fotografi e videomaker indipendenti (matrimoni, famiglie, ritratti) negli Stati Uniti che inviano guide servizi e prezzi ai clienti.",
+  "problema": "Presentare servizi e prezzi in modo professionale e rispondere alle richieste dei clienti con materiale pronto. Dagli estratti: molte offerte di guide Canva gia pronte, con testo precompilato.",
+  "fonti": [
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "metodo": "estratto_ricerca", "descrizione": "WebSearch: listing Etsy 'Wedding Photography Pricing Guide Services Template For Canva, 40 Editable Pages'; altri listing da circa 3 USD a 80 USD (listing non aperti).", "url": "https://www.etsy.com/listing/4412251855", "data": "2026-11-24"},
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "metodo": "estratto_ricerca", "descrizione": "WebSearch: Creative Market 'Photography Services Guide Canva' e 'Photography Welcome Guide'; Shopify store con pricing guide da 15 pagine.", "url": "https://creativemarket.com/lennoxcreativeco/291994841-Photography-Services-Guide-Canva", "data": "2026-11-24"},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "WebFetch di www.etsy.com fallito: 'getaddrinfo ENOTFOUND www.etsy.com'. Nessuna pagina letta integralmente."},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "Prezzo 29 EUR, sviluppo 30 EUR, accesso 3 EUR: ipotesi; esclusi i contratti (zona legale)."}
+  ],
+  "concorrenti": [
+    {"nome": "Etsy: guide Canva per fotografi per nicchia", "prezzo": "da circa 3 a 80 USD (estratto)", "tipo_dato": "osservata", "livello": "risultato_di_ricerca"},
+    {"nome": "Creative Market, Payhip, Shopify: guide Canva", "prezzo": "non rilevato", "tipo_dato": "osservata", "livello": "risultato_di_ricerca"}
+  ],
+  "prezzo_da_verificare_cents": 2900,
+  "accesso_pubblico": {"canale": "Etsy + Pinterest/Instagram + community di fotografi (organico)", "costo_stimato_cents": 300, "natura": "ipotesi"},
+  "costo_sviluppo_cents": 3000,
+  "complessita_assistenza": "bassa",
+  "ipotesi_margine_bp": 7862,
+  "punteggi": {"problema": 5, "accesso": 5, "margine": 6, "concorrenza": 3, "costo_sviluppo": 6, "assistenza": 7},
+  "note_punteggi": {
+    "problema": "5: domanda indiretta (molti listing), nessun dato sul dolore.",
+    "accesso": "5: marketplace con pubblico, ma saturo.",
+    "margine": "6: 2900-320-300=2280 -> 7862 bp, ipotesi; prezzi osservati molto dispersi.",
+    "concorrenza": "3: categoria affollata per nicchia, sconti e bundle con contratti.",
+    "costo_sviluppo": "6: Canva e testi, pagine di design; 3000 cent ipotesi.",
+    "assistenza": "7: dubbi sull'uso di Canva."
+  },
+  "esclusioni": "Contratti-tipo esclusi (area legale: segnalare al Team Lead se si vuole procedere). Foto stock con diritti da verificare.",
+  "esito": "sotto soglia: punteggio 52 < 60; archivio."
+}

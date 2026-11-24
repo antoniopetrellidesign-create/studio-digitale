@@ -2,21 +2,18 @@
 
 Aggiornato il 2026-11-23. Credenziali, carte, OTP e documenti si inseriscono **solo** sulle schermate ufficiali o nel modulo sicuro dei segreti dell'ambiente Claude: mai in chat, nei file o nei commit.
 
-## Da fare adesso (due passaggi, circa 10 minuti)
+## Da fare adesso (aggiornato 2026-11-24)
 
-**R1 — Repository privato dedicato.** È l'unica azione che sblocca subito qualcosa: il salvataggio su GitHub.
-1. github.com → **New repository** → nome `studio-digitale`, **Private**, senza README → Create.
-2. https://claude.ai/connect-github → abilitare la Claude GitHub App **solo** sul repository `studio-digitale`. Permessi richiesti: *Contents* lettura/scrittura, *Pull requests* lettura/scrittura, *Metadata* lettura.
-3. Scrivere al team "repository pronto". Il team collega il repository, spinge l'intera cronologia e verifica il salvataggio.
+**R1 — Dare alla Claude GitHub App l'accesso a `studio-digitale`** (verificato: oggi l'app vede solo `petrelli-quant-lab`, e il collegamento risponde "you don't have access").
+github.com → foto profilo → **Settings** → **Applications** → scheda **Installed GitHub Apps** → **Claude** → **Configure** → *Repository access*: aggiungi `studio-digitale` (oppure scegli "All repositories") → **Save**. In alternativa: https://claude.ai/connect-github. Poi scrivi "fatto": questa sessione ritenta subito il collegamento e il push, senza cambiare sessione.
 
-Fino ad allora la copia di sicurezza è quella scaricabile già consegnata in conversazione (bundle + archivio + RIPRISTINO.md).
+**R2 — Eliminare il segreto di prova** (la continuità è già verificata il 2026-11-24 dopo il riavvio: impronta `0d6964cfcffd` identica). Impostazioni dell'ambiente `studio-digitale` (menu dell'ambiente nella barra del titolo → Modifica) → **Segreti di rete** → elimina `httpbin.org`. La sessione non ha uno strumento per rimuovere i segreti.
 
-**R2 — Nuova sessione sull'ambiente `studio-digitale`** (da avviare dopo R1, con il repository `studio-digitale` selezionato).
-- Perché: lo strumento di lettura pagine prende gli host approvati solo in una macchina nuova, e la verifica delle prime tre opportunità ne ha bisogno. La nuova sessione serve anche come **prova di continuità** delle credenziali dopo il riavvio: il team rilancia la verifica sull'eco e confronta l'impronta salvata (`0d6964cfcffd`).
-- Dove: claude.ai/code → nuova sessione → menu ambiente nella barra del titolo → `studio-digitale`.
-- Dopo la prova: eliminare la credenziale di prova di `httpbin.org` dai Segreti di rete dell'ambiente.
+**R3 — Decidere come leggere le pagine originali della ricerca** (limite verificato: lo strumento di lettura pagine fallisce con `getaddrinfo ENOTFOUND` anche sugli host consentiti, su macchina nuova e nell'ambiente giusto; la lettura dal terminale tramite proxy è stata negata dal controllo di sicurezza e non viene riproposta). Opzioni supportate:
+- autorizzare esplicitamente nelle impostazioni dei permessi un comando dedicato che legge **solo** gli host già consentiti dell'ambiente (il team lo prepara: salva testo, data e impronta di ogni pagina);
+- oppure continuare con i soli risultati di ricerca, che limitano i criteri *problema* e *concorrenza* a 6 (D-028).
 
-**R3 — Sul telefono (2 minuti).** Apri https://claude.ai/artifact/33E6YNe5t3vRNhVTsnBJ6g con il tuo account claude.ai → aggiungi alla schermata Home (iPhone: Safari → Condividi → Aggiungi alla schermata Home; Android: Chrome → ⋮ → Aggiungi a schermata Home). Nelle impostazioni del telefono consenti le notifiche dell'app Claude. Per l'operatività continua della regia servono R1 e poi un'attività pianificata, già pronta in docs/regia.md.
+**R4 — Sul telefono**: apri https://claude.ai/artifact/33E6YNe5t3vRNhVTsnBJ6g, aggiungila alla schermata Home e consenti le notifiche dell'app Claude.
 
 ## 1. Limiti tecnici verificati
 

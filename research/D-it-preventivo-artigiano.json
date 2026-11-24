@@ -1,0 +1,37 @@
+{
+  "id": "D-it-preventivo-artigiano",
+  "titolo": "Kit preventivi e listino lavori per piccoli artigiani (IT)",
+  "sintetico": false,
+  "lingua": "it",
+  "mercato": "IT",
+  "acquirente": "Artigiani e piccoli laboratori in Italia (idraulici, elettricisti, imbianchini, falegnami) che preparano preventivi con Word/Excel.",
+  "problema": "Preparare preventivi per voci con unita di misura, prezzi unitari, IVA e margine, mantenendo un listino interno coerente. Dagli estratti: esistono guide e modelli, ma le fonti ricordano che Excel non e un gestionale completo.",
+  "fonti": [
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "metodo": "estratto_ricerca", "descrizione": "WebSearch: Cronoshare consiglia di dividere il preventivo per voci e di non inserire tabelle prezzi, tenendo il listino come strumento interno; indicare imponibile piu IVA.", "url": "https://www.cronoshare.it/blog/preventivo-di-opere-ristrutturazioni", "data": "2026-11-24"},
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "metodo": "estratto_ricerca", "descrizione": "WebSearch: kit a pagamento per artigiani su Payhip (circa 25 EUR secondo il riepilogo; prezzo non letto sulla pagina) con Excel, PDF e Canva.", "url": "https://payhip.com/b/doxw0", "data": "2026-11-24"},
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "metodo": "estratto_ricerca", "descrizione": "WebSearch: Financialaha offre modelli di preventivo e listino prezzi (Excel/Sheets/LibreOffice); ClickUp elenca modelli gratuiti.", "url": "https://www.financialaha.com/it/essentials-spreadsheet-templates/business-finance/price-list-template/", "data": "2026-11-24"},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "WebFetch di www.cronoshare.it fallito: 'getaddrinfo ENOTFOUND www.cronoshare.it' (dominio non consentito). Nessuna pagina letta integralmente."},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "Prezzo 19 EUR, sviluppo 25 EUR, accesso 3 EUR, Etsy 950 bp + 45 cent: ipotesi."}
+  ],
+  "concorrenti": [
+    {"nome": "Kit artigiani Payhip", "prezzo": "circa 25 EUR (estratto di ricerca)", "tipo_dato": "osservata", "livello": "risultato_di_ricerca"},
+    {"nome": "Modelli gratuiti (ClickUp, Vertex42, Financialaha)", "prezzo": "gratuito/non rilevato", "tipo_dato": "osservata", "livello": "risultato_di_ricerca"},
+    {"nome": "Gestionali di preventivazione", "prezzo": "non rilevato", "tipo_dato": "ipotesi"}
+  ],
+  "prezzo_da_verificare_cents": 1900,
+  "accesso_pubblico": {"canale": "SEO italiana + Etsy/Payhip + gruppi di categoria (organico)", "costo_stimato_cents": 300, "natura": "ipotesi"},
+  "costo_sviluppo_cents": 2500,
+  "complessita_assistenza": "media",
+  "ipotesi_margine_bp": 7237,
+  "punteggi": {"problema": 5, "accesso": 4, "margine": 6, "concorrenza": 4, "costo_sviluppo": 7, "assistenza": 7},
+  "note_punteggi": {
+    "problema": "5: dolore plausibile ma solo guide, nessuna testimonianza.",
+    "accesso": "4: artigiani poco presenti su marketplace di template; canale non verificato.",
+    "margine": "6: 1900 - 225 - 300 = 1375 -> 7237 bp, ipotesi.",
+    "concorrenza": "4: molti modelli gratuiti e un kit a ~25 EUR (osservati in estratti).",
+    "costo_sviluppo": "7: Excel/Canva, 2500 cent ipotesi.",
+    "assistenza": "7: prodotto abbastanza autoesplicativo."
+  },
+  "esclusioni": "Nessuna categoria regolamentata; non dare consulenza fiscale (IVA) oltre a indicazioni generiche.",
+  "esito": "sotto soglia: punteggio 52,5 < 60; archivio."
+}

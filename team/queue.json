@@ -533,6 +533,50 @@
           "nota": "riverifica: APPROVATO; residuo H-4 non bloccante (expectedFailure)"
         }
       ]
+    },
+    {
+      "id": "T-028C",
+      "titolo": "Ricerca ampliata C: nuove nicchie (formazione adulti, certificazioni, e-commerce, eventi, traduzione)",
+      "agente": "ricerca-mercato",
+      "fase": "",
+      "dipende_da": [],
+      "output": [],
+      "stato": "fatto",
+      "run_id": null,
+      "creato": "2026-11-24T11:21:35+00:00",
+      "aggiornato": "2026-11-24T11:24:19+00:00",
+      "note": [
+        {
+          "quando": "2026-11-24T11:21:35+00:00",
+          "nota": "avviato dal team-lead"
+        },
+        {
+          "quando": "2026-11-24T11:24:19+00:00",
+          "nota": "5 opportunità DE/EN, max 58; 18 risultati di ricerca, 0 pagine lette"
+        }
+      ]
+    },
+    {
+      "id": "T-028D",
+      "titolo": "Ricerca ampliata D: nuove nicchie B2B (artigiani, foto/video, condomini, agriturismi, studi fitness)",
+      "agente": "ricerca-mercato",
+      "fase": "",
+      "dipende_da": [],
+      "output": [],
+      "stato": "fatto",
+      "run_id": null,
+      "creato": "2026-11-24T11:21:35+00:00",
+      "aggiornato": "2026-11-24T11:24:19+00:00",
+      "note": [
+        {
+          "quando": "2026-11-24T11:21:35+00:00",
+          "nota": "avviato dal team-lead"
+        },
+        {
+          "quando": "2026-11-24T11:24:19+00:00",
+          "nota": "4 opportunità DE/IT/EN, max 56; 11 risultati di ricerca, 0 pagine lette"
+        }
+      ]
     }
   ]
 }
