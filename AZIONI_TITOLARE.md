@@ -4,8 +4,7 @@ Aggiornato il 2026-11-23. Credenziali, carte, OTP e documenti si inseriscono **s
 
 ## Da fare adesso (aggiornato 2026-11-24)
 
-**R1 — Dare alla Claude GitHub App l'accesso a `studio-digitale`** (verificato: oggi l'app vede solo `petrelli-quant-lab`, e il collegamento risponde "you don't have access").
-github.com → foto profilo → **Settings** → **Applications** → scheda **Installed GitHub Apps** → **Claude** → **Configure** → *Repository access*: aggiungi `studio-digitale` (oppure scegli "All repositories") → **Save**. In alternativa: https://claude.ai/connect-github. Poi scrivi "fatto": questa sessione ritenta subito il collegamento e il push, senza cambiare sessione.
+**R1 — Repository dedicato: FATTO il 2026-11-24.** Il lavoro è su https://github.com/antoniopetrellidesign-create/studio-digitale (verificato con un clone nuovo: 201 test OK, collaudo 12/12).
 
 **R2 — Eliminare il segreto di prova** (la continuità è già verificata il 2026-11-24 dopo il riavvio: impronta `0d6964cfcffd` identica). Impostazioni dell'ambiente `studio-digitale` (menu dell'ambiente nella barra del titolo → Modifica) → **Segreti di rete** → elimina `httpbin.org`. La sessione non ha uno strumento per rimuovere i segreti.
 

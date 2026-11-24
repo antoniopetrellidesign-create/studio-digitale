@@ -1,3 +1,5 @@
+> **Superato il 2026-11-24**: il progetto è ora nel repository `studio-digitale`. Una nuova sessione lo clona normalmente; il bundle serve solo come copia di riserva.
+
 # Passaggio alla nuova sessione (ambiente `studio-digitale`)
 
 Scritto il 2026-11-23 dalla sessione precedente, che non è riuscita a raggiungere il repository: `add_repo` ha risposto "you don't have access to antoniopetrellidesign-create/studio-digitale". La nuova sessione **non** ha accesso ai file del vecchio container: tutto quello che serve sta nel bundle e in questo documento.

@@ -73,14 +73,33 @@ def sospensione() -> dict:
 
 
 # ----------------------------------------------------------------------------- eventi e agenti
+def archivia_eventi() -> int:
+    """Copia il registro vivo (team/eventi/, non versionato perché gli hook vi scrivono a ogni comando)
+    nell'archivio versionato team/archivio-eventi/, così lo storico sopravvive al cambio di sessione."""
+    import shutil
+    n = 0
+    os.makedirs(_p("team", "archivio-eventi"), exist_ok=True)
+    for f in glob.glob(_p("team", "eventi", "*.jsonl")):
+        shutil.copyfile(f, _p("team", "archivio-eventi", os.path.basename(f)))
+        n += 1
+    return n
+
+
 def eventi(limite_giorni: int = 14) -> list:
-    out = []
-    for f in sorted(glob.glob(_p("team", "eventi", "*.jsonl")))[-limite_giorni:]:
+    out, visti = [], set()
+    giorni = {}
+    for f in glob.glob(_p("team", "archivio-eventi", "*.jsonl")) + glob.glob(_p("team", "eventi", "*.jsonl")):
+        giorni[os.path.basename(f)] = f   # il registro vivo prevale sull'archivio dello stesso giorno
+    for nome in sorted(giorni)[-limite_giorni:]:
+        f = giorni[nome]
         for riga in _leggi(f).splitlines():  # QA R-8: una riga troncata non fa cadere l'istantanea
             try:
                 e = json.loads(riga)
                 if isinstance(e, dict) and "evento" in e and "quando" in e and _parse(e["quando"]):
-                    out.append(e)
+                    chiave = riga.strip()
+                    if chiave not in visti:
+                        visti.add(chiave)
+                        out.append(e)
             except ValueError:
                 continue
     return out
@@ -351,6 +370,7 @@ def documenti_db(s: dict) -> dict:
 
 
 def esporta(cartella: str, con_consegne: bool = False) -> list:
+    archivia_eventi()
     s = istantanea()
     scritti = []
     docs = documenti_db(s)

@@ -71,3 +71,6 @@ Si inviano dal ponte con le notifiche dell'app Claude (strumento PushNotificatio
 La pagina non è una PWA completa: la piattaforma non consente i service worker, quindi niente uso offline né installazione con manifest. Si aggiunge alla schermata Home come collegamento:
 - **iPhone**: Safari → Condividi → Aggiungi alla schermata Home;
 - **Android**: Chrome → ⋮ → Aggiungi a schermata Home.
+
+## Registro eventi e archivio (D-037)
+Il registro vivo degli hook (`team/eventi/`) **non è versionato**: gli hook vi scrivono a ogni comando, anche dopo un commit, e la copia di lavoro risulterebbe sempre modificata. A ogni `python3 -m studio regia esporta` il registro viene copiato in `team/archivio-eventi/`, che è versionato. L'istantanea legge entrambi, senza duplicati, quindi lo storico sopravvive al cambio di sessione.
