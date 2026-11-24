@@ -335,3 +335,25 @@
 {"quando": "2026-11-23T21:56:49+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Apply IBAN masking first, retest"}
 {"quando": "2026-11-23T21:57:00+00:00", "evento": "PostToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Apply IBAN masking first, retest", "esito": "ok", "durata_ms": 11371}
 {"quando": "2026-11-23T21:57:09+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Commit all work and scan history for secrets"}
+{"quando": "2026-11-23T21:57:10+00:00", "evento": "PostToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Commit all work and scan history for secrets", "esito": "ok", "durata_ms": 200}
+{"quando": "2026-11-23T21:57:19+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Create bundle, base64 copy and checksums"}
+{"quando": "2026-11-23T21:57:19+00:00", "evento": "PostToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Create bundle, base64 copy and checksums", "esito": "ok", "durata_ms": 117}
+{"quando": "2026-11-23T21:57:38+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Build the handoff page with start message"}
+{"quando": "2026-11-23T21:57:38+00:00", "evento": "PostToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Build the handoff page with start message", "esito": "ok", "durata_ms": 57}
+{"quando": "2026-11-23T21:57:44+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "Artifact", "sintesi": "Artifact"}
+{"quando": "2026-11-23T21:57:51+00:00", "evento": "PostToolUse", "sessione": "3bc9ed50", "strumento": "Artifact", "sintesi": "Artifact", "esito": "ok", "durata_ms": 774}
+{"quando": "2026-11-23T21:57:55+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "Artifact", "sintesi": "Artifact"}
+{"quando": "2026-11-23T21:58:01+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Replace placeholder URL in handoff page"}
+{"quando": "2026-11-23T21:58:05+00:00", "evento": "PostToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Replace placeholder URL in handoff page", "esito": "ok", "durata_ms": 32}
+{"quando": "2026-11-23T21:58:05+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "Artifact", "sintesi": "Artifact"}
+{"quando": "2026-11-23T21:58:06+00:00", "evento": "PostToolUse", "sessione": "3bc9ed50", "strumento": "Artifact", "sintesi": "Artifact", "esito": "ok", "durata_ms": 505}
+{"quando": "2026-11-23T21:58:10+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "Artifact", "sintesi": "Artifact"}
+{"quando": "2026-11-23T21:58:11+00:00", "evento": "PostToolUse", "sessione": "3bc9ed50", "strumento": "Artifact", "sintesi": "Artifact", "esito": "ok", "durata_ms": 281}
+{"quando": "2026-11-23T21:58:17+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Decode, verify and import bundle into empty repo, test"}
+{"quando": "2026-11-23T21:58:31+00:00", "evento": "PostToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Decode, verify and import bundle into empty repo, test", "esito": "ok", "durata_ms": 13953}
+{"quando": "2026-11-23T21:58:39+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "SendUserFile", "sintesi": "SendUserFile"}
+{"quando": "2026-11-23T21:58:39+00:00", "evento": "PostToolUse", "sessione": "3bc9ed50", "strumento": "SendUserFile", "sintesi": "SendUserFile", "esito": "ok", "durata_ms": 467}
+{"quando": "2026-11-23T21:58:45+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "SendUserFile", "sintesi": "SendUserFile"}
+{"quando": "2026-11-23T21:58:46+00:00", "evento": "PostToolUse", "sessione": "3bc9ed50", "strumento": "SendUserFile", "sintesi": "SendUserFile", "esito": "ok", "durata_ms": 1444}
+{"quando": "2026-11-23T21:59:13+00:00", "evento": "Stop", "sessione": "3bc9ed50", "ultimo_messaggio": "# Resoconto  **Da questa sessione non posso salvare i commit nel repository `studio-digitale`.** Il collegamento risponde \"you don't have access to antoniopetrellidesign-create/studio-digitale\": i permessi GitHub di una sessione vengono fissati all'avvio, quindi il collegamento sarà disponibile solo…"}
+{"quando": "2026-11-23T21:59:14+00:00", "evento": "SubagentStop", "sessione": "3bc9ed50", "agente_id": "a9b98c0cdd461ed85", "agente_tipo": "", "ultimo_messaggio": "GitHub App abilitata, avvio la nuova sessione"}

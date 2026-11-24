@@ -1,0 +1,22 @@
+{"quando": "2026-11-24T11:19:20+00:00", "evento": "SessionStart", "sessione": "3bc9ed50", "origine": "resume"}
+{"quando": "2026-11-24T11:19:56+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Check local repository state after restart"}
+{"quando": "2026-11-24T11:19:57+00:00", "evento": "PostToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Check local repository state after restart", "esito": "ok", "durata_ms": 457}
+{"quando": "2026-11-24T11:19:58+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "mcp__claude-code-remote__list_repos", "sintesi": "mcp__claude-code-remote__list_repos"}
+{"quando": "2026-11-24T11:19:58+00:00", "evento": "PostToolUse", "sessione": "3bc9ed50", "strumento": "mcp__claude-code-remote__list_repos", "sintesi": "mcp__claude-code-remote__list_repos", "esito": "ok", "durata_ms": 499}
+{"quando": "2026-11-24T11:20:01+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "mcp__claude-code-remote__add_repo", "sintesi": "mcp__claude-code-remote__add_repo"}
+{"quando": "2026-11-24T11:20:05+00:00", "evento": "PostToolUseFailure", "sessione": "3bc9ed50", "strumento": "mcp__claude-code-remote__add_repo", "sintesi": "mcp__claude-code-remote__add_repo", "esito": "errore", "durata_ms": 351}
+{"quando": "2026-11-24T11:20:07+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "mcp__claude-code-remote__list_repos", "sintesi": "mcp__claude-code-remote__list_repos"}
+{"quando": "2026-11-24T11:20:07+00:00", "evento": "PostToolUse", "sessione": "3bc9ed50", "strumento": "mcp__claude-code-remote__list_repos", "sintesi": "mcp__claude-code-remote__list_repos", "esito": "ok", "durata_ms": 383}
+{"quando": "2026-11-24T11:20:11+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "mcp__claude-code-remote__read_documentation", "sintesi": "mcp__claude-code-remote__read_documentation"}
+{"quando": "2026-11-24T11:20:11+00:00", "evento": "PostToolUse", "sessione": "3bc9ed50", "strumento": "mcp__claude-code-remote__read_documentation", "sintesi": "mcp__claude-code-remote__read_documentation", "esito": "ok", "durata_ms": 134}
+{"quando": "2026-11-24T11:20:19+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Run credential continuity check after restart"}
+{"quando": "2026-11-24T11:20:20+00:00", "evento": "PostToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Run credential continuity check after restart", "esito": "ok", "durata_ms": 820}
+{"quando": "2026-11-24T11:20:27+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "Agent", "sintesi": "avvio agente web-fetch: Prova lettura pagina host approvato"}
+{"quando": "2026-11-24T11:20:29+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "agente_id": "a0eb872069b3f4e26", "agente_tipo": "web-fetch", "strumento": "WebFetch", "sintesi": "lettura pagina help.etsy.com"}
+{"quando": "2026-11-24T11:20:29+00:00", "evento": "PostToolUseFailure", "sessione": "3bc9ed50", "agente_id": "a0eb872069b3f4e26", "agente_tipo": "web-fetch", "strumento": "WebFetch", "sintesi": "lettura pagina help.etsy.com", "esito": "errore", "durata_ms": 75}
+{"quando": "2026-11-24T11:20:31+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "agente_id": "a0eb872069b3f4e26", "agente_tipo": "web-fetch", "strumento": "SubagentHandback", "sintesi": "SubagentHandback"}
+{"quando": "2026-11-24T11:20:31+00:00", "evento": "PostToolUse", "sessione": "3bc9ed50", "agente_id": "a0eb872069b3f4e26", "agente_tipo": "web-fetch", "strumento": "SubagentHandback", "sintesi": "SubagentHandback", "esito": "ok", "durata_ms": 39}
+{"quando": "2026-11-24T11:20:31+00:00", "evento": "PostToolUse", "sessione": "3bc9ed50", "strumento": "Agent", "sintesi": "avvio agente web-fetch: Prova lettura pagina host approvato", "esito": "ok", "durata_ms": 3922}
+{"quando": "2026-11-24T11:20:34+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "mcp__claude-code-remote__get_environment", "sintesi": "mcp__claude-code-remote__get_environment"}
+{"quando": "2026-11-24T11:20:34+00:00", "evento": "PostToolUse", "sessione": "3bc9ed50", "strumento": "mcp__claude-code-remote__get_environment", "sintesi": "mcp__claude-code-remote__get_environment", "esito": "ok", "durata_ms": 448}
+{"quando": "2026-11-24T11:20:53+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Commit new events, refresh bridge heartbeat and export"}
