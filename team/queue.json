@@ -581,6 +581,49 @@
           "nota": "4 opportunità DE/IT/EN, max 56; 11 risultati di ricerca, 0 pagine lette"
         }
       ]
+    },
+    {
+      "id": "T-036",
+      "titolo": "Correzioni QA alla scheda food cost DE: \"offerta a pagamento esistente\", pacchetto da 150 € come deduzione",
+      "agente": "ricerca-mercato",
+      "fase": "",
+      "dipende_da": [],
+      "output": [],
+      "stato": "da_fare",
+      "run_id": null,
+      "creato": "2026-11-27T12:24:45+00:00",
+      "aggiornato": "2026-11-27T12:24:45+00:00",
+      "note": []
+    },
+    {
+      "id": "T-037",
+      "titolo": "Piano del test di validazione food cost DE: pagina singola, lista d attesa/preordine dichiarato, 66 € Ads, soglie (STRATEGIA §9.5)",
+      "agente": "acquisizione",
+      "fase": "",
+      "dipende_da": [
+        "T-036"
+      ],
+      "output": [],
+      "stato": "da_fare",
+      "run_id": null,
+      "creato": "2026-11-27T12:24:45+00:00",
+      "aggiornato": "2026-11-27T12:24:45+00:00",
+      "note": []
+    },
+    {
+      "id": "T-038",
+      "titolo": "Bozza della pagina di vendita in tedesco (offerta 69 €, senza \"2 ore\", senza confronti con libri o SaaS, Impressum e privacy)",
+      "agente": "sviluppo-prodotto",
+      "fase": "",
+      "dipende_da": [
+        "T-036"
+      ],
+      "output": [],
+      "stato": "da_fare",
+      "run_id": null,
+      "creato": "2026-11-27T12:24:45+00:00",
+      "aggiornato": "2026-11-27T12:24:45+00:00",
+      "note": []
     }
   ]
 }
