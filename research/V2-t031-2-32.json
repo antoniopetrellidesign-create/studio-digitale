@@ -1,0 +1,44 @@
+{
+  "id": "t031-2-32",
+  "metodo_versione": 2,
+  "titolo": "Corso di sourdough per principianti, 14 giorni (EN)",
+  "sintetico": false,
+  "lingua": "en",
+  "mercato": "US",
+  "acquirente": "Home baker principiante che vuole uno starter attivo e un primo pane riuscito",
+  "problema": "Starter che non si attiva e pane che non riesce; troppe fonti contraddittorie. Problema frequente nella nicchia, ma pagato soprattutto con libri a 12-18 USD e contenuti gratuiti.",
+  "fonti": [
+    {
+      "tipo": "osservata",
+      "livello": "letta_integralmente",
+      "descrizione": "Pagina di ricerca Amazon.com 'sourdough bread beginner book' letta integralmente (file research/fonti/2026-11-27-359f6257df51.txt, impronta 359f6257df5177c10b45457a0c0d3966fd501bcf56278ed7c2ca9c75263cbe33): 'over 4,000 results'; libri fisici per principianti a 11,87-17,95 USD con valutazioni 4,2-4,8; edizioni Kindle a 6,95 USD o gratis con Kindle+. Prova di domanda e disponibilita' a pagare nel tema, NON di vendite di corsi digitali: sono libri.",
+      "url": "https://www.amazon.com/s?k=sourdough+bread+beginner+book",
+      "data": "2026-11-27"
+    },
+    {
+      "tipo": "osservata",
+      "livello": "risultato_di_ricerca",
+      "descrizione": "Estratto di ricerca (non pagina letta): corsi per principianti su Payhip a 45 USD (video, PDF, tracker) e 135 USD; 'Mastering the Art of Sourdough' a 39,99 USD.",
+      "url": "https://payhip.com/b/5OrPg",
+      "data": "2026-11-27"
+    },
+    {
+      "tipo": "ipotesi",
+      "livello": "non_verificabile",
+      "descrizione": "Ipotesi: un corso 14 giorni con tracker a 49-69 USD converte da audience organica (YouTube/Pinterest); non verificato. Costi video e canale sono stime."
+    }
+  ],
+  "concorrenti": [
+    "Corsi indipendenti su Payhip 39,99-135 USD (estratto di ricerca)",
+    "Udemy, King Arthur, YouTube (gratuiti/economici, shortlist: non letti)",
+    "Libri su Amazon 11,87-17,95 USD e Kindle gratis con Kindle+ (pagina letta)"
+  ],
+  "prezzo_da_verificare_cents": 6900,
+  "accesso_pubblico": {"canale": "organico: YouTube Shorts, Pinterest, gruppi pubblici di panificazione", "costo_stimato_cents": 3000},
+  "costo_sviluppo_cents": 6000,
+  "complessita_assistenza": "media",
+  "ipotesi_margine_bp": 5319,
+  "punteggi": {"problema": 7, "accesso": 5, "offerta": 7, "margine": 6, "concorrenza": 4, "costo_sviluppo": 5, "assistenza": 6},
+  "note_punteggi": "Offerta proposta (ipotesi): '14-Day Sourdough Starter-to-Loaf Course' a 69 USD (ancoraggio onesto: confronto con corsi a 45 e 135 USD da estratto di ricerca, solo se ricontrollato). Promessa misurabile: starter attivo entro 7 giorni e primo pane con mollica aperta entro 14 giorni, verificabile con foto e tracker giornaliero. Contenuto: 14 lezioni brevi, 6 ricette, tracker di fermentazione, guida alla risoluzione dei problemi. Bonus: (1) calcolatore di idratazione, (2) 10 ricette con lo scarto. Garanzia 30 giorni 'soddisfatto o rimborsato' sostenibile a costo marginale ~0 (rischio rimborsi da verificare con i test). Nessuna urgenza finta. Concorrenza molto affollata e gratuita: voto 4. Margine: 6900, commissione 2,9% + 0,30, accesso 3000.",
+  "esclusioni": "Nessun marchio di terzi; cibo domestico non regolamentato nel perimetro (nessuna vendita di alimenti). Categorie regolamentate: no."
+}

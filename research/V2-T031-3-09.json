@@ -1,0 +1,36 @@
+{
+  "id": "T031-3-09",
+  "metodo_versione": 2,
+  "titolo": "Kit per ottimizzare l'annuncio Airbnb e B&B (IT)",
+  "sintetico": false,
+  "lingua": "it",
+  "mercato": "IT",
+  "acquirente": "Host privato o titolare di B&B",
+  "problema": "Poche prenotazioni, annuncio poco convertente. Evidenza solo da estratto di ricerca.",
+  "fonti": [
+    {
+      "tipo": "osservata",
+      "livello": "risultato_di_ricerca",
+      "descrizione": "Estratto di ricerca (non pagina letta): Smoobu pubblica una guida in italiano 'Annuncio perfetto per una casa vacanze: come aumentare le prenotazioni'.",
+      "url": "https://www.smoobu.com/it/blog/annuncio-perfetto-casa-vacanze/",
+      "data": "2026-11-27"
+    },
+    {
+      "tipo": "ipotesi",
+      "livello": "non_verificabile",
+      "descrizione": "Ipotesi: gli host pagano 49 EUR per titoli e descrizioni modello; nessun prezzo di prodotti simili osservato; la guida ufficiale Airbnb e gli strumenti di gestione sono gratuiti (shortlist, non letti)."
+    }
+  ],
+  "concorrenti": [
+    "Smoobu, PriceLabs, Hostfully (shortlist, non letti)",
+    "Guida ufficiale Airbnb gratuita (shortlist, non letta)"
+  ],
+  "prezzo_da_verificare_cents": 4900,
+  "accesso_pubblico": {"canale": "organico: gruppi Facebook e forum pubblici di host italiani, SEO su 'annuncio Airbnb'", "costo_stimato_cents": 2500},
+  "costo_sviluppo_cents": 2500,
+  "complessita_assistenza": "bassa",
+  "ipotesi_margine_bp": 2743,
+  "punteggi": {"problema": 5, "accesso": 4, "offerta": 5, "margine": 3, "concorrenza": 3, "costo_sviluppo": 8, "assistenza": 7},
+  "note_punteggi": "Offerta proposta (ipotesi): 'Kit Annuncio che Converte' a 49 EUR IVA incl. Promessa misurabile: annuncio riscritto con checklist di 40 punti in 3 ore; misura: tasso di conversione visualizzazioni-prenotazioni prima/dopo su 30 giorni (nessuna promessa di aumento). Contenuto: checklist, modelli di titolo e descrizione, guida alle foto, risposte ai messaggi. Bonus: (1) modelli di regole della casa, (2) messaggi pre- e post-soggiorno. Garanzia 30 giorni sostenibile. Nessuna urgenza finta. Dipendenza dal canale Airbnb per l'acquirente; normativa locale sugli affitti brevi (CIN, ecc.) non trattata, rinvio a fonti ufficiali. Margine: 4900, IVA 22%, commissione 2,9% + 0,30, accesso 2500.",
+  "esclusioni": "Nessun uso di marchi Airbnb come logo; normativa locale sugli affitti brevi fuori perimetro. Categorie regolamentate: no."
+}

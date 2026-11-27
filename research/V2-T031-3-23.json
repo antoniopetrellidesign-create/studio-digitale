@@ -1,0 +1,45 @@
+{
+  "id": "T031-3-23",
+  "metodo_versione": 2,
+  "titolo": "Kit di modelli per wedding planner indipendenti (EN)",
+  "sintetico": false,
+  "lingua": "en",
+  "mercato": "US",
+  "acquirente": "Wedding planner indipendente o agli inizi, che gestisce da sola/o 5-30 coppie l'anno",
+  "problema": "Onboarding dei clienti, timeline e checklist rifatti da zero ad ogni coppia; preventivi e e-mail non standardizzati. Evidenza diretta del problema degli operatori: debole (la pagina Amazon letta mostra soprattutto planner per coppie, non strumenti per professionisti).",
+  "fonti": [
+    {
+      "tipo": "osservata",
+      "livello": "letta_integralmente",
+      "descrizione": "Pagina di ricerca Amazon.com 'wedding planner business templates book' letta integralmente (file research/fonti/2026-11-27-fcc2fab69ed1.txt, impronta fcc2fab69ed1a481b2e9b4fb4c48b1478506bf531a47bec61b0e5ae877fc6e6d): 213 risultati; i primi sono planner cartacei per coppie a 16,99-26,99 USD (es. 4,7 su 5 con 199 voti, '1K+ bought in past month'); un solo titolo per professionisti ('The Business of Being a Wedding Planner', 14,99 USD, 4,3 su 5, 147 voti). Prova di domanda e disponibilita' a pagare nel tema, NON di vendite di prodotti digitali: sono libri fisici.",
+      "url": "https://www.amazon.com/s?k=wedding+planner+business+templates+book",
+      "data": "2026-11-27"
+    },
+    {
+      "tipo": "osservata",
+      "livello": "risultato_di_ricerca",
+      "descrizione": "Estratto di ricerca (non pagina letta): HoneyBook lista un 'Event Planner Timeline' a pagamento da 99 USD di un creator terzo, accanto a modelli gratuiti.",
+      "url": "https://www.honeybook.com/blog/event-planner-template",
+      "data": "2026-11-27"
+    },
+    {
+      "tipo": "ipotesi",
+      "livello": "non_verificabile",
+      "descrizione": "Ipotesi: i planner indipendenti pagano 39-99 USD per un kit completo se risparmia ore per cliente; non verificato. Prezzo, volumi e canale sono ipotesi."
+    }
+  ],
+  "concorrenti": [
+    "HoneyBook (kit e modelli, creator terzi fino a 99 USD, fonte: estratto di ricerca)",
+    "ClickUp modelli gratuiti (estratto di ricerca)",
+    "QC Event Planning (estratto di ricerca)",
+    "Libro 'The Business of Being a Wedding Planner' 14,99 USD (pagina Amazon letta)"
+  ],
+  "prezzo_da_verificare_cents": 6900,
+  "accesso_pubblico": {"canale": "community e gruppi pubblici di planner, Pinterest/Instagram organico, SEO su 'wedding planner contract/timeline template'", "costo_stimato_cents": 2500},
+  "costo_sviluppo_cents": 3000,
+  "complessita_assistenza": "bassa",
+  "ipotesi_margine_bp": 6043,
+  "punteggi": {"problema": 6, "accesso": 5, "offerta": 6, "margine": 6, "concorrenza": 5, "costo_sviluppo": 8, "assistenza": 7},
+  "note_punteggi": "Offerta proposta (ipotesi): 'Wedding Planner Client Kit' a 69 USD. Promessa misurabile: dal primo contatto al preventivo inviato in meno di 24 h e onboarding di una nuova coppia in 60 minuti invece di mezza giornata (misura: tempo cronometrato dall'acquirente). Contenuto: timeline 12 mesi, questionario di consulenza, 8 e-mail modello, modello di preventivo, checklist del giorno. Bonus: (1) libreria di 20 e-mail di follow-up, (2) foglio di calcolo dei costi per coppia; costo incrementale minimo. Garanzia: rimborso 30 giorni se il kit non riduce l'onboarding, sostenibile perche' prodotto a costo marginale quasi nullo. Nessuna urgenza finta. Prezzo IVA/imposte US non considerate (ipotesi). Margine: prezzo 6900, commissione pagamento 2,9% + 0,30 (policy), accesso 2500 stimato. Contratti: nessuna clausola legale (esclusione indicata dalla shortlist).",
+  "esclusioni": "Nessun marchio di terzi. Contratti = materia legale: il kit non fornisce clausole contrattuali. Categorie regolamentate: no."
+}

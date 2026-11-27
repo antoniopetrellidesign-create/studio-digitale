@@ -1,0 +1,44 @@
+{
+  "id": "t031-2-35",
+  "metodo_versione": 2,
+  "titolo": "Kit di genealogia per principianti con modelli e checklist archivi (EN)",
+  "sintetico": false,
+  "lingua": "en",
+  "mercato": "US",
+  "acquirente": "Adulto che vuole ricostruire il proprio albero genealogico e non sa da dove cominciare",
+  "problema": "Non sa da dove iniziare, come organizzare i dati e dove trovare i documenti. La nicchia mostra spesa per moduli e libri, ma anche forte presenza di strumenti gratuiti.",
+  "fonti": [
+    {
+      "tipo": "osservata",
+      "livello": "letta_integralmente",
+      "descrizione": "Pagina di ricerca Amazon.com 'genealogy for beginners family tree workbook' letta integralmente (file research/fonti/2026-11-27-9b1018144cb8.txt, impronta 9b1018144cb87374ce6f5c5f0ee7806c901fb8b5a7523f09c20e879f549c2526): 226 risultati; 'Unofficial Ancestry.com Workbook' 15,56 USD con 764 voti (4,4); 'The Family Tree Toolkit' 11,44 USD con 512 voti (4,5); fogli e raccoglitori cartacei a 6,99-28,99 USD con '300+ bought in past month' per 16 family tree charts a 17,99 USD. Prova di domanda e disponibilita' a pagare per materiale fisico, NON di vendite di kit digitali.",
+      "url": "https://www.amazon.com/s?k=genealogy+for+beginners+family+tree+workbook",
+      "data": "2026-11-27"
+    },
+    {
+      "tipo": "osservata",
+      "livello": "risultato_di_ricerca",
+      "descrizione": "Estratto di ricerca (non pagina letta): Family Tree Magazine 'Beginner Genealogy Starter Kit' a 54,97 USD (69,97 separati); ebook 19,99 USD; corso NGS 75-90 USD; corso MyHeritage gratuito.",
+      "url": "https://store.familytreemagazine.com/collections/digital-products/products/the-beginner-genealogy-starter-kit",
+      "data": "2026-11-27"
+    },
+    {
+      "tipo": "ipotesi",
+      "livello": "non_verificabile",
+      "descrizione": "Ipotesi: un kit digitale con percorso guidato di 30 giorni a 49 USD ha spazio tra l'ebook a 19,99 USD e i corsi a 75-90 USD; non verificato."
+    }
+  ],
+  "concorrenti": [
+    "Family Tree Magazine starter kit 54,97 USD (estratto di ricerca)",
+    "MyHeritage corso gratuito, NGS 75-90 USD, FutureLearn (estratto di ricerca)",
+    "Workbook e libri Amazon 11-40 USD (pagina letta)"
+  ],
+  "prezzo_da_verificare_cents": 4900,
+  "accesso_pubblico": {"canale": "organico: Pinterest, gruppi e forum pubblici di genealogia, SEO su 'how to start a family tree'", "costo_stimato_cents": 2500},
+  "costo_sviluppo_cents": 3000,
+  "complessita_assistenza": "media",
+  "ipotesi_margine_bp": 4547,
+  "punteggi": {"problema": 6, "accesso": 5, "offerta": 6, "margine": 6, "concorrenza": 5, "costo_sviluppo": 7, "assistenza": 6},
+  "note_punteggi": "Offerta proposta (ipotesi): 'Family Tree Starter Kit - 30 giorni' a 49 USD. Promessa misurabile: albero di 4 generazioni con fonti documentate in 30 giorni (misura: numero di antenati con fonte citata). Contenuto: percorso di 30 giorni, modelli di albero e family group sheet, checklist archivi, guida alle interviste ai parenti. Bonus: (1) registro delle fonti, (2) script per interviste ai familiari. Garanzia 30 giorni sostenibile (costo marginale ~0). Nessuna urgenza finta. Alcuni dati in questo ambito sono privacy di terzi: nessun trattamento di dati personali da parte nostra, solo modelli vuoti. Margine: 4900, commissione 2,9% + 0,30, accesso 2500.",
+  "esclusioni": "Nessun marchio di terzi (non usare loghi Ancestry/MyHeritage). Privacy dei dati di terzi: il kit contiene modelli vuoti e avvertenza. Categorie regolamentate: no."
+}

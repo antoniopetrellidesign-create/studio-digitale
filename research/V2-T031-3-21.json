@@ -1,0 +1,36 @@
+{
+  "id": "T031-3-21",
+  "metodo_versione": 2,
+  "titolo": "Dossier editable y calculadora de tarifas para microinfluencers (ES)",
+  "sintetico": false,
+  "lingua": "es",
+  "mercato": "ES",
+  "acquirente": "Microinfluencer en Espana",
+  "problema": "No sabe cuanto cobrar por colaboracion ni como presentar su dossier. Evidenza solo da estratto di ricerca.",
+  "fonti": [
+    {
+      "tipo": "osservata",
+      "livello": "risultato_di_ricerca",
+      "descrizione": "Estratto di ricerca (non pagina letta): Cronoshare indica un prezzo medio in Spagna tra 150 e 700 EUR per pubblicazione; Kontentino: i prezzi non sono regolati.",
+      "url": "https://www.cronoshare.com/cuanto-cuesta/contratar-influencer",
+      "data": "2026-11-27"
+    },
+    {
+      "tipo": "ipotesi",
+      "livello": "non_verificabile",
+      "descrizione": "Ipotesi: microinfluencer spagnoli pagano 39-49 EUR per dossier + calculadora; nessun prezzo di prodotti simili osservato."
+    }
+  ],
+  "concorrenti": [
+    "Shopify ES, Kontentino, Modash, Metricool, Kolsquare (guide/strumenti, estratto di ricerca)",
+    "Nessun dossier modello emerso nella ricerca (estratto, non verificato)"
+  ],
+  "prezzo_da_verificare_cents": 4900,
+  "accesso_pubblico": {"canale": "organico: Instagram/TikTok e comunita' di creator in spagnolo, Pinterest", "costo_stimato_cents": 2500},
+  "costo_sviluppo_cents": 3000,
+  "complessita_assistenza": "bassa",
+  "ipotesi_margine_bp": 2812,
+  "punteggi": {"problema": 5, "accesso": 5, "offerta": 6, "margine": 3, "concorrenza": 6, "costo_sviluppo": 8, "assistenza": 7},
+  "note_punteggi": "Offerta proposta (ipotesi): 'Dossier + Calculadora de tarifas' a 49 EUR IVA incl. Promessa misurabile: dossier pronto in 2 ore e primeras propuestas enviadas a 10 marcas en 14 dias (misura: propuestas enviadas; nessuna promessa di ingaggi). Contenuto: dossier editable, calculadora de tarifas, 5 plantillas de propuesta. Bonus: (1) guia de publicidad etiquetada (informativa generale), (2) hoja de seguimiento. Garanzia 30 giorni. Nessuna urgenza finta. Margine: 4900, IVA 21%, commissione 2,9% + 0,30, accesso 2500. Duplica quasi T031-3-15 in un altro mercato: ricerca locale distinta ma stessa struttura di offerta.",
+  "esclusioni": "Pubblicita' etichettata: solo informativa generale. Nessuna promessa di guadagno. Categorie regolamentate: no."
+}

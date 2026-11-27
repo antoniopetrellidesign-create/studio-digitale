@@ -1,0 +1,36 @@
+{
+  "id": "T031-3-36",
+  "metodo_versione": 2,
+  "titolo": "Kit di report mensili e proposte per social media manager freelance (EN)",
+  "sintetico": false,
+  "lingua": "en",
+  "mercato": "US",
+  "acquirente": "Social media manager freelance con 2-10 clienti",
+  "problema": "Report mensili ai clienti lunghi da preparare; mancano modelli di proposta. Evidenza solo da estratto di ricerca.",
+  "fonti": [
+    {
+      "tipo": "osservata",
+      "livello": "risultato_di_ricerca",
+      "descrizione": "Estratto di ricerca (non pagina letta): 'Social Media Manager Monthly Report Template', template Canva a pagamento su Selar per freelance e piccole agenzie.",
+      "url": "https://selar.com/60lo918e17",
+      "data": "2026-11-27"
+    },
+    {
+      "tipo": "ipotesi",
+      "livello": "non_verificabile",
+      "descrizione": "Ipotesi: i freelance pagano 39-59 USD per report + proposta + ritenzione; prezzo del template su Selar non letto. Il tempo risparmiato (da 3 ore a 45 minuti) e' una stima del fornitore, non misurata."
+    }
+  ],
+  "concorrenti": [
+    "HubSpot, DashThis, Later, Metricool, Cloud Campaign gratuiti (shortlist, non letti)",
+    "Template Canva a pagamento su Selar (estratto di ricerca)"
+  ],
+  "prezzo_da_verificare_cents": 4900,
+  "accesso_pubblico": {"canale": "organico: LinkedIn, X, gruppi Facebook/Reddit pubblici di freelance, Pinterest", "costo_stimato_cents": 2500},
+  "costo_sviluppo_cents": 3000,
+  "complessita_assistenza": "bassa",
+  "ipotesi_margine_bp": 4547,
+  "punteggi": {"problema": 5, "accesso": 5, "offerta": 6, "margine": 5, "concorrenza": 3, "costo_sviluppo": 8, "assistenza": 7},
+  "note_punteggi": "Offerta proposta (ipotesi): 'Client Reporting & Proposal Kit' a 49 USD. Promessa misurabile: report mensile completato in 45 minuti invece di 3 ore (misura: tempo cronometrato dall'acquirente per cliente; stima non verificata). Contenuto: modello di report, modello di proposta, e-mail di rinnovo. Bonus: (1) checklist di onboarding cliente, (2) foglio di KPI. Garanzia 30 giorni sostenibile. Nessuna urgenza finta. Concorrenza alta con strumenti gratuiti: voto 3. Margine: 4900, commissione 2,9% + 0,30, accesso 2500.",
+  "esclusioni": "Nessun marchio di terzi (Canva/Meta solo come riferimento). Categorie regolamentate: no."
+}

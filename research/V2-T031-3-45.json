@@ -1,0 +1,38 @@
+{
+  "id": "V2-T031-3-45",
+  "metodo_versione": 2,
+  "titolo": "Kit food cost e schede tecniche per ristoratori (IT)",
+  "sintetico": false,
+  "famiglia": "food-cost-ristorazione",
+  "origine_shortlist": "T031-3-45",
+  "lingua": "it",
+  "mercato": "IT",
+  "acquirente": "Ristoratore o chef di un locale piccolo in Italia che prezza i piatti senza calcolare il food cost.",
+  "problema": "Prezzo dei piatti senza calcolo del food cost %; schede tecniche e menu engineering assenti o in fogli improvvisati. Nessuna pagina italiana letta integralmente: la domanda e solo indicata da un risultato di ricerca.",
+  "fonti": [
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "descrizione": "Estratto della scansione T031-3 (riepilogo del risultato di ricerca, pagina non letta): template a pagamento su Payhip con foglio costi unitari, schede preparazioni, scheda tecnica con food cost % e margine, menu engineering.", "url": "https://payhip.com/b/64w7Y", "data": "2026-11-27"},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "Concorrenti elencati dalla scansione (Harvest gratuito, TeamSystem, Qamarero, myPOS, Gambero Rosso) non aperti in questa fase: nessun prezzo verificato. Nessuna pagina Amazon.it letta per questa lingua; le pagine Amazon.de/.com/.es delle altre schede non valgono per il mercato IT (metodo par. 8)."},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "Prezzo 69 EUR, costi, margine, rimborsi: ipotesi."}
+  ],
+  "concorrenti": [
+    {"nome": "Template Payhip food cost", "prezzo": "non rilevato nell'estratto", "tipo_dato": "osservata", "livello": "risultato_di_ricerca"},
+    {"nome": "Harvest (gratuito), TeamSystem, Qamarero, myPOS, Gambero Rosso", "prezzo": "non rilevato", "tipo_dato": "osservata", "livello": "risultato_di_ricerca"}
+  ],
+  "prezzo_da_verificare_cents": 6900,
+  "accesso_pubblico": {"canale": "SEO italiana (food cost calcolo, scheda tecnica ricetta) + gruppi di ristoratori + Ads", "costo_stimato_cents": 2000, "natura": "ipotesi (scenario STRATEGIA.md par. 9.4)"},
+  "costo_sviluppo_cents": 4000,
+  "complessita_assistenza": "bassa",
+  "ipotesi_margine_bp": 6057,
+  "punteggi": {"problema": 6, "accesso": 4, "offerta": 7, "margine": 6, "concorrenza": 5, "costo_sviluppo": 8, "assistenza": 7},
+  "note_punteggi": {
+    "problema": "6 (tetto): solo risultato di ricerca, nessuna fonte letta.",
+    "accesso": "4: canali non misurati; ristoratori raggiungibili ma costo ignoto.",
+    "offerta": "7: offerta proposta 69 EUR IVA incl.: foglio Excel/Google Sheets con schede tecniche, food cost % per piatto e menu engineering (classificazione piatti per margine e vendite) con 3 menu di esempio. Promessa misurabile: food cost % calcolato per 10 piatti con i propri prezzi di acquisto. Bonus: foglio aggiornamento prezzi fornitori; checklist di revisione prezzi del menu. Garanzia: rimborso 30 giorni se il file non produce il calcolo di 10 piatti. Nessuna promessa di utile, nessuna urgenza finta. Voto 7 e non 8 perche non c'e nessun prezzo concorrente verificato.",
+    "margine": "6: netto IVA 22% = 5656; commissione 230; accesso 2000: 3426 -> 6057 bp.",
+    "concorrenza": "5: concorrenti elencati ma prezzi non verificati; gratuiti presenti.",
+    "costo_sviluppo": "8: stesso nucleo dello strumento DE/EN; riuso del modello con adattamento IT (termini, IVA, unita).",
+    "assistenza": "7: autoesplicativo."
+  },
+  "esclusioni": "Nessuna categoria regolamentata. Niente consulenza fiscale o HACCP.",
+  "esito": "Scheda v2: tetto problema/concorrenza 6 (nessuna fonte letta). Non candidata."
+}

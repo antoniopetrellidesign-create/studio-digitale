@@ -1,0 +1,44 @@
+{
+  "id": "T031-3-24",
+  "metodo_versione": 2,
+  "titolo": "Kundenmappe-Kit fuer selbststaendige Hochzeitsplaner (DE)",
+  "sintetico": false,
+  "lingua": "de",
+  "mercato": "DE",
+  "acquirente": "Selbststaendige/r Hochzeitsplaner/in, Neu-Gruender in Deutschland",
+  "problema": "Fehlende Vorlagen fuer Erstberatung, Preisliste und Kundenmappe; ogni cliente richiede lavoro da zero. Evidenza diretta del problema degli operatori: debole.",
+  "fonti": [
+    {
+      "tipo": "osservata",
+      "livello": "letta_integralmente",
+      "descrizione": "Pagina di ricerca Amazon.de 'Hochzeitsplaner Buch Checkliste Hochzeitsplanung' letta integralmente (file research/fonti/2026-11-27-ada8df5defe1.txt, impronta ada8df5defe1cc8e24f0a3416e5be8033c861e52679c152efb499e356c4118b0): 527 risultati, quasi tutti planner e Ratgeber per Brautpaare, Trauzeugin, Brautmutter; nessun titolo letto e' un kit per l'attivita' professionale del planner. Prova di domanda nel tema e di libri fisici a pagamento, NON di vendite di prodotti digitali; mostra anche una lacuna: il lato professionale non compare nella pagina.",
+      "url": "https://www.amazon.de/s?k=Hochzeitsplaner+Buch+Checkliste+Hochzeitsplanung",
+      "data": "2026-11-27"
+    },
+    {
+      "tipo": "osservata",
+      "livello": "risultato_di_ricerca",
+      "descrizione": "Estratto di ricerca (non pagina letta): Digistore24 vende PDF-Checklisten e Gaestelistenmanager in Excel a 19,90 EUR.",
+      "url": "https://www.digistore24.com/product/444264",
+      "data": "2026-11-27"
+    },
+    {
+      "tipo": "ipotesi",
+      "livello": "non_verificabile",
+      "descrizione": "Ipotesi: nuovi planner tedeschi pagano 59 EUR per un kit con Kundenmappe e Preisliste; mercato dei planner indipendenti DACH non misurato."
+    }
+  ],
+  "concorrenti": [
+    "Digistore24 Checklisten 19,90 EUR (estratto di ricerca)",
+    "ClickUp gratuito, Canva, Fiverr su misura (estratto di ricerca, shortlist)",
+    "Centinaia di planner cartacei per coppie su Amazon.de (pagina letta), ma non per professionisti"
+  ],
+  "prezzo_da_verificare_cents": 5900,
+  "accesso_pubblico": {"canale": "community/gruppi pubblici di Hochzeitsplaner, Pinterest, SEO in tedesco su 'Hochzeitsplaner Vorlagen'", "costo_stimato_cents": 2500},
+  "costo_sviluppo_cents": 3000,
+  "complessita_assistenza": "bassa",
+  "ipotesi_margine_bp": 3825,
+  "punteggi": {"problema": 5, "accesso": 4, "offerta": 5, "margine": 4, "concorrenza": 6, "costo_sviluppo": 8, "assistenza": 7},
+  "note_punteggi": "Offerta proposta (ipotesi): 'Kundenmappe-Kit fuer Hochzeitsplaner' a 59 EUR IVA incl. Promessa misurabile: Angebot innerhalb von 24 h nach dem Erstgespraech versenden (misura: ore tra consulenza e preventivo). Contenuto: Kundenmappe editierbar, Preisliste, Zeitplan, Erstberatungs-Fragebogen. Bonus: (1) 6 E-Mail-Vorlagen, (2) Checkliste Hochzeitstag. Garanzia 30 giorni sostenibile (costo marginale ~0). Nessuna urgenza finta. Margine: prezzo 5900, IVA 19% (ipotesi), commissione 2,9% + 0,30, accesso 2500. Niente clausole legali/contratti. Mercato piccolo e non quantificato: accesso 4.",
+  "esclusioni": "Nessun marchio di terzi; nessuna clausola contrattuale; categorie regolamentate: no."
+}

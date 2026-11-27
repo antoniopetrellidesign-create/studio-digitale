@@ -1,0 +1,36 @@
+{
+  "id": "T031-3-34",
+  "metodo_versione": 2,
+  "titolo": "Launch-Kit fuer den ersten Onlinekurs von Coaches (DE)",
+  "sintetico": false,
+  "lingua": "de",
+  "mercato": "DE",
+  "acquirente": "Coach/in oder Trainer/in mit erstem Onlinekurs",
+  "problema": "Kursidee, Validierung und Launch ohne Plan. Evidenza solo da estratto di ricerca.",
+  "fonti": [
+    {
+      "tipo": "osservata",
+      "livello": "risultato_di_ricerca",
+      "descrizione": "Estratto di ricerca (non pagina letta): Masterkurs fuer Coaches su Digistore24 a 81,20 EUR piu' rate mensili, con Schritt-fuer-Schritt-Anleitung e Worksheets.",
+      "url": "https://www.digistore24.com/product/671448",
+      "data": "2026-11-27"
+    },
+    {
+      "tipo": "ipotesi",
+      "livello": "non_verificabile",
+      "descrizione": "Ipotesi: coach tedeschi pagano 69 EUR per un kit di validazione e lancio; la concorrenza e' alta (Kopf und Stift, MemberPress, Thinkific, Teachable, UpCoach: elenco da shortlist, non letto)."
+    }
+  ],
+  "concorrenti": [
+    "Masterkurs Digistore24 81,20 EUR + rate (estratto di ricerca)",
+    "Kopf und Stift, MemberPress, Thinkific, Teachable, UpCoach (shortlist, non letti)"
+  ],
+  "prezzo_da_verificare_cents": 6900,
+  "accesso_pubblico": {"canale": "organico: LinkedIn, XING e gruppi pubblici di coach in tedesco; SEO", "costo_stimato_cents": 3500},
+  "costo_sviluppo_cents": 5000,
+  "complessita_assistenza": "media",
+  "ipotesi_margine_bp": 2997,
+  "punteggi": {"problema": 5, "accesso": 4, "offerta": 5, "margine": 3, "concorrenza": 3, "costo_sviluppo": 6, "assistenza": 5},
+  "note_punteggi": "Offerta proposta (ipotesi): 'Kurs-Validierungs-Kit' a 69 EUR IVA incl. Promessa misurabile: Kursidee validiert e pagina di preiscrizione pronta in 14 giorni; misura: numero di preiscrizioni raccolte prima della produzione (nessuna promessa di ricavi). Contenuto: checklist, mini-corso di validazione, 5 e-mail di lancio, modello di pagina di preiscrizione. Bonus: (1) questionario per interviste di mercato, (2) piano di lancio a 4 settimane. Garanzia 30 giorni; rischio di rimborsi se i risultati sono percepiti come promessa di guadagno: evitare promesse di fatturato. Nessuna urgenza finta. Concorrenza alta e prodotto vicino a 'guadagnare con i corsi': voto 3. Margine: 6900, IVA 19%, commissione 2,9% + 0,30, accesso 3500.",
+  "esclusioni": "Promesse di guadagno non verificabili vietate: nessuna cifra di ricavi nella pagina. Categorie regolamentate: no."
+}

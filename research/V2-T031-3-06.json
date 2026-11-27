@@ -1,0 +1,44 @@
+{
+  "id": "T031-3-06",
+  "metodo_versione": 2,
+  "titolo": "Kit di auditoria SEO per tiendas Etsy en espanol (ES)",
+  "sintetico": false,
+  "lingua": "es",
+  "mercato": "ES",
+  "acquirente": "Vendedor/a de Etsy en Espana o Latinoamerica con anuncios sin visitas",
+  "problema": "Anuncios sin visitas; titulos y etiquetas poco claros. La offerta in spagnolo sembra sottile, ma la dimensione del pubblico di venditori Etsy ispanofoni non e' osservata.",
+  "fonti": [
+    {
+      "tipo": "osservata",
+      "livello": "letta_integralmente",
+      "descrizione": "Pagina di ricerca Amazon.es 'SEO Etsy libro vender' letta integralmente (file research/fonti/2026-11-27-12cb3f22eddc.txt, impronta 12cb3f22eddcdd06f3ac836c473345dcec1a7a3cf08713dd9e5572a459209da5): 24 risultati in totale; solo due titoli in spagnolo specifici sul SEO/vendita su Etsy ('SEO en Etsy: La Guia Definitiva', 11,48 EUR, senza voti; 'Como vender en Etsy para principiantes 2026', 10,99 EUR), il resto in inglese (5,78-42,62 EUR) piu' uno in tedesco (17,80 EUR); molti risultati non pertinenti (trading, mindset). Prova di domanda debole e di offerta ispanofona sottile, NON di vendite di prodotti digitali: sono libri.",
+      "url": "https://www.amazon.es/s?k=SEO+Etsy+libro+vender",
+      "data": "2026-11-27"
+    },
+    {
+      "tipo": "osservata",
+      "livello": "risultato_di_ricerca",
+      "descrizione": "Estratto di ricerca (non pagina letta): eRank ES offre articoli di SEO Etsy; la ricerca non ha trovato un tutorial completo in spagnolo.",
+      "url": "https://help.erank.com/es/blog/conceptos-basicos-de-seo-en-etsy-para-vendedores/",
+      "data": "2026-11-27"
+    },
+    {
+      "tipo": "ipotesi",
+      "livello": "non_verificabile",
+      "descrizione": "Ipotesi: venditori ispanofoni di Etsy pagano 49 EUR per un kit con plantillas ed ejemplos antes/despues; numero di venditori e canale non verificati."
+    }
+  ],
+  "concorrenti": [
+    "eRank ES, Neil Patel ES, Printful ES, Gelato ES (estratto di ricerca, contenuti gratuiti)",
+    "Libri in spagnolo su Amazon.es 10,99-11,48 EUR (pagina letta)",
+    "Libri in inglese su Etsy SEO 5,78-22,80 EUR (pagina letta)"
+  ],
+  "prezzo_da_verificare_cents": 4900,
+  "accesso_pubblico": {"canale": "organico: Pinterest, YouTube, gruppi pubblici di venditori Etsy in spagnolo", "costo_stimato_cents": 2000},
+  "costo_sviluppo_cents": 3000,
+  "complessita_assistenza": "media",
+  "ipotesi_margine_bp": 3833,
+  "punteggi": {"problema": 6, "accesso": 5, "offerta": 6, "margine": 5, "concorrenza": 7, "costo_sviluppo": 7, "assistenza": 6},
+  "note_punteggi": "Offerta proposta (ipotesi): 'Kit de auditoria SEO para Etsy' a 49 EUR IVA incl. Promessa misurabile: auditar y reescribir los 10 anuncios principales en un fin de semana, midiendo vistas por anuncio antes y despues a 30 dias (resultado di visite non garantito: la promessa e' sul processo e sulla misura). Contenuto: checklist de auditoria, plantillas de titulo y etiquetas, 20 ejemplos antes/despues, hoja de seguimiento. Bonus: (1) lista de verificacion de fotos, (2) plantilla de descripciones. Garanzia 30 giorni di rimborso, sostenibile a costo marginale ~0; nessuna garanzia di vendite. Nessuna urgenza finta. Rischio di dipendenza dal solo canale Etsy per l'acquirente: il prodotto e' vendibile da sito proprio. Concorrenza 7: tetto sollevato dalla pagina letta, che mostra solo 2 titoli in spagnolo; verificare comunque i contenuti gratuiti. Margine: 4900, IVA 21% (ipotesi), commissione 2,9% + 0,30, accesso 2000.",
+  "esclusioni": "Nessun marchio di terzi (non usare loghi Etsy in modo fuorviante); nessuna promessa di vendite. Categorie regolamentate: no."
+}

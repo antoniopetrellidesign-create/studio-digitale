@@ -1,0 +1,39 @@
+{
+  "id": "V2-T031-1-052",
+  "metodo_versione": 2,
+  "titolo": "Recipe costing and menu pricing workbook for restaurants and food trucks (EN)",
+  "sintetico": false,
+  "famiglia": "food-cost-ristorazione",
+  "origine_shortlist": "T031-1-052",
+  "lingua": "en",
+  "mercato": "US",
+  "acquirente": "Restaurant or food truck owner in the US who needs food cost % per item and a menu price.",
+  "problema": "Recipe costing and menu pricing without a clear food cost % per item. Domanda osservata come libri e quaderni di costing in vendita su Amazon, non come vendite di prodotti digitali.",
+  "fonti": [
+    {"tipo": "osservata", "livello": "letta_integralmente", "descrizione": "Pagina di ricerca Amazon.com 'restaurant recipe costing menu pricing book', letta il 2026-11-27 (file research/fonti/2026-11-27-13ae03ef7085.txt, impronta sha256 13ae03ef70859e5a3efc169bae65475c1415e7782a4a06d4982a16298e3222d9). 177 risultati, molti irrilevanti (portamenu). Titoli pertinenti: 'Confidence in Costing' (S. Jackson, 2025) paperback $29.93, 4.8 stelle (44 valutazioni); 'The Food Cost Formula' (2026) paperback $24.99, Kindle $9.99, nessuna valutazione mostrata; 'The Book of Yields' paperback $47.31, 4.7 (441); 'The Restaurant Menu Creation Workbook' $39.99 (1); 'Food Recipe Cost Calculator' quaderno stampato $9.99 (1); 'Recipe Cost Book' notebook $10.14 (1); 'Menus That Sell' $11.99 (3). Formati: brossura, Kindle, un CD multimediale; nessun foglio di calcolo scaricabile. DIFFERENZA: libri fisici = domanda e disponibilita a pagare, NON vendite di prodotti digitali.", "url": "https://www.amazon.com/s?k=restaurant+recipe+costing+menu+pricing+book", "data": "2026-11-27"},
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "descrizione": "Estratto della scansione T031-1: Payhip, food cost calculator 19 USD, bundle 4 fogli 39 USD, workbook 29 USD, sistema 13 fogli 32 USD; Jotform e Template.net gratuiti. Pagina non letta integralmente.", "url": "https://payhip.com/b/4T8ah", "data": "2026-11-27"},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "Prezzo 49 EUR, costi, margine, rimborsi: ipotesi. Il prezzo dei prodotti digitali concorrenti (19-39 USD) viene solo da un estratto, non da pagina letta."}
+  ],
+  "concorrenti": [
+    {"nome": "Libri di food costing su Amazon (Jackson, Lockard, Lynch)", "prezzo": "USD 24.99-47.31 paperback (letta)", "tipo_dato": "osservata", "livello": "letta_integralmente"},
+    {"nome": "Template Payhip", "prezzo": "19-39 USD (estratto)", "tipo_dato": "osservata", "livello": "risultato_di_ricerca"},
+    {"nome": "Jotform, Template.net (gratuiti), Restaurant365 (software)", "prezzo": "gratuito/non rilevato", "tipo_dato": "osservata", "livello": "risultato_di_ricerca"}
+  ],
+  "prezzo_da_verificare_cents": 4900,
+  "accesso_pubblico": {"canale": "SEO inglese + community di ristoratori/food truck + Ads", "costo_stimato_cents": 2000, "natura": "ipotesi (scenario STRATEGIA.md par. 9.4)"},
+  "costo_sviluppo_cents": 3000,
+  "complessita_assistenza": "bassa",
+  "ipotesi_margine_bp": 5567,
+  "punteggi": {"problema": 7, "accesso": 5, "offerta": 6, "margine": 5, "concorrenza": 5, "costo_sviluppo": 8, "assistenza": 7},
+  "note_punteggi": {
+    "problema": "7: fonte letta pertinente con titoli recenti (2025-2026) e un titolo con 441 valutazioni; vetrina di libri.",
+    "accesso": "5: mercato ampio ma affollato, canali non misurati.",
+    "offerta": "6: offerta proposta 49 EUR IVA/imposte escluse da verificare per il paese del cliente: workbook con food cost % per voce, prezzo di menu suggerito con food cost obiettivo scelto dall'utente, menu engineering. Promessa misurabile: costing di 10 voci. Bonus: foglio resa ingredienti (ipotesi, da non copiare da 'Book of Yields' protetto); template aggiornamento prezzi. Garanzia 30 giorni. Voto 6 perche i prodotti digitali concorrenti stanno a 19-39 USD (estratto) e 49 EUR e sopra la fascia osservata.",
+    "margine": "5: senza imposta (ipotesi): netto 4900; commissione 172; accesso 2000: 2728 -> 5567 bp.",
+    "concorrenza": "5: titoli forti e prezzi digitali bassi; gratuiti presenti.",
+    "costo_sviluppo": "8: nucleo comune con la versione DE.",
+    "assistenza": "7: autoesplicativo."
+  },
+  "esclusioni": "Nessuna categoria regolamentata. Evitare di riprodurre tabelle di resa di libri protetti da diritto d'autore.",
+  "esito": "Scheda v2 in approfondimento. Non candidata."
+}

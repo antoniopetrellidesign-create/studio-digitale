@@ -1,0 +1,39 @@
+{
+  "id": "V2-T031-1-026",
+  "metodo_versione": 2,
+  "titolo": "Hoja de escandallos y coste por plato para bares y restaurantes (ES)",
+  "sintetico": false,
+  "famiglia": "food-cost-ristorazione",
+  "origine_shortlist": "T031-1-026",
+  "lingua": "es",
+  "mercato": "ES",
+  "acquirente": "Dueno de bar o restaurante en Espana que no controla el coste por plato.",
+  "problema": "Escandallos y control del coste por plato; objetivo food cost 28-35 % (obiettivo dalla scansione, non verificato). Evidenza di domanda debole: un solo titolo su Amazon.es.",
+  "fonti": [
+    {"tipo": "osservata", "livello": "letta_integralmente", "descrizione": "Pagina di ricerca Amazon.es 'escandallo restaurante libro costes', letta il 2026-11-27 (file research/fonti/2026-11-27-a00b5f380eca.txt, impronta sha256 a00b5f380ecae7d435b4422a32ae0ac887d6b9ebd4e9db0c08c5bb3e7af868ad). La pagina riporta 'one result': 'Escandallos y Rentabilidad en la Restauracion' (J. Rosell Salvo), brossura 23,00 EUR, anche Kindle e rilegato; nessuna valutazione mostrata. DIFFERENZA: e un libro fisico; indica che esiste domanda editoriale ma NON prova vendite di prodotti digitali, e un solo risultato e un segnale di nicchia scarsa su Amazon, non necessariamente di domanda assente altrove.", "url": "https://www.amazon.es/s?k=escandallo+restaurante+libro+costes", "data": "2026-11-27"},
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "descrizione": "Estratto della scansione T031-1: Hotmart 'Ficha Tecnica COSTO DE RECETAS' a pagamento (altra di reposteria); Qamarero gratis e software. Prezzo non letto.", "url": "https://hotmart.com/es/marketplace/productos/ficha-tecnica-costo-de-recetas/Y40812946O", "data": "2026-11-27"},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "Prezzo 59 EUR, costi, margine, rimborsi: ipotesi."}
+  ],
+  "concorrenti": [
+    {"nome": "Escandallos y Rentabilidad en la Restauracion (libro)", "prezzo": "23,00 EUR brossura (letta)", "tipo_dato": "osservata", "livello": "letta_integralmente"},
+    {"nome": "Ficha tecnica Hotmart", "prezzo": "non rilevato", "tipo_dato": "osservata", "livello": "risultato_di_ricerca"},
+    {"nome": "Qamarero (gratis e software)", "prezzo": "non rilevato", "tipo_dato": "osservata", "livello": "risultato_di_ricerca"}
+  ],
+  "prezzo_da_verificare_cents": 5900,
+  "accesso_pubblico": {"canale": "SEO spagnola (escandallo plantilla) + gruppi di hosteleria + Ads", "costo_stimato_cents": 2000, "natura": "ipotesi (scenario STRATEGIA.md par. 9.4)"},
+  "costo_sviluppo_cents": 3000,
+  "complessita_assistenza": "bassa",
+  "ipotesi_margine_bp": 5486,
+  "punteggi": {"problema": 6, "accesso": 4, "offerta": 6, "margine": 5, "concorrenza": 6, "costo_sviluppo": 8, "assistenza": 7},
+  "note_punteggi": {
+    "problema": "6: unica fonte letta mostra un solo libro; il problema e plausibile ma non confermato.",
+    "accesso": "4: canali non misurati.",
+    "offerta": "6: offerta proposta 59 EUR IVA incl.: libro di escandallos in Excel con coste por plato, margen y food cost, 3 cartas de ejemplo. Promessa misurabile: escandallo de 10 platos con los propios precios. Bonus: hoja de actualizacion de precios; checklist de revision de carta. Garantia 30 dias. Voto 6: prezzo concorrente digitale non verificato; 23 EUR e il solo prezzo letto.",
+    "margine": "5: netto IVA 21% = 4876; commissione 201; accesso 2000: 2675 -> 5486 bp.",
+    "concorrenza": "6: un solo libro letto; software gratuito citato dall'estratto.",
+    "costo_sviluppo": "8: derivabile dal nucleo comune.",
+    "assistenza": "7: autoesplicativo."
+  },
+  "esclusioni": "Nessuna categoria regolamentata. Niente consulenza fiscale.",
+  "esito": "Scheda v2 in approfondimento. Non candidata."
+}

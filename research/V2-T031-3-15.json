@@ -1,0 +1,36 @@
+{
+  "id": "T031-3-15",
+  "metodo_versione": 2,
+  "titolo": "Mediakit und Tarifrechner fuer Micro-Influencer (DE)",
+  "sintetico": false,
+  "lingua": "de",
+  "mercato": "DE",
+  "acquirente": "Micro-Creator/in (5.000-50.000 Follower) im DACH-Raum",
+  "problema": "Non sa quanto chiedere per una collaborazione e non ha un Mediakit. Evidenza solo da estratto di ricerca; nessuna pagina letta.",
+  "fonti": [
+    {
+      "tipo": "osservata",
+      "livello": "risultato_di_ricerca",
+      "descrizione": "Estratto di ricerca (non pagina letta): HubSpot DE indica per micro-influencer con 5.000-30.000 follower circa 170-261 USD per post; la ricerca non ha trovato un modello di Mediakit pronto in tedesco.",
+      "url": "https://blog.hubspot.de/marketing/influencer-marketing-kosten",
+      "data": "2026-11-27"
+    },
+    {
+      "tipo": "ipotesi",
+      "livello": "non_verificabile",
+      "descrizione": "Ipotesi: i creator DACH pagano 39-49 EUR per Mediakit editabile con calcolatore tariffe; nessun prezzo di concorrente osservato. Concorrenti oltre alle guide sui prezzi non verificati."
+    }
+  ],
+  "concorrenti": [
+    "HubSpot DE, Shopify DE, OMT, Kolsquare: guide gratuite sui prezzi (estratto di ricerca)",
+    "Canva (modelli gratuiti, ipotesi non verificata)"
+  ],
+  "prezzo_da_verificare_cents": 4900,
+  "accesso_pubblico": {"canale": "organico: Instagram/TikTok/LinkedIn e community di creator in tedesco, Pinterest", "costo_stimato_cents": 2500},
+  "costo_sviluppo_cents": 3000,
+  "complessita_assistenza": "bassa",
+  "ipotesi_margine_bp": 2951,
+  "punteggi": {"problema": 6, "accesso": 5, "offerta": 6, "margine": 3, "concorrenza": 6, "costo_sviluppo": 8, "assistenza": 7},
+  "note_punteggi": "Offerta proposta (ipotesi): 'Mediakit + Tarifrechner' a 49 EUR IVA incl. Promessa misurabile: Mediakit pronto in 2 ore e primo Angebot inviato a 10 marchi in 14 giorni (misura: numero di offerte inviate; nessuna promessa di ingaggi o guadagni). Contenuto: Mediakit editabile, calcolatore tariffe, 5 modelli di pitch. Bonus: (1) checklist marcatura pubblicitaria (informativa generale, non consulenza legale), (2) foglio di tracciamento delle trattative. Garanzia 30 giorni sostenibile. Nessuna urgenza finta. Margine basso: 4900, IVA 19%, commissione 2,9% + 0,30, accesso 2500. Senza pagina letta, problema e concorrenza <= 6.",
+  "esclusioni": "Obbligo di marcatura pubblicitaria: solo informativa generale. Nessuna promessa di guadagno. Categorie regolamentate: no."
+}

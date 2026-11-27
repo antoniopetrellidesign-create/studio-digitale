@@ -1,0 +1,39 @@
+{
+  "id": "V2-t031-2-01",
+  "metodo_versione": 2,
+  "titolo": "Einbuergerungstest: Lernplan 14 Tage mit Pruefungssimulationen (DE)",
+  "sintetico": false,
+  "famiglia": "esami-ufficiali",
+  "origine_shortlist": "t031-2-01",
+  "lingua": "de",
+  "mercato": "DE",
+  "acquirente": "Erwachsene/r Migrant/in in Deutschland, die/der den Einbuergerungstest ('Leben in Deutschland') vorbereitet und wenig Zeit hat.",
+  "problema": "Test im ersten Versuch bestehen mit wenig Zeit; der offizielle Fragenkatalog ist gratis, aber ohne Lernstruktur (dato dalla scansione). Domanda osservata come molti libri a 13-26 USD, non come vendite di prodotti digitali.",
+  "fonti": [
+    {"tipo": "osservata", "livello": "letta_integralmente", "descrizione": "Pagina di ricerca Amazon.de 'Einbuergerungstest Vorbereitung Buch', letta il 2026-11-27 (file research/fonti/2026-11-27-93d306b71aa4.txt, impronta sha256 93d306b71aa486166e9fdfab3e973c76471892a53955451f5dc298b5ba3e818c). 76 risultati; almeno 14 titoli visibili per il test, quasi tutti con edizioni 2025-2027 (es. 'Einbuergerungstest 2027' del 2 nov 2026). Prezzi in USD (pagina con consegna verso gli USA): brossura 13,18-20,77; Kindle 10,98-14,28; rilegato 20,44-25,57; 'Einbuergerungstest Bayern' 43,85; edizione svizzera 38,45. Valutazioni: F. Richter 4.8 (24), F. Breiholz 4.8 (19), la maggior parte 1-3 o assenti. Titoli bilingui (russo, turco, inglese). Formato: libri fisici e Kindle, nessun piano di studio digitale scaricabile con simulazioni. DIFFERENZA: libri fisici = domanda e disponibilita a pagare, NON vendite di prodotti digitali.", "url": "https://www.amazon.de/s?k=Einb%C3%BCrgerungstest+Vorbereitung+Buch", "data": "2026-11-27"},
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "descrizione": "Estratto della scansione T031-2: TestHelden vende un Komplettpaket XL a 69 EUR e XXL a 99 EUR con Lernplan e 30 Tage Geld-zurueck-Garantie (pacchetto per il test DTZ, riassunto del risultato di ricerca; pagina non letta). Lo stesso estratto cita app gratuite con le 300 domande ufficiali BAMF.", "url": "https://testhelden.com/products/deutsch-test-fuer-zuwanderer-dtz", "data": "2026-11-27"},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "Prezzo 49 EUR, costi, margine, rimborsi, tasso di superamento: ipotesi. Licenza d'uso delle domande ufficiali BAMF da verificare prima dell'uso."}
+  ],
+  "concorrenti": [
+    {"nome": "Libri Einbuergerungstest (Richter, Breiholz, Neumann, Idrizi, altri)", "prezzo": "USD 13,18-25,57 (letta)", "tipo_dato": "osservata", "livello": "letta_integralmente"},
+    {"nome": "TestHelden Komplettpaket", "prezzo": "69-99 EUR (estratto)", "tipo_dato": "osservata", "livello": "risultato_di_ricerca"},
+    {"nome": "App gratuite con le 300 domande ufficiali BAMF", "prezzo": "gratuito (estratto)", "tipo_dato": "osservata", "livello": "risultato_di_ricerca"}
+  ],
+  "prezzo_da_verificare_cents": 4900,
+  "accesso_pubblico": {"canale": "SEO tedesca (Einbuergerungstest Lernplan, Probetest) + community di migranti + Ads", "costo_stimato_cents": 2000, "natura": "ipotesi (scenario STRATEGIA.md par. 9.4)"},
+  "costo_sviluppo_cents": 5000,
+  "complessita_assistenza": "media",
+  "ipotesi_margine_bp": 4726,
+  "punteggi": {"problema": 7, "accesso": 5, "offerta": 7, "margine": 5, "concorrenza": 4, "costo_sviluppo": 7, "assistenza": 6},
+  "note_punteggi": {
+    "problema": "7: fonte letta pertinente, molte edizioni e titoli ricorrenti; lingua: parte del pubblico cerca in altre lingue (traduzioni russo/turco/inglese osservate).",
+    "accesso": "5: SEO affollata, community non misurate.",
+    "offerta": "7: offerta proposta 49 EUR IVA incl.: piano di 14 giorni, schede per tema, 3 simulazioni d'esame con le domande ufficiali e correzione commentata. Promessa misurabile: completare 3 simulazioni e vedere il proprio punteggio su 33 domande (formato test da verificare sulla fonte ufficiale BAMF). Bonus: lista documenti e modulo di ripasso 'domande sbagliate'; versione stampabile. Garanzia: rimborso 30 giorni se dopo il piano e 3 simulazioni non si raggiunge il punteggio di superamento ufficiale nelle simulazioni (condizione verificabile dal cliente). NON si promette 'test superato'. Nessuna urgenza finta.",
+    "margine": "5: netto IVA 19% = 4118; commissione 172; accesso 2000: 1946 -> 4726 bp.",
+    "concorrenza": "4: catalogo ufficiale gratuito, app gratuite e 14+ libri a 13-26 USD; TestHelden a 69-99 EUR (estratto) lascia spazio a 49 EUR ma non e un gap confermato.",
+    "costo_sviluppo": "7: contenuto fornito dal catalogo ufficiale; servono revisione e controllo licenza.",
+    "assistenza": "6: aggiornamento annuale del catalogo, domande sul percorso di cittadinanza (da non trattare)."
+  },
+  "esclusioni": "Categoria vicina al legale (cittadinanza): il prodotto prepara al test e non da consulenza sul procedimento di naturalizzazione; per cautela segnalare al Team Lead. IP: usare solo domande ufficiali con fonte e licenza verificata. Niente promesse di superamento.",
+  "esito": "Scheda v2 in approfondimento. Non candidata."
+}
