@@ -1,7 +1,23 @@
 {
   "_owner": "team-lead",
   "_nota": "Host che il lettore delle fonti può leggere (solo GET di pagine pubbliche). Deve restare un sottoinsieme degli host consentiti dall'ambiente studio-digitale. Nuovi host: proporre l'aggiunta all'ambiente (approvazione del titolare) e poi aggiornare questo file.",
-  "host": ["www.etsy.com", "help.etsy.com", "payhip.com", "gumroad.com", "help.gumroad.com", "www.shopify.com",
-           "help.shopify.com", "shopify.dev", "redopositor.com", "www.boe.es", "www.finanztip.de",
-           "www.amazon.de", "www.amazon.es", "www.amazon.com"]
+  "host": [
+    "www.etsy.com",
+    "help.etsy.com",
+    "payhip.com",
+    "gumroad.com",
+    "help.gumroad.com",
+    "www.shopify.com",
+    "help.shopify.com",
+    "shopify.dev",
+    "redopositor.com",
+    "www.boe.es",
+    "www.finanztip.de",
+    "www.amazon.de",
+    "www.amazon.es",
+    "www.amazon.com",
+    "www.digistore24.com",
+    "www.softguide.de",
+    "www.dehoga-bundesverband.de"
+  ]
 }

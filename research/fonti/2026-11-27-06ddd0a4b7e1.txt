@@ -1,0 +1,576 @@
+URL: https://www.softguide.de/programm/rezeptrechner-pro
+Letta il: 2026-11-27T12:20:14+00:00
+Titolo: Rezeptrechner PRO Business
+Impronta: 06ddd0a4b7e1d4782bdb7d7b85c403ed0803f5014ac86f53090ff733b9f5a969
+
+Brückenbauer in der 
+digitalen Transformation 
+
+ Brückenbauer in der 
+digitalen Transformation 
+
+ Software Finden
+
+ Betriebliche Anwendungsbereiche 
+
+ Buchhaltung, Buchführung
+ Finanz- und Anlagenbuchhaltung, EÜR,...
+
+ Controlling und Kostenrechnung
+ KPI, Absatz, KLR, BI, Reporting,...
+
+ Personalwesen
+ HR, eAkte, Gehalt, Schichten, Zeiten,...
+
+ Produktion, Einkauf und Lager
+ BDE, QM, SCM, Lager, CAD, Procurement...
+
+ Projektmanagement
+ Projektmanagement, Ressourcen, ...
+
+ Rechnungswesen
+ Faktura, Mahnwesen, digitale Signatur...
+
+ Vertrieb
+ POS, CRM, Marketing, Callcenter, ...
+
+ Verwaltung
+ ERP, BPM, DMS, Collaboration, RPA, ...
+
+ Branchenspezifische Software 
+
+ Bau- und Handwerkersoftware
+ Baukalkulation, Fensterbau, Hochbau ...
+
+ Dienstleistungen
+ Banken, Event, Hotel, CAFM, ...
+
+ Gesundheitswesen, Medizin und Soziales
+ Labor, Praxis, Pflege, Ärzte, Health ...
+
+ Handel
+ Auto-, Textil-, Versand-, Großhandel,...
+
+ Hersteller, Industrie
+ Stahl, Maschinenbau, Food, Pharma...
+
+ Öffentliche Organisationen
+ Bibliotheken, Kita, Uni, NGO, Ämter, ...
+
+ Transport und Logistik
+ Zoll, Fuhrpark, Speditionen, GPS, ...
+
+ Standard- und Systemsoftware 
+
+ Analysesoftware, Technische Software
+ Big Data, Statistik, MSR, Data Mining...
+
+ Internet-Software
+ IoT, Shops, ECM, CMS, CTI, Intranet...
+
+ IT-Sicherheit
+ ISMS, Security, Backup, Datenschutz...
+
+ Multimedia- und Inhalte-Medien
+ DAM, PIM, Digital Signage, ...
+
+ Netzwerksoftware
+ Remote, RFID, MDM, Sharepoint, ...
+
+ Programmierung
+ CASE, Middleware, DBMS, Framework...
+
+ Standardsoftware
+ DTP, OCR, Datenbanken, Editoren...
+
+Softwarerecherche
+Software von A-Z
+Softwareanbieter A-Z
+IT-Messen 
+Zeige alle 387 Software Rubriken
+
+Ausschreibungen
+
+IT-Ausschreibungen
+Vertriebspartnersuche
+Dienstleistungen für IT-Unternehmen
+Wissen
+
+Software-Tipps
+Funktionen / Module von A-Z
+Software Nachrichten
+Software vergleichen
+Für Anbieter 
+
+ Kostenfreie Hilfe
+ bei Ihrer Softwaresuche
+
+Software > Controlling und Kostenrechnung > Kalkulation, Kalkulationssoftware > Rezeptrechner
+
+ 1 von 14
+
+Rezeptrechner
+ Rezeptverwaltung, Kalkulation, Etiketten & Speisepläne für Lebensmittel Betriebe & Gastro
+
+Aktualisiert am 06. Nov 2026 durch Rezeptrechner SaaS GmbH c/o Heidorn
+
+Demoversion
+
+ E-Mail-Anfrage
+
+Beschreibung 
+
+Media 
+
+Funktionen 
+
+FAQs 
+
+Weitere Informationen 
+
+Der Rezeptrechner ist ein web-basiertes Programm zur Nährwertberechnung,  Lebensmittelkennzeichnung und Preiskalkulation für Rezepte, Lebensmittel und Mahlzeiten. 
+
+Die folgenden Funktionen sind enthalten: 
+
+- Rezepturverwaltung online (Zugang per Desktop, App, Tablet) 
+
+- Nährwerte pro 100g berechnen (inkl. Reduktionsfaktor); Nährwerttabelle erstellen 
+
+- Zugang zum Bundeslebensmittelschlüssel (BLS) 
+
+- Zutatenlisten mit QUID, nach Reihenfolge sortiert 
+
+- LMIV Etiketten erstellen als Bilddatei (PNG, JPG) oder PDF 
+
+- Produktspezifikation erstellen als PDF 
+
+- Kalkulation (Wareneinsatz, Verkaufspreise pro Mahlzeit, pro 100g)  
+
+- Rezeptmengen umrechnen 
+
+- Rezeptblätter als PDF erstellen (Arbeitsanweisung) 
+
+- Allergene und Zusatzstoffe Kennzeichnung 
+
+- Speiseplan erstellen (Paket L) 
+
+- Schnittstellen (Paket L) 
+
+- Einkaufslisten erstellen (Paket L) 
+
+Anwendungsgebiete: 
+
+- Nährwertberechnung und Nährwerttabelle erstellen für Manufakturen, Hofläden und Lebensmittelproduzenten auf Basis vom Rezept 
+
+- Lebensmitteletiketten mit Zutatenliste, Nährwerttabelle, Allergenkennzeichnung gemäß LMIV generieren und drucken für Manufakturen, Feinkost, Pralinen-Hersteller und Konditoreien 
+
+- Produktspezifikationen erstellen (für B2B Geschäfte) und als PDF ausdrucken  
+
+- Wareneinsatz berechnen für Gastronomie (Restaurants, Bistros, Pizzeria) 
+
+- Preiskalkulation für Gerichte für Gastronomie  
+
+- Arbeitsanweisungen für Rezepte für die Küche 
+
+- Produktionsdokumentation für Chargen 
+
+- Rohstoff-Mengenplanung und Einkaufslisten erstellen (Gastronomie, Catering) 
+
+- Menüplanung und Speiseplan erstellen inklusive Allergenkennzeichnung (für Kantinen und GV) 
+
+- Mengenplanung für Catering-Betriebe, Manufakturen und Gastronomie 
+
+Die Software eignet sich insbesondere für Betriebe aus folgenden Bereichen: 
+
+- Direktvermarkter & Hofläden 
+
+- Gastronomie Betriebe (Restaurants, Bistros, Pizzeria, Café) 
+
+- Lebensmittelproduzenten (Sushi, Schokolade, Marmeladen, Aufstriche, Saucen etc). 
+
+- Bäcker, Konditoren, Patisserie, Chocolaterie 
+
+- Feinkost & Catering 
+
+- Kantinen 
+
+- Gemeinschaftsverpflegung für Kitas, Kantine, Kindergarten, Schulen & Co.  
+
+- Metzger  
+
+- ... 
+
+Schnittstellen:  
+
+- REST-API für Rezepte, Mengen, Nährwerte, Allergene, Preise, Zutatenlisten uvm 
+
+- CSV und Excel-Export (Paket L) für Rezeptdaten, Kennzeichnung, Wareneinsatz und Preiskalkulation  
+
+- DataNatuRe Schnittstelle (gegen Aufpreis) für Nährwerte, Zutatenliste und Allergene 
+
+- EIS 2.0 - Softwareschmiede Kiel 
+
+- Etikettendrucker (Brother) 
+
+- Rezeptwaage z.B. Gebert 
+
+- MCP Anbindung 
+
+Schnittstellen:
+
+Anthropic
+
+ChatGPT
+
+Kassensysteme
+
+MCP
+
+REST-API
+
+Etikettendrucker
+
+Etikettendrucker Brother
+
+Rezepturwaage
+
+Rezeptwaage
+
+Zielgruppen:
+
+Lebensmittel Hersteller 
+
+Manufakturen 
+
+Konditorei 
+
+Bäcker 
+
+Köche 
+
+Hersteller (Fruchtaufstrich, Marmeladen, Sushi, Suppen, Schokolade, Pralinen) 
+
+Ernährungsberater 
+
+Catering 
+
+Gastronomie 
+
+Kantinen 
+
+Großküchen 
+
+Gemeinschaftsverpflegung für Kindergärten, Kitas, Schulen, Pflegeheime etc. 
+
+Diätköche 
+
+Fitnesstrainer  
+
+Screenshots und Videos
+
+ Ihr Browser unterstützt kein HTML5-Video.
+
+ Ihr Browser unterstützt kein HTML5-Video.
+
+ Ihr Browser unterstützt kein HTML5-Video.
+
+ Ihr Browser unterstützt kein HTML5-Video.
+
+ Ihr Browser unterstützt kein HTML5-Video.
+
+Funktionen (Auszug):
+
+Barcodedruck
+
+Datenpflege
+
+Deckungsbeitragsrechnung
+
+Dokumentation des QM
+
+Einkaufslisten
+
+Etikettendruck
+
+Exportfunktionen
+
+Kalkulation
+
+Kalkulation der Selbstkosten
+
+Kalkulation von Plankosten
+
+Kalkulation von Produktionskosten
+
+Kalkulationsvorlagen und Gemeinkostenzuschläge
+
+Kalkulatorische Kosten
+
+Kostenrechnungssystem
+
+Lebensmitteletiketten
+
+Lebensmittelkennzeichnung
+
+Material- und Lohnpreise
+
+Materialkostenplanung
+
+Menüplanung
+
+Nährwertberechnung
+
+Netto-Brutto-Kalkulation
+
+Preismanagement
+
+Produktionsplanung
+
+Produktkalkulation
+
+Prozessdokumentation
+
+Rezepturverwaltung
+
+Top-Down oder Bottom-Up Verfahren
+
+Voll- und Grenzkosten
+
+Preise
+
+ ab 150,- 
+EUR
+
+ zzgl. 19% MwSt 
+
+jährlich 
+
+50 Rezepte & Zutaten, Verwaltung & Etiketten Kennzeichnung 
+
+ 290,- 
+EUR
+
+ zzgl. 19% MwSt 
+
+jährlich 
+
+250 Rezepte & Zutaten, + Preiskalkulation 
+
+ 500,- 
+EUR
+
+ zzgl. 19% MwSt 
+
+jährlich 
+
+500 Rezepte & Zutaten; weitere Funktionen 
+
+Anbieter Kontaktdaten:
+
+Rezeptrechner SaaS GmbH c/o Heidorn
+
+ Frau Tina Heidorn 
+
+E-Mail-Kontaktaufnahme 
+
+Social Media Profile: 
+
+Mehr zur Software entdecken:
+
+Informationsmaterial
+
+Direkt zur Produktwebseite
+
+Anwenderbericht
+
+Direkt zur Produktwebseite
+
+Software-Exposé
+
+URL anfordern
+
+Preise
+
+Direkt zur Produktwebseite
+
+Kontakt
+
+URL anfordern
+
+Kontakt: 
+
+ Mit dem Absenden Ihrer Anfrage erklären Sie sich mit der Verarbeitung Ihrer angegebenen Daten einverstanden und akzeptieren unsere Datenschutzerklärung. 
+
+Nachricht senden 
+
+Kunden fragten
+
+ Für wen eignet sich der Rezeptrechner?
+
+Die Rezeptrechner Software eignet sich für Lebensmittelbetriebe aus folgenden Bereichen: Lebensmittelherstellung (Manufakturen, Feinkost, Hofläden, Direktvermarkter), Gastronomie (Restaurants, Cafés, Bistros, Catering), Bäckereien und Konditoreien sowie Gemeinschaftsverpflegung (Kantinen, Schulverpflegung, Kita-Versorgung, Pflegeeinrichtungen, Essen auf Rädern). Vom Einzelbetrieb bis zum Team mit mehreren Nutzern lässt sich der Rezeptrechner an die jeweilige Betriebsgröße anpassen. 
+
+ Wie hilft die Rezeptrechner Software?
+
+Die Rezeptrechner Software hilft Betrieben Zeit zu sparen bei der Rezeptverwaltung, der Kalkulation (Mengen, Kosten, Wareneinsatz, Verkaufspreise), der Lebensmittelkennzeichnung (Allergene, Zusatzstoffe, Zutatenliste, Nährwerte) und der Speiseplanung.
+Rezepte mit Zutaten und Mengen werden einmal im Rezeptrechner angelegt, Rohstoffpreise werden zentral hinterlegt. Auf dieser Basis erstellt die Software zum Beispiel Preiskalkulationen, Lebensmitteletiketten, Allergenlisten, Produktdatenblätter, Rezeptblätter mit Arbeitsanweisungen als PDF, Einkaufslisten und Speisepläne. Ändert sich ein Rezept, werden alle Unterlagen automatisch aktualisiert. Das spart doppelte Arbeit und reduziert Fehler bei Kennzeichnung und Kalkulation. 
+
+ Eignet sich die Rezeptrechner Software auch für Österreich und die Schweiz?
+
+Ja, die Rezeptrechner Software eignet sich auch für Österreich und die Schweiz.  
+
+ Kann ich die Rezeptrechner Software vor dem Kauf testen?
+
+Ja. Nach der kostenlosen Registrierung können die Basisfunktionen ausprobiert werden. Für alle PRO-Business-Funktionen wird eine Jahreslizenz gebucht. 
+
+ Muss ich alle Rezepte einzeln eintippen?
+
+Nein. Rezepte können per Import übernommen werden, Rohstoffpreise lassen sich per Excel hochladen. Ab Paket M steht zusätzlich ein KI-Assistent zur Verfügung: Die Datenpflege kann über ChatGPT oder Claude erfolgen, was die Tipparbeit deutlich reduziert. Der KI-Assistent wird auf Anfrage freigeschaltet. 
+
+ Können mehrere Mitarbeiter mit der Software arbeiten?
+
+Ja. Es können verschiedene Team-Zugänge mit unterschiedlichen Rollen und Rechten angelegt werden (ab Paket L verfügbar). 
+
+ Funktioniert der Rezeptrechner auch auf Tablet und Smartphone?
+
+Ja. Die Software ist webbasiert und läuft im Browser. Rezepte, Mengen und Rezeptblätter können direkt am Tablet oder Smartphone in der Großküche oder Backstube geöffnet werden. 
+
+ Wie läuft der Support?
+
+Es gibt eine persönliche Ansprechpartnerin, ohne Hotline und ohne Ticketsystem. Anfragen per E-Mail oder WhatsApp werden innerhalb von 24 Stunden beantwortet. 
+
+Technische Angaben:
+
+webbasiert:
+ja
+
+SaaS, Cloud:
+ja
+
+KI-unterstützt:
+ja
+
+multiuser-fähig (netzwerkfähig):
+ja
+
+mandantenfähig:
+nein
+
+Wartung:
+im Preis enthalten
+
+Customizing-Option:
+gegen Entgelt möglich
+
+Sitz des Herstellers: 
+Deutschland
+
+Schulung:
+auf Anfrage
+
+Installationssupport:
+im Preis enthalten
+
+Dokumentation:
+Handbuch, Online Hilfe, Demoversion, Technische Dokumentation
+
+Dialogsprache(n):
+Deutsch
+Systemvoraussetzungen:
+
+kompatible Betriebssysteme (läuft mit):
+
+Win 11
+Win 10
+Win Server
+
+Mainframe basierend
+
+Unix basierend
+Linux basierend
+Mac OS
+
+Mobile Betriebssysteme (unterstützt):
+
+iOS
+Android
+
+Alte kompatible Betriebssysteme:
+
+DOS
+Win 8
+Win 7
+Win Vista
+Win XP
+Win 9x/ME
+OS/2
+Netware
+Symbian
+Blackberry
+Win Phone / Mobile
+
+Zusätzliche Soft- und Hardwareanforderungen:
+Internetgeschwindigkeit: > 100 Mbit/s (Download) empfohlen 
+Browser: Google Chrome (empfohlen)
+
+Die Software wurde von SoftGuide für folgendes Projekt in Betracht gezogen:
+
+Produktions- und Handelsunternehmen (Lebensmittel) sucht Nährwertberechnungsprogramm 
+
+Projekt Nr.: 24/3389
+Ausschreibung bis: Beendet 
+
+Wir sind ein bundesweit aufgestellter Lebensmittelhersteller und Betreiber von Gastronomien. ... mehr 
+
+ weitere Ausschreibungen
+
+Rezeptrechner wird in folgenden Rubriken gelistet
+
+ Catering, Lieferdienste
+
+ Kalkulation, Kalkulationssoftware
+
+ Lebensmittelindustrie
+
+ Qualitätsmanagement, QM
+
+ Zeige alle 387 Software Rubriken
+
+Ausschreibungen
+
+IT-Ausschreibungen
+
+Vertriebspartnersuche
+
+Dienstleistungen für IT-Unternehmen
+
+Über SoftGuide
+
+Über Uns
+
+Referenzen
+
+Jobs
+
+Impressum
+
+Für Anbieter
+
+Software eintragen
+
+Werbung 
+
+Medienpartner
+
+Login für Aktualisierung
+
+Socialmedia Aktivitäten
+
+Anschrift
+
+SoftGuide GmbH & Co. KG
+
+Theodor-Heuss-Straße 51
+
+38444 Wolfsburg, Deutschland
+
+ © 2026 SoftGuide GmbH & Co. KG Datenschutzerklärung
