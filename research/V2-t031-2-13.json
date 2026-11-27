@@ -1,0 +1,37 @@
+{
+  "id": "V2-t031-2-13",
+  "metodo_versione": 2,
+  "titolo": "Patente nautica entro 12 miglia: preparazione al quiz e al carteggio da privatista (IT)",
+  "sintetico": false,
+  "famiglia": "esami-ufficiali",
+  "origine_shortlist": "t031-2-13",
+  "lingua": "it",
+  "mercato": "IT",
+  "acquirente": "Privatista che prepara l'esame per la patente nautica senza scuola nautica.",
+  "problema": "Teoria, carteggio e quiz senza una scuola nautica. Nessuna pagina italiana letta integralmente; domanda indicata solo da un risultato di ricerca.",
+  "fonti": [
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "descrizione": "Estratto della scansione T031-2 (pagina non letta): corso online a 250 EUR (listino 400); altro corso 210 EUR + IVA; privatista 400-600 EUR; quiz gratuiti Easy-Quizzz.", "url": "https://www.emagister.it/corso_come_ottenere_patente_nautica_entro_le_12_miglia-ec2812723.htm", "data": "2026-11-27"},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "Nessuna query Amazon per questa scheda (query_amazon assente nella shortlist): nessuna prova di domanda di libri. Prezzo 59 EUR, costi, margine: ipotesi."}
+  ],
+  "concorrenti": [
+    {"nome": "Corsi online per la patente nautica", "prezzo": "210-500 EUR (estratto)", "tipo_dato": "osservata", "livello": "risultato_di_ricerca"},
+    {"nome": "Quiz gratuiti (Easy-Quizzz)", "prezzo": "gratuito (estratto)", "tipo_dato": "osservata", "livello": "risultato_di_ricerca"}
+  ],
+  "prezzo_da_verificare_cents": 5900,
+  "accesso_pubblico": {"canale": "SEO italiana (quiz patente nautica, carteggio) + forum nautici + Ads", "costo_stimato_cents": 2000, "natura": "ipotesi (scenario STRATEGIA.md par. 9.4)"},
+  "costo_sviluppo_cents": 10000,
+  "complessita_assistenza": "media",
+  "ipotesi_margine_bp": 5449,
+  "punteggi": {"problema": 6, "accesso": 4, "offerta": 5, "margine": 5, "concorrenza": 5, "costo_sviluppo": 4, "assistenza": 5},
+  "note_punteggi": {
+    "problema": "6 (tetto): solo risultato di ricerca.",
+    "accesso": "4: canali non misurati.",
+    "offerta": "5: offerta proposta 59 EUR IVA incl.: piano di studio + quiz per capitolo + guida al carteggio con esercizi svolti. Promessa misurabile: completare 10 esercizi di carteggio e 3 simulazioni di quiz. Bonus: scheda dei strumenti da portare all'esame. Garanzia 30 giorni; il sostituto 'carteggio simulatore' sarebbe costoso da costruire e non e incluso. Voto 5: il prezzo e molto sotto i corsi (210-500 EUR da estratti) ma il valore e un'alternativa parziale e le condizioni d'esame vanno verificate.",
+    "margine": "5: netto IVA 22% = 4836; commissione 201; accesso 2000: 2635 -> 5449 bp.",
+    "concorrenza": "5 (sotto il tetto 6): corsi a pagamento e quiz gratuiti presenti.",
+    "costo_sviluppo": "4: simulatore o esercizi di carteggio con soluzioni verificate sono costosi.",
+    "assistenza": "5: domande sulle soluzioni degli esercizi."
+  },
+  "esclusioni": "Nessuna categoria regolamentata dalla lista del metodo; contenuto di sicurezza in mare: garantire esattezza.",
+  "esito": "Scheda v2: tetto problema/concorrenza 6 (nessuna fonte letta). Non candidata."
+}

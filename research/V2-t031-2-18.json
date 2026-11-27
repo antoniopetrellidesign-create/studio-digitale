@@ -1,0 +1,38 @@
+{
+  "id": "V2-t031-2-18",
+  "metodo_versione": 2,
+  "titolo": "Auxiliar Administrativo del Estado: planificador, test por tema y simulacros (ES)",
+  "sintetico": false,
+  "famiglia": "esami-ufficiali",
+  "origine_shortlist": "t031-2-18",
+  "lingua": "es",
+  "mercato": "ES",
+  "acquirente": "Opositor autodidacta a Auxiliar Administrativo del Estado, sin academia.",
+  "problema": "Temario ampio (28 temi nei titoli osservati) e test; le accademie costano 700-1.300 EUR (dato dalla scansione). Domanda osservata come molti libri a 10-44 EUR, non come vendite di prodotti digitali.",
+  "fonti": [
+    {"tipo": "osservata", "livello": "letta_integralmente", "descrizione": "Pagina di ricerca Amazon.es 'oposiciones auxiliar administrativo estado test', letta il 2026-11-27 (file research/fonti/2026-11-27-a119e5ed64cc.txt, impronta sha256 a119e5ed64ccdef6fa2a6f6feff209b5ddbad76a737054337bc7e2c7529108bf). 538 risultati. Prezzi in EUR: manual completo 2026 '28 temas, 900+ preguntas comentadas, psicotecnicos y 3 simulacros' 23,99; 'Auxiliar Administrativo del Estado 2027: temario completo ... 580 preguntas' 33,61; '100 fichas de repaso' 17,21; test informatica 14,41 (4.6 stelle, 12 valutazioni); Opostime temario Administracion Local 43,81, 4.6 (148 valutazioni); 'Temario Oposiciones Administracion Local I+II' 36,53, 3.9 (8). Formati: brossura, alcuni Kindle; nessun planificador digitale. DIFFERENZA: libri fisici = domanda e disponibilita a pagare, NON vendite di prodotti digitali.", "url": "https://www.amazon.es/s?k=oposiciones+auxiliar+administrativo+estado+test", "data": "2026-11-27"},
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "descrizione": "Estratto della scansione T031-2: senza accademia 100-200 EUR (temario + tasse); accademia online 700-1.300 EUR; pack Preparaoposiciones 169,90 EUR; OpositaTest 95,92 EUR/anno. Pagina non letta.", "url": "https://blog.opositatest.com/precio-academia-oposicion-auxiliar-administrativo/", "data": "2026-11-27"},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "Prezzo 39 EUR, costi, margine, rimborsi: ipotesi."}
+  ],
+  "concorrenti": [
+    {"nome": "Libri e test Auxiliar Administrativo (Limbos Viciana, Oposiciones Abiertas, Opo Campus, Subrayado)", "prezzo": "EUR 9,61-37,99 (letta)", "tipo_dato": "osservata", "livello": "letta_integralmente"},
+    {"nome": "OpositaTest, Preparaoposiciones, accademie", "prezzo": "95,92 EUR/anno; 169,90 EUR; 700-1.300 EUR (estratto)", "tipo_dato": "osservata", "livello": "risultato_di_ricerca"}
+  ],
+  "prezzo_da_verificare_cents": 3900,
+  "accesso_pubblico": {"canale": "SEO spagnola + community di opositores + Ads", "costo_stimato_cents": 2000, "natura": "ipotesi (scenario STRATEGIA.md par. 9.4)"},
+  "costo_sviluppo_cents": 6000,
+  "complessita_assistenza": "media",
+  "ipotesi_margine_bp": 3351,
+  "punteggi": {"problema": 7, "accesso": 5, "offerta": 5, "margine": 4, "concorrenza": 3, "costo_sviluppo": 5, "assistenza": 5},
+  "note_punteggi": {
+    "problema": "7: fonte letta pertinente, 538 risultati; il pubblico esiste ed e abituato a pagare materiale.",
+    "accesso": "5: canali non misurati.",
+    "offerta": "5: offerta proposta 39 EUR IVA incl. (minimo di fascia): planificador di 12 settimane + test per tema + 3 simulacros con registro errori. Promessa misurabile: completare i test dei 28 temi con puntuazione registrata. Bonus: tracker errori. Garanzia 30 giorni, senza promessa di superare l'esame. Voto 5: i libri a 17-34 EUR contengono gia 900-1.800 preguntas; 39 EUR per un digitale e difficile da differenziare senza contenuti piu profondi.",
+    "margine": "4: netto IVA 21% = 3223; commissione 143; accesso 2000: 1080 -> 3351 bp.",
+    "concorrenza": "3: mercato saturo di libri economici e piattaforme di test.",
+    "costo_sviluppo": "5: contenuto legale da mantenere aggiornato.",
+    "assistenza": "5: aggiornamenti per convocatoria."
+  },
+  "esclusioni": "Nessuna categoria regolamentata. Rischio diritti d'autore sui test di terzi.",
+  "esito": "Scheda v2 in approfondimento. Non candidata: concorrenza e margine deboli."
+}

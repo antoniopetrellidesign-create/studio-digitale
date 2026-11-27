@@ -1,0 +1,39 @@
+{
+  "id": "V2-t031-2-19",
+  "metodo_versione": 2,
+  "titolo": "Pack Policia Local por comunidad autonoma: test y planificador (ES)",
+  "sintetico": false,
+  "famiglia": "esami-ufficiali",
+  "origine_shortlist": "t031-2-19",
+  "lingua": "es",
+  "mercato": "ES",
+  "acquirente": "Opositor a Policia Local que debe preparar el temario especifico de su comunidad autonoma.",
+  "problema": "Temario distinto por comunidad autonoma, con grandes bancos de preguntas; dificil organizar el estudio (dato dalla scansione). Domanda osservata come molti temarios cartacei a 14-120 EUR, non come vendite di prodotti digitali.",
+  "fonti": [
+    {"tipo": "osservata", "livello": "letta_integralmente", "descrizione": "Pagina di ricerca Amazon.es 'oposiciones policia local temario', letta il 2026-11-27 (file research/fonti/2026-11-27-da445a9cdb4b.txt, impronta sha256 da445a9cdb4b101c3c7799f47a3d683556e8a8c1c0eab7a31e5cd3ffa31f433b). 247 risultati; titoli per comunita (Andalucia, Valencia, Murcia, Galicia, Pais Vasco, Castilla-La Mancha). Prezzi in EUR: Andalucia 28,80 e 33,61; Murcia 69,99 per tomo; Valencia 60,00 e 120,00; Galicia 18,17; 'Oposiciones Policia Local de Andalucia: 2.200 preguntas tipo test ... 8 simulacros' 13,95; '1600 preguntas test' 27,40, 3.8 stelle (5). Valutazioni quasi sempre tra 1 e 8. Formati: brossura, alcuni Kindle (un titolo a 1,50 EUR); nessun planificador digitale. DIFFERENZA: libri fisici = domanda e disponibilita a pagare, NON vendite di prodotti digitali.", "url": "https://www.amazon.es/s?k=oposiciones+polic%C3%ADa+local+temario", "data": "2026-11-27"},
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "descrizione": "Estratto della scansione T031-2: Preparaoposiciones offre pack per comunita autonoma a 79 EUR (accesso 90 giorni, 731 pagine di temario, 8.560+ test); altri corsi 700-1.679 EUR. Pagina non letta.", "url": "https://www.preparaoposiciones.com/cursos/policia-local?page=1", "data": "2026-11-27"},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "Prezzo 49 EUR, costi, margine, rimborsi: ipotesi. Aggiornamento dei temi alle convocatorias e diritti sulle preguntas: da verificare."}
+  ],
+  "concorrenti": [
+    {"nome": "Temarios per comunita (Rugar, Cavenpol, Merito Publico, IPOL, Testemario)", "prezzo": "EUR 13,95-120,00 (letta)", "tipo_dato": "osservata", "livello": "letta_integralmente"},
+    {"nome": "Preparaoposiciones, pack per comunita", "prezzo": "79 EUR (estratto)", "tipo_dato": "osservata", "livello": "risultato_di_ricerca"},
+    {"nome": "Accademie online", "prezzo": "700-1.679 EUR (estratto)", "tipo_dato": "osservata", "livello": "risultato_di_ricerca"}
+  ],
+  "prezzo_da_verificare_cents": 4900,
+  "accesso_pubblico": {"canale": "SEO spagnola + community di opositores (YouTube, Telegram, foros) + Ads", "costo_stimato_cents": 2000, "natura": "ipotesi (scenario STRATEGIA.md par. 9.4)"},
+  "costo_sviluppo_cents": 8000,
+  "complessita_assistenza": "media",
+  "ipotesi_margine_bp": 4637,
+  "punteggi": {"problema": 7, "accesso": 5, "offerta": 6, "margine": 5, "concorrenza": 4, "costo_sviluppo": 4, "assistenza": 5},
+  "note_punteggi": {
+    "problema": "7: fonte letta pertinente, 247 risultati per comunita.",
+    "accesso": "5: canali plausibili ma non misurati.",
+    "offerta": "6: offerta proposta 49 EUR IVA incl. per UNA comunita: planificador di 12 settimane + schede riassuntive + test per tema + 3 simulacros. Promessa misurabile: completare i test di tutti i temi e 3 simulacros con puntuazione registrata. Bonus: tracker degli errori; calendario con scadenze reali di convocatoria (solo se verificate). Garanzia: rimborso 30 giorni; NON si promette di superare l'oposicion. Voto 6: un pack concorrente con 8.560+ test a 79 EUR (estratto) rende dura la profondita dei contenuti.",
+    "margine": "5: netto IVA 21% = 4050; commissione 172; accesso 2000: 1878 -> 4637 bp.",
+    "concorrenza": "4: molti editori per comunita, 79 EUR con piu test, accademie con piu servizi.",
+    "costo_sviluppo": "4: il contenuto deve essere esatto e aggiornato per ogni comunita; costo stimato 80 EUR e tempo di revisione alto.",
+    "assistenza": "5: aggiornamenti per convocatoria e domande sui temi."
+  },
+  "esclusioni": "Nessuna categoria regolamentata. Contenuto giuridico vigente: errori danneggiano il compratore; diritti d'autore sui test di terzi da evitare.",
+  "esito": "Scheda v2 in approfondimento. Non candidata."
+}

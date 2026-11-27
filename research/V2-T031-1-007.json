@@ -1,0 +1,39 @@
+{
+  "id": "V2-T031-1-007",
+  "metodo_versione": 2,
+  "titolo": "ISO 9001: Dokumenten- und Umstellungs-Set fuer Kleinbetriebe ohne Berater (DE)",
+  "sintetico": false,
+  "famiglia": "conformita",
+  "origine_shortlist": "T031-1-007",
+  "lingua": "de",
+  "mercato": "DE",
+  "acquirente": "Kleinbetrieb, der eine ISO-9001-Zertifizierung anstrebt oder die Umstellung auf die neue Ausgabe planen muss.",
+  "problema": "QM-Dokumentation aufbauen ohne Berater. Segnale: nei titoli Amazon.de compare 'ISO 9001:2026' (pubblicazioni ago-nov 2026), quindi un'edizione nuova sembra in uscita; l'effetto sulla domanda e ipotesi. Domanda osservata come libri, non come vendite di prodotti digitali.",
+  "fonti": [
+    {"tipo": "osservata", "livello": "letta_integralmente", "descrizione": "Pagina di ricerca Amazon.de 'ISO 9001 Vorlagen QM Handbuch Kleinbetrieb', letta il 2026-11-27 (file research/fonti/2026-11-27-3a663ccc2035.txt, impronta sha256 3a663ccc2035a7cf482cfda25e97ba8a43a9559e272aae5dd0c0740da387f9df). 608 risultati. Prezzi in USD (consegna verso gli USA): 'ISO 9001 Dokumentations-Paket ... Vorlagen' rilegato 234,77, brossura 232,34, 5.0 stelle con 2 valutazioni; 'ISO 9001 Dokumentationspaket fuer Kleinunternehmen' rilegato 229,99, 1.0 (1); kit audit interno in Kindle 2.4 stelle (2), 187,79; 'Qualitaetsmanagement nach ISO 9001:2026 fuer Dummies' 32,31 (Best Seller in Quality Assurance, 1 valutazione); 'ISO 9001 einfach einfuehren' 20,53; guide di transizione 15,40-26,69; 'DIN EN ISO 9001:2026 - was sich bald aendert' 69,84 (2.0, 2 valutazioni); 'DIN EN ISO 9001:2026 - Vergleich' 267,05 non ancora pubblicato (15 feb 2027). Formati: libri fisici e Kindle. DIFFERENZA: libri fisici = domanda e disponibilita a pagare, NON vendite di prodotti digitali.", "url": "https://www.amazon.de/s?k=ISO+9001+Vorlagen+QM+Handbuch+Kleinbetrieb", "data": "2026-11-27"},
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "descrizione": "Estratto della scansione T031-1: Digistore24 'ISO 9001 - Vorlagen und Muster Paket' a pagamento; Forum Verlag vende una Vorlagensammlung; Etsy con 132 documenti; WEKA segnala che il QM-Handbuch non e piu obbligatorio dalla ISO 9001:2015. Prezzi non letti.", "url": "https://www.digistore24.com/product/473973", "data": "2026-11-27"},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "Prezzo 79 EUR, costi, margine, rimborsi: ipotesi. Requisiti della nuova edizione ISO 9001:2026 non letti da fonte ufficiale: da verificare prima di scrivere contenuti."}
+  ],
+  "concorrenti": [
+    {"nome": "Dokumentations-Pakete su Amazon.de (Dr. Mohamed-Ali Ibrahim)", "prezzo": "USD 229,99-234,77; valutazioni 1.0-5.0 su 1-2 recensioni (letta)", "tipo_dato": "osservata", "livello": "letta_integralmente"},
+    {"nome": "Libri guida ISO 9001 / transizione 2026", "prezzo": "USD 15,40-69,84 (letta)", "tipo_dato": "osservata", "livello": "letta_integralmente"},
+    {"nome": "Forum Verlag, WEKA, Digistore24, Etsy", "prezzo": "non rilevato", "tipo_dato": "osservata", "livello": "risultato_di_ricerca"}
+  ],
+  "prezzo_da_verificare_cents": 7900,
+  "accesso_pubblico": {"canale": "SEO tedesca (ISO 9001 Vorlagen, Umstellung) + LinkedIn/XING di QMB + Ads", "costo_stimato_cents": 2000, "natura": "ipotesi (scenario STRATEGIA.md par. 9.4)"},
+  "costo_sviluppo_cents": 8000,
+  "complessita_assistenza": "media",
+  "ipotesi_margine_bp": 6597,
+  "punteggi": {"problema": 7, "accesso": 5, "offerta": 7, "margine": 6, "concorrenza": 6, "costo_sviluppo": 5, "assistenza": 5},
+  "note_punteggi": {
+    "problema": "7: fonte letta pertinente con 608 risultati e nuove edizioni; valutazioni e recensioni pero molto poche.",
+    "accesso": "5: pubblico di piccole imprese raggiungibile ma non misurato; concorrenza su Digistore24/Etsy.",
+    "offerta": "7: offerta proposta 79 EUR IVA incl.: set Word/Excel (procedure, moduli, matrice di requisiti, checklist audit interno) adattabile a un'azienda con meno di 20 addetti + gap analysis per la transizione. Promessa misurabile: completare matrice dei requisiti e piano documenti in un fine settimana (il tempo e ipotesi da testare). Bonus: checklist audit interno; modello registro rischi. Garanzia: rimborso 30 giorni; NON si garantisce la certificazione ne l'esito dell'audit (insostenibile). Nessuna urgenza finta legata alla nuova edizione, solo date ufficiali verificate.",
+    "margine": "6: netto IVA 19% = 6639; commissione 259; accesso 2000: 4380 -> 6597 bp.",
+    "concorrenza": "6: fonte letta mostra pacchetti da ~230 USD con pochissime valutazioni e un kit da 2.4 stelle; guide a 15-46 USD; gap prezzo plausibile ma non provato.",
+    "costo_sviluppo": "5: richiede competenza sul contenuto e revisione sulla nuova norma.",
+    "assistenza": "5: personalizzazione e domande."
+  },
+  "esclusioni": "Non e categoria regolamentata. Le norme ISO sono protette da diritto d'autore: non riprodurre testo della norma. Nessuna promessa di certificazione.",
+  "esito": "Scheda v2 in approfondimento. Punteggio calcolato 60,0 sul bordo della soglia; non candidata finche non ci sono 2 fonti osservate indipendenti e verifica della nuova norma."
+}

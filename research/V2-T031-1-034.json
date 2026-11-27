@@ -1,0 +1,38 @@
+{
+  "id": "V2-T031-1-034",
+  "metodo_versione": 2,
+  "titolo": "Kit documentaire Qualiopi personnalisable pour formateurs independants (FR)",
+  "sintetico": false,
+  "famiglia": "conformita",
+  "origine_shortlist": "T031-1-034",
+  "lingua": "fr",
+  "mercato": "FR",
+  "acquirente": "Formateur independant ou petit organisme de formation qui prepare la certification Qualiopi.",
+  "problema": "Preparer la certification Qualiopi: preuves, procedures, 32 indicateurs (dato dalla scansione). Nessuna pagina francese letta integralmente.",
+  "fonti": [
+    {"tipo": "osservata", "livello": "risultato_di_ricerca", "descrizione": "Estratto della scansione T031-1 (pagina non letta): Certiforma kit documentaire a 279 EUR; altri pack di 22-42 documenti su ComeUp; un kit generico a 89 EUR citato con non-conformites.", "url": "https://certiforma.fr/kit-qualiopi/", "data": "2026-11-27"},
+    {"tipo": "ipotesi", "livello": "non_verificabile", "descrizione": "Nessuna query Amazon per questa scheda (query_amazon assente nella shortlist). Prezzo 89 EUR, costi, margine, rimborsi, fattibilita di un kit conforme: ipotesi."}
+  ],
+  "concorrenti": [
+    {"nome": "Certiforma, kit documentaire", "prezzo": "279 EUR (estratto)", "tipo_dato": "osservata", "livello": "risultato_di_ricerca"},
+    {"nome": "Pack ComeUp (22-42 documenti)", "prezzo": "non rilevato", "tipo_dato": "osservata", "livello": "risultato_di_ricerca"},
+    {"nome": "Kit generico", "prezzo": "89 EUR, con non-conformites segnalate (estratto)", "tipo_dato": "osservata", "livello": "risultato_di_ricerca"}
+  ],
+  "prezzo_da_verificare_cents": 8900,
+  "accesso_pubblico": {"canale": "SEO francese (kit Qualiopi, preuves) + LinkedIn + groupes de formateurs + Ads", "costo_stimato_cents": 2000, "natura": "ipotesi (scenario STRATEGIA.md par. 9.4)"},
+  "costo_sviluppo_cents": 8000,
+  "complessita_assistenza": "media",
+  "ipotesi_margine_bp": 6915,
+  "punteggi": {"problema": 6, "accesso": 5, "offerta": 6, "margine": 6, "concorrenza": 5, "costo_sviluppo": 5, "assistenza": 5},
+  "note_punteggi": {
+    "problema": "6 (tetto): solo risultato di ricerca.",
+    "accesso": "5: canale B2B raggiungibile, non misurato.",
+    "offerta": "6: offerta proposta 89 EUR IVA incl.: dossier di preuves per i 32 indicatori in Word, adattabile a un formatore indipendente, con esempi compilati e checklist di auto-valutazione. Promessa misurabile: compilare la matrice indicatore-preuve per tutti i 32 indicatori. Bonus: modello di registro reclami; checklist pre-audit. Garanzia: rimborso 30 giorni; NON si garantisce l'esito dell'audit (insostenibile, come osservato nell'estratto). Voto 6: prezzo vicino al kit generico critico e molto sotto Certiforma; la qualita del contenuto e la sfida.",
+    "margine": "6: netto IVA 20% = 7417; commissione 288; accesso 2000: 5129 -> 6915 bp.",
+    "concorrenza": "5 (sotto il tetto 6): vari venditori, kit generico criticato, prezzi 89-279 EUR da estratti.",
+    "costo_sviluppo": "5: richiede revisione sul referenziale ufficiale.",
+    "assistenza": "5: personalizzazione e domande sugli indicatori."
+  },
+  "esclusioni": "Certificazione regolamentata nel settore formazione: non rientra tra le categorie del metodo (salute, finanza, legale, minori) ma ha implicazioni di conformita; segnalare al Team Lead. Nessuna promessa di esito d'audit.",
+  "esito": "Scheda v2: tetto problema/concorrenza 6 (nessuna fonte letta). Non candidata."
+}
