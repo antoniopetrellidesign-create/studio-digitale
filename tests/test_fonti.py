@@ -93,3 +93,18 @@ class TestPunteggioV2(unittest.TestCase):
         from studio.phases import punteggio
         o = self._o(1, "letta_integralmente"); o["punteggi"].pop("offerta"); o.pop("metodo_versione")
         self.assertEqual(punteggio(o), (25*9 + 20*8 + 20*7 + 15*9 + 10*7 + 10*7) // 10)
+
+
+class TestFontiIndipendentiV2(unittest.TestCase):
+    def test_letta_piu_estratto_non_basta(self):
+        from studio.phases import fonti_osservate
+        import json
+        idx = [json.loads(l) for l in open("research/fonti/indice.jsonl") if '"letta_integralmente"' in l]
+        u = idx[0]["url"]
+        o = {"metodo_versione": 2, "fonti": [
+            {"tipo": "osservata", "url": u, "data": "2026-11-27", "livello": "letta_integralmente"},
+            {"tipo": "osservata", "url": "https://altro.example/x", "data": "2026-11-27", "livello": "risultato_di_ricerca"},
+            {"tipo": "osservata", "url": "https://mai-letta.example/y", "data": "2026-11-27", "livello": "letta_integralmente"}]}
+        self.assertEqual(fonti_osservate(o), 1)   # estratto e lettura non registrata non contano
+        o["fonti"].append(dict(o["fonti"][0]))    # stessa pagina due volte: stesso host, conta una volta
+        self.assertEqual(fonti_osservate(o), 1)

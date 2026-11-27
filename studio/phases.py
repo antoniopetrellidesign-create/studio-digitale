@@ -78,8 +78,38 @@ def punteggio(opp: dict) -> int:
     return sum(pesi[k] * max(0, min(10, int(p.get(k, 0)))) for k in pesi) // 10
 
 
+def _indice_letture() -> dict:
+    import json as _j
+    p = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "research", "fonti", "indice.jsonl")
+    out = {}
+    if os.path.exists(p):
+        with open(p, encoding="utf-8") as f:
+            for riga in f:
+                try:
+                    r = _j.loads(riga)
+                except ValueError:
+                    continue
+                if r.get("livello") == "letta_integralmente":
+                    out[r["url"]] = r
+    return out
+
+
 def fonti_osservate(opp: dict) -> int:
-    return sum(1 for f in opp.get("fonti", []) if f.get("tipo") == "osservata" and f.get("url") and f.get("data"))
+    """v1: fonti osservate con url e data. v2 (D-039, su verdetto QA): fonti INDIPENDENTI = pagine lette
+    integralmente, presenti nell'indice delle letture, su host diversi (un host conta una volta sola)."""
+    if opp.get("metodo_versione") != 2:
+        return sum(1 for f in opp.get("fonti", []) if f.get("tipo") == "osservata" and f.get("url") and f.get("data"))
+    from urllib.parse import urlparse
+    from .fonti import normalizza
+    lette = _indice_letture()
+    host = set()
+    for f in opp.get("fonti", []):
+        if f.get("livello") != "letta_integralmente" or not f.get("url"):
+            continue
+        r = lette.get(normalizza(f["url"])) or lette.get(f["url"])
+        if r:
+            host.add((urlparse(r["url"]).hostname or "").lower())
+    return len(host)
 
 
 def valida_opportunita(opp: dict) -> list:
