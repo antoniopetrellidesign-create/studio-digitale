@@ -17,7 +17,14 @@ import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 from html.parser import HTMLParser
-from urllib.parse import urlparse
+from urllib.parse import quote, urlparse, urlunparse
+
+
+def normalizza(url: str) -> str:
+    """Codifica percorso e query (es. 'ü' → '%C3%BC') lasciando intatti i caratteri già validi."""
+    u = urlparse(url)
+    return urlunparse(u._replace(path=quote(u.path, safe="/%:@!$&'()*+,;=-._~"),
+                                 query=quote(u.query, safe="=&%:@!$'()*+,;/?-._~")))
 
 from .storage import append_jsonl
 
@@ -92,6 +99,7 @@ class _SoloConsentiti(urllib.request.HTTPRedirectHandler):
 def leggi(url: str, cartella: str | None = None, consentiti: set | None = None, locale_ok: bool = False,
           timeout: int = 25) -> dict:
     consentiti = consentiti if consentiti is not None else host_consentiti()
+    url = normalizza(url)
     _controlla(url, consentiti, locale_ok)
     cartella = cartella or os.path.join(ROOT, "research", "fonti")
     os.makedirs(cartella, exist_ok=True)

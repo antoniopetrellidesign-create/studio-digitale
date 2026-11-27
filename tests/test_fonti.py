@@ -56,6 +56,13 @@ class TestFonti(unittest.TestCase):
         with self.assertRaises(fonti.HostNonConsentito):
             fonti.leggi(self.base + "/fuori", self.d, consentiti=set(), locale_ok=True)
 
+    def test_url_con_accenti_codificato(self):
+        self.assertEqual(fonti.normalizza("https://www.amazon.de/s?k=prüfung+lernplan"),
+                         "https://www.amazon.de/s?k=pr%C3%BCfung+lernplan")
+        self.assertEqual(fonti.normalizza("https://x.de/a%20b?q=1"), "https://x.de/a%20b?q=1")
+        r = fonti.leggi(self.base + "/prüfung?q=ü", self.d, consentiti=set(), locale_ok=True)
+        self.assertEqual(r["livello"], "letta_integralmente")
+
     def test_errore_di_rete_registrato_come_non_leggibile(self):
         r = fonti.leggi("http://127.0.0.1:9/x", self.d, consentiti=set(), locale_ok=True, timeout=2)
         self.assertEqual(r["livello"], "non_leggibile")
