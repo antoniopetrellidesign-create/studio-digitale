@@ -1,0 +1,455 @@
+[
+ {
+  "id": "t031-2-01",
+  "mercato": "Einbürgerungstest (test di cittadinanza) con piano di studio",
+  "lingua": "DE",
+  "acquirente": "Adulto migrante che prepara il test di naturalizzazione",
+  "problema": "Superare il test al primo tentativo con poco tempo; il catalogo ufficiale è gratuito ma non strutturato",
+  "risultato_vendibile": "Piano di 14 giorni + schede + simulazioni, promessa 'test superato' con garanzia",
+  "offerta_39_99": 8,
+  "segnale_domanda": {
+   "url": "https://testhelden.com/products/deutsch-test-fuer-zuwanderer-dtz",
+   "estratto": "TestHelden: Komplettpaket XL 69 EUR e XXL 99 EUR con Lernplan e 30 Tage Geld-zurück-Garantie (dal riassunto del risultato di ricerca)",
+   "data": "2026-11-27"
+  },
+  "concorrenza_visibile": "TestHelden a 69-99 EUR; molte app gratuite con le 300 domande ufficiali BAMF; blog di venditori",
+  "rischio_regolato": "basso (nessuna consulenza legale sulla cittadinanza, solo preparazione al test)",
+  "punteggio_rapido": 58,
+  "query_amazon": {
+   "dominio": "www.amazon.de",
+   "q": "Einbürgerungstest Vorbereitung Buch"
+  },
+  "livello": "risultato_di_ricerca",
+  "_area": "2",
+  "_norm": 116
+ },
+ {
+  "id": "T031-3-45",
+  "mercato": "Food cost e menu per ristoranti",
+  "lingua": "IT",
+  "acquirente": "Ristoratore o chef di locale piccolo",
+  "problema": "Prezzo dei piatti senza calcolo del food cost",
+  "risultato_vendibile": "Foglio Excel schede tecniche + food cost % + menu engineering; misura: food cost % per piatto",
+  "offerta_39_99": 7,
+  "segnale_domanda": {
+   "url": "https://payhip.com/b/64w7Y",
+   "estratto": "Template a pagamento su Payhip: foglio costi unitari, schede preparazioni, scheda tecnica con food cost % e margine, menu engineering (da riepilogo del risultato di ricerca)",
+   "data": "2026-11-27"
+  },
+  "concorrenza_visibile": "Media: Harvest gratuito, Payhip a pagamento, TeamSystem, Qamarero, myPOS, Gambero Rosso",
+  "rischio_regolato": "nessuno",
+  "punteggio_rapido": 51,
+  "query_amazon": null,
+  "livello": "risultato_di_ricerca",
+  "_area": "3",
+  "_norm": 114
+ },
+ {
+  "id": "T031-1-034",
+  "mercato": "FR",
+  "lingua": "fr",
+  "acquirente": "Formateur indépendant / petit organisme de formation",
+  "problema": "Préparer la certification Qualiopi (preuves, procédures, 32 indicateurs)",
+  "risultato_vendibile": "Kit documentaire Qualiopi personnalisable: dossier de preuves prêt pour l'audit",
+  "offerta_39_99": 6,
+  "segnale_domanda": {
+   "url": "https://certiforma.fr/kit-qualiopi/",
+   "estratto": "Certiforma: kit documentaire à 279 EUR; autres packs de 22-42 documents sur ComeUp; kit générique à 89 EUR cité avec non-conformités",
+   "data": "2026-11-27"
+  },
+  "concorrenza_visibile": "Certiforma, ComeUp, nombreux vendeurs de kits; kit générique critiqué (non-conformités); garantie d'audit non sostenibile",
+  "rischio_regolato": false,
+  "punteggio_rapido": 56,
+  "query_amazon": null,
+  "livello": "risultato_di_ricerca",
+  "_area": "1",
+  "_norm": 112
+ },
+ {
+  "id": "T031-3-44",
+  "mercato": "Calcolo costi ricette e Wareneinsatz per gastronomia",
+  "lingua": "DE",
+  "acquirente": "Gastronom/in oder Küchenchef/in kleines Lokal",
+  "problema": "Speisekarte ohne saubere Kalkulation; Wareneinsatz unklar",
+  "risultato_vendibile": "Excel-Kit Rezeptkalkulation + Menü-Check; misura: Wareneinsatz in % per Gericht",
+  "offerta_39_99": 7,
+  "segnale_domanda": {
+   "url": "https://www.softguide.de/programm/rezeptrechner-pro",
+   "estratto": "Rezeptrechner PRO Business a pagamento, con export CSV/Excel per Wareneinsatz e Preiskalkulation; WKW Kalkulationshandbuch gratuito (da riepilogo del risultato di ricerca)",
+   "data": "2026-11-27"
+  },
+  "concorrenza_visibile": "Media: WKW PDF, G-wie-Gastro, WHK (soprattutto bevande), Lightspeed, software a pagamento",
+  "rischio_regolato": "nessuno",
+  "punteggio_rapido": 50,
+  "query_amazon": {
+   "dominio": "www.amazon.de",
+   "q": "Gastronomie Kalkulation Buch Wareneinsatz"
+  },
+  "livello": "risultato_di_ricerca",
+  "_area": "3",
+  "_norm": 112
+ },
+ {
+  "id": "T031-3-23",
+  "mercato": "Kit modelli per wedding planner indipendenti",
+  "lingua": "EN",
+  "acquirente": "Wedding planner indipendente o agli inizi",
+  "problema": "Onboarding clienti, timeline e checklist rifatti ogni volta",
+  "risultato_vendibile": "Kit con timeline, moduli consulenza, e-mail e preventivi; misura: ore risparmiate per cliente",
+  "offerta_39_99": 6,
+  "segnale_domanda": {
+   "url": "https://www.honeybook.com/blog/event-planner-template",
+   "estratto": "HoneyBook lista un Event Planner Timeline a pagamento da 99 $ di un creator terzo, accanto a modelli gratuiti (da riepilogo del risultato di ricerca)",
+   "data": "2026-11-27"
+  },
+  "concorrenza_visibile": "Media: HoneyBook (kit e modelli), ClickUp gratuito, QC Event Planning",
+  "rischio_regolato": "basso: contratti sono materia legale, evitare clausole",
+  "punteggio_rapido": 50,
+  "query_amazon": {
+   "dominio": "www.amazon.com",
+   "q": "wedding planner business templates book"
+  },
+  "livello": "risultato_di_ricerca",
+  "_area": "3",
+  "_norm": 110
+ },
+ {
+  "id": "t031-2-32",
+  "mercato": "Sourdough beginner course",
+  "lingua": "EN",
+  "acquirente": "Home baker",
+  "problema": "Starter e pane riuscito",
+  "risultato_vendibile": "Corso 14 giorni + ricette + tracker",
+  "offerta_39_99": 8,
+  "segnale_domanda": {
+   "url": "https://payhip.com/b/5OrPg",
+   "estratto": "Corsi per principianti: Payhip 45 USD (video, PDF, tracker) e 135 USD; Mastering the Art of Sourdough 39,99 USD (riassunto del risultato di ricerca)",
+   "data": "2026-11-27"
+  },
+  "concorrenza_visibile": "Molti corsi indipendenti, Udemy, King Arthur, YouTube",
+  "rischio_regolato": "basso",
+  "punteggio_rapido": 54,
+  "query_amazon": {
+   "dominio": "www.amazon.com",
+   "q": "sourdough bread beginner book"
+  },
+  "livello": "risultato_di_ricerca",
+  "_area": "2",
+  "_norm": 109
+ },
+ {
+  "id": "t031-2-19",
+  "mercato": "Oposiciones Policía Local (temario por comunidad)",
+  "lingua": "ES",
+  "acquirente": "Opositor a Policía Local",
+  "problema": "Temario diverso per comunità autonoma, 8.000+ domande",
+  "risultato_vendibile": "Pack per comunità con test e planificador",
+  "offerta_39_99": 8,
+  "segnale_domanda": {
+   "url": "https://www.preparaoposiciones.com/cursos/policia-local?page=1",
+   "estratto": "Pack per comunità autonoma 79 EUR (accesso 90 giorni, 731 pagine di temario, 8.560+ test); altri corsi 700-1.679 EUR (riassunto del risultato di ricerca)",
+   "data": "2026-11-27"
+  },
+  "concorrenza_visibile": "Preparaoposiciones a 79 EUR, accademie 700+ EUR",
+  "rischio_regolato": "basso",
+  "punteggio_rapido": 52,
+  "query_amazon": {
+   "dominio": "www.amazon.es",
+   "q": "oposiciones policía local temario"
+  },
+  "livello": "risultato_di_ricerca",
+  "_area": "2",
+  "_norm": 106
+ },
+ {
+  "id": "T031-3-24",
+  "mercato": "Gestione clienti per wedding planner e sposi",
+  "lingua": "DE",
+  "acquirente": "Selbstständige/r Hochzeitsplaner/in (Neu-Gründer)",
+  "problema": "Fehlende Vorlagen für Erstberatung, Preisliste, Kundenmappe",
+  "risultato_vendibile": "Kit Kundenmappe + Preisliste + Zeitplan; misura: Angebot in 24 h versandt",
+  "offerta_39_99": 6,
+  "segnale_domanda": {
+   "url": "https://www.digistore24.com/product/444264",
+   "estratto": "Digistore24: PDF-Checklisten und Gästelistenmanager in Excel für 19,90 € (da riepilogo del risultato di ricerca)",
+   "data": "2026-11-27"
+  },
+  "concorrenza_visibile": "Media: ClickUp gratis, Canva, Fiverr su misura; nessuna Kundenmappe per Planer emersa",
+  "rischio_regolato": "basso",
+  "punteggio_rapido": 48,
+  "query_amazon": {
+   "dominio": "www.amazon.de",
+   "q": "Hochzeitsplaner Buch Checkliste Hochzeitsplanung"
+  },
+  "livello": "risultato_di_ricerca",
+  "_area": "3",
+  "_norm": 106
+ },
+ {
+  "id": "t031-2-35",
+  "mercato": "Genealogy beginner kit",
+  "lingua": "EN",
+  "acquirente": "Adulto che vuole ricostruire l'albero genealogico",
+  "problema": "Da dove iniziare e come trovare documenti",
+  "risultato_vendibile": "Kit + modelli + checklist archivi",
+  "offerta_39_99": 7,
+  "segnale_domanda": {
+   "url": "https://store.familytreemagazine.com/collections/digital-products/products/the-beginner-genealogy-starter-kit",
+   "estratto": "Beginner Genealogy Starter Kit 54,97 USD (69,97 separati); ebook 19,99 USD; corso NGS 75-90 USD; corso MyHeritage gratuito (riassunto del risultato di ricerca)",
+   "data": "2026-11-27"
+  },
+  "concorrenza_visibile": "Family Tree Magazine, MyHeritage gratuito, NGS, FutureLearn",
+  "rischio_regolato": "basso (privacy dati di terzi)",
+  "punteggio_rapido": 53,
+  "query_amazon": {
+   "dominio": "www.amazon.com",
+   "q": "genealogy for beginners family tree workbook"
+  },
+  "livello": "risultato_di_ricerca",
+  "_area": "2",
+  "_norm": 105
+ },
+ {
+  "id": "T031-3-04",
+  "mercato": "Piano contenuti Instagram per parrucchieri e saloni",
+  "lingua": "IT",
+  "acquirente": "Titolare di salone o parrucchiere indipendente",
+  "problema": "Non sa cosa pubblicare e come mostrare il lavoro (prima/dopo, reel)",
+  "risultato_vendibile": "Kit con 90 idee e calendario 12 settimane; misura: pubblicazioni regolari e prenotazioni da Instagram",
+  "offerta_39_99": 6,
+  "segnale_domanda": {
+   "url": "https://meteoraweb.com/docs/marketing-parrucchieri-estetiste",
+   "estratto": "Guida italiana sul marketing per parrucchieri e barbieri: profilo, prima e dopo, reel di trasformazione, storie e quaranta idee pronte divise per mestiere (da riepilogo del risultato di ricerca)",
+   "data": "2026-11-27"
+  },
+  "concorrenza_visibile": "Media: guida gratuita di agenzia (Meteora Web), Simplified, Zoviz, Canva",
+  "rischio_regolato": "nessuno",
+  "punteggio_rapido": 47,
+  "query_amazon": null,
+  "livello": "risultato_di_ricerca",
+  "_area": "3",
+  "_norm": 104
+ },
+ {
+  "id": "T031-3-15",
+  "mercato": "Media kit e tariffe per micro-influencer",
+  "lingua": "DE",
+  "acquirente": "Micro-Creator/in (5.000-50.000 Follower) im DACH-Raum",
+  "problema": "Weiß nicht, was er/sie für Kooperationen verlangen soll; kein Mediakit",
+  "risultato_vendibile": "Mediakit editabile + calcolatore tariffe + 5 modelli di pitch; misura: primo preventivo inviato a 10 marchi",
+  "offerta_39_99": 6,
+  "segnale_domanda": {
+   "url": "https://blog.hubspot.de/marketing/influencer-marketing-kosten",
+   "estratto": "Micro-Influencer mit 5.000 bis 30.000 Followern bei etwa 170 bis 261 US-Dollar pro Beitrag; la ricerca non ha trovato un modello di Mediakit pronto (da riepilogo del risultato di ricerca)",
+   "data": "2026-11-27"
+  },
+  "concorrenza_visibile": "Media: HubSpot, Shopify DE, OMT, Kolsquare con guide sui prezzi; nessun template di Mediakit in tedesco emerso",
+  "rischio_regolato": "basso: obbligo di marcatura pubblicitaria",
+  "punteggio_rapido": 47,
+  "query_amazon": null,
+  "livello": "risultato_di_ricerca",
+  "_area": "3",
+  "_norm": 104
+ },
+ {
+  "id": "T031-1-052",
+  "mercato": "US/EN",
+  "lingua": "en",
+  "acquirente": "Restaurant or food truck owner",
+  "problema": "Recipe costing and menu pricing",
+  "risultato_vendibile": "Costing workbook: food cost % per item and menu price",
+  "offerta_39_99": 7,
+  "segnale_domanda": {
+   "url": "https://payhip.com/b/4T8ah",
+   "estratto": "Payhip: food cost calculator 19 USD, bundle 4 sheets 39 USD; workbook 29 USD; 13-sheet system 32 USD",
+   "data": "2026-11-27"
+  },
+  "concorrenza_visibile": "Prezzi 19-39 USD; Jotform, Template.net gratuiti; software Restaurant365",
+  "rischio_regolato": false,
+  "punteggio_rapido": 50,
+  "query_amazon": {
+   "dominio": "www.amazon.com",
+   "q": "restaurant recipe costing menu pricing book"
+  },
+  "livello": "risultato_di_ricerca",
+  "_area": "1",
+  "_norm": 103
+ },
+ {
+  "id": "t031-2-13",
+  "mercato": "Patente nautica entro 12 miglia (preparazione quiz)",
+  "lingua": "IT",
+  "acquirente": "Privatista che prepara l'esame",
+  "problema": "Teoria, carteggio e quiz senza scuola nautica",
+  "risultato_vendibile": "Corso+simulatore carteggio con garanzia",
+  "offerta_39_99": 6,
+  "segnale_domanda": {
+   "url": "https://www.emagister.it/corso_come_ottenere_patente_nautica_entro_le_12_miglia-ec2812723.htm",
+   "estratto": "Corso online a 250 EUR (listino 400); altro corso 210 EUR + IVA; privatista 400-600 EUR (riassunto del risultato di ricerca)",
+   "data": "2026-11-27"
+  },
+  "concorrenza_visibile": "Corsi online a 210-500 EUR, quiz gratuiti Easy-Quizzz",
+  "rischio_regolato": "basso",
+  "punteggio_rapido": 52,
+  "query_amazon": null,
+  "livello": "risultato_di_ricerca",
+  "_area": "2",
+  "_norm": 102
+ },
+ {
+  "id": "T031-3-06",
+  "mercato": "SEO per negozi Etsy",
+  "lingua": "ES",
+  "acquirente": "Vendedor/a de Etsy en España o Latinoamérica",
+  "problema": "Anuncios sin visitas; títulos y etiquetas poco claros",
+  "risultato_vendibile": "Kit de auditoría y plantillas en español con ejemplos antes/después; medida: vistas por anuncio",
+  "offerta_39_99": 5,
+  "segnale_domanda": {
+   "url": "https://help.erank.com/es/blog/conceptos-basicos-de-seo-en-etsy-para-vendedores/",
+   "estratto": "SEO en Etsy: conceptos básicos y consejos; la búsqueda no encontró un tutorial completo de principio a fin en español, lo más cercano son artículos del centro de ayuda de eRank (da riepilogo del risultato di ricerca)",
+   "data": "2026-11-27"
+  },
+  "concorrenza_visibile": "Media: eRank ES, Neil Patel ES, Printful ES, Gelato ES; pochi corsi completi in spagnolo",
+  "rischio_regolato": "nessuno",
+  "punteggio_rapido": 47,
+  "query_amazon": {
+   "dominio": "www.amazon.es",
+   "q": "SEO Etsy libro vender"
+  },
+  "livello": "risultato_di_ricerca",
+  "_area": "3",
+  "_norm": 102
+ },
+ {
+  "id": "T031-3-34",
+  "mercato": "Lancio di corsi online per coach",
+  "lingua": "DE",
+  "acquirente": "Coach/in oder Trainer/in mit erstem Onlinekurs",
+  "problema": "Kursidee, Validierung und Launch ohne Plan",
+  "risultato_vendibile": "Kit con checklist, mini-corso di validazione e e-mail di lancio; misura: preiscrizioni prima della produzione",
+  "offerta_39_99": 6,
+  "segnale_domanda": {
+   "url": "https://www.digistore24.com/product/671448",
+   "estratto": "Masterkurs für Coaches su Digistore24 a 81,20 € più rate mensili, con Schritt-für-Schritt-Anleitung e Worksheets (da riepilogo del risultato di ricerca)",
+   "data": "2026-11-27"
+  },
+  "concorrenza_visibile": "Alta: Kopf und Stift, MemberPress, Thinkific, Teachable, UpCoach; promesse di ricavi da evitare",
+  "rischio_regolato": "basso: promesse di guadagno",
+  "punteggio_rapido": 46,
+  "query_amazon": null,
+  "livello": "risultato_di_ricerca",
+  "_area": "3",
+  "_norm": 102
+ },
+ {
+  "id": "T031-3-36",
+  "mercato": "Report mensili e proposte per social media manager freelance",
+  "lingua": "EN",
+  "acquirente": "Social media manager freelance con 2-10 clienti",
+  "problema": "Report mensili ai clienti lunghi da preparare",
+  "risultato_vendibile": "Kit report + proposta + ritenzione clienti; misura: da 3 ore a 45 minuti per report (stima del fornitore)",
+  "offerta_39_99": 6,
+  "segnale_domanda": {
+   "url": "https://selar.com/60lo918e17",
+   "estratto": "Social Media Manager Monthly Report Template, template Canva a pagamento su Selar per freelance e piccole agenzie (da riepilogo del risultato di ricerca)",
+   "data": "2026-11-27"
+  },
+  "concorrenza_visibile": "Alta: HubSpot, DashThis, Later, Metricool, Cloud Campaign gratuiti; nessun modello di proposta emerso",
+  "rischio_regolato": "nessuno",
+  "punteggio_rapido": 46,
+  "query_amazon": null,
+  "livello": "risultato_di_ricerca",
+  "_area": "3",
+  "_norm": 102
+ },
+ {
+  "id": "t031-2-18",
+  "mercato": "Oposiciones Auxiliar Administrativo (test + planning)",
+  "lingua": "ES",
+  "acquirente": "Opositor autodidatta senza accademia",
+  "problema": "26 temi e test; accademie da 700-1.300 EUR",
+  "risultato_vendibile": "Planificador + test per tema + simulacros",
+  "offerta_39_99": 7,
+  "segnale_domanda": {
+   "url": "https://blog.opositatest.com/precio-academia-oposicion-auxiliar-administrativo/",
+   "estratto": "Senza accademia 100-200 EUR (temario + tasse); accademia online 700-1.300 EUR; pack Preparaoposiciones 169,90 EUR; OpositaTest 95,92 EUR/anno (riassunto del risultato di ricerca)",
+   "data": "2026-11-27"
+  },
+  "concorrenza_visibile": "Accademie, OpositaTest, Preparaoposiciones",
+  "rischio_regolato": "basso",
+  "punteggio_rapido": 50,
+  "query_amazon": {
+   "dominio": "www.amazon.es",
+   "q": "oposiciones auxiliar administrativo estado test"
+  },
+  "livello": "risultato_di_ricerca",
+  "_area": "2",
+  "_norm": 100
+ },
+ {
+  "id": "T031-3-21",
+  "mercato": "Tariffe e dossier per microinfluencer",
+  "lingua": "ES",
+  "acquirente": "Microinfluencer en España",
+  "problema": "No sabe cuánto cobrar por colaboración ni cómo presentar su dossier",
+  "risultato_vendibile": "Dossier editable + calculadora de tarifas + plantillas de propuesta; medida: primeras propuestas enviadas",
+  "offerta_39_99": 6,
+  "segnale_domanda": {
+   "url": "https://www.cronoshare.com/cuanto-cuesta/contratar-influencer",
+   "estratto": "Cronoshare sitúa el precio medio en España entre 150 € y 700 € por publicación; Kontentino: los precios no están regulados (da riepilogo del risultato di ricerca)",
+   "data": "2026-11-27"
+  },
+  "concorrenza_visibile": "Media: Shopify ES, Kontentino, Modash, Metricool, Kolsquare; nessun dossier modello emerso",
+  "rischio_regolato": "basso: publicidad etiquetada",
+  "punteggio_rapido": 45,
+  "query_amazon": null,
+  "livello": "risultato_di_ricerca",
+  "_area": "3",
+  "_norm": 100
+ },
+ {
+  "id": "T031-1-007",
+  "mercato": "DE",
+  "lingua": "de",
+  "acquirente": "Kleinbetrieb, der ISO-9001-Zertifizierung anstrebt",
+  "problema": "QM-Dokumentation aufbauen ohne Berater",
+  "risultato_vendibile": "Dokumentenset ISO 9001 (Verfahren, Formulare) vollständig in einem Wochenende angepasst",
+  "offerta_39_99": 6,
+  "segnale_domanda": {
+   "url": "https://www.digistore24.com/product/473973",
+   "estratto": "Digistore24: 'ISO 9001 - Vorlagen und Muster Paket' a pagamento; Forum Verlag vende Vorlagensammlung; Etsy 132 documenti",
+   "data": "2026-11-27"
+  },
+  "concorrenza_visibile": "Forum Verlag, WEKA, Digistore24, Etsy; WEKA: il manuale QM non è più obbligatorio dalla ISO 9001:2015",
+  "rischio_regolato": false,
+  "punteggio_rapido": 48,
+  "query_amazon": {
+   "dominio": "www.amazon.de",
+   "q": "ISO 9001 Vorlagen QM Handbuch Kleinbetrieb"
+  },
+  "livello": "risultato_di_ricerca",
+  "_area": "1",
+  "_norm": 98
+ },
+ {
+  "id": "T031-3-09",
+  "mercato": "Ottimizzazione annuncio Airbnb e B&B",
+  "lingua": "IT",
+  "acquirente": "Host privato o titolare di B&B",
+  "problema": "Poche prenotazioni, annuncio poco convertente",
+  "risultato_vendibile": "Kit annuncio con checklist, titoli e descrizioni modello; misura: conversione",
+  "offerta_39_99": 6,
+  "segnale_domanda": {
+   "url": "https://www.smoobu.com/it/blog/annuncio-perfetto-casa-vacanze/",
+   "estratto": "Annuncio perfetto per una casa vacanze: come aumentare le prenotazioni (da riepilogo del risultato di ricerca)",
+   "data": "2026-11-27"
+  },
+  "concorrenza_visibile": "Alta: Smoobu, PriceLabs, Hostfully, guida ufficiale Airbnb",
+  "rischio_regolato": "basso: normativa locale su affitti brevi",
+  "punteggio_rapido": 44,
+  "query_amazon": null,
+  "livello": "risultato_di_ricerca",
+  "_area": "3",
+  "_norm": 98
+ }
+]
