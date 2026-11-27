@@ -251,3 +251,124 @@ Nessuna modifica fatta da me a `config/policy.json`. Esito delle proposte second
 8. (rinviata, D-010) **Finestra di clawback per rimborsi tardivi**: valutare di portarla a 45–60 giorni a contratto; richiede decisione del titolare tramite Team Lead.
 9. (nuova, T-013; non applicata) **Costi di account e strumenti**: aggiungere in policy `ipotesi_costi_variabili.commissione_marketplace_pct_bp` e `commissione_marketplace_fissa_cents` (stato `da_verificare`, per marketplace); un campo `strumenti.prova_gratuita_preavviso_giorni` (proposta 3) e `strumenti.abbonamento_annuale_solo_dopo_validazione: true`; e per il registro il tipo di voce con campi `fonte`, `data_verifica`, `data_rinnovo`, `data_limite_disdetta`, `rinnovo_automatico` (modifica a `studio/ledger.py`, mia, da fare in un compito separato). Nessuna nuova categoria di spesa.
 10. (nuova, T-013; per il Team Lead) **Commissioni marketplace trattenute dall'incasso**: decidere se registrarle come categoria `commissione` (condividendo la busta creator da 60 €) o solo nel margine come minor incasso. Proposta: solo nel margine, senza riserva, ma con stima massima registrata prima dell'apertura del marketplace.
+
+---
+
+## 9. Offerta a sito singolo (D-038, in scrittura dal Team Lead)
+
+Cambio di impostazione: ogni prodotto validato ha un **sito proprio a prodotto singolo** con un'offerta costruita sul valore; fascia di prezzo obiettivo **39–99 € IVA inclusa** **[I: da validare, non è un dato di mercato]**; i marketplace (Etsy ecc.) diventano **canale secondario** (§3-bis D resta valido per il confronto per ordine). Questa sezione non modifica `config/policy.json` (proposte al §10). Nessun dato di mercato osservato: ogni cifra è **[P]**, **[I]** o aritmetica pura.
+
+### 9.1 Equazione del valore e modello compilabile dell'offerta
+
+```
+Valore percepito = (risultato desiderato × probabilità percepita di ottenerlo) / (tempo di attesa × sforzo e sacrificio)
+```
+Applicata a un prodotto digitale: si alzano i due termini al numeratore (risultato specifico e misurabile, prove vere che sia ottenibile) e si abbassano i due al denominatore (consegna immediata, passi piccoli, modelli già compilati). La "probabilità percepita" si costruisce solo con elementi veri: esempi reali, anteprima del contenuto, garanzia, dimostrazioni verificabili. Nessun risultato economico o di salute promesso come certo.
+
+Modello da compilare per ogni prodotto (campo vuoto = blocco, come al §4):
+
+```
+OFFERTA <id opportunità>                          data: ____   responsabile: ____
+1. NOME DELL'OFFERTA        ____ (descrive il risultato, non il file; verificabile, senza superlativi non provabili)
+2. PROMESSA                 "<segmento> ottiene <risultato misurabile> in <tempo realistico> senza <sforzo/ostacolo>"
+   Prova che la sostiene:   ____ [osservata: fonte+data | ipotesi]
+3. CONTENUTO PRINCIPALE     ____ (deliverable dalla specifica di prodotto)
+4. BONUS (max 2-3)          ____ ciascuno con: problema che risolve, costo incrementale (AI/compenso) ≤ ____ €
+5. GARANZIA                 tipo ____ durata ____ giorni, condizioni ____; tasso rimborso atteso [I] ____ %
+6. PREZZO IVA incl.         ____ €    IVA paese ____ %    netto ____ €
+7. ANCORAGGIO ONESTO        ammesso solo se vero e documentabile (vedi 9.2): prezzo precedente realmente praticato,
+                            oppure confronto con alternativa reale citata con fonte+data; altrimenti "nessuno"
+8. COSTO MASSIMO NOTO       riserva registro: ai ___ €, piattaforma ___ €, compenso_fisso ___ € (totale ≤ residuo)
+9. IPOTESI DA VERIFICARE    elenco, con come si verificano
+```
+L'ancoraggio onesto è ammesso solo nelle forme seguenti: (a) prezzo di lancio vs prezzo successivo **solo se** il prezzo successivo sarà davvero applicato alla data dichiarata; (b) valore dei bonus indicato come "venduti a parte a X €" **solo se** vendibili e venduti a parte a quel prezzo; (c) confronto con il costo di un'alternativa reale (consulente, corso) citata con fonte e data. Il valore "percepito" non si dichiara come valore "di listino".
+
+### 9.2 Limiti di legge UE (da far verificare a un professionista prima della pubblicazione)
+
+Riferimenti da controllare: direttiva 2005/29/CE sulle pratiche commerciali sleali (UCPD, Allegato I: pratiche sempre vietate), direttiva (UE) 2019/2161 "Omnibus" (che ha modificato UCPD, direttiva 2011/83/UE sui diritti dei consumatori e direttiva 98/6/CE sull'indicazione dei prezzi), e il recepimento nazionale (per l'Italia, Codice del consumo, D.Lgs. 206/2005). **[I]**: i riferimenti puntuali agli articoli vanno confermati; questa non è consulenza legale.
+
+Regole operative del team (tutto deve essere **vero e documentabile**, con prova archiviata):
+1. **Niente scarsità o urgenza finte**: vietato dichiarare "ultimi posti", "solo oggi", "offerta in scadenza" se non è vero. Un limite (posti, data) esiste solo se è reale, vincolante e verificabile; alla scadenza il prezzo cambia davvero.
+2. **Niente timer che si azzerano** o ripartono a ogni visita/ricarica; nessun conto alla rovescia generato per visitatore. Il timer ammesso è legato a una data fissa reale e uguale per tutti.
+3. **Niente prezzi barrati fittizi**: ogni riduzione indica il prezzo precedente, che per Omnibus è in linea di principio il **più basso applicato nei 30 giorni precedenti** (da verificare con il professionista, incluse eccezioni per i nuovi prodotti). Il prezzo "pieno" mai praticato non si espone. Si conserva il registro dei prezzi con date.
+4. **Niente recensioni, testimonianze o numeri di clienti inventati**; nessun conteggio "venduto N volte" non reale; le recensioni dichiarano come sono raccolte (Allegato I UCPD, pratiche sulle recensioni false).
+5. **Promesse di risultato**: niente garanzie di guadagno o esiti non dimostrabili; esempi di risultato solo se reali e tipici, con avvertenza.
+6. **Trasparenza di prezzo e IVA**: prezzo finale IVA inclusa visibile per il paese del cliente; nessun costo aggiuntivo a sorpresa al checkout; rinnovi (per la ricorrenza) dichiarati prima dell'acquisto.
+7. **Diritto di recesso**: per i contenuti digitali scaricabili va gestito il consenso esplicito alla consegna immediata e la presa d'atto della perdita del recesso (direttiva 2011/83/UE), **oltre** alla garanzia commerciale dichiarata, che è un impegno aggiuntivo e non lo sostituisce. Condizioni e informativa precontrattuale vanno verificate dal professionista.
+8. **Preordine e lista d'attesa dichiarati come tali**: data di consegna prevista reale, diritto di rimborso, nessun testo che faccia sembrare il prodotto già disponibile; per la lista d'attesa consenso e informativa privacy (GDPR) e disiscrizione semplice.
+9. QA indipendente verifica la pagina contro questo elenco prima di ogni pubblicazione; un elemento non documentabile è motivo di blocco.
+
+### 9.3 Economia della garanzia
+
+- **Tasso di rimborso atteso `r`**: è un'**ipotesi [I]**; nessun dato osservato. Valori di calcolo usati sotto: 5%, 10%, 20% (scenari, non stime). Il valore da usare per le decisioni viene solo dai test (tasso rimborso = ordini rimborsati / ordini totali, §8 punto 3).
+- **Costo nel margine**: per ordine lordo, il ricavo atteso è `(1 − r) × N`; il costo di pagamento `C_pag` e la spesa Ads `A` restano a carico anche sugli ordini rimborsati (§2). Quindi `M = (1 − r)·N − C_pag − A − (altre voci del §2)`. Ogni punto percentuale di rimborso costa `N/100` per ordine.
+- **Soglia oltre cui la garanzia distrugge il margine** (margine = 0), con le sole voci N, C_pag, A:
+
+```
+r* = 1 − (C_pag + A) / N
+```
+  Con IVA 22% (illustrativa), A = 20 € per ordine lordo: a 49 € → N = 40,16 €, C_pag = 1,72 €, **r\* = 45,9%**; a 97 € → N = 79,51 €, C_pag = 3,11 €, **r\* = 70,9%**. Con A = 0 (solo organico) r\* è 95,7% (49 €) e 96,1% (97 €). Sono limiti teorici di pareggio, non obiettivi: includendo piattaforma, AI, creator e `Q` la soglia reale scende.
+- **Soglie operative**: restano quelle di policy [P], 10% per scalare e 20% per fermarsi (§5); una garanzia più lunga o "senza domande" va accettata solo se il test mostra rimborsi sotto il 10%. Se il rimborso supera il 20% si ferma e si indaga su promessa, prodotto o pubblico, prima di toccare la garanzia.
+- **Garanzia come leva**: alza la probabilità percepita, ma ogni sua estensione si valuta con questo calcolo; non si estende una garanzia senza aver stimato `r` e `r*` per quel prezzo.
+
+### 9.4 Aritmetica aggiornata (solo calcolo, non previsione)
+
+Formula: `utile giornaliero = vendite/giorno × M`, con `M = (1 − r)·N − C_pag − A`.
+Parametri di calcolo (scenari, tutti **[I]**): IVA 22% (illustrativa, da verificare per paese), commissione di pagamento 2,9% + 0,30 € su P [P, da verificare], rimborso `r` = 10%, Ads `A` = 20 € per ordine lordo (costo di acquisizione di scenario, non un dato). Esclusi: creator, piattaforma, AI, `Q`, costi fissi.
+
+| | 49 € | 97 € |
+|---|---|---|
+| Netto IVA `N = P/1,22` | 40,16 € | 79,51 € |
+| `C_pag` | 1,72 € | 3,11 € |
+| Ricavo atteso `(1−r)·N` (r=10%) | 36,15 € | 71,56 € |
+| **`M` per ordine lordo** (A=20 €) | **14,43 €** | **48,44 €** |
+| CPA di pareggio (M=0, r=10%) | 34,43 € | 68,44 € |
+
+| Vendite/giorno | utile giornaliero a 49 € | utile giornaliero a 97 € |
+|---|---|---|
+| 1 | 14,43 € | 48,44 € |
+| 3 | 43,28 € | 145,33 € |
+| 5 | 72,13 € | 242,22 € |
+| 10 | 144,27 € | 484,44 € |
+
+Sensibilità (a 49 € / 97 €, 1 vendita/giorno): con A = 30 € M = 4,43 € / 38,44 €; con r = 20% e A = 20 € M = 6,40 € / 32,53 €. Un rimborso in più su 10 ordini costa 4,02 € / 7,95 € per ordine.
+Aritmetica sul traguardo di lungo periodo, F = 0: 30.000 €/sett. = 4.286 €/giorno ⇒ ≈ 297 vendite/giorno a 49 € e ≈ 88 a 97 € nello scenario sopra. È solo la scomposizione del traguardo (§1), non una previsione.
+
+### 9.5 Validazione prima dello sviluppo
+
+Principio: non si sviluppa il prodotto finché una **pagina di vendita singola** non ha dimostrato interesse misurato. La pagina descrive l'offerta (9.1) con il prezzo reale e dichiara con chiarezza lo stato: **"lista d'attesa"** (nessun pagamento) oppure **"preordine"** (pagamento anticipato, consegna prevista a data reale, rimborso garantito). Nessun testo che faccia credere il prodotto già disponibile (9.2 punto 8).
+
+- **Budget**: Ads **60–80 € per test**, **massimo 3 test** nel primo tetto di 500 €. Aritmetica: 3 × 60 = 180 € ≤ 200 € allocati ad `ads`; 3 × 80 = 240 € **supera** l'allocazione di 200 € di 40 €. Con l'allocazione attuale: 3 test fino a 66 € ciascuno, oppure 2 test da 80 € + 1 da 40 €; la riserva e le altre categorie non si usano per Ads senza decisione registrata. Costo massimo noto riservato prima dell'avvio, con tetto giornaliero e totale in campagna. Pagina, dominio e strumenti in `piattaforma`/`ai` con costo massimo noto (§3-bis); tre pagine condividono ove possibile lo stesso strumento. Resta il limite di un test alla volta (`max_opportunita_per_test`) finché non si decide diversamente (§10).
+- **Metriche**: visite qualificate (esclusi bot e traffico interno), iscrizioni o preordini, conversione visita→iscrizione (o preordine), **costo per iscrizione** `CPI = spesa / iscrizioni` e **costo per preordine** `CPO = spesa / preordini`.
+- **Soglie fissate prima di vedere i dati** (progetto del test, non evidenza di mercato; eventuali correzioni solo prima dell'avvio, in DECISIONI.md):
+  - **Test informativo**: ≥ 100 visite qualificate entro la spesa prevista; sotto questo numero il test non è informativo, non è né successo né fallimento: si rivede il canale/annuncio una sola volta con la riserva Ads residua del test.
+  - **Lista d'attesa**: **successo** se conversione ≥ 10% **e** CPI ≤ 3 € (≈ ≥ 20 iscrizioni su 60 €). Poiché l'iscrizione non prova la disponibilità a pagare, la lista si convalida con una mail di conferma con prezzo reale: successo pieno se ≥ 5% degli iscritti clicca sul pagamento/preordine; senza questa verifica il risultato resta **ipotesi**.
+  - **Preordine**: **successo** se ≥ 3 preordini pagati e `CPO ≤ 25 €` (prezzo 49 €: ≤ 65% del margine lordo `N − C_pag` = 38,44 €; a 97 € la stessa soglia è ≤ 33%).
+  - **Stop**: conversione < 3%, o 0 iscrizioni/preordini dopo 50% della spesa e ≥ 60 visite, o CPI/CPO sopra soglia al 100% della spesa. Stop = nessuno sviluppo; il costo entra in `Q` (§2).
+  - **Successo** autorizza solo lo sviluppo del prodotto e il test commerciale (§4, criterio ≥ 10 ordini); non autorizza spesa extra. Con preordini pagati: consegna entro la data dichiarata o rimborso integrale.
+- Ogni test compila `TEST <id>` (§4) con offerta (9.1), canale primario (ads), soglia di stop in € e criterio di successo come sopra. Pubblicazione e campagne seguono la fase del workflow; i passaggi di pagamento (carta, OTP, conferme) li esegue il titolare (`AZIONI_TITOLARE.md`).
+
+### 9.6 Tappe realistiche (traguardo operativo)
+
+Il traguardo di 30.000 €/settimana (§1, T6) **resta come traguardo di lungo periodo**, non come obiettivo operativo. L'obiettivo operativo è la sequenza seguente, ogni passo con evidenza misurata:
+
+| Tappa | Condizione verificabile | Evidenza |
+|---|---|---|
+| A. Prima vendita | 1 ordine reale pagato da uno sconosciuto, consegna verificata, non rimborsato nella finestra | Ordine, consegna e download in riconciliazione |
+| B. 10 vendite con margine positivo | ≥ 10 ordini netti con `M` > 0 dopo IVA, commissioni, Ads, rimborsi, `Q` (= T1 del §1, regole §5) | Report di misurazione + registro spese |
+| C. Secondo prodotto | Un secondo prodotto validato con 9.5 e proprio sito; margine di portafoglio > 0 inclusi i test falliti | Margine per prodotto e di portafoglio |
+| D. Ricorrenza | Offerta ricorrente (abbonamento, aggiornamenti, comunità) con rinnovo dichiarato, tasso di rinnovo e rimborso misurati | Ordini ricorrenti, churn, margine per periodo |
+
+Tappe oltre il tetto di 500 € richiedono approvazione del titolare (tramite Team Lead). Le tappe T2–T6 del §1 restano il quadro di lungo periodo: A–D ne sono la traduzione operativa e non le sostituiscono per la scala.
+
+---
+
+## 10. Proposte di modifica alla policy da D-038 (non applicate; per il Team Lead)
+
+Nessuna modifica fatta a `config/policy.json` o al codice. Proposte:
+11. **Fascia di prezzo**: aggiungere `prezzo_obiettivo_min_cents` = 3900 e `prezzo_obiettivo_max_cents` = 9900 (stato `da_verificare`), con avviso (non blocco) per piani di test fuori fascia.
+12. **Test di validazione**: aggiungere `validazione.ads_per_test_min_cents` = 6000, `ads_per_test_max_cents` = 8000, `validazione.max_test_primo_tetto` = 3; coerenza richiesta con `allocazione_budget_cents.ads` = 20000: o fissare il massimo a 6600 cent, o spostare 4000 cent da `riserva` ad `ads` (decisione del Team Lead; la riserva scenderebbe a zero, sconsigliato) o ridurre i test a 2 da 80 €.
+13. **Soglie di validazione**: `validazione.visite_minime` = 100, `validazione.conversione_min_bp` = 1000, `validazione.conversione_stop_bp` = 300, `validazione.cpi_max_cents` = 300, `validazione.cpo_max_cents` = 2500, `validazione.preordini_min` = 3.
+14. **Garanzia**: aggiungere `garanzia.tasso_rimborso_atteso_bp` (stato `ipotesi`), `garanzia.giorni` e calcolo di `r*` in `studio/economics.py` (compito separato, mio).
+15. **Canale secondario marketplace**: aggiornare `config/canali_vendita.json` (acquisizione) con ruolo "secondario"; confronto per ordine secondo §3-bis D. Il traguardo operativo `obiettivo_operativo` (tappe A–D) da aggiungere in policy accanto a `obiettivo_lungo_periodo`.
+16. **Rivedere `ordini_minimi_per_giudicare` e le soglie ROAS** a 39–99 € dopo i primi test: nessuna modifica prima di dati osservati.

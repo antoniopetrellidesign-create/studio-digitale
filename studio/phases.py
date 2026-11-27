@@ -59,9 +59,23 @@ SEGRETI = re.compile(
 
 
 # ----------------------------------------------------------------------------- helper
+PESI_V2 = {"problema": 20, "accesso": 20, "offerta": 15, "margine": 15, "concorrenza": 15, "costo_sviluppo": 8,
+           "assistenza": 7}  # metodo v2 (D-038): potenziale d'offerta da 39–99 €
+
+
+def letta_integralmente(opp: dict) -> bool:
+    return any(f.get("livello") == "letta_integralmente" for f in opp.get("fonti", []))
+
+
 def punteggio(opp: dict) -> int:
-    p = opp["punteggi"]
-    return sum(PESI[k] * max(0, min(10, int(p.get(k, 0)))) for k in PESI) // 10
+    """Metodo v1 o v2 secondo `metodo_versione`. D-028 applicato dal motore: senza alcuna fonte letta
+    integralmente, *problema* e *concorrenza* valgono al massimo 6, qualunque cosa dica la scheda."""
+    p = dict(opp["punteggi"])
+    if not letta_integralmente(opp):
+        for k in ("problema", "concorrenza"):
+            p[k] = min(6, int(p.get(k, 0)))
+    pesi = PESI_V2 if opp.get("metodo_versione") == 2 else PESI
+    return sum(pesi[k] * max(0, min(10, int(p.get(k, 0)))) for k in pesi) // 10
 
 
 def fonti_osservate(opp: dict) -> int:

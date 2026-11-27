@@ -80,6 +80,9 @@ def main(argv=None):
     rg.add_argument("--consegne", action="store_true")
     rg.add_argument("--file", help="JSON di un comando (azione comando)")
     rg.add_argument("--nota", default="")
+    fo = sub.add_parser("fonti", help="lettore delle fonti della ricerca (solo host consentiti)")
+    fo.add_argument("azione", choices=["leggi", "host"])
+    fo.add_argument("url", nargs="?")
     q = sub.add_parser("queue", help="coda condivisa del team (team/queue.json)")
     q.add_argument("azione", choices=["list", "set", "add"])
     q.add_argument("args", nargs="*")
@@ -179,6 +182,19 @@ def main(argv=None):
             with open(a.file, encoding="utf-8") as f:
                 print(json.dumps(regia.esegui_comando(json.load(f)), ensure_ascii=False))
         return 0
+    if a.cmd == "fonti":
+        from . import fonti
+        if a.azione == "host":
+            print("\n".join(sorted(fonti.host_consentiti())))
+            return 0
+        try:
+            r = fonti.leggi(a.url)
+        except fonti.HostNonConsentito as e:
+            print(f"RIFIUTATO: {e}", file=sys.stderr)
+            return 2
+        print(json.dumps({k: r.get(k) for k in ("url", "stato_http", "livello", "titolo", "caratteri", "file", "errore")},
+                         ensure_ascii=False))
+        return 0 if r["livello"] == "letta_integralmente" else 1
     if a.cmd == "queue":
         from .queue import TaskQueue
         tq = TaskQueue(os.path.join(ROOT, "team", "queue.json"))

@@ -25,6 +25,7 @@
         "properties": {
           "tipo": { "enum": ["osservata", "ipotesi"] },
           "descrizione": { "type": "string", "minLength": 1 },
+          "livello": { "enum": ["letta_integralmente", "risultato_di_ricerca", "non_verificabile"], "description": "Quanto e stata verificata la fonte (metodo v2)." },
           "url": { "type": "string", "minLength": 1 },
           "data": { "type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" }
         },
@@ -64,10 +65,14 @@
         "margine": { "type": "number", "minimum": 0, "maximum": 10 },
         "concorrenza": { "type": "number", "minimum": 0, "maximum": 10 },
         "costo_sviluppo": { "type": "number", "minimum": 0, "maximum": 10 },
-        "assistenza": { "type": "number", "minimum": 0, "maximum": 10 }
+        "assistenza": { "type": "number", "minimum": 0, "maximum": 10 },
+        "offerta": { "type": "number", "minimum": 0, "maximum": 10, "description": "Potenziale d'offerta (metodo v2): offerta 39-99 euro con risultato misurabile, bonus credibili, garanzia sostenibile." }
       },
       "additionalProperties": false
-    }
+    },
+    "metodo_versione": { "enum": [1, 2], "description": "Versione del metodo di ricerca. Assente o 1 = storico v1 (senza offerta); 2 = metodo v2, con offerta obbligatoria." }
   },
+  "if": { "properties": { "metodo_versione": { "const": 2 } }, "required": ["metodo_versione"] },
+  "then": { "properties": { "punteggi": { "required": ["offerta"] } } },
   "additionalProperties": true
 }

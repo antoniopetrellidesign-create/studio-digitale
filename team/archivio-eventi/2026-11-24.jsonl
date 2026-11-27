@@ -199,3 +199,7 @@
 {"quando": "2026-11-24T11:52:13+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Compare remote commit content with project copy"}
 {"quando": "2026-11-24T11:52:13+00:00", "evento": "PostToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Compare remote commit content with project copy", "esito": "ok", "durata_ms": 36}
 {"quando": "2026-11-24T11:52:34+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Make clone canonical, archive events, untrack live log"}
+{"quando": "2026-11-24T11:52:50+00:00", "evento": "PostToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Make clone canonical, archive events, untrack live log", "esito": "ok", "durata_ms": 15874}
+{"quando": "2026-11-24T11:53:00+00:00", "evento": "PreToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Document, commit and push from the clone"}
+{"quando": "2026-11-24T11:53:03+00:00", "evento": "PostToolUse", "sessione": "3bc9ed50", "strumento": "Bash", "sintesi": "Document, commit and push from the clone", "esito": "ok", "durata_ms": 2405}
+{"quando": "2026-11-24T11:53:11+00:00", "evento": "Stop", "sessione": "3bc9ed50", "ultimo_messaggio": "Ho sistemato il controllo che segnalava modifiche non salvate: ora la copia di lavoro è pulita ed è identica a GitHub (`4ed3547`).  Il problema aveva due cause: - **Due copie del progetto.** Il riavvio del processo, avvenuto a metà di un comando, aveva diviso il lavoro fra la vecchia cartella e il c…"}

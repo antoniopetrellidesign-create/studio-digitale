@@ -4,6 +4,30 @@ Metodo riutilizzabile per cercare opportunità di prodotti digitali in nicchie, 
 
 Principio: si parte da **problemi e compratori**, non dal prodotto. Poi si guardano concorrenti e canali. Il prodotto è l'ultima cosa che si decide.
 
+## 0. Metodo v2 (in vigore, approvato dal titolare)
+
+Le nuove schede portano `"metodo_versione": 2`. Le schede v1 restano valide come storico; per confrontarle con le v2 vanno rivalutate aggiungendo `offerta`.
+
+### Imbuto in quattro stadi
+| Stadio | Volume | Contenuto | Fonti |
+|---|---|---|---|
+| (a) Scansione | 200-300 micro-mercati | scheda breve (acquirente, problema, indizio di domanda, concorrenti noti) | solo risultati di ricerca, costo minimo |
+| (b) Shortlist | 20 | scheda completa secondo lo schema | risultati di ricerca + prime pagine |
+| (c) Approfondimento | i migliori della shortlist | pagine **lette integralmente** | lettore del sistema: `python3 -m studio fonti leggi <url>` |
+| (d) Candidati | 3 | pronti per la validazione con pagina di vendita | almeno 2 fonti osservate indipendenti |
+
+Il lettore legge solo gli host consentiti dall'ambiente e salva testo, data e impronta in `research/fonti/`. Per le fonti `letta_integralmente` cita data e impronta nella descrizione. Se un host non è consentito o la pagina richiede login/pagamento, la fonte è `non_verificabile` (escalation al Team Lead se necessaria).
+
+### Livello di ogni fonte (campo `livello`)
+- `letta_integralmente`: pagina letta per intero con il lettore e salvata in `research/fonti/`.
+- `risultato_di_ricerca`: visto solo titolo/estratto in un risultato di ricerca.
+- `non_verificabile`: non ricontrollabile; vale come ipotesi.
+
+Con soli `risultato_di_ricerca`, `problema` e `concorrenza` restano **<= 6** (D-028). Con pagine lette integralmente possono salire. Il livello non sostituisce `osservata`/`ipotesi`: sono due assi distinti.
+
+### Criterio `offerta` (0-10)
+Si può costruire un'offerta da 39-99 euro con un risultato misurabile, bonus credibili e una garanzia sostenibile? 0-3: risultato vago o garanzia insostenibile; 4-6: offerta plausibile ma bonus o misurabilità deboli; 7-10: risultato misurabile, bonus credibili, garanzia sostenibile a margine intatto. Obbligatorio se `metodo_versione` = 2.
+
 ## 1. Sequenza
 
 1. **Compratore**: chi è, in quale contesto, cosa paga già oggi.
@@ -64,16 +88,17 @@ Ogni criterio riceve un voto 0-10 nel campo `punteggi`, poi il motore applica i 
 
 | Criterio (chiave) | Peso | Voto 10 significa |
 |---|---|---|
-| problema/urgenza (`problema`) | 25 | problema frequente, doloroso, già pagato |
+| problema/urgenza (`problema`) | 20 | problema frequente, doloroso, già pagato |
 | accesso al pubblico (`accesso`) | 20 | canale chiaro, economico, non unico |
-| margine (`margine`) | 20 | margine alto dopo commissioni e accesso |
+| potenziale d'offerta (`offerta`) | 15 | offerta 39-99 euro, risultato misurabile, bonus credibili, garanzia sostenibile |
+| margine (`margine`) | 15 | margine alto dopo commissioni e accesso |
 | concorrenza superabile (`concorrenza`) | 15 | concorrenti con lacune evidenti e prezzi alti |
-| costo di sviluppo basso (`costo_sviluppo`) | 10 | prima versione quasi a costo zero |
-| assistenza semplice (`assistenza`) | 10 | quasi nessun supporto |
+| costo di sviluppo basso (`costo_sviluppo`) | 8 | prima versione quasi a costo zero |
+| assistenza semplice (`assistenza`) | 7 | quasi nessun supporto |
 
-Punteggio = somma(voto/10 x peso), quindi massimo 100. Il motore ricalcola il totale: non scriverlo nella scheda.
+Pesi del metodo v2 (fissati nel motore). Il metodo v1 usava problema 25, accesso 20, margine 20, concorrenza 15, costo_sviluppo 10, assistenza 10 senza `offerta`. Punteggio = somma(voto/10 x peso), quindi massimo 100. Il motore ricalcola il totale: non scriverlo nella scheda.
 
-Calibrazione dei voti: 0-3 debole, 4-6 discreto, 7-10 forte. Un voto alto su `problema`, `accesso` o `concorrenza` deve poggiare su fonti `osservata`; senza evidenza, massimo 5.
+Calibrazione dei voti: 0-3 debole, 4-6 discreto, 7-10 forte. Un voto alto su `problema`, `accesso` o `concorrenza` deve poggiare su fonti `osservata`; senza evidenza, massimo 5. Con soli risultati di ricerca, `problema` e `concorrenza` <= 6 (D-028).
 
 ## 7. Soglia di selezione
 
