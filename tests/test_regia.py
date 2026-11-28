@@ -117,3 +117,24 @@ class TestIstantanea(_Team):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestPartita(_Team):
+    def test_livelli_solo_da_fatti_e_scelta_una_volta(self):
+        import json as _j
+        carte_p = os.path.join(ROOT, "research", "carte-candidati.json")
+        if not os.path.exists(carte_p):
+            self.skipTest("carte non ancora pronte")
+        cid = str(_j.load(open(carte_p))[0]["id"])
+        p = regia.partita(regia.numeri())
+        self.assertEqual(p["livello_corrente"], "scelta")
+        self.assertEqual(p["missione"]["tipo"], "scelta_prodotto")
+        r = regia.esegui_comando({"id": "cmd-scelta-0001", "tipo": "scelta_prodotto", "parametri": {"carta": cid}})
+        self.assertEqual(r["stato"], "completato")
+        self.assertEqual(regia.partita(regia.numeri())["livello_corrente"], "pagina")
+        r2 = regia.esegui_comando({"id": "cmd-scelta-0002", "tipo": "scelta_prodotto", "parametri": {"carta": cid}})
+        self.assertEqual(r2["stato"], "fallito")
+
+    def test_carta_inesistente_rifiutata(self):
+        r = regia.esegui_comando({"id": "cmd-scelta-0003", "tipo": "scelta_prodotto", "parametri": {"carta": "non-esiste"}})
+        self.assertEqual(r["stato"], "fallito")

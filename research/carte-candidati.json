@@ -1,0 +1,147 @@
+[
+  {
+    "id": "carta-food-cost",
+    "titolo": "Menu Profit System: food cost e prezzi del menu per ristoranti e food truck",
+    "mercato": "US (EN) con variante IT",
+    "lingua": "en (variante it: schede V2-T031-3-45)",
+    "schede_origine": ["V2-T031-1-052", "V2-T031-3-45"],
+    "offerta": {
+      "nome": "Menu Profit System",
+      "promessa_misurabile": "Food cost % e prezzo di menu suggerito per 10 piatti con i tuoi prezzi di acquisto, in un pomeriggio (misura: cronometro e numero di piatti completati).",
+      "contenuto": "Cartella di lavoro Excel/Google Sheets: prezzi ingredienti, schede ricetta con resa e scarto, food cost % per piatto, prezzo suggerito dal food cost obiettivo scelto dall'utente, menu engineering, impatto di un aumento del fornitore; 3 menu di esempio compilati; video di avvio di 20 minuti.",
+      "bonus": ["Registro aggiornamento prezzi fornitori con avviso sui piatti fuori obiettivo", "Checklist trimestrale di revisione del menu", "Foglio di costo per eventi e catering"],
+      "garanzia": "30 giorni: rimborso se il file non produce il calcolo di 10 piatti. Nessuna promessa di utile.",
+      "prezzo_usd_cents": 8900,
+      "prezzo_eur_cents_it": 7900,
+      "prezzo_nota": "ipotesi: prezzo premium rispetto ai 19-32 USD visti in estratto; giustificato solo se video di avvio e menu di esempio sono davvero superiori. Da verificare sulle pagine lette.",
+      "perche_vale_di_piu": "I concorrenti visti sono fogli senza guida; qui c'e' un percorso con esempi compilati e un risultato misurabile (10 piatti). Il valore e' legato al denaro: un solo piatto prezzato meglio ripaga il prodotto."
+    },
+    "angolo_facebook": {
+      "chi": "Proprietari e chef di ristoranti indipendenti e food truck in USA (interessi: gestione ristorante, Toast, Square); per l'IT, ristoratori italiani.",
+      "problema": "Fissi i prezzi del menu a istinto e non sai quanto guadagni davvero su ogni piatto.",
+      "visual": "Video di 20-30 secondi con registrazione dello schermo: un piatto (es. burger) inserito nel foglio, il food cost % si calcola e il prezzo suggerito appare; titolo con il numero dei piatti calcolati."
+    },
+    "concorrenti_premium": [
+      {"nome": "Food cost calculator (Payhip)", "url": "https://payhip.com/b/4T8ah", "host": "payhip.com", "prezzo": "19 USD; bundle 4 fogli 39 USD", "data": "2026-11-28", "livello": "risultato_di_ricerca", "nota": "negozio ospitato su Payhip, non marketplace puro; da leggere"},
+      {"nome": "Workbook Excel con menu engineering e registro sprechi (Payhip)", "url": "https://payhip.com/b/IcLOj", "host": "payhip.com", "prezzo": "29 USD (da estratto)", "data": "2026-11-28", "livello": "risultato_di_ricerca"},
+      {"nome": "Sistema costing ricette 13 fogli (Payhip)", "url": "https://payhip.com/b/ekKuF", "host": "payhip.com", "prezzo": "32 USD (da estratto)", "data": "2026-11-28", "livello": "risultato_di_ricerca"},
+      {"nome": "Corso menu design e engineering (eCornell)", "url": "https://ecornell.cornell.edu/?p=13971", "host": "ecornell.cornell.edu", "prezzo": "non visto nell'estratto", "data": "2026-11-28", "livello": "risultato_di_ricerca", "nota": "corso universitario di due settimane: serve a misurare il tetto di prezzo; da leggere"}
+    ],
+    "punti_forti": ["Valore legato al denaro: giustifica un prezzo alto.", "Pubblico B2B con carta aziendale.", "Assistenza bassa e prodotto autoesplicativo.", "Stesso nucleo per EN e IT."],
+    "punti_deboli": ["I prodotti digitali concorrenti stanno a 19-39 USD (estratto): 89 USD e' una scommessa non verificata.", "Gratuiti abbondanti (7shifts, Jotform, Restaurant365, TouchBistro).", "Ristoratori difficili da targettizzare su Facebook e molto occupati.", "Non copiare tabelle di resa da libri protetti."],
+    "gestione": {
+      "assistenza": "bassa: domande sul foglio e su Excel vs Sheets",
+      "aggiornamenti": "bassi: una revisione l'anno, IVA/unita' per IT",
+      "rischio_rimborsi": "medio-basso: il rimborso scatta se il foglio non calcola 10 piatti; limitato dalla garanzia chiara",
+      "piacevolezza": "alta per la gestione, media per il tema (non e' una passione)"
+    }
+  },
+  {
+    "id": "carta-lievito-madre",
+    "titolo": "Corso di pane a lievito madre per principianti, 14 giorni",
+    "mercato": "US (EN)",
+    "lingua": "en",
+    "schede_origine": ["t031-2-32"],
+    "offerta": {
+      "nome": "Starter to First Loaf: 14-Day Sourdough Course",
+      "promessa_misurabile": "Starter attivo entro 7 giorni e primo pane con mollica aperta entro 14 giorni (verifica con foto e tracker giornaliero; risultati variano con farina e temperatura).",
+      "contenuto": "14 lezioni video brevi, tracker di fermentazione, guida alla diagnosi dei problemi (starter che non sale, pane denso), 6 ricette, tabelle per clima freddo e caldo.",
+      "bonus": ["Calcolatore di idratazione", "10 ricette con lo scarto dello starter", "Guida alla diagnosi con foto di mollica e crosta"],
+      "garanzia": "30 giorni soddisfatto o rimborsato; costo marginale quasi nullo.",
+      "prezzo_usd_cents": 9700,
+      "prezzo_nota": "ipotesi: l'ancora dei concorrenti va da 45 a 139 USD; 97 USD richiede produzione video di alta qualita'.",
+      "perche_vale_di_piu": "Un percorso giorno per giorno con diagnosi visiva dei problemi, invece di lezioni generiche; l'acquirente vede subito i progressi."
+    },
+    "angolo_facebook": {
+      "chi": "Adulti 25-55 in USA che cucinano a casa, interessati a panificazione e cucina casalinga.",
+      "problema": "Il tuo starter non sale e il pane viene denso, e ogni fonte dice una cosa diversa.",
+      "visual": "Video time-lapse di 30 secondi di uno starter che raddoppia, poi taglio di un pane con mollica aperta; testo: 'giorno 1, giorno 7, giorno 14'."
+    },
+    "concorrenti_premium": [
+      {"nome": "Sourdough Series 101 (reach.dog shop)", "url": "https://reach.dog/shop/sourdough-source/products/sourdough-series-101-course", "host": "reach.dog", "prezzo": "139 USD, accesso a vita", "data": "2026-11-28", "livello": "risultato_di_ricerca"},
+      {"nome": "The Art of Sourdough Bread (Homesteading Family)", "url": "https://classes.homesteadingfamily.com/the-art-of-sourdough-bread-masterclass", "host": "classes.homesteadingfamily.com", "prezzo": "non visto, 25+ lezioni video", "data": "2026-11-28", "livello": "risultato_di_ricerca"},
+      {"nome": "Sourdough for Beginners on-demand (King Arthur Baking)", "url": "https://shop.kingarthurbaking.com/classes/sourdough-for-beginners-on-demand", "host": "shop.kingarthurbaking.com", "prezzo": "non visto", "data": "2026-11-28", "livello": "risultato_di_ricerca"},
+      {"nome": "Beginner Sourdough Bread Baking Course (Payhip)", "url": "https://payhip.com/b/5OrPg", "host": "payhip.com", "prezzo": "45 USD", "data": "2026-11-28", "livello": "risultato_di_ricerca"}
+    ],
+    "punti_forti": ["Passione e risultato visivo: ottimo per annunci video.", "Il pubblico e' ampio e motivato.", "Tema piacevole da gestire per il titolare."],
+    "punti_deboli": ["Molti contenuti gratuiti (YouTube, King Arthur) e libri a 12-18 USD.", "Costo video alto: richiede un volto o un panificatore reale.", "Non si possono promettere risultati garantiti: il rimborso e' piu' probabile se lo starter fallisce.", "Concorrenza voto 4 nella scheda."],
+    "gestione": {
+      "assistenza": "media: domande sul proprio pane ('perche' non sale?'), forte aspettativa di feedback",
+      "aggiornamenti": "bassi",
+      "rischio_rimborsi": "medio: i fallimenti dipendono da farina e clima",
+      "piacevolezza": "alta per il tema, media per l'assistenza"
+    }
+  },
+  {
+    "id": "carta-genealogia",
+    "titolo": "Kit per iniziare la genealogia in 30 giorni",
+    "mercato": "US (EN)",
+    "lingua": "en",
+    "schede_origine": ["t031-2-35"],
+    "offerta": {
+      "nome": "Family Tree Starter Path: 30 Days to Four Documented Generations",
+      "promessa_misurabile": "Albero di 4 generazioni con fonti citate in 30 giorni (misura: numero di antenati con fonte).",
+      "contenuto": "Percorso giornaliero di 30 giorni, modelli di albero e family group sheet, checklist degli archivi (censimenti, stato civile, immigrazione), guida alle interviste ai parenti, brevi video dimostrativi su una ricerca reale.",
+      "bonus": ["Registro delle fonti", "Script per interviste ai familiari", "Mappa dei passi quando ti blocchi (muri)"],
+      "garanzia": "30 giorni di rimborso; nessuna promessa di trovare antenati specifici.",
+      "prezzo_usd_cents": 7900,
+      "prezzo_nota": "ipotesi: tra il kit Family Tree Magazine a 54,97 e i corsi 79,99-175 USD; da verificare sulle pagine lette.",
+      "perche_vale_di_piu": "Un solo percorso guidato con una misura di progresso, invece di ebook e corsi per piattaforma; non usa marchi di terzi."
+    },
+    "angolo_facebook": {
+      "chi": "Adulti 45-70 in USA interessati a storia della famiglia, genealogia e immigrazione.",
+      "problema": "Vuoi ricostruire la tua famiglia ma non sai da dove cominciare.",
+      "visual": "Video di 30 secondi: un albero vuoto che si riempie in quattro generazioni mentre appare la checklist del giorno."
+    },
+    "concorrenti_premium": [
+      {"nome": "The Beginner Genealogy Starter Kit (Family Tree Magazine)", "url": "https://store.familytreemagazine.com/collections/digital-products/products/the-beginner-genealogy-starter-kit", "host": "store.familytreemagazine.com", "prezzo": "54,97 USD (69,97 separati)", "data": "2026-11-28", "livello": "risultato_di_ricerca"},
+      {"nome": "Corsi Family Tree University", "url": "https://university.familytreemagazine.com/courses/trace-your-roots", "host": "university.familytreemagazine.com", "prezzo": "19,99 USD (Trace Your Roots); 79,99-99,99 USD corsi su Ancestry", "data": "2026-11-28", "livello": "risultato_di_ricerca"},
+      {"nome": "Foundations in Family History 101 (NGS)", "url": "https://www.ngsgenealogy.org/foundations/101/", "host": "ngsgenealogy.org", "prezzo": "75 USD soci / 90 non soci", "data": "2026-11-28", "livello": "risultato_di_ricerca"},
+      {"nome": "Research Like a Pro e-Course (Family Locket)", "url": "https://familylocket.com/?p=7190", "host": "familylocket.com", "prezzo": "175 USD (9 video e 12 mesi di orari di assistenza)", "data": "2026-11-28", "livello": "risultato_di_ricerca"}
+    ],
+    "punti_forti": ["Pubblico appassionato e con budget.", "Prezzi concorrenti fino a 175 USD: c'e' spazio premium.", "Facebook e' forte per questa fascia di eta'.", "Tema piacevole."],
+    "punti_deboli": ["MyHeritage offre un corso gratuito.", "Concorrenti con marchio e autorita' (NGS, Family Tree Magazine).", "Rischio di promettere troppo: i risultati dipendono dagli archivi di ciascuno.", "Privacy di terzi: solo modelli vuoti."],
+    "gestione": {
+      "assistenza": "media: domande su casi di ricerca, rischio di richieste di consulenza",
+      "aggiornamenti": "medi: i link agli archivi cambiano",
+      "rischio_rimborsi": "medio: se un utente si blocca su una linea di ricerca",
+      "piacevolezza": "alta per il tema, media per l'assistenza"
+    }
+  },
+  {
+    "id": "carta-wedding-planner",
+    "titolo": "Kit di modelli per wedding planner indipendenti",
+    "mercato": "US (EN)",
+    "lingua": "en",
+    "schede_origine": ["T031-3-23"],
+    "offerta": {
+      "nome": "Wedding Planner Client Kit",
+      "promessa_misurabile": "Dal primo contatto al preventivo inviato in meno di 24 ore, e onboarding di una coppia in 60 minuti (misura: tempo cronometrato dall'acquirente).",
+      "contenuto": "Timeline di 12 mesi, questionario di consulenza, 8 e-mail modello, modello di preventivo, checklist del giorno, formato Canva e Google Docs, video di avvio.",
+      "bonus": ["20 e-mail di follow-up", "Foglio di calcolo dei costi per coppia", "Guida alla fissazione dei prezzi dei pacchetti"],
+      "garanzia": "30 giorni di rimborso se l'onboarding non si riduce. Nessuna clausola legale: i contratti vanno rivisti da un professionista.",
+      "prezzo_usd_cents": 9700,
+      "prezzo_nota": "ipotesi: fascia osservata 24-199 USD; da verificare sulle pagine lette.",
+      "perche_vale_di_piu": "Un flusso completo dal contatto al giorno del matrimonio con tempi misurabili, invece di un insieme di modelli; risparmia ore per ogni coppia."
+    },
+    "angolo_facebook": {
+      "chi": "Wedding planner indipendenti e agli inizi in USA, anche su Instagram.",
+      "problema": "Ricrei da zero timeline, e-mail e preventivi per ogni coppia.",
+      "visual": "Video di 25 secondi: la schermata del kit si compila per una coppia di esempio, con orologio che mostra 60 minuti."
+    },
+    "concorrenti_premium": [
+      {"nome": "Event toolkit con 24 modelli", "url": "https://sm-opponent-016.squarespace.com/shop/p/weddings-kit", "host": "sm-opponent-016.squarespace.com", "prezzo": "199 USD", "data": "2026-11-28", "livello": "risultato_di_ricerca", "nota": "sito Squarespace di prova: verificare se e' una vera vendita"},
+      {"nome": "Wedding planner template kit (HoneyBook)", "url": "https://www.honeybook.com/templates/kits/wedding-planner", "host": "honeybook.com", "prezzo": "non visto; richiede la piattaforma", "data": "2026-11-28", "livello": "risultato_di_ricerca"},
+      {"nome": "Wedding Planner Pro (Payhip)", "url": "https://payhip.com/WeddingPlannerPro", "host": "payhip.com", "prezzo": "non visto", "data": "2026-11-28", "livello": "risultato_di_ricerca"},
+      {"nome": "Starter bundle per nuovi planner (Payhip)", "url": "https://payhip.com/b/OXLUo", "host": "payhip.com", "prezzo": "CAD 24", "data": "2026-11-28", "livello": "risultato_di_ricerca"}
+    ],
+    "punti_forti": ["Valore professionale: un planner guadagna per ogni coppia.", "Assistenza bassa.", "Modelli a costo marginale quasi nullo.", "Pubblico ben raggiungibile su Instagram."],
+    "punti_deboli": ["Mercato saturo di modelli a 20-50 USD.", "Evidenza diretta del problema debole nella scheda.", "Contratti sono materia legale: limiti.", "Pubblico piccolo."],
+    "gestione": {
+      "assistenza": "bassa",
+      "aggiornamenti": "bassi: una revisione l'anno",
+      "rischio_rimborsi": "basso-medio: dipende da quanto i modelli sembrano diversi dai gratuiti",
+      "piacevolezza": "media: tema meno appassionante, gestione semplice"
+    }
+  }
+]

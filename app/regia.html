@@ -43,7 +43,7 @@ main{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
   padding-block:6px calc(var(--nav-h) + 24px + env(safe-area-inset-bottom,0px))}
 nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--surface);border-top:1px solid var(--line);
-  display:grid;grid-template-columns:repeat(5,1fr);padding-bottom:env(safe-area-inset-bottom,0px);
+  display:grid;grid-template-columns:repeat(6,1fr);padding-bottom:env(safe-area-inset-bottom,0px);
   padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
 nav.tabs button{background:none;border:0;height:var(--nav-h);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11.5px;color:var(--muted);font-weight:600}
 nav.tabs button svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7}
@@ -93,6 +93,42 @@ pre.doc{white-space:pre-wrap;overflow-wrap:anywhere;font-family:var(--font-data)
 .muted{color:var(--muted)} .small{font-size:12.5px}
 .empty{padding:18px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:var(--r)}
 .locked{max-width:30em;margin:12vh auto;text-align:center}
+/* ---------- vista GIOCO ---------- */
+.hero{background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 22%,var(--surface)),var(--surface));border:1px solid var(--line);border-radius:16px;padding:16px;margin-top:10px}
+.hero .lv{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.hero h3{font-size:22px;margin:4px 0 10px}
+.stelle{display:flex;gap:5px}
+.stelle i{flex:1;height:10px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line)}
+.stelle i.on{background:var(--ok);border-color:var(--ok)} .stelle i.now{background:var(--warn);border-color:var(--warn)}
+.missione{border:2px solid var(--warn);background:color-mix(in srgb,var(--warn) 10%,var(--surface));border-radius:16px;padding:14px;margin-top:12px}
+.missione .tag{font-size:12px;font-weight:800;color:var(--warn);text-transform:uppercase;letter-spacing:.08em}
+.missione h3{font-size:19px;margin:4px 0 6px}
+.btn.big{width:100%;padding:14px;font-size:16px;border-radius:12px;margin-top:10px}
+.energia{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;margin-top:12px}
+.energia .tubo{display:flex;height:18px;border-radius:999px;overflow:hidden;background:var(--surface-2);margin:8px 0}
+.energia .tubo .r{background:var(--ok)} .energia .tubo .i{background:var(--warn)} .energia .tubo .s{background:var(--bad)}
+.energia .big{font-family:var(--font-data);font-size:28px;font-weight:700}
+.mappa{display:grid;gap:0;margin-top:6px}
+.tappa{display:flex;gap:12px;align-items:center;padding:8px 0;position:relative}
+.tappa .pal{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:800;flex:none;border:2px solid var(--line);background:var(--surface);color:var(--muted)}
+.tappa.on .pal{background:var(--ok);border-color:var(--ok);color:#fff} .tappa.now .pal{background:var(--warn);border-color:var(--warn);color:#fff}
+.tappa:not(:last-child)::after{content:"";position:absolute;left:16px;top:42px;width:2px;height:calc(100% - 34px);background:var(--line)}
+.tappa b{font-size:15px} .tappa.lock b{color:var(--muted);font-weight:600}
+.pg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@media (min-width:640px){.pg{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.pers{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px;display:flex;gap:8px;align-items:center;min-width:0;text-align:left;width:100%}
+.pers .av{font-size:24px;line-height:1;flex:none}
+.pers .nm{font-weight:700;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pers .st{font-size:12px;font-weight:700}
+.carte{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;margin-inline:-16px;padding-inline:16px}
+.carta{scroll-snap-align:center;flex:0 0 min(86%,360px);background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.carta.scelta{border:2px solid var(--ok)}
+.carta .em{font-size:40px;line-height:1}
+.carta h3{font-size:18px}
+.carta .prezzo{font-family:var(--font-data);font-size:24px;font-weight:700}
+.carta ul{margin:0;padding-left:18px;font-size:13.5px}
+.carta .voto{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-size:13px}
+.carta form{margin-top:auto}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 
@@ -102,14 +138,16 @@ pre.doc{white-space:pre-wrap;overflow-wrap:anywhere;font-family:var(--font-data)
 </header>
 <main id="main" tabindex="-1">
   <div id="banners"></div>
-  <section id="view-regia" aria-label="Regia"></section>
+  <section id="view-gioco" aria-label="Gioco"></section>
+  <section id="view-regia" aria-label="Squadra" hidden></section>
   <section id="view-lavori" aria-label="Lavori" hidden></section>
   <section id="view-prodotti" aria-label="Prodotti" hidden></section>
   <section id="view-numeri" aria-label="Numeri" hidden></section>
   <section id="view-comandi" aria-label="Comandi" hidden></section>
 </main>
 <nav class="tabs" role="tablist" aria-label="Sezioni">
-  <button role="tab" data-v="regia" aria-selected="true"><svg viewBox="0 0 24 24"><path d="M3 10l9-6 9 6v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Regia</button>
+  <button role="tab" data-v="gioco" aria-selected="true"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.5 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg>Gioco</button>
+  <button role="tab" data-v="regia" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M3 10l9-6 9 6v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Squadra</button>
   <button role="tab" data-v="lavori" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg>Lavori</button>
   <button role="tab" data-v="prodotti" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5 9 5 9-5zM3 8v8l9 5 9-5V8"/></svg>Prodotti</button>
   <button role="tab" data-v="numeri" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Numeri</button>
@@ -121,7 +159,7 @@ pre.doc{white-space:pre-wrap;overflow-wrap:anywhere;font-family:var(--font-data)
 "use strict";
 /* ---------- stato dell'app ---------- */
 const S = { sistema:null, agenti:null, lavori:null, prodotti:null, consegne:null, comandi:[], loaded:false,
-  dbOk:null, owner:null, demo:false, view:"regia", modo3d:null, cacheOnly:true, errori:[] };
+  dbOk:null, owner:null, demo:false, view:"gioco", partita:null, modo3d:null, cacheOnly:true, errori:[] };
 const STATI = {
   in_esecuzione:"In esecuzione", concluso:"Concluso", in_attesa:"In attesa", bloccato:"Bloccato",
   sconosciuto:"Stato sconosciuto", mai_avviato_registrato:"Mai avviato (registrato)", inattivo:"Inattivo",
@@ -364,6 +402,75 @@ function renderNumeri(){
   v.append(el("h2",{text:"Margini per canale"}), el("div",{class:"empty",text:n.margini_per_canale?"":"Nessuna vendita reale: i margini per canale appariranno con i primi ordini riconciliati."}));
 }
 
+/* ---------- GIOCO: solo fatti registrati dal motore, nessun progresso inventato ---------- */
+const PERSONAGGI={"team-lead":["🧭","Capitano"],"ricerca-mercato":["🔎","Esploratrice"],"sviluppo-prodotto":["🛠️","Costruttore"],"qa-indipendente":["🛡️","Guardiano"],
+  "shopify-operazioni":["🏪","Negoziante"],"acquisizione":["📣","Banditore"],"creator-partnership":["🤝","Ambasciatore"],"social-contenuti":["🎬","Regista"],
+  "customer-care":["💬","Custode"],"strategia-finanza":["💰","Tesoriere"],"account-integrazioni":["🔑","Chiavaio"]};
+const PAROLE={in_esecuzione:["sta lavorando","ok"],concluso:["ha finito","accent"],in_attesa:["aspetta","warn"],bloccato:["è bloccato","bad"],
+  sconosciuto:["non lo so","unknown"],mai_avviato_registrato:["non ancora partito","idle"],inattivo:["a riposo","idle"]};
+const EMOJI_CARTA={"carta-food-cost":"🍽️","carta-lievito-madre":"🍞","carta-genealogia":"🌳","carta-wedding-planner":"💍"};
+const usd=c=>(c==null?"—":(c/100).toLocaleString("en-US",{style:"currency",currency:"USD",maximumFractionDigits:0}));
+function renderGioco(){
+  const v=$("#view-gioco"); v.replaceChildren();
+  if(S.demo){ v.append(el("div",{class:"empty",text:"Il gioco mostra solo dati reali: in demo è spento. Apri la scheda Squadra per la demo grafica."})); return; }
+  const P=S.partita;
+  if(!P){ v.append(el("div",{class:"empty",text:S.loaded?"Il motore non ha ancora pubblicato la partita.":"Caricamento della partita…"})); return; }
+  const vecchio=stale();
+  const idx=P.livelli.findIndex(l=>!l.fatto), cur=idx<0?P.livelli[P.livelli.length-1]:P.livelli[idx];
+  v.append(el("div",{class:"hero"},el("div",{class:"lv",text:`Livello ${idx<0?P.totale:idx+1} di ${P.totale}`+(vecchio?" · ultimo stato noto":"")}),
+    el("h3",{text:idx<0?"Percorso completato":"Obiettivo: "+cur.nome.toLowerCase()}),
+    el("div",{class:"stelle","aria-label":`${P.completati} traguardi su ${P.totale}`},...P.livelli.map((l,i)=>el("i",{class:l.fatto?"on":i===idx?"now":""}))),
+    el("p",{class:"small muted",style:"margin:8px 0 0",text:"Un livello si accende solo quando il motore registra il traguardo reale."})));
+  // missione
+  const m=P.missione||{tipo:"nessuna"}; const mbox=el("div",{class:"missione"},el("div",{class:"tag",text:"La tua missione"}),el("h3",{text:m.titolo}),el("p",{class:"small",style:"margin:0",text:m.testo||""}));
+  if(m.tipo==="scelta_prodotto") mbox.append(el("button",{class:"btn big",type:"button",text:"Vai alle carte ↓",onclick:()=>{ const c=$("#carte"); c&&c.scrollIntoView({behavior:"smooth"}); }}));
+  if(m.tipo==="risposta" && m.richiesta){ const f=el("form",{},el("button",{class:"btn big",type:"submit",text:"Fatto ✓"}));
+    f.addEventListener("submit",e=>{ e.preventDefault(); invia("risposta",{richiesta:m.richiesta,testo:"Fatto (dal gioco)"},f); }); mbox.append(f); }
+  v.append(mbox);
+  // energia
+  const E=P.energia, t=E.tetto_cents||1, pc=x=>Math.max(0,Math.min(100,100*x/t));
+  v.append(el("div",{class:"energia"},el("div",{class:"lv small muted",text:"Energia (budget totale "+eur(E.tetto_cents)+")"}),
+    el("div",{},el("span",{class:"big",text:eur(E.residuo_cents)}),el("span",{class:"muted small",text:" disponibili"})),
+    el("div",{class:"tubo",role:"img","aria-label":`speso ${eur(E.speso_cents)}, impegnato ${eur(E.impegnato_cents)}, disponibile ${eur(E.residuo_cents)}`},
+      el("i",{class:"s",style:`width:${pc(E.speso_cents)}%`}),el("i",{class:"i",style:`width:${pc(E.impegnato_cents)}%`}),el("i",{class:"r",style:`width:${pc(E.residuo_cents)}%`})),
+    el("div",{class:"small muted",text:`Speso ${eur(E.speso_cents)} · Prenotato ${eur(E.impegnato_cents)} · Le vendite non ricaricano l'energia.`})));
+  // carte prodotto
+  v.append(el("h2",{id:"carte",text:P.scelta?"Il prodotto scelto":"Scegli il prodotto"}));
+  const pend=S.comandi.find(c=>c.tipo==="scelta_prodotto"&&c.stato!=="completato"&&c.stato!=="fallito");
+  const carte=(P.carte||[]).filter(c=>!P.scelta||c.id===P.scelta.carta);
+  if(!carte.length) v.append(el("div",{class:"empty",text:"Le carte arrivano quando la ricerca le ha preparate."}));
+  else{ v.append(el("p",{class:"small muted",style:"margin:0 0 8px",text:"Scorri le carte. Prezzi e concorrenti sono stime da risultati di ricerca: la squadra li verifica sulle pagine prima del lancio."}));
+    v.append(el("div",{class:"carte"},...carte.map(c=>cartaProdotto(c,P,pend,vecchio)))); }
+  // squadra
+  const ag=agenti(); const lavorano=ag.filter(a=>a.stato==="in_esecuzione").length;
+  v.append(el("h2",{text:`La squadra · ${vecchio?"stato non aggiornato":lavorano+" al lavoro"}`}));
+  v.append(ag.length? el("div",{class:"pg"},...ag.map(a=>{ const [em,nome]=PERSONAGGI[a.id]||["🙂",a.id]; const st=vecchio?"sconosciuto":a.stato; const [par,col]=PAROLE[st]||[st,"idle"];
+      return el("button",{class:"pers",type:"button",onclick:()=>schedaAgente(a.id)},el("span",{class:"av","aria-hidden":"true",text:em}),
+        el("span",{style:"min-width:0"},el("div",{class:"nm",text:nome}),el("div",{class:"st",style:`color:var(--${col})`,text:par}))); }))
+    : el("div",{class:"empty",text:"Nessun dato sulla squadra."}));
+  // mappa
+  v.append(el("h2",{text:"Il percorso"}), el("div",{class:"mappa"},...P.livelli.map((l,i)=>el("div",{class:"tappa "+(l.fatto?"on":i===idx?"now":"lock")},
+    el("span",{class:"pal",text:l.fatto?"✓":String(i+1)}),el("div",{},el("b",{text:l.nome}),el("div",{class:"small muted",text:l.fatto?(l.prova?"fatto · "+quando(l.prova):"fatto"):i===idx?"tappa attuale":"bloccata"}))))));
+}
+function cartaProdotto(c,P,pend,vecchio){
+  const o=c.offerta||{}, g=c.gestione||{}, scelta=P.scelta&&P.scelta.carta===c.id;
+  const box=el("article",{class:"carta"+(scelta?" scelta":"")},el("div",{class:"em","aria-hidden":"true",text:EMOJI_CARTA[c.id]||"📦"}),
+    el("h3",{text:o.nome||c.titolo}),el("div",{class:"small muted",text:`${c.titolo} · ${c.mercato}`}),
+    el("div",{},el("span",{class:"prezzo",text:usd(o.prezzo_usd_cents)}),el("span",{class:"small muted",text:" prezzo proposto (stima)"})),
+    el("p",{class:"small",style:"margin:0",text:o.promessa_misurabile||""}),
+    el("div",{class:"voto"},el("span",{class:"muted",text:"Piacevolezza"}),el("b",{text:g.piacevolezza||"—"}),el("span",{class:"muted",text:"Assistenza"}),el("span",{text:g.assistenza||"—"}),
+      el("span",{class:"muted",text:"Annuncio Facebook"}),el("span",{text:(c.angolo_facebook&&c.angolo_facebook.visual)||"—"})),
+    el("b",{class:"small",text:"Perché sì"}),el("ul",{},...(c.punti_forti||[]).slice(0,3).map(x=>el("li",{text:x}))),
+    el("b",{class:"small",text:"Attenzione"}),el("ul",{},...(c.punti_deboli||[]).slice(0,3).map(x=>el("li",{text:x}))));
+  if(scelta){ box.append(el("div",{class:"chip s-fatto",text:"Scelto "+quando(P.scelta.quando)})); return box; }
+  const f=el("form",{}); const b=el("button",{class:"btn big",type:"submit",text:"Scegli questo"});
+  if(vecchio||pend){ b.disabled=true; b.textContent=pend?"Scelta inviata: attendo il motore":"Motore non collegato"; }
+  f.append(b); let armato=false;
+  f.addEventListener("submit",e=>{ e.preventDefault(); if(!armato){ armato=true; b.textContent="Tocca ancora per confermare"; setTimeout(()=>{ if(armato){ armato=false; b.textContent="Scegli questo"; } },5000); return; }
+    armato=false; invia("scelta_prodotto",{carta:c.id},f); });
+  box.append(f); return box;
+}
+
 /* ---------- COMANDI ---------- */
 function nuovoId(){ const r=new Uint8Array(8); crypto.getRandomValues(r); return "cmd-"+Date.now().toString(36)+"-"+[...r].map(b=>b.toString(16).padStart(2,"0")).join("").slice(0,10); }
 async function invia(tipo, parametri, form){
@@ -442,6 +549,7 @@ function mostra(vista){ S.view=vista; for(const b of document.querySelectorAll("
   for(const s of document.querySelectorAll("main > section")) s.hidden = s.id!=="view-"+vista; if(vista!=="regia"){ fermo3D(); $("#view-regia").replaceChildren(); } renderAll(true); $("#main").scrollTop=0; }
 document.querySelectorAll("nav.tabs button").forEach(b=>b.addEventListener("click",()=>mostra(b.dataset.v)));
 function firma(v){ // si ridisegna una vista solo se i SUOI dati cambiano (la 3D non riparte, i moduli non si svuotano)
+  if(v==="gioco") return JSON.stringify([S.partita,stale(),S.demo,S.loaded,agenti().map(a=>[a.id,a.stato]),S.comandi.filter(c=>c.tipo==="scelta_prodotto"||c.tipo==="risposta").map(c=>[c.id,c.stato])]);
   if(v==="regia") return JSON.stringify([agenti().map(a=>[a.id,a.stato,a.attivita_corrente,a.ultimo_aggiornamento]),passaggiCorrenti(),stale(),S.demo,S.modo3d,S.sistema&&S.sistema.riepilogo,S.sistema&&S.sistema.eventi_recenti]);
   if(v==="lavori") return JSON.stringify(S.lavori); if(v==="prodotti") return JSON.stringify([S.prodotti,S.sistema&&S.sistema.integrazioni]);
   if(v==="numeri") return JSON.stringify(S.sistema&&S.sistema.numeri);
@@ -453,7 +561,7 @@ function renderAll(forza){ renderHeader();
     if(!forza && !vuota && (f===FIRME.comandi || sporco)) return; }
   else if(!forza && !vuota && f===FIRME[S.view]) return;
   FIRME[S.view]=f;
-  if(S.view==="regia") renderRegia(); if(S.view==="lavori") renderLavori(); if(S.view==="prodotti") renderProdotti(); if(S.view==="numeri") renderNumeri(); if(S.view==="comandi"){ renderComandi(); renderStatoComandi(); } }
+  if(S.view==="gioco") renderGioco(); if(S.view==="regia") renderRegia(); if(S.view==="lavori") renderLavori(); if(S.view==="prodotti") renderProdotti(); if(S.view==="numeri") renderNumeri(); if(S.view==="comandi"){ renderComandi(); renderStatoComandi(); } }
 
 /* ---------- battito: allo scadere della soglia si ridisegna TUTTO (agenti e 3D compresi), non solo l'intestazione ---------- */
 let eraScaduto=false;
@@ -469,7 +577,7 @@ async function avvio(){
   if(!db){ S.dbOk=false; renderAll(); return; }
   const timer=setTimeout(()=>{ if(!S.loaded){ S.dbOk=false; renderAll(); } },10000);
   const segui=(path,key)=> db.doc(path).onSnapshot(s=>{ S[key]=s.exists?s.data():null; if(!s.metadata.fromCache){ S.loaded=true; S.dbOk=true; clearTimeout(timer);} renderAll(); },()=>{ S.dbOk=false; renderAll(); });
-  segui("sistema/stato","sistema"); segui("squadra/agenti","agenti"); segui("squadra/lavori","lavori"); segui("squadra/prodotti","prodotti"); segui("consegne/indice","consegne");
+  segui("sistema/stato","sistema"); segui("squadra/agenti","agenti"); segui("squadra/lavori","lavori"); segui("squadra/prodotti","prodotti"); segui("consegne/indice","consegne"); segui("squadra/partita","partita");
   db.collection("comandi").orderBy("creato_il","desc").limit(50).onSnapshot(s=>{ S.comandi=s.docs.map(d=>d.data()); renderAll(); },()=>{});
   eraScaduto=stale();
   setInterval(controllaBattito,30000);   // l'età del battito cresce anche senza nuovi dati

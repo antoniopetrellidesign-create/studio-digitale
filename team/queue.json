@@ -642,10 +642,10 @@
       "fase": "",
       "dipende_da": [],
       "output": [],
-      "stato": "da_fare",
+      "stato": "fatto",
       "run_id": null,
       "creato": "2026-11-28T05:50:26+00:00",
-      "aggiornato": "2026-11-28T05:50:26+00:00",
+      "aggiornato": "2026-11-28T06:03:44+00:00",
       "note": []
     },
     {
@@ -655,10 +655,10 @@
       "fase": "",
       "dipende_da": [],
       "output": [],
-      "stato": "da_fare",
+      "stato": "fatto",
       "run_id": null,
       "creato": "2026-11-28T05:50:26+00:00",
-      "aggiornato": "2026-11-28T05:50:26+00:00",
+      "aggiornato": "2026-11-28T06:03:44+00:00",
       "note": []
     }
   ]

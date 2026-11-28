@@ -32,7 +32,11 @@ REPARTI = {
 }
 ATTIVA_MAX = timedelta(minutes=20)      # oltre: un'esecuzione senza fine diventa "sconosciuta"
 BATTITO_MAX = timedelta(minutes=10)     # oltre: il ponte è "non aggiornato"
-TIPI_COMANDO = ("obiettivo", "priorita", "revisione", "sospendi", "riprendi", "risposta")
+TIPI_COMANDO = ("obiettivo", "priorita", "revisione", "sospendi", "riprendi", "risposta", "scelta_prodotto")
+# Percorso del gioco: ogni livello si sblocca SOLO con un traguardo reale registrato (team/traguardi.json o scelta)
+LIVELLI = [("sistema", "Squadra pronta"), ("scelta", "Prodotto scelto"), ("pagina", "Pagina di prova online"),
+           ("interessati", "Primi interessati"), ("vendita", "Prima vendita"), ("dieci", "10 vendite con margine"),
+           ("secondo", "Secondo prodotto")]
 PRIORITA = ("alta", "normale", "bassa")
 
 
@@ -330,6 +334,41 @@ def collegamento(ora=None) -> dict:
             "soglia_minuti": int(BATTITO_MAX.total_seconds() // 60)}
 
 
+def carte() -> list:
+    p = _p("research", "carte-candidati.json")
+    try:
+        return json.loads(_leggi(p)) if os.path.exists(p) else []
+    except ValueError:
+        return []
+
+
+def partita(num: dict) -> dict:
+    """Stato del gioco ricavato da fatti registrati: nessun progresso inventato."""
+    scelta = read_json(_p("team", "scelta.json"), None)
+    trag = read_json(_p("team", "traguardi.json"), {}) or {}
+    fatti = {"sistema": True, "scelta": bool(scelta), **{k: bool(trag.get(k)) for k in ("pagina", "interessati", "vendita", "dieci", "secondo")}}
+    livelli, corrente = [], None
+    for k, nome in LIVELLI:
+        ok = fatti.get(k, False)
+        if not ok and corrente is None:
+            corrente = k
+        livelli.append({"id": k, "nome": nome, "fatto": ok,
+                        "prova": (scelta.get("quando") if k == "scelta" and scelta else (trag.get(k) or {}).get("prova") if isinstance(trag.get(k), dict) else None)})
+    cs = carte()
+    if not scelta and cs:
+        missione = {"tipo": "scelta_prodotto", "titolo": "Scegli il prodotto",
+                    "testo": "Guarda le carte e scegli quello che ti piace di più: la squadra prepara la pagina di prova."}
+    else:
+        aperte = [r for r in richieste_titolare() if not r.get("risposta") and "FATTO" not in r["titolo"].upper()]
+        missione = ({"tipo": "risposta", "titolo": aperte[0]["titolo"], "richiesta": aperte[0]["id"],
+                     "testo": "Quando l'hai fatto, tocca «Fatto»: la squadra verifica e prosegue."} if aperte else
+                    {"tipo": "nessuna", "titolo": "Nessuna missione per te", "testo": "La squadra lavora: torna più tardi."})
+    return {"livelli": livelli, "livello_corrente": corrente, "completati": sum(1 for l in livelli if l["fatto"]),
+            "totale": len(livelli), "missione": missione, "carte": cs, "scelta": scelta,
+            "energia": {"tetto_cents": num["tetto_cents"], "speso_cents": num["consumato_cents"],
+                        "impegnato_cents": num["impegnato_cents"], "residuo_cents": num["residuo_cents"]}}
+
+
 def istantanea(ora=None) -> dict:
     ora = ora or _ora()
     col = collegamento(ora)
@@ -357,6 +396,7 @@ def istantanea(ora=None) -> dict:
         "agenti": agenti, "lavori": lavori, "passaggi": passaggi(coda), "prodotti": prodotti(), "numeri": num,
         "integrazioni": integrazioni(), "richieste": richieste_titolare(),
         "eventi_recenti": [e for e in evs if e["evento"] in ("SubagentStart", "SubagentStop", "Stop")][-30:],
+        "partita": partita(num),
     }
 
 
@@ -366,7 +406,8 @@ def documenti_db(s: dict) -> dict:
                                  "integrazioni", "richieste", "eventi_recenti")}
     return {"sistema/stato": sistema, "squadra/agenti": {"generato_il": s["generato_il"], "agenti": s["agenti"]},
             "squadra/lavori": {"generato_il": s["generato_il"], "lavori": s["lavori"]},
-            "squadra/prodotti": {"generato_il": s["generato_il"], "prodotti": s["prodotti"]}}
+            "squadra/prodotti": {"generato_il": s["generato_il"], "prodotti": s["prodotti"]},
+            "squadra/partita": {"generato_il": s["generato_il"], **s["partita"]}}
 
 
 def esporta(cartella: str, con_consegne: bool = False) -> list:
@@ -472,6 +513,18 @@ def esegui_comando(cmd: dict) -> dict:
                           "ripreso_il": _iso(), "comando": cid})
                 atomic_write_json(percorso_sospensione(), s)
                 esito = "ripresi: " + ", ".join(k for k in ("spese", "attivita") if not s[k])
+        elif tipo == "scelta_prodotto":
+            cid_carta = str(par.get("carta", ""))
+            carta = next((c for c in carte() if str(c.get("id")) == cid_carta), None)
+            if carta is None:
+                raise ValueError("carta inesistente")
+            if read_json(_p("team", "scelta.json"), None):
+                raise ValueError("il prodotto è già stato scelto: per cambiarlo serve una decisione del team-lead")
+            atomic_write_json(_p("team", "scelta.json"), {"carta": cid_carta, "titolo": carta.get("titolo"),
+                                                         "quando": _iso(), "comando": cid})
+            q.add("SC-" + cid, "Prodotto scelto dal titolare: " + str(carta.get("titolo"))[:120] +
+                  " → piano del test e pagina di prova", "team-lead")
+            esito = f"scelta registrata: {carta.get('titolo')}; compito SC-{cid} per il team-lead"
         else:  # risposta
             rid = str(par.get("richiesta", ""))
             if rid not in {r["id"] for r in richieste_titolare()}:
