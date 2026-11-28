@@ -604,11 +604,16 @@
         "T-036"
       ],
       "output": [],
-      "stato": "da_fare",
+      "stato": "bloccato",
       "run_id": null,
       "creato": "2026-11-27T12:24:45+00:00",
-      "aggiornato": "2026-11-27T12:24:45+00:00",
-      "note": []
+      "aggiornato": "2026-11-28T05:50:26+00:00",
+      "note": [
+        {
+          "quando": "2026-11-28T05:50:26+00:00",
+          "nota": "sospeso da D-041: solo IT/EN"
+        }
+      ]
     },
     {
       "id": "T-038",
@@ -619,10 +624,41 @@
         "T-036"
       ],
       "output": [],
-      "stato": "da_fare",
+      "stato": "bloccato",
       "run_id": null,
       "creato": "2026-11-27T12:24:45+00:00",
-      "aggiornato": "2026-11-27T12:24:45+00:00",
+      "aggiornato": "2026-11-28T05:50:26+00:00",
+      "note": [
+        {
+          "quando": "2026-11-28T05:50:26+00:00",
+          "nota": "sospeso da D-041: solo IT/EN"
+        }
+      ]
+    },
+    {
+      "id": "T-039",
+      "titolo": "Candidati IT/EN (US primario) con offerta premium e fonti lette, presentati come carte per la scelta del titolare",
+      "agente": "ricerca-mercato",
+      "fase": "",
+      "dipende_da": [],
+      "output": [],
+      "stato": "da_fare",
+      "run_id": null,
+      "creato": "2026-11-28T05:50:26+00:00",
+      "aggiornato": "2026-11-28T05:50:26+00:00",
+      "note": []
+    },
+    {
+      "id": "T-040",
+      "titolo": "Regia come app di gioco: livelli, missioni del titolare, squadra-personaggi, energia budget, scelta prodotto",
+      "agente": "team-lead",
+      "fase": "",
+      "dipende_da": [],
+      "output": [],
+      "stato": "da_fare",
+      "run_id": null,
+      "creato": "2026-11-28T05:50:26+00:00",
+      "aggiornato": "2026-11-28T05:50:26+00:00",
       "note": []
     }
   ]
